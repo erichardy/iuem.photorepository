@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>1001</version>
+  <dependencies>
+    <!--<dependency>profile-xxx:default</dependency>-->
+    <dependency>profile-collective.quickupload:default</dependency>
+    <dependency>profile-collective.galleria:default</dependency>
+  </dependencies>
+</metadata>

@@ -1,0 +1,2 @@
+recursive-include iuem *
+global-exclude *pyc

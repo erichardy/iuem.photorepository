@@ -1,0 +1,4 @@
+<layers>
+    <layer name="iuem.photorepository"
+           interface="iuem.photorepository.browser.interfaces.ILayer" />
+</layers>
