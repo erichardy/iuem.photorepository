@@ -3,6 +3,9 @@
 *.egg
 *.EGG
 *.EGG-INFO
+.project
+.pydevproject
+.settings
 bin
 build
 develop-eggs
