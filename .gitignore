@@ -26,3 +26,4 @@ var
 .project
 .pydevproject
 .settings
+bootstrap.py
