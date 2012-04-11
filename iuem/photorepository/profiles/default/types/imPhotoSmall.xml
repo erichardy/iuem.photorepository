@@ -4,7 +4,7 @@
    i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  <property name="title" i18n:translate="">imPhotoSmall</property>
  <property name="description"
-      i18n:translate="Reduced photos uploaded by members">Reduced photos uploaded by members</property>
+      i18n:translate="Reduced photos uploaded by members">Reduced photos uploaded by members with annotation</property>
  <property name="icon_expr"></property>
  <property name="content_meta_type">ATBlob</property>
  <property name="product">plone.app.blob</property>
