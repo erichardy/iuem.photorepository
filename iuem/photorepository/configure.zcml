@@ -21,10 +21,7 @@
   <include package=".upgrades" />
   
   <adapter factory=".metadatamanager.AnnotationMetadaManager" />
-
-  <browser:resource
-    name="iuem.photorepository"
-    directory="static"
-    />
+  
+  <plone:static directory="static" type="theme" name="iuem.photorepository" />
 
 </configure>
