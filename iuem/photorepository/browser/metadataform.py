@@ -24,11 +24,14 @@ class MetadataForm(AutoExtensibleForm , form.Form):
     schema = IMetadataForm
     # desactive ignoreContext et on surcharge la methode getContent
     # afin de pre-remplie le formulaire avec les valeurs existantes
-    # ignoreContext = True
+    ignoreContext = False
     
     def getContent(self):
         mm = IMetadaManager(self.context)
-        content = mm.read()
+        try:
+            content = mm.read()
+        except:
+            content={}
         return content
     
     @button.buttonAndHandler(u"Save")

@@ -29,7 +29,8 @@ setup(name='iuem.photorepository',
       install_requires=[
           'setuptools',
           'collective.quickupload',
-          'collective.galleria'
+          'collective.galleria',
+          'plone.resource'
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(

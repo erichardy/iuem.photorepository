@@ -1,0 +1,4 @@
+/* Tricks to remove imPhotoSmall content from Add Menu */
+#imphotosmall {
+display: none !important;
+}

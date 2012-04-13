@@ -14,7 +14,6 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-
   <browser:page
       for="*"
       name="metadata_view_pt"
@@ -23,7 +22,14 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-  
+  <browser:page
+      for="*"
+      name="testSet"
+      class=".debugSet.create"
+      template="debugSet.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
   <!-- EXAMPLE:
   <browser:viewlet
       name="iuem.someviewlet"

@@ -10,7 +10,7 @@
  <property name="product">plone.app.blob</property>
  <property name="factory">addATBlobImage</property>
  <property name="immediate_view">image_view</property>
- <property name="global_allow">True</property>
+ <property name="global_allow">False</property>
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types"/>
  <property name="allow_discussion">False</property>

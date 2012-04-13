@@ -19,7 +19,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <include package=".upgrades" />
+  
   <adapter factory=".metadatamanager.AnnotationMetadaManager" />
 
+  <browser:resource
+    name="iuem.photorepository"
+    directory="static"
+    />
 
 </configure>
