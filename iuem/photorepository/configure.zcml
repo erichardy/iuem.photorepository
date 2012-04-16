@@ -23,42 +23,33 @@
   <adapter factory=".metadatamanager.AnnotationMetadaManager" />
   
   <!--
-  handler for imPhoto creation
+  handler for imPhoto initialization
   usefull documentation at :
   http://plone.org/documentation/kb/five-zope3-walkthrough/events
   and list of events : zope/app/container/interfaces.py
   -->
   <subscriber
-    for="zope.app.container.interfaces.IObjectAddedEvent"
-    handler=".manageAddImPhoto.ObjectAddedEvent"
-  />
-  <subscriber
-    for="zope.lifecycleevent.interfaces.IObjectCreatedEvent"
-    handler=".manageAddImPhoto.ObjectCreatedEvent"
-  />  
-  <subscriber
-    for="zope.app.container.interfaces.IContainerModifiedEvent"
-    handler=".manageAddImPhoto.ContainerModifiedEvent"
-  />
-  <subscriber
-    for="zope.app.container.interfaces.IWriteContainer"
-    handler=".manageAddImPhoto.WriteContainer"
-  />
-  <!--
-  http://plone.org/documentation/manual/developer-manual/archetypes/\
-  other-useful-archetypes-features/\
-  how-to-use-events-to-hook-the-archetypes-creation-process
-  -->
-  <subscriber
     for="Products.Archetypes.interfaces.IObjectInitializedEvent"
-    handler=".manageAddImPhoto.ehObjectInitializedEvent"
+    handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
   />
   <!--
   <subscriber
-    for=".manageAddImPhoto.IcreateimPhotoEvent"
-    handler=".manageAddImPhoto.createimPhotoHandler"
+    for="zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".manageImPhotoModified.imIObjectModifiedEvent"
   />
   -->
+  <subscriber
+    for="zope.app.container.interfaces.IObjectRemovedEvent"
+    handler=".manageImPhotoModified.imIObjectRemovedEvent"
+  />
+  <subscriber
+    for="zope.lifecycleevent.interfaces.IObjectCopiedEvent"
+    handler=".manageImPhotoModified.imIObjectCopiedEvent"
+  />
+  <subscriber
+    for="zope.app.container.interfaces.IObjectMovedEvent"
+    handler=".manageImPhotoModified.imIObjectMovedEvent"
+  />
 
   <plone:static directory="static" type="theme" name="iuem.photorepository" />
 
