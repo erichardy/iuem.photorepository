@@ -19,6 +19,7 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
   <include package=".upgrades" />
+  
   <adapter factory=".metadatamanager.AnnotationMetadaManager" />
   
   <!--
@@ -59,6 +60,6 @@
   />
   -->
 
-
+  <plone:static directory="static" type="theme" name="iuem.photorepository" />
 
 </configure>

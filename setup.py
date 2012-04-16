@@ -30,7 +30,8 @@ setup(name='iuem.photorepository',
           'setuptools',
           'collective.quickupload',
           'collective.galleria',
-          'pillow'
+          'pillow',
+          'plone.app.theming'
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(
