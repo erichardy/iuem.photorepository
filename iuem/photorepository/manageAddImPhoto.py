@@ -6,7 +6,8 @@ from zope.event import notify
 from Products.Archetypes.interfaces import IObjectInitializedEvent
 from Products.Archetypes.event import ObjectInitializedEvent
 
-from PIL import Image , ImageDraw
+from cStringIO import StringIO
+from PIL import Image , ImageDraw , ImageEnhance
 
 """
 creation process of an imPhotoSmall derived from an imPhoto :
@@ -42,19 +43,22 @@ def imPhotoObjectInitializedEvent(obj):
     print "obj.object.id = " + str(obj.object.id)
     print "nom de l'imPhotoSmall : " + imPhotoSmallName(obj.object.id)
     
-    # rawImage = ImageDraw.Draw(obj.object.getImageAsFile())
-    # smallImage = rawImage.thumbnail((400,600) , Image.ANTIALIAS)
     rawImage = obj.object.getImageAsFile()
+    smallImage = Image.open(rawImage)
+    if smallImage.mode != 'RGBA':
+        smallImage = smallImage.convert('RGBA')
+    # imPhotoSmall processing   
+    size = 300 , 300
+    smallImage.thumbnail(size, Image.ANTIALIAS)
+    draw = ImageDraw.Draw(smallImage)
+    draw.line((0, 0) + smallImage.size, fill=(255, 255, 255))
+    draw.line((0, smallImage.size[1], smallImage.size[0], 0), fill=(255, 255, 255))
+    #
     name = imPhotoSmallName(obj.object.id)
-    obj.object.aq_parent.invokeFactory('imPhotoSmall',name,image=rawImage)
-
-    # rawImage = obj.object.getImage()
-    # smallRawImage = Image.new('RGB', (obj.object.height,obj.object.width))
-    # size = 128, 128
-    # smallRawImage.thumbnail(size, Image.ANTIALIAS)
-    # smallImage = smallRawImage
-    # name = imPhotoSmallName(obj.object.id)
-    # obj.object.aq_parent.invokeFactory('imPhotoSmall',name,image=smallImage)
+    f_data = StringIO()
+    smallImage.save(f_data , 'jpeg')
+    newSmallImage = f_data.getvalue()
+    obj.object.aq_parent.invokeFactory('imPhotoSmall',name,image=newSmallImage)
     
     # import pdb;pdb.set_trace()
     
@@ -63,7 +67,7 @@ def imPhotoSmallName(imPhotoName):
     """
     nameSplited = imPhotoName.split('.')
     extention = nameSplited[len(nameSplited) - 1]
-    basename = imPhotoName.rstrip('.' + extention)
+    basename = imPhotoName.rstrip(extention).rstrip('.')
     return basename + '_imPhotoSmall_' + '.' + extention
 
 
