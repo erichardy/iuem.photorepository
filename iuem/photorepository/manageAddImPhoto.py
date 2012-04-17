@@ -44,14 +44,19 @@ def imPhotoObjectInitializedEvent(obj):
     
     # rawImage = ImageDraw.Draw(obj.object.getImageAsFile())
     # smallImage = rawImage.thumbnail((400,600) , Image.ANTIALIAS)
-    # OK rawImage = obj.object.getImageAsFile()
-    rawImage = obj.object.getImage()
-    # smallRawImage = Image.frombuffer(Image.RGBX ,obj.object.getSize() ,rawImage)
+    rawImage = obj.object.getImageAsFile()
+    name = imPhotoSmallName(obj.object.id)
+    obj.object.aq_parent.invokeFactory('imPhotoSmall',name,image=rawImage)
+
+    # rawImage = obj.object.getImage()
+    # smallRawImage = Image.new('RGB', (obj.object.height,obj.object.width))
+    # size = 128, 128
+    # smallRawImage.thumbnail(size, Image.ANTIALIAS)
     # smallImage = smallRawImage
     # name = imPhotoSmallName(obj.object.id)
     # obj.object.aq_parent.invokeFactory('imPhotoSmall',name,image=smallImage)
     
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     
 def imPhotoSmallName(imPhotoName):
     """return a name for an imPhotoSmall from an imPhoto name (an id)
