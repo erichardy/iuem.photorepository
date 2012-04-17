@@ -14,7 +14,6 @@
  <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
  	<element value="imPhoto" />
- 	<element value="imPhotoSmall" />
  	<element value="imAlbum" />
  </property>
  <property name="allow_discussion">False</property>
