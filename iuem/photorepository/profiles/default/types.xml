@@ -6,15 +6,6 @@
  
  <object name="imAlbum"
     meta_type="Factory-based Type Information with dynamic views"/>
-    <!--
-  <object name="IUEMPhoto"
-    meta_type="Factory-based Type Information with dynamic views"/>
-    -->
   <object name="imPhoto"
     meta_type="Factory-based Type Information with dynamic views"/>
-    
-    <!--
-  <object name="imPhotoSmall"
-    meta_type="Factory-based Type Information with dynamic views"/>
-    -->
 </object>

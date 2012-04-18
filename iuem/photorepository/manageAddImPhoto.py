@@ -10,20 +10,6 @@ from cStringIO import StringIO
 from PIL import Image , ImageDraw , ImageEnhance
 
 """
-creation process of an imPhotoSmall derived from an imPhoto :
-- the name of the imPhotoSmall is the basename of the imPhoto added by 
-  '_imPhotoSmall' and the extension of the imPhoto
-- if the size of the imPhoto is less than the standard size of imPhotoSmall, the
-  original size is kept 
-- a watermark is added to the imPhotoSmall
-- the imPhotoSmall is created
-- the dictionary of imPhotoSmall metadatas is created for this imPhotoSmall
-  (annotations)
-
-Note: the watermark is first looked up in the dictionary of the containers
-imAlbum and if there is no such watermark in any of the parents containers, the
-global one is used.
-
 links : http://code.activestate.com/recipes/362879-watermark-with-pil/
 http://blog.objectgraph.com/index.php/2009/04/02/python-quick-watermark-example-with-pil/
 http://www.geeks3d.com/20100930/tutorial-first-steps-with-pil-python-imaging-library/#p06
@@ -33,7 +19,7 @@ http://www.geeks3d.com/20100930/tutorial-first-steps-with-pil-python-imaging-lib
 def imPhotoObjectInitializedEvent(obj):
     def __init__(self , context):
         self.context = context
-    
+    """
     print "....ObjectInitializedEvent"
     print "obj = " + str(obj)
     print "Object dictionnary : "
@@ -42,7 +28,7 @@ def imPhotoObjectInitializedEvent(obj):
     print "obj.object.title = " + str(obj.object.title)
     print "obj.object.id = " + str(obj.object.id)
     print "nom de l'imPhotoSmall : " + imPhotoSmallName(obj.object.id)
-    
+    """
     rawImage = obj.object.getImageAsFile()
     smallImage = Image.open(rawImage)
     if smallImage.mode != 'RGBA':

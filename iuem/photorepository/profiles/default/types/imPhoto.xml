@@ -16,7 +16,7 @@
  <property name="allow_discussion">False</property>
  <property name="default_view">image_view</property>
  <property name="view_methods">
-  <element value="image_view"/>
+  <element value="imphoto_view"/>
  </property>
  <alias from="(Default)" to="index_html"/>
  <alias from="edit" to="atct_edit"/>

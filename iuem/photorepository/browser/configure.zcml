@@ -24,6 +24,15 @@
       />
   <browser:page
       for="*"
+      name="imphoto_view_pt"
+      class=".imphoto_view.imPhotoView"
+      template="imphoto_view.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
       name="testSet"
       class=".debugSet.create"
       template="debugSet.pt"
