@@ -9,9 +9,6 @@ from iuem.photorepository.extender import imPhotoSmallImageExtender
 def createSmallImage(obj, event):
     def __init__(self , context):
         self.context = context
-    if 'imPhoto' not in obj.aq_parent.getImmediatelyAddableTypes():
-        # no imPhoto in this container: we do nothing
-        return
     # copy the image loaded to 'original' (extended) field
     imPhotoSmallImageExtender(obj).fields[0].set(obj , obj.getImage())
     # reduce the image field and add the watermark

@@ -16,6 +16,7 @@
  <property name="allow_discussion">False</property>
  <property name="default_view">image_view</property>
  <property name="view_methods">
+  <element value="image_view"/>
   <element value="imphoto_view"/>
  </property>
  <alias from="(Default)" to="index_html"/>
@@ -29,12 +30,6 @@
  </action>
  <action title="Edit" action_id="edit" category="object" condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user|python:True"
     url_expr="string:${object_url}/edit" visible="True"
-    i18n:attributes="title">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Transform" action_id="transform" category="object"
-    condition_expr="object/hasPIL"
-    url_expr="string:${object_url}/atct_image_transform" visible="True"
     i18n:attributes="title">
   <permission value="Modify portal content"/>
  </action>

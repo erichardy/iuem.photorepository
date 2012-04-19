@@ -32,7 +32,9 @@ setup(name='iuem.photorepository',
           'collective.galleria',
           'pillow',
           'plone.app.theming',
-          'archetypes.schemaextender'
+          'archetypes.schemaextender',
+          'plone.app.registry',
+          'Products.ATVocabularyManager',
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(

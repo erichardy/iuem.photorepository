@@ -6,5 +6,6 @@
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-collective.galleria:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
+    <dependency>profile-plone.app.registry:default</dependency>
   </dependencies>
 </metadata>

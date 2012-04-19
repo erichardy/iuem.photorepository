@@ -36,8 +36,9 @@
     handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
   />
   -->
+  <adapter factory=".extender.FolderImageRepositoryExtender" />
+  <adapter factory=".extender.ImageImageRepositoryExtender" />
 
-  <adapter factory=".extender.imPhotoSmallImageExtender" />
   <subscriber handler=".subscribers.createSmallImage" />
   
   <plone:static directory="static" type="theme" name="iuem.photorepository" />

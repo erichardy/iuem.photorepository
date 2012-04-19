@@ -7,4 +7,10 @@ class imPhotoView(BrowserView):
     """a view"""
     
     def original(self):
-        return 'Original photo'
+        return self.context.getImage()
+    
+    def title(self):
+        return self.context.title
+    
+    def myportal_type(self):
+        return self.context.portal_type

@@ -24,10 +24,10 @@
       />
   <browser:page
       for="*"
-      name="imphoto_view_pt"
+      name="imphoto_view"
       class=".imphoto_view.imPhotoView"
       template="imphoto_view.pt"
-      layer=".interfaces.ILayer"
+      layer="iuem.photorepository.browser.interfaces.ILayer"
       permission="zope2.View"
       />
 
