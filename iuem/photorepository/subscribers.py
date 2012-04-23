@@ -1,16 +1,17 @@
 from Products.ATContentTypes.interface import IATImage
 from zope.component import adapter
 from Products.Archetypes.interfaces import IObjectInitializedEvent
+from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from PIL import Image , ImageDraw
 from cStringIO import StringIO
-from iuem.photorepository.extender import imPhotoSmallImageExtender 
+from iuem.photorepository.extender import ImageImageRepositoryExtender 
 
 @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):
     def __init__(self , context):
         self.context = context
     # copy the image loaded to 'original' (extended) field
-    imPhotoSmallImageExtender(obj).fields[0].set(obj , obj.getImage())
+    ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
     # reduce the image field and add the watermark
     doThumbnail(obj)
     #

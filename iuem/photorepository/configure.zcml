@@ -40,6 +40,10 @@
   <adapter factory=".extender.ImageImageRepositoryExtender" />
 
   <subscriber handler=".subscribers.createSmallImage" />
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.createSmallImage" />
   
   <plone:static directory="static" type="theme" name="iuem.photorepository" />
 
