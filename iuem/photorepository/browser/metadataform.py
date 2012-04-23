@@ -13,11 +13,9 @@ from Products.statusmessages.interfaces import IStatusMessage
 
 class IMetadataForm(interface.Interface):
     """metadata form"""
-    ptype = schema.ASCIILine(title=u"Type",
-                             description=u"JPEG, GIF, TIFF, RAW,....")
+    ptype = schema.Choice(title=u"Type", description=u"File type",values=['test'])
     autor = schema.ASCIILine(title=u"Auteur",
                              description=u"a person")
-
 
 class MetadataForm(AutoExtensibleForm , form.Form):
     """The form"""

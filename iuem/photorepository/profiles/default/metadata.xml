@@ -7,5 +7,6 @@
     <dependency>profile-collective.galleria:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-plone.app.registry:default</dependency>
+    <dependency>profile-Products.ATVocabularyManager:default</dependency>
   </dependencies>
 </metadata>

@@ -22,6 +22,12 @@
       description='Extension profile'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
+  <genericsetup:importStep
+        name="iuem.photorepository"
+        title="iuem.photorepository : Create METADATA Vocabularies "
+        description=""
+        handler="iuem.photorepository.manageVocabulary.initImVocs" />
+        />
   <include package=".upgrades" />
   
   <adapter factory=".metadatamanager.AnnotationMetadaManager" />
@@ -31,13 +37,21 @@
   usefull documentation at :
   http://plone.org/documentation/kb/five-zope3-walkthrough/events
   and list of events : zope/app/container/interfaces.py
+  -->
+  <!--
   <subscriber
     for="Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
   />
-  -->
   <adapter factory=".extender.FolderImageRepositoryExtender" />
   <adapter factory=".extender.ImageImageRepositoryExtender" />
+  -->
+  <!--
+  <subscriber
+    for="zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".manageImPhotoModified.imIObjectModifiedEvent"
+  />
+  -->
 
   <subscriber handler=".subscribers.createSmallImage" />
   <subscriber 
