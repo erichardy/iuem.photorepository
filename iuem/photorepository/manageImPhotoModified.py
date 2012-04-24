@@ -1,7 +1,7 @@
 
 
 def imIObjectModifiedEvent(obj):
-    print str(obj.object.id) + ' Modified'
+    print str(obj.object.id) + ' Modified...'
 
 def imIObjectRemovedEvent(obj):
     print str(obj.object.id) + ' Removed'

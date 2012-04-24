@@ -2,12 +2,12 @@
 # widgets are in Products.Archetypes.Widget
 # both are imported by Products.Archetypes.atapi
 from Products.Archetypes.atapi import *
-from Products.ATContentTypes.interface import IATImage , IATFolder
 from archetypes.schemaextender.field import ExtensionField
 from plone.app.blob.subtypes.image import ExtensionBlobField
 from archetypes.schemaextender.interfaces import ISchemaExtender
+from Products.ATContentTypes.interface import IATImage , IATFolder
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
-
+from Products.AddRemoveWidget import AddRemoveWidget , ComboBoxWidget
 from Products.ATVocabularyManager.namedvocabulary import NamedVocabulary
 
 from zope.component import adapts
@@ -26,21 +26,21 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         _ExtensionStringField ("""where""",
-            vocabulary = NamedVocabulary("fromwhere"),                   
+            vocabulary = NamedVocabulary("imlocationvoc"),                   
             widget = SelectionWidget(
                     label=u"Where",
                     description = u"area where the photo is from",
                     ),
         ),
         _ExtensionStringField ("laboratory",
-            vocabulary = NamedVocabulary("laboratory"),                   
+            vocabulary = NamedVocabulary("imteamvoc"),                   
             widget = SelectionWidget(
                     label=u"Laboratory",
                     description = u"Photograph's Laboratory",
                     ),
         ),
         _ExtensionStringField ("reseachproject",
-            vocabulary = NamedVocabulary("reseachproject"),                   
+            vocabulary = NamedVocabulary("improjectvoc"),                   
             widget = SelectionWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
@@ -69,24 +69,35 @@ class ImageImageRepositoryExtender(object):
             ),
         ),
         _ExtensionStringField ("""where""",
-            vocabulary = NamedVocabulary("fromwhere"),                   
-            widget = SelectionWidget(
+            vocabulary = NamedVocabulary("imlocationvoc"),
+            mutator = "setWhere",                
+            widget = AddRemoveWidget(
                     label=u"Where",
-                    description = u"area where the photo is from",
+                    description = u"Area related to the photo",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
                     ),
         ),
         _ExtensionStringField ("laboratory",
-            vocabulary = NamedVocabulary("laboratory"),                   
+            vocabulary = NamedVocabulary("imteamvoc"),                   
             widget = SelectionWidget(
                     label=u"Laboratory",
                     description = u"Photograph's Laboratory",
                     ),
         ),
         _ExtensionStringField ("reseachproject",
-            vocabulary = NamedVocabulary("reseachproject"),                   
+            vocabulary = NamedVocabulary("improjectvoc"),                   
             widget = SelectionWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
+                    ),
+        ),
+        _ExtensionStringField ("general",
+            vocabulary = NamedVocabulary("imtagvoc"),                   
+            widget = InAndOutWidget(
+                    label=u"Global key word",
+                    description = u"Global key word",
                     ),
         ),
 
@@ -96,8 +107,6 @@ class ImageImageRepositoryExtender(object):
 
     def getFields(self):
         return self.fields
-
-
 
 class imPhotoSmallImageExtender(object):
     adapts(IATImage)

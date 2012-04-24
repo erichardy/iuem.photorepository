@@ -10,9 +10,9 @@
     i18n_domain="iuem.photorepository">
 
   <include package="archetypes.schemaextender" />
-  
   <include package=".browser" />
-
+  <include package=".upgrades" />
+  
   <i18n:registerTranslations directory="locales" />
 
   <genericsetup:registerProfile
@@ -21,44 +21,62 @@
       directory="profiles/default"
       description='Extension profile'
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+  />
+
   <genericsetup:importStep
         name="iuem.photorepository"
         title="iuem.photorepository : Create METADATA Vocabularies "
         description=""
         handler="iuem.photorepository.manageVocabulary.initImVocs" />
-        />
-  <include package=".upgrades" />
+  />
+
+  <adapter factory=".extender.FolderImageRepositoryExtender" />
+  <adapter factory=".extender.ImageImageRepositoryExtender" />
+
+  <subscriber handler=".subscribers.createSmallImage" />
+
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.createSmallImage"
+  />
   
-  <adapter factory=".metadatamanager.AnnotationMetadaManager" />
+  <plone:static directory="static" type="theme" name="iuem.photorepository" />
+
+  <browser:resourceDirectory
+      name="iuem_repository_static"
+      directory="static"
+  />
   
-  <!--
-  handler for imPhoto initialization
-  usefull documentation at :
-  http://plone.org/documentation/kb/five-zope3-walkthrough/events
-  and list of events : zope/app/container/interfaces.py
-  -->
-  <!--
-  <subscriber
+  <browser:view
+    for="*"
+    name="UpdateVocs"
+    class=".manageVocabulary.UpdateVocs"
+    permission="zope2.View"
+  />
+
+
+
+
+
+
+  <!-- no more used....
+    <subscriber
     for="Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
   />
-  <adapter factory=".extender.FolderImageRepositoryExtender" />
-  <adapter factory=".extender.ImageImageRepositoryExtender" />
-  -->
-  <!--
   <subscriber
     for="zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".manageImPhotoModified.imIObjectModifiedEvent"
   />
-  -->
-
-  <subscriber handler=".subscribers.createSmallImage" />
-  <subscriber 
-    for="Products.ATContentTypes.interface.IATImage
-           zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscribers.createSmallImage" />
+  handler for imPhoto initialization
+  usefull documentation at :
+  http://plone.org/documentation/kb/five-zope3-walkthrough/events
+  and list of events : zope/app/container/interfaces.py
   
-  <plone:static directory="static" type="theme" name="iuem.photorepository" />
+  <adapter factory=".metadatamanager.AnnotationMetadaManager" />
+  
+  
+  -->
 
 </configure>

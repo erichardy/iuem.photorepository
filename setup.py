@@ -35,6 +35,7 @@ setup(name='iuem.photorepository',
           'archetypes.schemaextender',
           'plone.app.registry',
           'Products.ATVocabularyManager',
+          'Products.AddRemoveWidget',
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(

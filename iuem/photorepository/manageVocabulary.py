@@ -8,6 +8,8 @@ from Products.ATVocabularyManager import NamedVocabulary
 from zope.app.component.hooks import getSite
 from zope.schema.vocabulary import SimpleVocabulary
 
+from Products.Five import BrowserView
+
 
 def defineImVocs(self):
     imVocs = {}
@@ -27,8 +29,11 @@ def initImVocs(context):
     """
     imVocs=defineImVocs(context) 
     portal=context.getSite()
-    ATVocTools = getToolByName(getToolByName(portal,'portal_url').getPortalObject(), ATVOCABULARYTOOL)
-    
+    try:
+        ATVocTools = getToolByName(getToolByName(portal,'portal_url').getPortalObject(), ATVOCABULARYTOOL)
+    except:
+        return
+    # ATVocTools = getToolByName(context , 'portal_vocabularies')
     for imVocKey in imVocs.keys():
         if not hasattr(ATVocTools, imVocKey):
             ATVocTools.invokeFactory('SimpleVocabulary', imVocKey)
@@ -38,3 +43,23 @@ def initImVocs(context):
                 if not hasattr(vocab, imkey):
                     vocab.invokeFactory('SimpleVocabularyTerm', imkey)
                     vocab[imkey].setTitle(value)
+
+
+    
+class UpdateVocs(BrowserView):
+        
+    def __call__(context):
+        vocabs = getToolByName(context , 'portal_vocabularies')
+        FORM = context.request.form
+        for k in FORM.keys():
+            # print k + ' ' + FORM[k]
+            if k == 'where':
+                val = FORM[k]
+                vocab = vocabs['imlocationvoc']
+                if not hasattr(vocab, val) and val:
+                    vocab.invokeFactory('SimpleVocabularyTerm', val)
+                    vocab[val].setTitle(val)
+        import pdb;pdb.set_trace()
+            
+        
+        

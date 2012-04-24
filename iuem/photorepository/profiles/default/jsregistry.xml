@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+
+ <javascript 
+    cacheable="False" 
+    compression="safe" 
+    conditionalcomment=""
+    cookable="True" 
+    expression=""
+    id="++resource++iuem_repository_static/js/handlers.js"
+    enabled="True" 
+    inline="True" 
+  />
+
+</object>
