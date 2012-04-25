@@ -15,9 +15,14 @@ from zope.interface import implements
 
 class _ExtensionImageField(ExtensionField, ImageField): pass
 class _ExtensionStringField(ExtensionField, StringField): pass
-class _ExtensionDateTimeField(ExtensionField, DateTimeField): pass
 class _ExtensionLinesField(ExtensionField, LinesField): pass
+class _ExtensionLinesField(ExtensionField, TextField): pass
+class _ExtensionDateTimeField(ExtensionField, DateTimeField): pass
+class _ExtensionComputedField(ExtensionField, FloatField): pass
+class _ExtensionComputedField(ExtensionField, IntegerField): pass
+class _ExtensionComputedField(ExtensionField, BooleanField): pass
 class _ExtensionComputedField(ExtensionField, ComputedField): pass
+
 
 
 class FolderImageRepositoryExtender(object):
@@ -68,7 +73,9 @@ class ImageImageRepositoryExtender(object):
             visible={'view': 'visible', 'edit': 'invisible' }
             ),
         ),
+        # Common fields with Folders
         _ExtensionStringField ("""where""",
+            searchable = True,                               
             vocabulary = NamedVocabulary("imlocationvoc"),
             mutator = "setWhere",                
             widget = AddRemoveWidget(
@@ -80,24 +87,82 @@ class ImageImageRepositoryExtender(object):
                     ),
         ),
         _ExtensionStringField ("laboratory",
+            searchable = True,
             vocabulary = NamedVocabulary("imteamvoc"),                   
-            widget = SelectionWidget(
+            widget = AddRemoveWidget(
                     label=u"Laboratory",
                     description = u"Photograph's Laboratory",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
                     ),
         ),
         _ExtensionStringField ("reseachproject",
+            searchable = True,
             vocabulary = NamedVocabulary("improjectvoc"),                   
-            widget = SelectionWidget(
+            widget = AddRemoveWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
                     ),
         ),
         _ExtensionStringField ("general",
+            searchable = True,
             vocabulary = NamedVocabulary("imtagvoc"),                   
-            widget = InAndOutWidget(
+            widget = AddRemoveWidget(
                     label=u"Global key word",
                     description = u"Global key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
+        _ExtensionStringField ("licencetype",
+            searchable = True,
+            vocabulary = NamedVocabulary("imlicencevoc"),                   
+            widget = AddRemoveWidget(
+                    label=u"Licence Type",
+                    description = u"What type of restricted usage",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
+
+        _ExtensionDateTimeField("""date_and_time""",
+            searchable=True,
+            widget=CalendarWidget(
+                    label=u'Recording date and time',
+                    description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
+                    ),
+            ),
+        _ExtensionStringField ("author",
+            searchable = True,
+            widget = StringWidget(
+                    label=u"Author of the photo",
+                    description = u"Who owns this photo",
+                    size = 50,
+                    ),
+        ),
+        # End of common fields with Folders
+        _ExtensionLinesField ("exif",
+            widget = LinesWidget(
+                    label=u"EXIF metadata",
+                    visible={'view': 'visible', 'edit': 'hidden' },
+                    ),
+        ),
+        _ExtensionLinesField ("xmp",
+            widget = LinesWidget(
+                    label=u"XMP metadata",
+                    visible={'view': 'visible', 'edit': 'hidden' },
+                    ),
+        ),
+        _ExtensionLinesField ("ipct",
+            widget = LinesWidget(
+                    label=u"IPCT metadata",
+                    visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
 

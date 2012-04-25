@@ -9,7 +9,7 @@ from zope.app.component.hooks import getSite
 from zope.schema.vocabulary import SimpleVocabulary
 
 from Products.Five import BrowserView
-
+from zope.interface import Interface , implements
 
 def defineImVocs(self):
     imVocs = {}
@@ -44,11 +44,34 @@ def initImVocs(context):
                     vocab.invokeFactory('SimpleVocabularyTerm', imkey)
                     vocab[imkey].setTitle(value)
 
+class IUpdateVocabs(Interface):
+    def __call__(context):
+        """Interface to vocalularies updater
+        """
 
+class UpdateVocabs(object):
+    implements(IUpdateVocabs)
+    
+    def __call__(context):
+        import pdb;pdb.set_trace()
+        """
+        vocabs = getToolByName(context , 'portal_vocabularies')
+        FORM = context.request.form
+        for k in FORM.keys():
+            # print k + ' ' + FORM[k]
+            if k == 'where':
+                val = FORM[k]
+                vocab = vocabs['imlocationvoc']
+                if not hasattr(vocab, val) and val:
+                    vocab.invokeFactory('SimpleVocabularyTerm', val)
+                    vocab[val].setTitle(val)
+         """
     
 class UpdateVocs(BrowserView):
         
     def __call__(context):
+        import pdb;pdb.set_trace()
+
         vocabs = getToolByName(context , 'portal_vocabularies')
         FORM = context.request.form
         for k in FORM.keys():

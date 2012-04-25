@@ -54,6 +54,12 @@
     class=".manageVocabulary.UpdateVocs"
     permission="zope2.View"
   />
+  <utility
+    name="updatevocabs"
+    factory=".manageVocabulary.UpdateVocabs"
+    provides=".manageVocabulary.IUpdateVocabs"
+    permission="zope2.View"
+  />
 
 
 
