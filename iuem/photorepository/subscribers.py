@@ -6,7 +6,7 @@ from PIL import Image , ImageDraw
 from cStringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 
-@adapter(IATImage , IObjectInitializedEvent)
+# @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):
     def __init__(self , context):
         self.context = context
@@ -31,3 +31,7 @@ def doThumbnail(obj):
     uploaded.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())
     
+# obj and event.object are identical
+def updateVocabularies(obj , event):
+    import pdb;pdb.set_trace()
+    pass

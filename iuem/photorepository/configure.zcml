@@ -33,14 +33,40 @@
   <adapter factory=".extender.FolderImageRepositoryExtender" />
   <adapter factory=".extender.ImageImageRepositoryExtender" />
 
-  <subscriber handler=".subscribers.createSmallImage" />
-
+<!-- Objects initialized -->
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATFolder
+         Products.Archetypes.interfaces.IObjectInitializedEvent"
+    handler=".subscribers.updateVocabularies"
+  />
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+         Products.Archetypes.interfaces.IObjectInitializedEvent"
+    handler=".subscribers.createSmallImage"
+  />
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+         Products.Archetypes.interfaces.IObjectInitializedEvent"
+    handler=".subscribers.updateVocabularies"
+  />
+  
+<!-- Objects modified -->
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATFolder
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.updateVocabularies"
+  />
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.createSmallImage"
   />
-  
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+    handler=".subscribers.updateVocabularies"
+  />
+
   <plone:static directory="static" type="theme" name="iuem.photorepository" />
 
   <browser:resourceDirectory
@@ -67,6 +93,8 @@
 
 
   <!-- no more used....
+    <subscriber handler=".subscribers.createSmallImage" />
+  
     <subscriber
     for="Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
