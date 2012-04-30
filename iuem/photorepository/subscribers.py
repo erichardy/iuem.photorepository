@@ -1,13 +1,11 @@
-from Products.ATContentTypes.interface import IATImage
-from zope.component import adapter
-from Products.Archetypes.interfaces import IObjectInitializedEvent
-from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from PIL import Image , ImageDraw
 from cStringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
 from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
+from zope.component import getUtility
+from plone.i18n.normalizer.interfaces import INormalizer
 
 
 # @adapter(IATImage , IObjectInitializedEvent)
@@ -60,15 +58,27 @@ def getVocabularies(obj):
 # obj and event.object are identical
 def updateVocabularies(obj , event):
     """update vocabularies according to new values entered"""
+    myVocabsTool = getToolByName(obj.portal_url.getPortalObject() , ATVOCABULARYTOOL)
     vocabs = getVocabularies(obj)
+    normalizer = getUtility(INormalizer)
     for k in vocabs.keys():
-        myVocabsTool = getToolByName(obj.portal_url.getPortalObject() , ATVOCABULARYTOOL)
-        vocabulary = myVocabsTool[vocabs[k]]
-        for word in obj[k]:
-            if not hasattr(vocabulary , word):
-                vocabulary.invokeFactory('SimpleVocabularyTerm', word)
-                vocabulary[word].setTitle(word)
-        
+        myVocab = myVocabsTool[vocabs[k]]
+        # print 'k = ' + str(k) + ' ' + str(myVocab)
+        try:
+            for word in obj[k]:
+            # import pdb;pdb.set_trace()
+                if word == '':
+                    obj[k].remove(word)
+                else:
+                    normalizedWord = normalizer.normalize(word , locale = 'fr')
+                    if not hasattr(myVocab , normalizedWord):
+                        # print 'in else: word = ' + str(word)
+                        # print 'in else: vocabulary = ' + str(myVocab) + ' ' + normalizedWord
+                        # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
+                        # myVocab[normalizedWord].setTitle(word)
+                        myVocab.addTerm(normalizedWord , word)
+                        # import pdb;pdb.set_trace()
+        except:
+            pass
         
     # import pdb;pdb.set_trace()
-    pass

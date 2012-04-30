@@ -31,10 +31,10 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         # Common fields with images
-        _ExtensionStringField ("""where""",
+        _ExtensionLinesField ("""where""",
             searchable = True,                               
             vocabulary = NamedVocabulary("imlocationvoc"),
-            mutator = "setWhere",                
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Where",
                     description = u"Area related to the photo",
@@ -45,7 +45,8 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("laboratory",
             searchable = True,
-            vocabulary = NamedVocabulary("imteamvoc"),                   
+            vocabulary = NamedVocabulary("imteamvoc"),
+            default = [],              
             widget = AddRemoveWidget(
                     label=u"Laboratory",
                     description = u"Photograph's Laboratory",
@@ -56,7 +57,8 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("reseachproject",
             searchable = True,
-            vocabulary = NamedVocabulary("improjectvoc"),                   
+            vocabulary = NamedVocabulary("improjectvoc"),
+            default = [],              
             widget = AddRemoveWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
@@ -67,7 +69,8 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("general",
             searchable = True,
-            vocabulary = NamedVocabulary("imtagvoc"),                   
+            vocabulary = NamedVocabulary("imtagvoc"),
+            default = [],               
             widget = AddRemoveWidget(
                     label=u"Global key word",
                     description = u"Global key word",
@@ -78,7 +81,8 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("science",
             searchable = True,
-            vocabulary = NamedVocabulary("imscitagvoc"),                   
+            vocabulary = NamedVocabulary("imscitagvoc"),
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Scientific key word",
                     description = u"Scientific key word",
@@ -89,7 +93,8 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("licencetype",
             searchable = True,
-            vocabulary = NamedVocabulary("imlicencevoc"),                   
+            vocabulary = NamedVocabulary("imlicencevoc"),
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Licence Type",
                     description = u"What type of restricted usage",
@@ -146,7 +151,7 @@ class ImageImageRepositoryExtender(object):
         _ExtensionStringField ("""where""",
             searchable = True,                               
             vocabulary = NamedVocabulary("imlocationvoc"),
-            mutator = "setWhere",                
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Where",
                     description = u"Area related to the photo",
@@ -157,7 +162,8 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("laboratory",
             searchable = True,
-            vocabulary = NamedVocabulary("imteamvoc"),                   
+            vocabulary = NamedVocabulary("imteamvoc"),
+            default = [],      
             widget = AddRemoveWidget(
                     label=u"Laboratory",
                     description = u"Photograph's Laboratory",
@@ -168,7 +174,8 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("reseachproject",
             searchable = True,
-            vocabulary = NamedVocabulary("improjectvoc"),                   
+            vocabulary = NamedVocabulary("improjectvoc"),
+            default = [], 
             widget = AddRemoveWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
@@ -179,7 +186,8 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("general",
             searchable = True,
-            vocabulary = NamedVocabulary("imtagvoc"),                   
+            vocabulary = NamedVocabulary("imtagvoc"),
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Global key word",
                     description = u"Global key word",
@@ -190,7 +198,8 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("science",
             searchable = True,
-            vocabulary = NamedVocabulary("imscitagvoc"),                   
+            vocabulary = NamedVocabulary("imscitagvoc"),
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Scientific key word",
                     description = u"Scientific key word",
@@ -201,7 +210,8 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField ("licencetype",
             searchable = True,
-            vocabulary = NamedVocabulary("imlicencevoc"),                   
+            vocabulary = NamedVocabulary("imlicencevoc"),
+            default = [],
             widget = AddRemoveWidget(
                     label=u"Licence Type",
                     description = u"What type of restricted usage",
