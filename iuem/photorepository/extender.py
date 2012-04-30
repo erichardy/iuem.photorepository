@@ -76,6 +76,17 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
+        _ExtensionStringField ("science",
+            searchable = True,
+            vocabulary = NamedVocabulary("imscitagvoc"),                   
+            widget = AddRemoveWidget(
+                    label=u"Scientific key word",
+                    description = u"Scientific key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
         _ExtensionStringField ("licencetype",
             searchable = True,
             vocabulary = NamedVocabulary("imlicencevoc"),                   
@@ -115,6 +126,7 @@ class FolderImageRepositoryExtender(object):
 
     def getFields(self):
         return self.fields
+    
 
 class ImageImageRepositoryExtender(object):
     adapts(IATImage)
@@ -175,6 +187,17 @@ class ImageImageRepositoryExtender(object):
                     role_based_add = 1,
                     size = 5,
                     ),
+        ),
+        _ExtensionStringField ("science",
+            searchable = True,
+            vocabulary = NamedVocabulary("imscitagvoc"),                   
+            widget = AddRemoveWidget(
+                    label=u"Scientific key word",
+                    description = u"Scientific key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),                               
         ),
         _ExtensionStringField ("licencetype",
             searchable = True,
@@ -237,6 +260,7 @@ class ImageImageRepositoryExtender(object):
 
     def getFields(self):
         return self.fields
+    
 
 class imPhotoSmallImageExtender(object):
     adapts(IATImage)

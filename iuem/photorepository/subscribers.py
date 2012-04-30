@@ -5,6 +5,10 @@ from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from PIL import Image , ImageDraw
 from cStringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
+from iuem.photorepository.extender import FolderImageRepositoryExtender
+from Products.CMFCore.utils import getToolByName
+from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
+
 
 # @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):
@@ -30,8 +34,41 @@ def doThumbnail(obj):
     f_data = StringIO()
     uploaded.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())
-    
+
+def getVocabularies(obj):
+    """return a dictionary : ['field'] = 'associated vocabulary name'
+    """
+    fields = []
+    vocabs = {}
+    myType = obj.Type()
+    if myType == 'Image':
+        fields = ImageImageRepositoryExtender(obj).fields
+    elif myType == 'Folder':
+        fields = FolderImageRepositoryExtender(obj).fields
+    else:
+        return vocabs
+
+    for field in fields:
+        try:
+            vocab_name = field.vocabulary.vocab_name
+            name = field.getName()
+            vocabs[name] = vocab_name
+        except:
+            pass
+    return vocabs
+
 # obj and event.object are identical
 def updateVocabularies(obj , event):
-    import pdb;pdb.set_trace()
+    """update vocabularies according to new values entered"""
+    vocabs = getVocabularies(obj)
+    for k in vocabs.keys():
+        myVocabsTool = getToolByName(obj.portal_url.getPortalObject() , ATVOCABULARYTOOL)
+        vocabulary = myVocabsTool[vocabs[k]]
+        for word in obj[k]:
+            if not hasattr(vocabulary , word):
+                vocabulary.invokeFactory('SimpleVocabularyTerm', word)
+                vocabulary[word].setTitle(word)
+        
+        
+    # import pdb;pdb.set_trace()
     pass
