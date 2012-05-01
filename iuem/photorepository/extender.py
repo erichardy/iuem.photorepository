@@ -31,7 +31,7 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         # Common fields with images
-        _ExtensionLinesField ("""where""",
+        _ExtensionLinesField (u"where",
             searchable = True,                               
             vocabulary = NamedVocabulary("imlocationvoc"),
             default = [],

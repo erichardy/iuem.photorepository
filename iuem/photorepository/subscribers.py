@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from PIL import Image , ImageDraw
 from cStringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
@@ -63,22 +64,32 @@ def updateVocabularies(obj , event):
     normalizer = getUtility(INormalizer)
     for k in vocabs.keys():
         myVocab = myVocabsTool[vocabs[k]]
-        # print 'k = ' + str(k) + ' ' + str(myVocab)
+        print 'k = ' + str(k) + ' ' + str(myVocab)
         try:
-            for word in obj[k]:
-            # import pdb;pdb.set_trace()
-                if word == '':
-                    obj[k].remove(word)
-                else:
-                    normalizedWord = normalizer.normalize(word , locale = 'fr')
-                    if not hasattr(myVocab , normalizedWord):
-                        # print 'in else: word = ' + str(word)
-                        # print 'in else: vocabulary = ' + str(myVocab) + ' ' + normalizedWord
-                        # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
-                        # myVocab[normalizedWord].setTitle(word)
-                        myVocab.addTerm(normalizedWord , word)
-                        # import pdb;pdb.set_trace()
+            import pdb;pdb.set_trace()
+            print str(obj[k]) + ' ' + str(len(obj[k]))
+            for kword in obj[k]:
+                normalizedWord = normalizer.normalize(kword , locale = 'fr')
+                print "in else, before if..." + kword
+                if not hasattr(myVocab , normalizedWord):
+                    print 'in else: kword = ' + str(kword)
+                    print 'in else: vocabulary = ' + str(myVocab) + ' ' + normalizedWord
+                    # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
+                    # myVocab[normalizedWord].setTitle(word)
+                    myVocab.addTerm(normalizedWord , kword)
+                    # import pdb;pdb.set_trace()
         except:
             pass
         
     # import pdb;pdb.set_trace()
+    """
+    widget_addremove.pt modified !!!!
+                      <tal:block repeat="item vocabulary/keys">
+                    <option
+                        value="#"
+                        tal:define="val python:vocabulary.getValue(item)"
+                        tal:condition="python:not val in selectedItems"
+                        tal:content="python:vocabulary.getValue(item)"
+                        tal:attributes="value val;">Item</option>
+                  </tal:block>
+    """
