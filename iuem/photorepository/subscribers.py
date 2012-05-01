@@ -59,31 +59,28 @@ def getVocabularies(obj):
 # obj and event.object are identical
 def updateVocabularies(obj , event):
     """update vocabularies according to new values entered"""
-    myVocabsTool = getToolByName(obj.portal_url.getPortalObject() , ATVOCABULARYTOOL)
+    portal = obj.portal_url.getPortalObject()
+    myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
     for k in vocabs.keys():
         myVocab = myVocabsTool[vocabs[k]]
-        print 'k = ' + str(k) + ' ' + str(myVocab)
+        # print 'k = ' + str(k) + ' ' + str(myVocab)
         try:
-            import pdb;pdb.set_trace()
-            print str(obj[k]) + ' ' + str(len(obj[k]))
+            if '' in obj[k]: obj[k].remove('')
             for kword in obj[k]:
-                normalizedWord = normalizer.normalize(kword , locale = 'fr')
-                print "in else, before if..." + kword
+                ukword = unicode(kword,'utf-8')
+                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
                 if not hasattr(myVocab , normalizedWord):
-                    print 'in else: kword = ' + str(kword)
-                    print 'in else: vocabulary = ' + str(myVocab) + ' ' + normalizedWord
                     # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
                     # myVocab[normalizedWord].setTitle(word)
                     myVocab.addTerm(normalizedWord , kword)
-                    # import pdb;pdb.set_trace()
         except:
             pass
         
     # import pdb;pdb.set_trace()
     """
-    widget_addremove.pt modified !!!!
+    widget_addremove.pt modified !!!! : line 98
                       <tal:block repeat="item vocabulary/keys">
                     <option
                         value="#"

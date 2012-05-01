@@ -31,9 +31,9 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         # Common fields with images
-        _ExtensionLinesField (u"where",
+        _ExtensionStringField (u"where",
             searchable = True,                               
-            vocabulary = NamedVocabulary("imlocationvoc"),
+            vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Where",
@@ -43,9 +43,9 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("laboratory",
+        _ExtensionStringField (u"laboratory",
             searchable = True,
-            vocabulary = NamedVocabulary("imteamvoc"),
+            vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],              
             widget = AddRemoveWidget(
                     label=u"Laboratory",
@@ -55,9 +55,9 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("reseachproject",
+        _ExtensionStringField (u"reseachproject",
             searchable = True,
-            vocabulary = NamedVocabulary("improjectvoc"),
+            vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [],              
             widget = AddRemoveWidget(
                     label=u"Reseach Project",
@@ -67,9 +67,9 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("general",
+        _ExtensionStringField (u"general",
             searchable = True,
-            vocabulary = NamedVocabulary("imtagvoc"),
+            vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],               
             widget = AddRemoveWidget(
                     label=u"Global key word",
@@ -79,9 +79,9 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("science",
+        _ExtensionStringField (u"science",
             searchable = True,
-            vocabulary = NamedVocabulary("imscitagvoc"),
+            vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Scientific key word",
@@ -91,9 +91,9 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("licencetype",
+        _ExtensionStringField (u"licencetype",
             searchable = True,
-            vocabulary = NamedVocabulary("imlicencevoc"),
+            vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Licence Type",
@@ -103,14 +103,14 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionDateTimeField("""date_and_time""",
+        _ExtensionDateTimeField(u"date_and_time",
             searchable=True,
             widget=CalendarWidget(
                     label=u'Recording date and time',
                     description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
                     ),
             ),
-        _ExtensionStringField ("author",
+        _ExtensionStringField (u"author",
             searchable = True,
             widget = StringWidget(
                     label=u"Author of the photo",
@@ -118,7 +118,7 @@ class FolderImageRepositoryExtender(object):
                     size = 50,
                     ),
         ),
-        ExtensionBlobField("watermark",
+        ExtensionBlobField(u"watermark",
         widget = ImageWidget(
             label=u"Watermark",
             visible={'view': 'invisible', 'edit': 'visible' }
@@ -138,7 +138,7 @@ class ImageImageRepositoryExtender(object):
     implements(ISchemaExtender)
 
     fields = [
-        ExtensionBlobField("original",
+        ExtensionBlobField(u"original",
         accessor = 'getOriginal',
         mutator = 'setOriginal',
         languageIndependent = True,
@@ -148,9 +148,9 @@ class ImageImageRepositoryExtender(object):
             ),
         ),
         # Common fields with Folders
-        _ExtensionStringField ("""where""",
+        _ExtensionStringField (u"where",
             searchable = True,                               
-            vocabulary = NamedVocabulary("imlocationvoc"),
+            vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Where",
@@ -160,9 +160,9 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("laboratory",
+        _ExtensionStringField (u"laboratory",
             searchable = True,
-            vocabulary = NamedVocabulary("imteamvoc"),
+            vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],      
             widget = AddRemoveWidget(
                     label=u"Laboratory",
@@ -172,9 +172,9 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("reseachproject",
+        _ExtensionStringField (u"reseachproject",
             searchable = True,
-            vocabulary = NamedVocabulary("improjectvoc"),
+            vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [], 
             widget = AddRemoveWidget(
                     label=u"Reseach Project",
@@ -184,9 +184,9 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("general",
+        _ExtensionStringField (u"general",
             searchable = True,
-            vocabulary = NamedVocabulary("imtagvoc"),
+            vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Global key word",
@@ -196,9 +196,9 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField ("science",
+        _ExtensionStringField (u"science",
             searchable = True,
-            vocabulary = NamedVocabulary("imscitagvoc"),
+            vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Scientific key word",
@@ -208,9 +208,9 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),                               
         ),
-        _ExtensionStringField ("licencetype",
+        _ExtensionStringField (u"licencetype",
             searchable = True,
-            vocabulary = NamedVocabulary("imlicencevoc"),
+            vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(
                     label=u"Licence Type",
@@ -220,14 +220,14 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionDateTimeField("""date_and_time""",
+        _ExtensionDateTimeField(u"date_and_time",
             searchable=True,
             widget=CalendarWidget(
                     label=u'Recording date and time',
                     description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
                     ),
             ),
-        _ExtensionStringField ("author",
+        _ExtensionStringField (u"author",
             searchable = True,
             widget = StringWidget(
                     label=u"Author of the photo",
@@ -235,28 +235,28 @@ class ImageImageRepositoryExtender(object):
                     size = 50,
                     ),
         ),
-        ExtensionBlobField("watermark",
+        ExtensionBlobField(u"watermark",
         widget = ImageWidget(
             label=u"Watermark",
             visible={'view': 'invisible', 'edit': 'visible' }
             ),
         ),
         # End of common fields with Folders
-        _ExtensionComputedField ("exif",
+        _ExtensionComputedField (u"exif",
             widget = ComputedWidget(
                     modes=('view',),                
                     label=u'EXIF metadata',
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
-        _ExtensionComputedField ("xmp",
+        _ExtensionComputedField (u"xmp",
             widget = ComputedWidget(
                     modes=('view',),           
                     label=u'XMP metadata',
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
-        _ExtensionComputedField ("ipct",
+        _ExtensionComputedField (u"ipct",
             widget = ComputedWidget(
                     modes=('view',),
                     label=u'IPCT metadata',
