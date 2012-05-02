@@ -13,6 +13,8 @@ from Products.ATVocabularyManager.namedvocabulary import NamedVocabulary
 from zope.component import adapts
 from zope.interface import implements
 
+from validators import isLatitude , isLongitude
+
 class _ExtensionImageField(ExtensionField, ImageField): pass
 class _ExtensionStringField(ExtensionField, StringField): pass
 class _ExtensionLinesField(ExtensionField, LinesField): pass
@@ -103,14 +105,14 @@ class FolderImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionDateTimeField(u"date_and_time",
+        _ExtensionDateTimeField(u"recording_date_time",
             searchable=True,
             widget=CalendarWidget(
                     label=u'Recording date and time',
                     description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
                     ),
             ),
-        _ExtensionStringField (u"author",
+        _ExtensionStringField (u"photographer",
             searchable = True,
             widget = StringWidget(
                     label=u"Author of the photo",
@@ -220,14 +222,14 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionDateTimeField(u"date_and_time",
+        _ExtensionDateTimeField(u"recording_date_time",
             searchable=True,
             widget=CalendarWidget(
                     label=u'Recording date and time',
                     description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
                     ),
             ),
-        _ExtensionStringField (u"author",
+        _ExtensionStringField (u"photographer",
             searchable = True,
             widget = StringWidget(
                     label=u"Author of the photo",
@@ -242,6 +244,24 @@ class ImageImageRepositoryExtender(object):
             ),
         ),
         # End of common fields with Folders
+        _ExtensionStringField(u"latitude",
+            searchable = True,
+            validators = ('isLatitude',),
+            widget = StringWidget(
+                label = u"Latitude",
+                maxlength = 50,
+                size = 50
+                ),
+        ),
+        _ExtensionStringField(u"longitude",
+            searchable = True,
+            validators = ('isLongitude',),
+            widget = StringWidget(
+                label = u"Longitude",
+                maxlength = 50,
+                size = 50
+                ),
+        ),
         _ExtensionComputedField (u"exif",
             widget = ComputedWidget(
                     modes=('view',),                

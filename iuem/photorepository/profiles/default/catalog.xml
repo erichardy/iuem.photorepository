@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+
+<object name="portal_catalog" meta_type="Plone Catalog Tool">
+  <index name="where" meta_type="FieldIndex">
+    <indexed_attr value="where"/>
+  </index>
+  <index name="laboratory" meta_type="FieldIndex">
+    <indexed_attr value="laboratory"/>
+  </index>
+  <index name="reseachproject" meta_type="FieldIndex">
+    <indexed_attr value="reseachproject"/>
+  </index>
+  <index name="general" meta_type="FieldIndex">
+    <indexed_attr value="general"/>
+  </index>
+  <index name="science" meta_type="FieldIndex">
+    <indexed_attr value="science"/>
+  </index>
+  <index name="licencetype" meta_type="FieldIndex">
+    <indexed_attr value="licencetype"/>
+  </index>
+  <index name="recording_date_time" meta_type="DateIndex">
+    <indexed_attr value="recording_date_time"/>
+  </index>
+  <index name="photographer" meta_type="FieldIndex">
+    <indexed_attr value="photographer"/>
+  </index>
+  <index name="latitude" meta_type="FieldIndex">
+    <indexed_attr value="latitude"/>
+  </index>
+  <index name="longitude" meta_type="FieldIndex">
+    <indexed_attr value="longitude"/>
+  </index>
+  
+  <column value="where"/>
+  <column value="laboratory"/>
+  <column value="reseachproject"/>
+  <column value="general"/>
+  <column value="science"/>
+  <column value="licencetype"/>
+  <column value="recording_date_time"/>
+  <column value="photographer"/>
+  <column value="latitude"/>
+  <column value="longitude"/>
+</object>

@@ -56,6 +56,18 @@ def getVocabularies(obj):
             pass
     return vocabs
 
+def cleanupKeywords(keywordsList):
+    """delete entries when they are the same but upper/lower case
+       delete empty entries : '' or ' ' 
+    TODO....
+    """
+    newKeywordsList = [ x for x in keywordsList ]
+    #
+    # code to cleanup newKeywordsList here...
+    # 
+    return newKeywordsList
+    
+
 # obj and event.object are identical
 def updateVocabularies(obj , event):
     """update vocabularies according to new values entered"""
@@ -66,17 +78,15 @@ def updateVocabularies(obj , event):
     for k in vocabs.keys():
         myVocab = myVocabsTool[vocabs[k]]
         # print 'k = ' + str(k) + ' ' + str(myVocab)
-        try:
-            if '' in obj[k]: obj[k].remove('')
-            for kword in obj[k]:
-                ukword = unicode(kword,'utf-8')
-                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
-                if not hasattr(myVocab , normalizedWord):
-                    # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
-                    # myVocab[normalizedWord].setTitle(word)
-                    myVocab.addTerm(normalizedWord , kword)
-        except:
-            pass
+        # should call cleanupKeywords(obj[k])
+        if '' in obj[k]: obj[k].remove('')
+        for kword in obj[k]:
+            ukword = unicode(kword,'utf-8')
+            normalizedWord = normalizer.normalize(ukword, locale = 'fr')
+            if not hasattr(myVocab , normalizedWord):
+                # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
+                # myVocab[normalizedWord].setTitle(word)
+                myVocab.addTerm(normalizedWord , kword)
         
     # import pdb;pdb.set_trace()
     """

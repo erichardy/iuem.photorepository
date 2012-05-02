@@ -9,6 +9,15 @@
       />
   <browser:page
       for="*"
+      name="test_view"
+      class=".test_view.testView"
+      template="test_view.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+      
+  <browser:page
+      for="*"
       name="metadataform_view"
       class=".metadataform.MetadataForm"
       layer=".interfaces.ILayer"
