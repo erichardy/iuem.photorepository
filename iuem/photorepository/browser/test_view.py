@@ -7,3 +7,5 @@ class testView(BrowserView):
     
     def affTruc(self):
         return 'Truc... et machin'
+    
+    

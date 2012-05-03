@@ -15,6 +15,15 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
+
+  <browser:page
+      for="*"
+      name="manage_metadata"
+      class=".ManageMetadata_form.ManageMetadataFormView"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+
       
   <browser:page
       for="*"
