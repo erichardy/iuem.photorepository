@@ -28,6 +28,8 @@ setup(name='iuem.photorepository',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'plone.app.z3cform',
+          'plone.directives.form',
           'collective.quickupload',
           'collective.galleria',
           'pillow',

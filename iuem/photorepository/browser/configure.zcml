@@ -23,7 +23,6 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-
       
   <browser:page
       for="*"

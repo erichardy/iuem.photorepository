@@ -3,6 +3,7 @@
   <version>1002</version>
   <dependencies>
     <!--<dependency>profile-xxx:default</dependency>-->
+    <dependency>profile-plone.app.z3cform:default</dependency>
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-collective.galleria:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>

@@ -1,45 +1,29 @@
-from five import grok
-from plone.directives import form
-
+from zope import interface
 from zope import schema
-from z3c.form import button
-from Products.statusmessages.interfaces import IStatusMessage
 from zope.component import adapts
 from Products.ATContentTypes.interface import IATFolder
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from iuem.photorepository import iuemMessageFactory as _
-from plone.autoform.form import AutoExtensibleForm
-from plone.z3cform import layout
-from zope.component import getUtility
-from plone.i18n.normalizer.interfaces import INormalizer
 
-@grok.provider(IContextSourceBinder)
-def possibleWhere(context):
+from plone.autoform.form import AutoExtensibleForm
+
+from z3c.form import form , field , button , error
+from z3c.form.interfaces import ActionExecutionError, WidgetActionExecutionError
+
+from plone.z3cform import layout
+from Products.statusmessages.interfaces import IStatusMessage
+
+def possibleWhere(self,context):
+    adapts(IContextSourceBinder)
     w = []
-    # import pdb;pdb.set_trace()
-    
-    for ww in context['where']:
-        normalizer = getUtility(INormalizer)
-        nww = normalizer.normalize(unicode(ww , 'utf-8'), locale = 'fr')
-        uww = unicode(ww , 'utf-8')
-        w.append(SimpleVocabulary.createTerm(nww,nww,uww))   
+    for ww in context.where:
+        w.append(SimpleVocabulary.createTerm(ww,ww,ww))
+    print context.where
     return SimpleVocabulary(w)
 
-class metadataSource(object):
-    grok.implements(IContextSourceBinder)
-    def __init__(self,k):
-        self.k = k
-    def __call__(self , context):
-        w = []
-        for ww in context[self.k]:
-            normalizer = getUtility(INormalizer)
-            nww = normalizer.normalize(unicode(ww , 'utf-8'), locale = 'fr')
-            uww = unicode(ww , 'utf-8')
-            w.append(SimpleVocabulary.createTerm(nww,nww,uww))   
-        return SimpleVocabulary(w)
 
-class IManageMetadataForm(form.schema.Schema):
+class IManageMetadataForm(interface.Interface):
     """metadata form"""
     """
     ptype = schema.Choice(title=u"Type", description=u"File type",values=['test'])
@@ -53,18 +37,12 @@ class IManageMetadataForm(form.schema.Schema):
                                   description=_(u"Localisations"),
                                   value_type=schema.Choice(source=possibleWhere)
                                   )
-    laboratory =schema.Set(title=u"Laboratory",
-                                  description=_(u"Localisations"),
-                                  value_type=schema.Choice(source=metadataSource('laboratory'))
-                                  )
-
-class ManageMetadataForm(form.form.SchemaForm):
-    """The form"""
-    grok.name('manage_metadata')
-    grok.require('zope2.View')
-    grok.context(IATFolder)
     
-    schema = IManageMetadataForm
+
+class ManageMetadataForm(AutoExtensibleForm, form.Form):
+    """The form"""
+    adapts(IATFolder)
+    fields = field.Fields(IManageMetadataForm)
     ignoreContext = True
     
     label = u"distribute metadata values among objects"
@@ -77,9 +55,7 @@ class ManageMetadataForm(form.form.SchemaForm):
         # import pdb;pdb.set_trace()
         x = 'retour de getContent()'
         data = {}
-        # import pdb;pdb.set_trace()
-        data['where'] = context.where
-        data['laboratory'] = context.laboratory
+        data['where'] = ['ici','et la']
         
         return data
     
