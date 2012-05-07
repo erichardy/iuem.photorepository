@@ -12,6 +12,10 @@ jq(document).ready(function() {
 	 jq('#formfield-form-widgets-reseachproject input').attr('checked', true);
 	 });
 
+jq(document).ready(function() { 
+	 jq('#formfield-form-widgets-description input').attr('checked', true);
+	 });
+
 /*
 jq(document).ready(function() { 
 	 jq('#image-base-edit input[name=form.button.save]').click(function() {

@@ -17,23 +17,22 @@ from plone.i18n.normalizer.interfaces import INormalizer
 
 class metadataSource(object):
     grok.implements(IContextSourceBinder)
+    
     def __init__(self,k):
         self.k = k
+        
     def __call__(self , context):
+        normalizer = getUtility(INormalizer)
         w = []
+        if self.k == 'description':
+            w.append(SimpleVocabulary.createTerm('description','description',context[self.k]))
+            return SimpleVocabulary(w)
         for ww in context[self.k]:
-            normalizer = getUtility(INormalizer)
             nww = normalizer.normalize(unicode(ww , 'utf-8'), locale = 'fr')
             uww = unicode(ww , 'utf-8')
             w.append(SimpleVocabulary.createTerm(nww,nww,uww))   
         return SimpleVocabulary(w)
-class stdMetadataSource(object):
-    grok.implements(IContextSourceBinder)
-    def __init__(self,k):
-        self.k = k
-    def __call__(self , context):
-        return SimpleVocabulary
-
+    
 class IManageMetadataForm(form.schema.Schema):
     """metadata form"""
     """
@@ -42,21 +41,22 @@ class IManageMetadataForm(form.schema.Schema):
                              description=u"a person")
     """
     whereToSpread  = schema.Choice(title=u"Where to spread",
-                     required=False,
-                     description=u"Description where to spread",
-                     values=['only Images','everywhere']
+                     required=True,
+                     description=u"Only images = only images in this Folder; Everywhere = to all images and folders under this folder",
+                     values=['Only Images','Everywhere']
                      )
-    addOrReplace   = schema.Choice(title=_(u"addOrPreplace"),
+    addOrReplace   = schema.Choice(title=_(u"Add or Replace"),
                      required=False,
-                     description=_(u"addOrReplaceDesc"),
+                     description=_(u"Add = add metadatas to metadatas yet present; Preplace = replace metadatas with metadatas of this Folder"),
                      values=['add','replace'],
                      default='add'
                      )
-    xdescription   = schema.Text(title=u"Description",
+    description   = schema.Set(title=_(u"General Description"),
                      required=False,
-                     description=_(u"Description")
+                     description=_(u"General Description"),
+                     value_type=schema.Choice(source=metadataSource('description'))
                      )
-    where          = schema.Set(title=u"Localisation",
+    where          = schema.Set(title=_(u"Localisation"),
                      required=False,
                      description=_(u"Localisations"),
                      value_type=schema.Choice(source=metadataSource('where'))
@@ -81,23 +81,23 @@ class ManageMetadataForm(form.form.SchemaForm):
     schema = IManageMetadataForm
     ignoreContext = True
     
-    label = u"distribute metadata values among objects"
-    description = u"Decide where to spread metadatas"
+    label = _(u"attribute metadata to images and/or folders")
+    description = _(u"Decide where to spread metadatas and which metadatas")
     fields = field.Fields(IManageMetadataForm)
     fields['where'].widgetFactory = CheckBoxFieldWidget
     fields['laboratory'].widgetFactory = CheckBoxFieldWidget
     fields['reseachproject'].widgetFactory = CheckBoxFieldWidget
+    fields['description'].widgetFactory = CheckBoxFieldWidget
     # print dir(fields['xdescription'])
     # fields['xdescription'].ignoreContext = False
 
     def getContent(self):
         context = self.context
         data = {}
-        data['xdescription'] = context.Description()
+        data['description'] = context.Description()
         data['where'] = context.where
         data['laboratory'] = context.laboratory
         data['reseachproject'] = context.reseachproject
-        print context.Description()
         return data
         
     @button.buttonAndHandler(u'Ok',accessKey=u"o")
@@ -114,10 +114,6 @@ class ManageMetadataForm(form.form.SchemaForm):
         nextUrl = self.context.absolute_url()
         request.response.redirect(nextUrl)
 
-
-@form.default_value(field=IManageMetadataForm['where'])
-def defWhere(data):
-    return ['plouzane']
         
 ManageMetadataFormView = layout.wrap_form(ManageMetadataForm)    
 
