@@ -23,7 +23,23 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-      
+
+  <browser:page
+      for="*"
+      name="metadata_confirm_pt"
+      class=".MetadataConfirm.MetadataConfirmView"
+      template="MetadataConfirm.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="*"
+      name="spread_metadata"
+      class=".MetadataConfirm.SpreadMetadata"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+
   <browser:page
       for="*"
       name="metadataform_view"

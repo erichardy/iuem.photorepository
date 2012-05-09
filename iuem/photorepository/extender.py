@@ -33,6 +33,30 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         # Common fields with images
+        _ExtensionStringField (u"general",
+            searchable = True,
+            vocabulary = NamedVocabulary(u"imtagvoc"),
+            default = [],               
+            widget = AddRemoveWidget(
+                    label=u"Global key word",
+                    description = u"Global key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
+        _ExtensionStringField (u"science",
+            searchable = True,
+            vocabulary = NamedVocabulary(u"imscitagvoc"),
+            default = [],
+            widget = AddRemoveWidget(
+                    label=u"Scientific key word",
+                    description = u"Scientific key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
         _ExtensionStringField (u"where",
             searchable = True,                               
             vocabulary = NamedVocabulary(u"imlocationvoc"),
@@ -64,30 +88,6 @@ class FolderImageRepositoryExtender(object):
             widget = AddRemoveWidget(
                     label=u"Reseach Project",
                     description = u"Reseach Project related to the images",
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
-                    ),
-        ),
-        _ExtensionStringField (u"general",
-            searchable = True,
-            vocabulary = NamedVocabulary(u"imtagvoc"),
-            default = [],               
-            widget = AddRemoveWidget(
-                    label=u"Global key word",
-                    description = u"Global key word",
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
-                    ),
-        ),
-        _ExtensionStringField (u"science",
-            searchable = True,
-            vocabulary = NamedVocabulary(u"imscitagvoc"),
-            default = [],
-            widget = AddRemoveWidget(
-                    label=u"Scientific key word",
-                    description = u"Scientific key word",
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -150,6 +150,30 @@ class ImageImageRepositoryExtender(object):
             ),
         ),
         # Common fields with Folders
+        _ExtensionStringField (u"general",
+            searchable = True,
+            vocabulary = NamedVocabulary(u"imtagvoc"),
+            default = [],
+            widget = AddRemoveWidget(
+                    label=u"Global key word",
+                    description = u"Global key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),
+        ),
+        _ExtensionStringField (u"science",
+            searchable = True,
+            vocabulary = NamedVocabulary(u"imscitagvoc"),
+            default = [],
+            widget = AddRemoveWidget(
+                    label=u"Scientific key word",
+                    description = u"Scientific key word",
+                    allow_add = 1,
+                    role_based_add = 1,
+                    size = 5,
+                    ),                               
+        ),
         _ExtensionStringField (u"where",
             searchable = True,                               
             vocabulary = NamedVocabulary(u"imlocationvoc"),
@@ -186,30 +210,6 @@ class ImageImageRepositoryExtender(object):
                     size = 5,
                     ),
         ),
-        _ExtensionStringField (u"general",
-            searchable = True,
-            vocabulary = NamedVocabulary(u"imtagvoc"),
-            default = [],
-            widget = AddRemoveWidget(
-                    label=u"Global key word",
-                    description = u"Global key word",
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
-                    ),
-        ),
-        _ExtensionStringField (u"science",
-            searchable = True,
-            vocabulary = NamedVocabulary(u"imscitagvoc"),
-            default = [],
-            widget = AddRemoveWidget(
-                    label=u"Scientific key word",
-                    description = u"Scientific key word",
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
-                    ),                               
-        ),
         _ExtensionStringField (u"licencetype",
             searchable = True,
             vocabulary = NamedVocabulary(u"imlicencevoc"),
@@ -231,6 +231,7 @@ class ImageImageRepositoryExtender(object):
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
+            default_method = "Creator",
             widget = StringWidget(
                     label=u"Author of the photo",
                     description = u"Who owns this photo",
@@ -291,6 +292,9 @@ class ImageImageRepositoryExtender(object):
     def getFields(self):
         return self.fields
     
+    def getPhotographer(self):
+        import pdb;pdb.set_trace()
+        return str(self.context.Creators()[0])
 
 class imPhotoSmallImageExtender(object):
     adapts(IATImage)

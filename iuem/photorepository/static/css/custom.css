@@ -2,3 +2,12 @@
 #imphotosmall {
 display: none !important;
 }
+
+.formTabs {
+	display: none !important;
+}
+/*
+body {
+	background-color: #F9F9F9;
+}
+*/

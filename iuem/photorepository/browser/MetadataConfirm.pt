@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.googledocsviewer">
+<body>
+<div metal:fill-slot="content-core">
+<style type="text/css">
+#parent-fieldname-description {
+  display: none;
+  }
+.documentFirstHeading {
+  display: none;
+} 
+</style>
+
+<H1>Please, confirm the spread of METADATAS !</h1>
+
+whereToSpread
+addOrReplace
+description
+general
+science
+where
+laboratory
+reseachproject
+licencetype
+recording_date_time
+photographer
+
+
+
+<span tal:content="view/general"> general </span>
+
+<span tal:repeat="gen view/general">
+  <p tal:content="string: ${gen}">kslkqs</p>
+  ----
+</span>
+<span tal:repeat="where view/where">
+  <p tal:content="string: ${where}">kslkqs</p>
+  ----
+</span>
+azeaze
+<form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="get">
+  <input type="hidden" name="general" tal:attributes="value view/general">
+  <input name="lkdsflksdlfkkl" type="submit">
+</form>
+
+</div>
+</body>
+</html>

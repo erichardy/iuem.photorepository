@@ -24,7 +24,7 @@ class metadataSource(object):
     def __call__(self , context):
         normalizer = getUtility(INormalizer)
         w = []
-        if self.k == 'description':
+        if self.k == 'description' or self.k == 'photographer' or self.k == 'recording_date_time':
             w.append(SimpleVocabulary.createTerm('description','description',context[self.k]))
             return SimpleVocabulary(w)
         for ww in context[self.k]:
@@ -56,6 +56,16 @@ class IManageMetadataForm(form.schema.Schema):
                      description=_(u"General Description"),
                      value_type=schema.Choice(source=metadataSource('description'))
                      )
+    general = schema.Set(title=u"general",
+                     required=False,
+                     description=_(u"general"),
+                     value_type=schema.Choice(source=metadataSource('general'))
+                     )
+    science = schema.Set(title=u"science",
+                     required=False,
+                     description=_(u"science"),
+                     value_type=schema.Choice(source=metadataSource('science'))
+                     )
     where          = schema.Set(title=_(u"Localisation"),
                      required=False,
                      description=_(u"Localisations"),
@@ -71,6 +81,25 @@ class IManageMetadataForm(form.schema.Schema):
                      description=_(u"reseachproject"),
                      value_type=schema.Choice(source=metadataSource('reseachproject'))
                      )
+    licencetype = schema.Set(title=u"licencetype",
+                     required=False,
+                     description=_(u"licencetype"),
+                     value_type=schema.Choice(source=metadataSource('licencetype'))
+                     )
+    
+    recording_date_time = schema.Set(title=u"recording_date_time",
+                     required=False,
+                     description=_(u"recording_date_time"),
+                     value_type=schema.Choice(source=metadataSource('recording_date_time'))
+                     )
+    
+    photographer = schema.Set(title=u"photographer",
+                     required=False,
+                     description=_(u"photographer"),
+                     value_type=schema.Choice(source=metadataSource('photographer'))
+                     )
+
+
 
 class ManageMetadataForm(form.form.SchemaForm):
     """The form"""
@@ -84,12 +113,15 @@ class ManageMetadataForm(form.form.SchemaForm):
     label = _(u"attribute metadata to images and/or folders")
     description = _(u"Decide where to spread metadatas and which metadatas")
     fields = field.Fields(IManageMetadataForm)
+    fields['description'].widgetFactory = CheckBoxFieldWidget
     fields['where'].widgetFactory = CheckBoxFieldWidget
     fields['laboratory'].widgetFactory = CheckBoxFieldWidget
     fields['reseachproject'].widgetFactory = CheckBoxFieldWidget
-    fields['description'].widgetFactory = CheckBoxFieldWidget
-    # print dir(fields['xdescription'])
-    # fields['xdescription'].ignoreContext = False
+    fields['general'].widgetFactory = CheckBoxFieldWidget
+    fields['science'].widgetFactory = CheckBoxFieldWidget
+    fields['licencetype'].widgetFactory = CheckBoxFieldWidget
+    fields['recording_date_time'].widgetFactory = CheckBoxFieldWidget
+    fields['photographer'].widgetFactory = CheckBoxFieldWidget
 
     def getContent(self):
         context = self.context
@@ -98,9 +130,14 @@ class ManageMetadataForm(form.form.SchemaForm):
         data['where'] = context.where
         data['laboratory'] = context.laboratory
         data['reseachproject'] = context.reseachproject
+        data['general'] = context.general
+        data['science'] = context.science
+        data['licencetype'] = context.licencetype
+        data['recording_date_time'] = context.recording_date_time
+        data['photographer'] = context.photographer
         return data
         
-    @button.buttonAndHandler(u'Ok',accessKey=u"o")
+    @button.buttonAndHandler(_(u'Spread Metadatas'),accessKey=u"o")
     def handleOk(self, action):
         data, errors = self.extractData()
         print data
@@ -110,7 +147,12 @@ class ManageMetadataForm(form.form.SchemaForm):
             self.status = self.formErrorsMessage
             return
         request = self.request
-        # nextUrl = '%s/@@metadata_view_pt'%self.context.absolute_url()
+        nextUrl = '%s/@@metadata_confirm_pt'%self.context.absolute_url()
+        request.response.redirect(nextUrl)
+    
+    @button.buttonAndHandler(_(u"Cancel"))
+    def handleCancel(self, action):
+        request = self.request
         nextUrl = self.context.absolute_url()
         request.response.redirect(nextUrl)
 
