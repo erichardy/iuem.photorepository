@@ -7,6 +7,22 @@
       i18n:domain="collective.googledocsviewer">
 <body>
 <div metal:fill-slot="content-core">
+<div tal:define="whereToSpread       string:view/whereToSpread;
+            general             string:view/general;
+            addOrReplace        string:view/addOrReplace;
+            description         string:view/description;
+            general             string:view/general;
+            science             string:view/science;
+            where               string:view/where;
+            laboratory          string:view/laboratory;
+            reseachproject      string:view/reseachproject;
+            licencetype         string:view/licencetype;
+            recording_date_time string:view/recording_date_time;
+            photographer        string:view/photographer;
+            "
+>
+
+
 <style type="text/css">
 #parent-fieldname-description {
   display: none;
@@ -16,22 +32,21 @@
 } 
 </style>
 
-<H1>Please, confirm the spread of METADATAS !</h1>
+<H1>Confirmation de la propagation des metadonnees...</h1>
 
-whereToSpread
-addOrReplace
-description
-general
-science
-where
-laboratory
-reseachproject
-licencetype
-recording_date_time
-photographer
+<table>
+<tbody>
+<tr>
+<td>Niveau de Propagation</td>
+<td tal:content="string:${where}">whereToSpread</td>
+</tr>
+</tbody>
+</table>
 
 
 
+
+<p />
 <span tal:content="view/general"> general </span>
 
 <span tal:repeat="gen view/general">
@@ -44,10 +59,13 @@ photographer
 </span>
 azeaze
 <form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="get">
+
+
+
   <input type="hidden" name="general" tal:attributes="value view/general">
   <input name="lkdsflksdlfkkl" type="submit">
 </form>
-
+</div>
 </div>
 </body>
 </html>
