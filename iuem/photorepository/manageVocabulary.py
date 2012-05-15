@@ -70,7 +70,7 @@ class UpdateVocabs(object):
 class UpdateVocs(BrowserView):
         
     def __call__(context):
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
 
         vocabs = getToolByName(context , 'portal_vocabularies')
         FORM = context.request.form
@@ -82,7 +82,7 @@ class UpdateVocs(BrowserView):
                 if not hasattr(vocab, val) and val:
                     vocab.invokeFactory('SimpleVocabularyTerm', val)
                     vocab[val].setTitle(val)
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
             
         
         

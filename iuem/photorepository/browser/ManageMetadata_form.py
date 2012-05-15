@@ -4,16 +4,18 @@ from plone.directives import form
 from zope import schema
 from z3c.form import button , field
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
-from Products.statusmessages.interfaces import IStatusMessage
-from zope.component import adapts
-from Products.ATContentTypes.interface import IATFolder
+# from z3c.form.browser.select import SelectFieldWidget
+# from Products.statusmessages.interfaces import IStatusMessage
+# from zope.component import adapts
+# from Products.ATContentTypes.interface import IATFolder
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from iuem.photorepository import iuemMessageFactory as _
-from Products.AddRemoveWidget import AddRemoveWidget
+# from Products.AddRemoveWidget import AddRemoveWidget
 from plone.z3cform import layout
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
+# from zope.schema.fieldproperty import FieldProperty
 
 class metadataSource(object):
     grok.implements(IContextSourceBinder)
@@ -25,34 +27,31 @@ class metadataSource(object):
         normalizer = getUtility(INormalizer)
         w = []
         if self.k == 'description' or self.k == 'photographer' or self.k == 'recording_date_time':
-            w.append(SimpleVocabulary.createTerm('description','description',context[self.k]))
+            w.append(SimpleVocabulary.createTerm(self.k,self.k,context[self.k]))
             return SimpleVocabulary(w)
-        for ww in context[self.k]:
-            nww = normalizer.normalize(unicode(ww , 'utf-8'), locale = 'fr')
-            uww = unicode(ww , 'utf-8')
-            w.append(SimpleVocabulary.createTerm(nww,nww,uww))   
+        for kw in context[self.k]:
+            nkw = normalizer.normalize(unicode(kw , 'utf-8'), locale = 'fr')
+            ukw = unicode(kw , 'utf-8')
+            w.append(SimpleVocabulary.createTerm(nkw,nkw,ukw))   
         return SimpleVocabulary(w)
     
 class IManageMetadataForm(form.schema.Schema):
     """metadata form"""
-    """
-    ptype = schema.Choice(title=u"Type", description=u"File type",values=['test'])
-    autor = schema.ASCIILine(title=u"Auteur",
-                             description=u"a person")
-    """
-    whereToSpread  = schema.Choice(title=u"Where to spread",
+
+    wheretospread  = schema.Choice(title=_(u"Where to spread"),
                      required=True,
                      description=u"Only images = only images in this Folder; Everywhere = to all images and folders under this folder",
+                     # value_type=schema.Choice(source=metadataSource('wheretospread'))
                      values=['Only Images','Everywhere']
                      )
-    addOrReplace   = schema.Choice(title=_(u"Add or Replace"),
-                     required=False,
-                     description=_(u"Add = add metadatas to metadatas yet present; Preplace = replace metadatas with metadatas of this Folder"),
+    addorreplace   = schema.Choice(title=_(u"Add or Replace"),
+                     required=True,
+                     description=_(u"Add = add metadatas to metadatas already present; Preplace = replace metadatas with metadatas of this Folder"),
                      values=['add','replace'],
                      default='add'
                      )
     description   = schema.Set(title=_(u"General Description"),
-                     required=False,
+                     required=True,
                      description=_(u"General Description"),
                      value_type=schema.Choice(source=metadataSource('description'))
                      )
@@ -95,7 +94,7 @@ class IManageMetadataForm(form.schema.Schema):
     
     photographer = schema.Set(title=u"photographer",
                      required=False,
-                     description=_(u"photographer"),
+                     description=u"photographer",
                      value_type=schema.Choice(source=metadataSource('photographer'))
                      )
 
@@ -103,10 +102,6 @@ class IManageMetadataForm(form.schema.Schema):
 
 class ManageMetadataForm(form.form.SchemaForm):
     """The form"""
-    grok.name('manage_metadata')
-    grok.require('zope2.View')
-    grok.context(IATFolder)
-    
     schema = IManageMetadataForm
     ignoreContext = True
     
@@ -122,7 +117,9 @@ class ManageMetadataForm(form.form.SchemaForm):
     fields['licencetype'].widgetFactory = CheckBoxFieldWidget
     fields['recording_date_time'].widgetFactory = CheckBoxFieldWidget
     fields['photographer'].widgetFactory = CheckBoxFieldWidget
-
+    
+    method = "post"
+    
     def getContent(self):
         context = self.context
         data = {}
@@ -135,20 +132,18 @@ class ManageMetadataForm(form.form.SchemaForm):
         data['licencetype'] = context.licencetype
         data['recording_date_time'] = context.recording_date_time
         data['photographer'] = context.photographer
+        data['wheretospread'] = ['Only Images','Everywhere']
         return data
-        
+            
     @button.buttonAndHandler(_(u'Spread Metadatas'),accessKey=u"o")
     def handleOk(self, action):
         data, errors = self.extractData()
-        print data
-        # print '============================'
-        # print errors
         if errors:
             self.status = self.formErrorsMessage
             return
-        request = self.request
-        nextUrl = '%s/@@metadata_confirm_pt'%self.context.absolute_url()
-        request.response.redirect(nextUrl)
+
+    def action(self):
+        return self.context.absolute_url() + '/@@metadataconfirm_view'
     
     @button.buttonAndHandler(_(u"Cancel"))
     def handleCancel(self, action):
@@ -156,6 +151,5 @@ class ManageMetadataForm(form.form.SchemaForm):
         nextUrl = self.context.absolute_url()
         request.response.redirect(nextUrl)
 
-        
 ManageMetadataFormView = layout.wrap_form(ManageMetadataForm)    
 

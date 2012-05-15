@@ -15,6 +15,13 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
+  <browser:page
+      for="*"
+      name="testformview"
+      class=".testForm.TestFormView"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
 
   <browser:page
       for="*"
@@ -26,9 +33,9 @@
 
   <browser:page
       for="*"
-      name="metadata_confirm_pt"
-      class=".MetadataConfirm.MetadataConfirmView"
+      name="metadataconfirm_view"
       template="MetadataConfirm.pt"
+      class=".MetadataConfirm.MetadataConfirmView"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

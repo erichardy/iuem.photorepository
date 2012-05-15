@@ -8,14 +8,17 @@
 <body>
 <div metal:fill-slot="content-core">
 
-TOTO////
-<span tal:content="view/affTruc"> affTruc </span>
-
-<p />
 <span tal:define="name here/title_or_id" tal:content="string:${name}">name</span>
 <p />
-<span tal:define="localite here/where" tal:content="string:${localite}">loc</span>
+How to display here data entered in the form ?<br />
+<span tal:content="view/howToAccessFormData"> How to access form data </span>
+<p />
+<span tal:content="view/vehicle"> vehicle </span>
+<p />
+<span tal:content="view/destination"> destination </span>
+<p />
 
+<span tal:content="structure string:${request};">request</span>
 </div>
 </body>
 </html>
