@@ -120,7 +120,7 @@ class FolderImageRepositoryExtender(object):
                     size = 50,
                     ),
         ),
-        ExtensionBlobField(u"watermark",
+        _ExtensionImageField(u"watermark",
         widget = ImageWidget(
             label=u"Watermark",
             visible={'view': 'invisible', 'edit': 'visible' }
@@ -140,9 +140,9 @@ class ImageImageRepositoryExtender(object):
     implements(ISchemaExtender)
 
     fields = [
-        ExtensionBlobField(u"original",
-        accessor = 'getOriginal',
-        mutator = 'setOriginal',
+        ExtensionBlobField(u"sourceImage",
+        accessor = 'getSourceImage',
+        mutator = 'setSourceImage',
         languageIndependent = True,
         widget = ImageWidget(
             label=u"Original hi-res image",
@@ -238,7 +238,7 @@ class ImageImageRepositoryExtender(object):
                     size = 50,
                     ),
         ),
-        ExtensionBlobField(u"watermark",
+        _ExtensionImageField(u"watermark",
         widget = ImageWidget(
             label=u"Watermark",
             visible={'view': 'invisible', 'edit': 'visible' }
@@ -295,6 +295,9 @@ class ImageImageRepositoryExtender(object):
     def getPhotographer(self):
         import pdb;pdb.set_trace()
         return str(self.context.Creators()[0])
+    
+    def getSourceExif(self):
+        return self.fields[12]
 
 class imPhotoSmallImageExtender(object):
     adapts(IATImage)

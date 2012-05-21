@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from PIL import Image , ImageDraw
-from cStringIO import StringIO
+from PIL import ImageChops
+from StringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
 from Products.CMFCore.utils import getToolByName
@@ -14,15 +15,36 @@ def createSmallImage(obj, event):
     def __init__(self , context):
         self.context = context
     # copy the image loaded to 'original' (extended) field
-    ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
-    # reduce the image field and add the watermark
+    # ImageImageRepositoryExtender(obj).fields[0].copy(obj.getImage())
+    f_uploaded =  obj.getImageAsFile()
+    currentImage = Image.open(f_uploaded)
+    import pdb;pdb.set_trace()
+
+    sourceImage = ImageImageRepositoryExtender(obj).fields[0]
+    im = sourceImage.getRaw(obj)
+    fim = StringIO(im)
+    # sourceImage = Image.open(f_sourceImage)
+    if sameImages(currentImage , fim):
+        print "Images identiques"
+        return
+    else:
+        print "pas pareilles..."
+    ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
+    exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+    ImageImageRepositoryExtender(obj).fields[12].set(obj , exif) 
+    print exif
+        # reduce the image field and add the watermark
     doThumbnail(obj)
     #
     # import pdb;pdb.set_trace()
-    
+
+def sameImages(im1, im2):
+    return ImageChops.difference(im1, im2).getbbox() is None
+
 def doThumbnail(obj):
     f_uploaded =  obj.getImageAsFile()
     uploaded = Image.open(f_uploaded)
+    import pdb;pdb.set_trace()
     if uploaded.mode != 'RGBA':
         uploaded = uploaded.convert('RGBA')
     size = 300 , 300

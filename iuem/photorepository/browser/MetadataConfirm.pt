@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="fr"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="collective.googledocsviewer">
+      i18n:domain="iuem.photorepository">
 <body>
 <div metal:fill-slot="content-core">
 <div>
