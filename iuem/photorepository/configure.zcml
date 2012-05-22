@@ -44,7 +44,7 @@
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
          Products.Archetypes.interfaces.IObjectInitializedEvent"
-    handler=".subscribers.createSmallImage"
+    handler=".subscribers.installRepoImage"
   />
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
@@ -60,8 +60,9 @@
   />
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
-         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".subscribers.createSmallImage"
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent
+         zope.traversing.interfaces.IBeforeTraverseEvent"
+    handler=".subscribers.updateRepoImage"
   />
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage

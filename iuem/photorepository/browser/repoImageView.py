@@ -8,10 +8,20 @@ class repoImageView(BrowserView):
     
     def unretour(self):
         context = self.context
-        import pdb;pdb.set_trace()
+        # import pdb;pdb.set_trace()
         return "str(context.request) "
 
     def sourceImage(self):
         context = self.context
-        return self.context.sourceImage.tag()
+        tag = '<img src="' + context.absolute_url() + '/sourceImage" '
+        tag += 'ALT="' + str(context.title) + '" '
+        tag += 'title="' + str(context.title) + '" '
+        tag += 'height="' + str(context.sourceImage.height) + '" '
+        tag += 'width="' + str(context.sourceImage.width) + '" '
+        tag += '/>'
+        # import pdb;pdb.set_trace()
+        return tag
+    
+    def viewImage(self):
+        return self.context.tag()
             

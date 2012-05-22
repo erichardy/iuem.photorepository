@@ -7,21 +7,19 @@
       i18n:domain="collective.googledocsviewer">
 <body>
 <div metal:fill-slot="content-core">
-
 <h3>repoimageview.pt...</h3>
-
 <p />
-<span tal:define="unretour view/unretour" tal:content="string:${unretour}">jhjhj</span>
-
 <span tal:repeat="loc here/where">
-<h2 tal:content="string:${loc}">loc</h2>
-
+  <h2 tal:content="string:${loc}">loc</h2>
+<p />
 </span>
 
+<span tal:content="string:${view/viewImage}">viewImage</span>
+<span tal:replace="structure view/viewImage">viewImage</span>
+
+<p />
 <span tal:content="string:${view/sourceImage}">sourceImage</span>
-
 <span tal:replace="structure view/sourceImage">source Image</span>
-
 </div>
 </body>
 </html>

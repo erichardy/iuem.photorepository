@@ -8,52 +8,78 @@ from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
+from plone.app.imaging.traverse import DefaultImageScaleHandler
 
+def installRepoImage(obj, event):
+    print 'entree dans installRepoImage.'
+    f_uploaded =  obj.getImageAsFile()
+    # currentImage = Image.open(f_uploaded)
+    ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
+    exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+    ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+    doThumbnail(obj)    
 
-# @adapter(IATImage , IObjectInitializedEvent)
-def createSmallImage(obj, event):
-    def __init__(self , context):
-        self.context = context
-    # copy the image loaded to 'original' (extended) field
-    # ImageImageRepositoryExtender(obj).fields[0].copy(obj.getImage())
+def updateRepoImage(obj, event):
+
+    print 'dans updateRepoImage'
+    print event
+    typeEvent = str(event.__class__)
+    if typeEvent == "<class 'Products.Archetypes.event.ObjectInitializedEvent'>":
+        """do noting because ObjectInitializedEvent !!!..."""
+        return
     f_uploaded =  obj.getImageAsFile()
     currentImage = Image.open(f_uploaded)
-    import pdb;pdb.set_trace()
-
-    sourceImage = ImageImageRepositoryExtender(obj).fields[0]
-    im = sourceImage.getRaw(obj)
-    fim = StringIO(im)
-    # sourceImage = Image.open(f_sourceImage)
-    if sameImages(currentImage , fim):
+    f_sourceImage = ImageImageRepositoryExtender(obj).fields[0].getRaw(obj).getBlob().committed()
+    sourceImage = Image.open(f_sourceImage)
+    if sameImages(currentImage , sourceImage):
         print "Images identiques"
         return
     else:
         print "pas pareilles..."
+    import pdb;pdb.set_trace()
+
+# @adapter(IATImage , IObjectInitializedEvent)
+def createSmallImage(obj, event):
+    # copy the image loaded to 'original' (extended) field
+    # ImageImageRepositoryExtender(obj).fields[0].copy(obj.getImage())
+    f_uploaded =  obj.getImageAsFile()
+    currentImage = Image.open(f_uploaded)
+    # f_sourceImage = ImageImageRepositoryExtender(obj).fields[0].getRaw(obj).getBlob().committed()
+    # sourceImage = Image.open(f_sourceImage)
+    """
+    if sameImages(currentImage , sourceImage):
+        print "Images identiques"
+        return
+    else:
+        print "pas pareilles..."
+    """
+    import pdb;pdb.set_trace()
     ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif) 
     print exif
         # reduce the image field and add the watermark
     doThumbnail(obj)
-    #
-    # import pdb;pdb.set_trace()
-
+    
 def sameImages(im1, im2):
     return ImageChops.difference(im1, im2).getbbox() is None
 
 def doThumbnail(obj):
-    f_uploaded =  obj.getImageAsFile()
-    uploaded = Image.open(f_uploaded)
-    import pdb;pdb.set_trace()
-    if uploaded.mode != 'RGBA':
-        uploaded = uploaded.convert('RGBA')
+    # f_uploaded =  obj.getImageAsFile()
+    # uploaded = Image.open(f_uploaded)
+    field = obj.getField('image')
+    scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
+    f_image = StringIO(scaled.data)
+    image = Image.open(f_image)
+    if image.mode != 'RGBA':
+        image = image.convert('RGBA')
     size = 300 , 300
-    uploaded.thumbnail(size, Image.ANTIALIAS)
-    draw = ImageDraw.Draw(uploaded)
-    draw.line((0, 0) + uploaded.size, fill=(255, 255, 255))
-    draw.line((0, uploaded.size[1], uploaded.size[0], 0), fill=(255, 255, 255))
+    image.thumbnail(size, Image.ANTIALIAS)
+    draw = ImageDraw.Draw(image)
+    draw.line((0, 0) + image.size, fill=(255, 255, 255))
+    draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
     f_data = StringIO()
-    uploaded.save(f_data , 'jpeg')
+    image.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())
 
 def getVocabularies(obj):
