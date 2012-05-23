@@ -16,6 +16,7 @@ def installRepoImage(obj, event):
     # currentImage = Image.open(f_uploaded)
     ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+    print exif
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
     doThumbnail(obj)    
 
@@ -27,15 +28,14 @@ def updateRepoImage(obj, event):
     if typeEvent == "<class 'Products.Archetypes.event.ObjectInitializedEvent'>":
         """do noting because ObjectInitializedEvent !!!..."""
         return
-    f_uploaded =  obj.getImageAsFile()
-    currentImage = Image.open(f_uploaded)
-    f_sourceImage = ImageImageRepositoryExtender(obj).fields[0].getRaw(obj).getBlob().committed()
-    sourceImage = Image.open(f_sourceImage)
-    if sameImages(currentImage , sourceImage):
-        print "Images identiques"
-        return
-    else:
-        print "pas pareilles..."
+    request = obj.REQUEST
+    if request.form.has_key('image_file'):
+        if request.form['image_file'].filename != '':
+            ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
+            exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+            ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+            doThumbnail(obj)
+    # print obj.REQUEST.form['image_file']
     import pdb;pdb.set_trace()
 
 # @adapter(IATImage , IObjectInitializedEvent)

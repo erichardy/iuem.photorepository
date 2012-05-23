@@ -69,7 +69,7 @@
   <input name="Validation de la propagation" value="Validation de la propagation" type="submit">
 </form>
 <p />
-<span tal:content="structure string:${request};">request</span>
+<span tal:content="structure string:${request/form};">request</span>
 
 </div>
 </div>

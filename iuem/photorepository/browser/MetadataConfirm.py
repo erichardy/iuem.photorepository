@@ -116,4 +116,5 @@ class SpreadMetadata(BrowserView):
         # print "\n"
         request = self.request
         nextUrl = self.context.absolute_url()
+        print request.form
         request.response.redirect(nextUrl)

@@ -19,9 +19,12 @@ class repoImageView(BrowserView):
         tag += 'height="' + str(context.sourceImage.height) + '" '
         tag += 'width="' + str(context.sourceImage.width) + '" '
         tag += '/>'
-        # import pdb;pdb.set_trace()
         return tag
     
     def viewImage(self):
         return self.context.tag()
+
+    def sourceExif(self):
+        # import pdb;pdb.set_trace()
+        return self.context.sourceImage.getEXIF()
             

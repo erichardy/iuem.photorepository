@@ -264,6 +264,7 @@ class ImageImageRepositoryExtender(object):
                 ),
         ),
         _ExtensionComputedField (u"exif",
+            expression = 'self.sourceImage.getEXIF()',
             widget = ComputedWidget(
                     modes=('view',),                
                     label=u'EXIF metadata',
@@ -293,7 +294,6 @@ class ImageImageRepositoryExtender(object):
         return self.fields
     
     def getPhotographer(self):
-        import pdb;pdb.set_trace()
         return str(self.context.Creators()[0])
     
     def getSourceExif(self):

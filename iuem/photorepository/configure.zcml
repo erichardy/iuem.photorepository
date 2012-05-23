@@ -60,8 +60,7 @@
   />
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
-         zope.lifecycleevent.interfaces.IObjectModifiedEvent
-         zope.traversing.interfaces.IBeforeTraverseEvent"
+         zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.updateRepoImage"
   />
   <subscriber 

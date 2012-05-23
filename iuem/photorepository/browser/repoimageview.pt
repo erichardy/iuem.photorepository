@@ -13,6 +13,16 @@
   <h2 tal:content="string:${loc}">loc</h2>
 <p />
 </span>
+<p />
+EXIF :<br />
+<span tal:define="exif view/sourceExif" tal:content="string:${exif}">exif</span>
+
+<div tal:define="exif python:view.sourceExif()">
+  <span tal:repeat="k python:view.sourceExif().keys()">
+    <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
+  </span>
+
+</div>
 
 <span tal:content="string:${view/viewImage}">viewImage</span>
 <span tal:replace="structure view/viewImage">viewImage</span>
