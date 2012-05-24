@@ -40,19 +40,19 @@ class IManageMetadataForm(form.schema.Schema):
 
     wheretospread  = schema.Choice(title=_(u"Where to spread"),
                      required=True,
-                     description=u"Only images = only images in this Folder; Everywhere = to all images and folders under this folder",
+                     description=_(u"Only Local Images = only images in this Folder; Images here and in all sub-folders = to all images and folders under this folder"),
                      # value_type=schema.Choice(source=metadataSource('wheretospread'))
-                     values=['Only Images','Everywhere']
+                     values=[_(u"Only Local Images"),_(u"Images here and in all sub-folders")]
                      )
     addorreplace   = schema.Choice(title=_(u"Add or Replace"),
                      required=True,
-                     description=_(u"Add = add metadatas to metadatas already present; Preplace = replace metadatas with metadatas of this Folder"),
-                     values=['add','replace'],
-                     default='add'
+                     description=_(u"Add metadatas = add metadatas to metadatas already present; Replace metadatas = replace metadatas with this Folder metadatas"),
+                     values=['Add metadatas','Replace metadatas'],
+                     default='Add metadatas'
                      )
     description   = schema.Set(title=_(u"General Description"),
-                     required=True,
-                     description=_(u"General Description"),
+                     required=False,
+                     description=_(u"Description Field"),
                      value_type=schema.Choice(source=metadataSource('description'))
                      )
     general = schema.Set(title=u"general",
@@ -132,7 +132,7 @@ class ManageMetadataForm(form.form.SchemaForm):
         data['licencetype'] = context.licencetype
         data['recording_date_time'] = context.recording_date_time
         data['photographer'] = context.photographer
-        data['wheretospread'] = ['Only Images','Everywhere']
+        data['wheretospread'] = [_(u"Only Local Images"),_(u"Images here and in all sub-folders")]
         return data
             
     @button.buttonAndHandler(_(u'Spread Metadatas'),accessKey=u"o")

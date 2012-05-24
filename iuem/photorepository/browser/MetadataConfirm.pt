@@ -18,54 +18,113 @@
 </style>
 
 <H1>Confirmation de la propagation des metadonnees...</h1>
+<form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
 <table border="1">
 <tbody>
 <tr>
   <td>Niveau de Propagation</td>
-  <td tal:content="view/wheretospread">whereToSpread</td>
+  <td>
+  <span tal:content="view/wheretospread">whereToSpread</span>
+  <input type="hidden" name="wheretospread" tal:attributes="value view/wheretospread">
+  </td>
 </tr>
 <tr>
   <td>Ajouter ou Remplacer</td>
-  <td tal:content="view/addorreplace">addorreplace</td>
+  <td>
+  <span tal:content="view/addorreplace">addorreplace</span>
+  <input type="hidden" name="addorreplace" tal:attributes="value view/addorreplace">
+  </td>
 </tr>
-<tr  tal:condition="view/description">
+<tr tal:condition="view/description">
   <td>Description</td>
-  <td tal:content="view/description">desc</td>
+  <td>
+  <span tal:content="view/description">description</span>
+  <input type="hidden" name="description" tal:attributes="value view/description">
+  </td>
 </tr>
 
-<tr>
+<tr tal:condition="view/general">
   <td>Mots cles generaux</td>
   <td>
-    <span tal:repeat="g view/general">
-      <span tal:content="python:view.getVocabValue('imtagvoc',g)">gggg</span>
+    <span tal:repeat="gen view/general">
+      <span tal:content="python:view.getVocabValue('imtagvoc',gen)">general</span>
       <br />
     </span>
+    <input type="hidden" name="general" tal:attributes="value view/general">
   </td>
-
 </tr>
+
+<tr tal:condition="view/science">
+  <td>Mots cles scientifiques</td>
+  <td>
+    <span tal:repeat="sci view/science">
+      <span tal:content="python:view.getVocabValue('imscitagvoc',sci)">science</span>
+      <br />
+    </span>
+    <input type="hidden" name="science" tal:attributes="value view/science">
+  </td>
+</tr>
+
+<tr tal:condition="view/where">
+  <td>Localisation</td>
+  <td>
+    <span tal:repeat="wh view/where">
+      <span tal:content="python:view.getVocabValue('imlocationvoc',wh)">where</span>
+      <br />
+    </span>
+    <input type="hidden" name="where" tal:attributes="value view/where">
+  </td>
+</tr>
+
+<tr tal:condition="view/laboratory">
+  <td>Laboratoire</td>
+  <td>
+    <span tal:repeat="lab view/laboratory">
+      <span tal:content="python:view.getVocabValue('imteamvoc',lab)">laboratory</span>
+      <br />
+    </span>
+    <input type="hidden" name="laboratory" tal:attributes="value view/laboratory">
+  </td>
+</tr>
+
+<tr tal:condition="view/reseachproject">
+  <td>Projet de recherche</td>
+  <td>
+    <span tal:repeat="proj view/reseachproject">
+      <span tal:content="python:view.getVocabValue('improjectvoc',proj)">reseachproject</span>
+      <br />
+    </span>
+    <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject">
+  </td>
+</tr>
+
+<tr tal:condition="view/licencetype">
+  <td>Type de licence</td>
+  <td>
+    <span tal:repeat="lic view/licencetype">
+      <span tal:content="python:view.getVocabValue('imlicencevoc',lic)">licencetype</span>
+      <br />
+    </span>
+    <input type="hidden" name="licencetype" tal:attributes="value view/licencetype">
+  </td>
+</tr>
+
 <tr tal:condition="view/photographer">
   <td>Photographe</td>
-  <td tal:content="view/photographer">photographer</td>
-</tr>
-<tr tal:condition="view/where">
-<td>where</td>
-  <td>
-    <span tal:repeat="w view/where">
-      <span tal:content="python:view.getVocabValue('imlocationvoc',w)">where</span>
-      <br />    
-    </span>
+  <td tal:content="view/photographer">photographer
+  <input type="hidden" name="photographer" tal:attributes="value view/photographer">
   </td>
 </tr>
+
 <tr tal:condition="view/recording_date_time">
   <td>recording_date_time</td>
-  <td tal:content="view/recording_date_time">recording_date_time</td>
+  <td tal:content="view/recording_date_time">recording_date_time
+  <input type="hidden" name="recording_date_time" tal:attributes="value view/recording_date_time">
+  </td>
 </tr>
 </tbody>
 </table>
 
-<p />
-<form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
-  <input type="hidden" name="general" tal:attributes="value view/general">
   <input name="Validation de la propagation" value="Validation de la propagation" type="submit">
 </form>
 <p />

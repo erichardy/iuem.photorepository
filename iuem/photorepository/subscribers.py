@@ -18,6 +18,7 @@ def installRepoImage(obj, event):
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
     print exif
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+    # import pdb;pdb.set_trace()
     doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
@@ -35,8 +36,7 @@ def updateRepoImage(obj, event):
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
             ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
             doThumbnail(obj)
-    # print obj.REQUEST.form['image_file']
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
 
 # @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):

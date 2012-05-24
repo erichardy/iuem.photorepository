@@ -25,6 +25,5 @@ class repoImageView(BrowserView):
         return self.context.tag()
 
     def sourceExif(self):
-        # import pdb;pdb.set_trace()
-        return self.context.sourceImage.getEXIF()
+        return self.context.exif
             

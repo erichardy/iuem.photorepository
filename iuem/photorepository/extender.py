@@ -263,23 +263,23 @@ class ImageImageRepositoryExtender(object):
                 size = 50
                 ),
         ),
-        _ExtensionComputedField (u"exif",
+        _ExtensionStringField (u"exif",
             expression = 'self.sourceImage.getEXIF()',
-            widget = ComputedWidget(
+            widget = StringWidget(
                     modes=('view',),                
                     label=u'EXIF metadata',
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
-        _ExtensionComputedField (u"xmp",
-            widget = ComputedWidget(
+        _ExtensionStringField (u"xmp",
+            widget = StringWidget(
                     modes=('view',),           
                     label=u'XMP metadata',
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
-        _ExtensionComputedField (u"ipct",
-            widget = ComputedWidget(
+        _ExtensionStringField (u"ipct",
+            widget = StringWidget(
                     modes=('view',),
                     label=u'IPCT metadata',
                     visible={'view': 'visible', 'edit': 'hidden' },

@@ -96,25 +96,34 @@ class SpreadMetadata(BrowserView):
         # import pdb;pdb.set_trace()
         context = self.context
         request = self.request
+        currentFolder = context.absolute_url()
         portal = context.portal_url.getPortalObject()
         catalog = getToolByName(portal , 'portal_catalog')
         query = {}
-        query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':1}
-        query['portal_type'] = 'Image'
+        query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':9}
+        query['portal_type'] = ('Image' , 'Folder')
+        wheretospread = request.form['wheretospread']
+        if wheretospread == 'Only Local Images':
+            query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':1}
+            query['portal_type'] = ('Image')
         results = catalog(query)
-        # import pdb;pdb.set_trace()
+        import pdb;pdb.set_trace()
         # http://plone.org/documentation/manual/developer-manual/indexing-and-searching/querying-the-catalog
         for brains in results:
-            print brains.getObject().getId()
-            print brains.getObject().Description()
+            if brains.getObject().absolute_url() == currentFolder:
+                print 'NON !!! pas ici'
+            print str(brains.getObject().getId()) + ' ' + str(brains.getObject().absolute_url())
+            # print brains.getObject().Description()
             obj = brains.getObject()
-            print obj['where']
+            # print obj['where']
+        # import pdb;pdb.set_trace()
+
         # print "in Spread Metadata...."
         # print request.form
         # print '----'
         # print catalog
         # print "\n"
-        request = self.request
         nextUrl = self.context.absolute_url()
-        print request.form
+        for k in request.form.keys():
+            print k + ' ' + request.form[k]
         request.response.redirect(nextUrl)
