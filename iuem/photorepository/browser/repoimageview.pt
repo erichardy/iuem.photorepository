@@ -7,25 +7,28 @@
       i18n:domain="collective.googledocsviewer">
 <body>
 <div metal:fill-slot="content-core">
-<h3>repoimageview.pt...</h3>
 <p />
+<h3>General</h3>
+<span tal:repeat="g here/general">
+  <span tal:content="string:${g}">g</span>
+  <br />
+</span>
+<hr />
 <span tal:repeat="loc here/where">
-  <h2 tal:content="string:${loc}">loc</h2>
+  <h3 tal:content="string:${loc}">loc</h3>
 <p />
 </span>
 <p />
-EXIF :<br />
-<span tal:define="exif view/sourceExif" tal:content="string:${exif}">exif</span>
 
+<span tal:content="string:${view/viewImage}">viewImage</span>
+<span tal:replace="structure view/viewImage">viewImage</span>
+<p />
 <div tal:define="exif python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
     <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
   </span>
 
 </div>
-
-<span tal:content="string:${view/viewImage}">viewImage</span>
-<span tal:replace="structure view/viewImage">viewImage</span>
 
 <p />
 <span tal:content="string:${view/sourceImage}">sourceImage</span>

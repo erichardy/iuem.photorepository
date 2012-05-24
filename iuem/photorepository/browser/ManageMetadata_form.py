@@ -27,7 +27,11 @@ class metadataSource(object):
         normalizer = getUtility(INormalizer)
         w = []
         if self.k == 'description' or self.k == 'photographer' or self.k == 'recording_date_time':
-            w.append(SimpleVocabulary.createTerm(self.k,self.k,context[self.k]))
+            w.append(SimpleVocabulary.createTerm(self.k,'toto a la place de self.k',context[self.k]))
+            print 'in metadataSource...'
+            print self.k
+            print context[self.k]
+            print '..'
             return SimpleVocabulary(w)
         for kw in context[self.k]:
             nkw = normalizer.normalize(unicode(kw , 'utf-8'), locale = 'fr')

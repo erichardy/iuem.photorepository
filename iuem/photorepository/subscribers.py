@@ -11,7 +11,7 @@ from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
 
 def installRepoImage(obj, event):
-    print 'entree dans installRepoImage.'
+    # print 'entree dans installRepoImage.'
     f_uploaded =  obj.getImageAsFile()
     # currentImage = Image.open(f_uploaded)
     ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
@@ -22,17 +22,16 @@ def installRepoImage(obj, event):
     doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
-
-    print 'dans updateRepoImage'
-    print event
+    # print 'dans updateRepoImage'
+    # print event
     typeEvent = str(event.__class__)
-    if typeEvent == "<class 'Products.Archetypes.event.ObjectInitializedEvent'>":
+    if typeEvent== "<class 'Products.Archetypes.event.ObjectInitializedEvent'>":
         """do noting because ObjectInitializedEvent !!!..."""
         return
     request = obj.REQUEST
     if request.form.has_key('image_file'):
         if request.form['image_file'].filename != '':
-            ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
+            ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
             ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
             doThumbnail(obj)

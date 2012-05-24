@@ -50,7 +50,7 @@
       <span tal:content="python:view.getVocabValue('imtagvoc',gen)">general</span>
       <br />
     </span>
-    <input type="hidden" name="general" tal:attributes="value view/general">
+    <input type="hidden" name="general" tal:attributes="value string:${view/general}">
   </td>
 </tr>
 

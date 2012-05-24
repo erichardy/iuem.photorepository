@@ -23,7 +23,14 @@ class repoImageView(BrowserView):
     
     def viewImage(self):
         return self.context.tag()
+    
+    def where(self):
+        return eval(self.context.where)
+
+    def general(self):
+        return  eval(str(self.context.general))
 
     def sourceExif(self):
-        return self.context.exif
+        # import pdb;pdb.set_trace()
+        return eval(self.context.exif)
             
