@@ -3,8 +3,10 @@ from zope import schema
 from plone.autoform.form import AutoExtensibleForm
 from z3c.form import form , button
 from plone.z3cform import layout
+import plone.directives
+import datetime
 
-class ITestForm(interface.Interface):
+class ITestForm(plone.directives.form.Schema):
     """ItestForm"""
     vehicle = schema.Choice(title=u"Choice your vehicle",
                             description=u"for our next trip",
@@ -12,7 +14,16 @@ class ITestForm(interface.Interface):
     destination = schema.Choice(title=u"Where" ,
                                 description=u"short or long trip",
                                 values=['Brest','Brazil','Italia','Paris'])
-    
+    start = schema.Datetime(title=u"Start date",
+                            required=False
+    )
+
+@plone.directives.form.default_value(field=ITestForm['start'])
+def startDefaultValue(data):
+    # To get hold of the folder, do: context = data.context
+    return datetime.datetime.today() + datetime.timedelta(7)
+
+
 class TestForm(AutoExtensibleForm , form.Form):
     schema = ITestForm
     ignoreContext = True

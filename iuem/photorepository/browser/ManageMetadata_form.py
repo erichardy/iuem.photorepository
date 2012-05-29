@@ -1,9 +1,14 @@
 from five import grok
-from plone.directives import form
-
 from zope import schema
+
+from plone.directives import form
+import datetime
+from DateTime import DateTime
+from plone.indexer import indexer
+
 from z3c.form import button , field
 from z3c.form.browser.checkbox import CheckBoxFieldWidget
+# from z3c.form.browser.textarea import TextAreaWidget
 # from z3c.form.browser.select import SelectFieldWidget
 # from Products.statusmessages.interfaces import IStatusMessage
 # from zope.component import adapts
@@ -27,25 +32,27 @@ class metadataSource(object):
         normalizer = getUtility(INormalizer)
         w = []
         if self.k == 'description' or self.k == 'photographer' or self.k == 'recording_date_time':
+            """
             w.append(SimpleVocabulary.createTerm(self.k,'toto a la place de self.k',context[self.k]))
             print 'in metadataSource...'
             print self.k
             print context[self.k]
             print '..'
             return SimpleVocabulary(w)
+            """
+            return unicode(context[self.k], 'utf-8')
+            
         for kw in context[self.k]:
             nkw = normalizer.normalize(unicode(kw , 'utf-8'), locale = 'fr')
             ukw = unicode(kw , 'utf-8')
             w.append(SimpleVocabulary.createTerm(nkw,nkw,ukw))   
         return SimpleVocabulary(w)
-    
-class IManageMetadataForm(form.schema.Schema):
-    """metadata form"""
 
+class IManageMetadataForm(form.Schema):
+    """metadata form"""
     wheretospread  = schema.Choice(title=_(u"Where to spread"),
                      required=True,
                      description=_(u"Only Local Images = only images in this Folder; Images here and in all sub-folders = to all images and folders under this folder"),
-                     # value_type=schema.Choice(source=metadataSource('wheretospread'))
                      values=[_(u"Only Local Images"),_(u"Images here and in all sub-folders")]
                      )
     addorreplace   = schema.Choice(title=_(u"Add or Replace"),
@@ -54,10 +61,17 @@ class IManageMetadataForm(form.schema.Schema):
                      values=['Add metadatas','Replace metadatas'],
                      default='Add metadatas'
                      )
-    description   = schema.Set(title=_(u"General Description"),
+    descrvalue   = schema.Text(title=_(u"Description content"),
+                    # readonly = True,
+                    description = u"Description Content...",
+                    required=False
+                    ) 
+    description   = schema.Bool(title=_(u"General Description"),
                      required=False,
-                     description=_(u"Description Field"),
-                     value_type=schema.Choice(source=metadataSource('description'))
+                     # description=_(u"Description Field..."),
+                     description=_(u"description"),
+                     default=True
+                     # value_type=schema.Choice(source=metadataSource('description'))
                      )
     general = schema.Set(title=u"general",
                      required=False,
@@ -90,17 +104,26 @@ class IManageMetadataForm(form.schema.Schema):
                      value_type=schema.Choice(source=metadataSource('licencetype'))
                      )
     
-    recording_date_time = schema.Set(title=u"recording_date_time",
+    recording_date_time = schema.Bool(title=u"recording_date_time",
                      required=False,
                      description=_(u"recording_date_time"),
-                     value_type=schema.Choice(source=metadataSource('recording_date_time'))
+                     # value_type=schema.Choice(source=metadataSource('recording_date_time'))
+                     default=True
                      )
     
-    photographer = schema.Set(title=u"photographer",
+    photographer = schema.Bool(title=u"photographer",
                      required=False,
-                     description=u"photographer",
-                     value_type=schema.Choice(source=metadataSource('photographer'))
+                     description=_(u"photographer"),
+                     default=True
+                     # value_type=schema.Choice(source=metadataSource('photographer'))
                      )
+    
+
+@form.default_value(field=IManageMetadataForm['descrvalue'])
+def default_descrvalue(data):
+    # return data.context.Description()
+    print "dans default_descr...."
+    return u"la valeur retournee...." 
 
 
 
@@ -112,22 +135,24 @@ class ManageMetadataForm(form.form.SchemaForm):
     label = _(u"attribute metadata to images and/or folders")
     description = _(u"Decide where to spread metadatas and which metadatas")
     fields = field.Fields(IManageMetadataForm)
-    fields['description'].widgetFactory = CheckBoxFieldWidget
+    # fields['description'].widgetFactory = CheckBoxFieldWidget
+    # fields['descrvalue'].widgetFactory = TextAreaWidget
     fields['where'].widgetFactory = CheckBoxFieldWidget
     fields['laboratory'].widgetFactory = CheckBoxFieldWidget
     fields['reseachproject'].widgetFactory = CheckBoxFieldWidget
     fields['general'].widgetFactory = CheckBoxFieldWidget
     fields['science'].widgetFactory = CheckBoxFieldWidget
     fields['licencetype'].widgetFactory = CheckBoxFieldWidget
-    fields['recording_date_time'].widgetFactory = CheckBoxFieldWidget
-    fields['photographer'].widgetFactory = CheckBoxFieldWidget
+    # fields['recording_date_time'].widgetFactory = CheckBoxFieldWidget
+    # fields['photographer'].widgetFactory = CheckBoxFieldWidget
     
     method = "post"
     
+    """
     def getContent(self):
         context = self.context
         data = {}
-        data['description'] = context.Description()
+        data['descrvalue'] = context.Description()
         data['where'] = context.where
         data['laboratory'] = context.laboratory
         data['reseachproject'] = context.reseachproject
@@ -138,7 +163,8 @@ class ManageMetadataForm(form.form.SchemaForm):
         data['photographer'] = context.photographer
         data['wheretospread'] = [_(u"Only Local Images"),_(u"Images here and in all sub-folders")]
         return data
-            
+    """
+     
     @button.buttonAndHandler(_(u'Spread Metadatas'),accessKey=u"o")
     def handleOk(self, action):
         data, errors = self.extractData()
