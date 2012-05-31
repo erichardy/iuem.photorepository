@@ -23,7 +23,7 @@
 <span tal:content="string:${view/viewImage}">viewImage</span>
 <span tal:replace="structure view/viewImage">viewImage</span>
 <p />
-<div tal:define="exif python:view.sourceExif()">
+<div tal:define="exif python:view.sourceExif()" tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
     <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
   </span>

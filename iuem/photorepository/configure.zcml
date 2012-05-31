@@ -11,6 +11,10 @@
 
   <includeDependencies package="." />
 
+  <include package="five.grok" />
+  <include package="plone.directives.form" file="meta.zcml" />
+  <include package="plone.directives.form" />
+  
   <include package="archetypes.schemaextender" />
   <include package=".browser" />
   <include package=".upgrades" />

@@ -1,12 +1,13 @@
-from zope import interface
+# from zope import interface
 from zope import schema
 from plone.autoform.form import AutoExtensibleForm
-from z3c.form import form , button
+from z3c.form import button
+from z3c.form.form import Form
 from plone.z3cform import layout
-import plone.directives
+from plone.directives import form
 import datetime
 
-class ITestForm(plone.directives.form.Schema):
+class ITestForm(form.Schema):
     """ItestForm"""
     vehicle = schema.Choice(title=u"Choice your vehicle",
                             description=u"for our next trip",
@@ -14,21 +15,32 @@ class ITestForm(plone.directives.form.Schema):
     destination = schema.Choice(title=u"Where" ,
                                 description=u"short or long trip",
                                 values=['Brest','Brazil','Italia','Paris'])
+    commentaire = schema.Text(title=u"Commentaire")
     start = schema.Datetime(title=u"Start date",
                             required=False
     )
 
-@plone.directives.form.default_value(field=ITestForm['start'])
+@form.default_value(field=ITestForm['start'])
 def startDefaultValue(data):
     # To get hold of the folder, do: context = data.context
     return datetime.datetime.today() + datetime.timedelta(7)
 
+@form.default_value(field=ITestForm['commentaire'])
+def vehicleDefaulValue(data):
+    return u"Car"
 
-class TestForm(AutoExtensibleForm , form.Form):
+
+class TestForm(AutoExtensibleForm, Form):
     schema = ITestForm
-    ignoreContext = True
+    ignoreContext = False
     
     method = "post"
+    
+    def getContent(self):
+        context = self.context
+        data = {}
+        data['commentaire'] = unicode(context.Description() , 'utf-8')
+        return data
             
     @button.buttonAndHandler(u"Ok, have a good trip")
     def goodTrip(self, action):

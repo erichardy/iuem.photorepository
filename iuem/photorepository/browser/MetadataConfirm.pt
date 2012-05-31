@@ -46,19 +46,18 @@
 <tr tal:condition="view/general">
   <td>Mots cles generaux</td>
   <td>
-    <span tal:repeat="gen view/general">
-      <span tal:content="python:view.getVocabValue('imtagvoc',gen)">general</span>
+    <span tal:repeat="general view/general">
+      <span tal:content="string:${general}">general</span>
       <br />
     </span>
-    <input type="hidden" name="general" tal:attributes="value string:${view/general}">
   </td>
 </tr>
 
 <tr tal:condition="view/science">
   <td>Mots cles scientifiques</td>
   <td>
-    <span tal:repeat="sci view/science">
-      <span tal:content="python:view.getVocabValue('imscitagvoc',sci)">science</span>
+    <span tal:repeat="science view/science">
+      <span tal:content="string:${science}">science</span>
       <br />
     </span>
     <input type="hidden" name="science" tal:attributes="value view/science">
@@ -68,8 +67,8 @@
 <tr tal:condition="view/where">
   <td>Localisation</td>
   <td>
-    <span tal:repeat="wh view/where">
-      <span tal:content="python:view.getVocabValue('imlocationvoc',wh)">where</span>
+    <span tal:repeat="where view/where">
+      <span tal:content="string:${where}">science</span>
       <br />
     </span>
     <input type="hidden" name="where" tal:attributes="value view/where">
@@ -79,8 +78,8 @@
 <tr tal:condition="view/laboratory">
   <td>Laboratoire</td>
   <td>
-    <span tal:repeat="lab view/laboratory">
-      <span tal:content="python:view.getVocabValue('imteamvoc',lab)">laboratory</span>
+    <span tal:repeat="laboratory view/laboratory">
+      <span tal:content="string:${laboratory}">laboratory</span>
       <br />
     </span>
     <input type="hidden" name="laboratory" tal:attributes="value view/laboratory">
@@ -90,8 +89,8 @@
 <tr tal:condition="view/reseachproject">
   <td>Projet de recherche</td>
   <td>
-    <span tal:repeat="proj view/reseachproject">
-      <span tal:content="python:view.getVocabValue('improjectvoc',proj)">reseachproject</span>
+    <span tal:repeat="reseachproject view/reseachproject">
+      <span tal:content="string:${reseachproject}">reseachproject</span>
       <br />
     </span>
     <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject">
@@ -101,8 +100,8 @@
 <tr tal:condition="view/licencetype">
   <td>Type de licence</td>
   <td>
-    <span tal:repeat="lic view/licencetype">
-      <span tal:content="python:view.getVocabValue('imlicencevoc',lic)">licencetype</span>
+    <span tal:repeat="licencetype view/licencetype">
+      <span tal:content="string:${licencetype}">licencetype</span>
       <br />
     </span>
     <input type="hidden" name="licencetype" tal:attributes="value view/licencetype">
@@ -111,14 +110,16 @@
 
 <tr tal:condition="view/photographer">
   <td>Photographe</td>
-  <td tal:content="view/photographer">photographer
-  <input type="hidden" name="photographer" tal:attributes="value view/photographer">
+  <td>
+    <span tal:content="string:${view/photographer}">photographer</span>
+    <input type="hidden" name="photographer" tal:attributes="value view/photographer">
   </td>
 </tr>
 
 <tr tal:condition="view/recording_date_time">
-  <td>recording_date_time</td>
-  <td tal:content="view/recording_date_time">recording_date_time
+  <td>Date et heure des Photos</td>
+  <td>
+  <span tal:content="string:${view/recording_date_time}">recording_date_time</span>
   <input type="hidden" name="recording_date_time" tal:attributes="value view/recording_date_time">
   </td>
 </tr>

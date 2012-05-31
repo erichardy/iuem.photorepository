@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="iuem.photorepository">
+<body>
+<div metal:fill-slot="content-core">
+<div>
+<style type="text/css">
+#parent-fieldname-description {
+  display: none;
+  }
+.documentFirstHeading {
+  display: none;
+} 
+</style>
+
+<H1>Choix des metadonnees a propager...</h1>
+<form name="choice_spread_metadata" tal:attributes="action string:@@metadataconfirm_view" method="post">
+<table border="0" class="ManageMetadataFormView">
+<tbody>
+<tr>
+  <td>Niveau de Propagation</td>
+  <td>
+  	<select name="wheretospread">
+  		<option selected="selected">Only Local Images</option>
+  		<option>Images here and in all sub-folders</option>
+  	</select> 
+  </td>
+</tr>
+<tr>
+  <td>Ajouter ou Remplacer</td>
+  <td>
+  <select name="addorreplace">
+  	<option selected="selected">Add metadatas</option>
+  	<option>Replace metadatas</option>
+  </select>
+  </td>
+</tr>
+
+<tr tal:condition="view/description">
+  <td>Description : </td>
+  <td>
+  <input type="checkbox" name="description" tal:attributes="value view/description">
+  <span tal:content="string: ${view/description}">description</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/general">
+  <td>Mots cles generaux</td>
+  <td>
+  	<span tal:repeat="gen view/general">
+  		
+  		<input type="checkbox" name="general" tal:attributes="value string:${gen}" checked="checked">
+  		<span tal:content="string:${gen}">general</span>
+  	    <br />
+  	</span>
+  </td>
+</tr>
+<tr tal:condition="view/science">
+  <td>Mots cles scientifiques</td>
+  <td>
+  	<span tal:repeat="science view/science">
+  		<input type="checkbox" name="science" tal:attributes="value string:${science}" checked="checked">
+  		<span tal:content="string:${science}">science</span>
+  	    <br />
+  	</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/where">
+  <td>Localisation</td>
+  <td>
+    <span tal:repeat="where view/where">
+  		<input type="checkbox" name="where" tal:attributes="value string:${where}" checked="checked">
+  		<span tal:content="string:${where}">science</span>
+  	    <br />
+  	</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/laboratory">
+  <td>Laboratoire</td>
+  <td>
+    <span tal:repeat="laboratory view/laboratory">
+  		<input type="checkbox" name="laboratory" tal:attributes="value string:${laboratory}" checked="checked">
+   		<span tal:content="string:${laboratory}">laboratory</span>
+   	    <br />
+  	</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/reseachproject">
+  <td>Projet de recherche</td>
+  <td>
+    <span tal:repeat="reseachproject view/reseachproject">
+  		<input type="checkbox" name="reseachproject" tal:attributes="value string:${reseachproject}" checked="checked">
+  		<span tal:content="string:${reseachproject}">reseachproject</span>
+  	    <br />
+  	</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/licencetype">
+  <td>Type de licence</td>
+  <td>
+    <span tal:repeat="licencetype view/licencetype">
+  		<input type="checkbox" name="licencetype" tal:attributes="value string:${licencetype}" checked="checked">
+  		<span tal:content="string:${licencetype}">licencetype</span>
+  	    <br />
+  	</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/photographer">
+  <td>Photographe</td>
+  <td>
+      <input type="checkbox" name="photographer" tal:attributes="value view/photographer" checked="checked">
+      <span tal:content="string:${view/photographer}">photographer</span>
+  </td>
+</tr>
+
+<tr tal:condition="view/recording_date_time">
+  <td>Date et heure des Photos</td>
+  <td>
+    <input type="checkbox" name="recording_date_time" tal:attributes="value view/recording_date_time">
+    <span tal:content="string:${view/recording_date_time}">recording_date_time</span>
+  </td>
+</tr>
+
+</tbody>
+</table>
+
+  <input name="Validation de la propagation" value="Validation de la propagation" type="submit">
+</form>
+<p />
+
+</div>
+</div>
+</body>
+</html>

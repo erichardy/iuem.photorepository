@@ -5,6 +5,14 @@ from Products.ATContentTypes.interface import IATFolder
 from zope.component import adapts
 from iuem.photorepository.manageVocabulary import imMetadatas
 
+def strToList(strOrList):
+    """ returns a list even if strOrList is a str"""
+    toReturn = []
+    if isinstance(strOrList , str):
+        toReturn.append(strOrList)
+        return toReturn
+    else:
+        return strOrList
 
 
 class MetadataConfirmView(BrowserView):
@@ -15,80 +23,65 @@ class MetadataConfirmView(BrowserView):
         return self.index()
 
     def wheretospread(self):
-        return self.request.form['form.widgets.wheretospread'][0]
+        return self.request.form['wheretospread']
     
     def addorreplace(self):
-        return self.request.form['form.widgets.addorreplace'][0]
+        return self.request.form['addorreplace']
     
     def description(self):
         try:
-            desc = self.request.form['form.widgets.description'][0]
-            return self.context[desc]
+            return self.request.form['description']
         except:
             return False
     
     def general(self):
         try:
-            return self.request.form['form.widgets.general']
+            return strToList(self.request.form['general'])
         except:
             return False
     
     def science(self):
         try:
-            return self.request.form['form.widgets.science']
+            return strToList(self.request['science'])
         except:
             return False
     
     def where(self):
         try:
-            return self.request.form['form.widgets.where']
+            return strToList(self.request['where'])
         except:
             return False
     
     def laboratory(self):
         try:
-            return self.request.form['form.widgets.laboratory']
+            return self.request['laboratory']
         except:
             return False
     
     def reseachproject(self):
         try:
-            return self.request.form['form.widgets.reseachproject']
+            return strToList(self.request['reseachproject'])
         except:
             return False
     
     def licencetype(self):
         try:
-            return self.request.form['form.widgets.licencetype']
+            return strToList(self.request['licencetype'])
         except:
             return False
     
     def recording_date_time(self):
         try:
-            rec = self.request.form['form.widgets.recording_date_time'][0]
-            return self.context[rec]
+            return self.request['recording_date_time']
         except:
             return False
     
     def photographer(self):
         try:
-            phot = self.request.form['form.widgets.photographer'][0]
-            return self.context[phot]
+            return self.request['photographer']
         except:
             return False
     
-    def getVocabValue(self, vocabulary , tokken):
-        """ return the mapped value of tokken extracted from the vocabulary""" 
-        vocabs = getToolByName(self.context,'portal_vocabularies')
-        try:
-            vocab = vocabs[vocabulary]
-        except:
-            return False
-        try:
-            return vocab[tokken].title
-        except:
-            return False
-        
 
 class SpreadMetadata(BrowserView):
     
@@ -126,11 +119,14 @@ def updateMetadata(obj , form , context):
     print '------------------------'
     print 'in updateMetadata...'
     print obj.absolute_url()
-    print form
-    print vocabs
+    print obj.photographer
+    obj.photographer = form['photographer']
+    print obj.photographer
+  
     print '------------------------'
     """first, we treat metadata without vocabulary
     description , recording_date_time , photographer
-    BUT, there is a bug : no valid values for recording_date_time and photographer in the request.form
     """
-     
+    obj.reindexObject()
+    return
+

@@ -34,6 +34,7 @@
       for="*"
       name="manage_metadata"
       class=".ManageMetadata_form.ManageMetadataFormView"
+      template="ManageMetadataFormView.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

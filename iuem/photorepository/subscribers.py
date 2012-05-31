@@ -33,6 +33,7 @@ def updateRepoImage(obj, event):
         if request.form['image_file'].filename != '':
             ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+            print exif
             ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
             doThumbnail(obj)
     # import pdb;pdb.set_trace()

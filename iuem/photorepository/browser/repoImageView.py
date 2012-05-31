@@ -31,6 +31,8 @@ class repoImageView(BrowserView):
         return  eval(str(self.context.general))
 
     def sourceExif(self):
-        # import pdb;pdb.set_trace()
-        return eval(self.context.exif)
+        try:
+            return eval(str(self.context.exif))
+        except:
+            return False
             
