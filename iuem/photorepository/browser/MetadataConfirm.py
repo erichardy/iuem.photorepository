@@ -4,6 +4,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IATFolder
 from zope.component import adapts
 from iuem.photorepository.manageVocabulary import imMetadatas
+from iuem.photorepository.extender import ImageImageRepositoryExtender
+from iuem.photorepository.extender import FolderImageRepositoryExtender
 
 def strToList(strOrList):
     """ returns a list even if strOrList is a str"""
@@ -82,7 +84,18 @@ class MetadataConfirmView(BrowserView):
         except:
             return False
     
-
+def nbField(obj , name):
+    """returns the field number of the named field in the extended schema"""
+    if obj.portal_type == 'Image':
+        l = len(ImageImageRepositoryExtender(obj).fields)
+        for i in range(0,len(ImageImageRepositoryExtender(obj).fields)):
+            if ImageImageRepositoryExtender(obj).fields[i].getName() == name:
+                return i
+    else:
+        for i in range(0,len(FolderImageRepositoryExtender(obj).fields)):
+            if FolderImageRepositoryExtender(obj).fields[i].getName() == name:
+                return i
+            
 class SpreadMetadata(BrowserView):
     
     def __call__(self):
@@ -102,31 +115,50 @@ class SpreadMetadata(BrowserView):
             query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':1}
             query['portal_type'] = ('Image')
         results = catalog(query)
-        # import pdb;pdb.set_trace()
         # http://plone.org/documentation/manual/developer-manual/indexing-and-searching/querying-the-catalog
         for brains in results:
             if brains.getObject().absolute_url() != currentFolder:
-                print str(brains.getObject().getId()) + ' ' + str(brains.getObject().absolute_url())
+                # print str(brains.getObject().getId()) + ' ' + str(brains.getObject().absolute_url())
                 obj = brains.getObject()
                 updateMetadata(obj , request.form , context)
         nextUrl = self.context.absolute_url()
-        for k in request.form.keys():
-            print k + ' ' + request.form[k]
         request.response.redirect(nextUrl)
     
 def updateMetadata(obj , form , context):
     vocabs = getToolByName(context , 'portal_vocabularies')
+    commonMetadatas = imMetadatas().commonMetadatas
+    # import pdb;pdb.set_trace()
     print '------------------------'
     print 'in updateMetadata...'
     print obj.absolute_url()
-    print obj.photographer
-    obj.photographer = form['photographer']
-    print obj.photographer
-  
+    for k in form.keys():
+        if k in commonMetadatas:
+            print k + ':' + form[k] + ':::' + str(obj[k])
+            if k == 'description':
+                obj.setDescription(form[k])
+                # import pdb;pdb.set_trace()
+            elif k in ['recording_date_time','photographer']:
+                # we always replace non vocabulary values
+                field = nbField(obj,k)
+                if obj.portal_type == 'Image':
+                    ImageImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+                else:
+                    FolderImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+                # import pdb;pdb.set_trace()
+            else:
+                if form['addorreplace'] == 'Add metadatas':
+                    for data in eval(form[k]):
+                        if not data in obj[k]:
+                            obj[k].append(data)
+                else:
+                    field = nbField(obj,k)
+                    if obj.portal_type == 'Image':
+                        ImageImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+                    else:
+                        FolderImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+            print '...' + k + ':' + form[k] + ':::' + str(obj[k])                 
+        
     print '------------------------'
-    """first, we treat metadata without vocabulary
-    description , recording_date_time , photographer
-    """
     obj.reindexObject()
     return
 

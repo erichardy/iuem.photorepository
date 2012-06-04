@@ -50,6 +50,7 @@
       <span tal:content="string:${general}">general</span>
       <br />
     </span>
+    <input type="hidden" name="general" tal:attributes="value view/general">
   </td>
 </tr>
 

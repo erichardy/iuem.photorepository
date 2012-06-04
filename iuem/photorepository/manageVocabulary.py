@@ -46,6 +46,18 @@ class imMetadatas:
     vocabMetadata['laboratory'] = 'imteamvoc'
     vocabMetadata['reseachproject'] = 'improjectvoc'
     vocabMetadata['licencetype'] = 'imlicencevoc'
+    
+    commonMetadatas = []
+    commonMetadatas.append('description')
+    commonMetadatas.append('general')
+    commonMetadatas.append('science')
+    commonMetadatas.append('where')
+    commonMetadatas.append('laboratory')
+    commonMetadatas.append('reseachproject')
+    commonMetadatas.append('licencetype')
+    commonMetadatas.append('recording_date_time')
+    commonMetadatas.append('photographer')
+    commonMetadatas.append('watermark')
 
 def initImVocs(context):
     """ 

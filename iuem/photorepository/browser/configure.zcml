@@ -29,7 +29,13 @@
       template="repoimageview.pt"
       permission="zope2.View"
       />
-
+<browser:page
+      name="repo_folder_album_view"
+      for="*"
+      class=".repoFolderView.repoFolderAlbumView"
+      template="repofolderalbumview.pt"
+      permission="zope2.View"
+      />
   <browser:page
       for="*"
       name="manage_metadata"

@@ -9,6 +9,7 @@ from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
+from  Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
 
 def installRepoImage(obj, event):
     # print 'entree dans installRepoImage.'
@@ -22,21 +23,19 @@ def installRepoImage(obj, event):
     doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
-    # print 'dans updateRepoImage'
-    # print event
-    typeEvent = str(event.__class__)
-    if typeEvent== "<class 'Products.Archetypes.event.ObjectInitializedEvent'>":
-        """do noting because ObjectInitializedEvent !!!..."""
+    """
+    """
+    if not isinstance(event,ObjectEditedEvent):
         return
     request = obj.REQUEST
+    # If the image field was modified...
     if request.form.has_key('image_file'):
         if request.form['image_file'].filename != '':
             ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-            print exif
+            # print exif
             ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
             doThumbnail(obj)
-    # import pdb;pdb.set_trace()
 
 # @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):

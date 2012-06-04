@@ -38,6 +38,7 @@ setup(name='iuem.photorepository',
           'plone.app.registry',
           'Products.ATVocabularyManager',
           'Products.AddRemoveWidget',
+          'collective.js.jqueryui',
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(

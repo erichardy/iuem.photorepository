@@ -8,28 +8,87 @@
 <body>
 <div metal:fill-slot="content-core">
 <p />
+<span tal:replace="nothing">
+  Add class "collapsedOnLoad" to the dl tag below for a collapsed on load
+</span>
+<dl class="collapsible">
+<dt class="collapsibleHeader">
+Metadatas
+</dt>
+
+<dd class="collapsibleContent">
+<h3>description</h3>
+  <span tal:content="string:${view/description}">descr...
+  </span>
+<hr />
+
 <h3>General</h3>
-<span tal:repeat="g here/general">
-  <span tal:content="string:${g}">g</span>
+<span tal:repeat="general view/general">
+  <span tal:content="string:${general}">general</span>
   <br />
 </span>
 <hr />
-<span tal:repeat="loc here/where">
-  <h3 tal:content="string:${loc}">loc</h3>
-<p />
-</span>
-<p />
+<h3>science</h3>
+  <span tal:repeat="science view/science">
+    <span tal:content="string:${science}">science</span>
+    <br />
+  </span>
+<hr />
+
+<h3>where</h3>
+  <span tal:repeat="where view/where">
+    <span tal:content="string:${where}">where</span>
+    <br />
+  </span>
+<hr />
+<h3>laboratory</h3>
+  <span tal:repeat="laboratory view/laboratory">
+    <span tal:content="string:${laboratory}">laboratory</span>
+    <br />
+  </span>
+<hr />
+<h3>reseachproject</h3>
+  <span tal:repeat="reseachproject view/reseachproject">
+    <span tal:content="string:${reseachproject}">reseachproject</span>
+    <br />
+  </span>
+<hr />
+<h3>licencetype</h3>
+  <span tal:repeat="licencetype view/licencetype">
+    <span tal:content="string:${licencetype}">licencetype</span>
+    <br />
+  </span>
+<hr />
+
+<h3>recording_date_time</h3>
+  <span tal:content="string:${view/recording_date_time}">
+  </span>
+<hr />
+<h3>photographer</h3>
+  <span tal:content="string:${view/photographer}">
+  </span>
+<hr />
+
+</dd>
+</dl>
+
 
 <span tal:content="string:${view/viewImage}">viewImage</span>
 <span tal:replace="structure view/viewImage">viewImage</span>
 <p />
+<dl class="collapsible collapsedOnLoad">
+<dt class="collapsibleHeader">
+Donnees EXIF
+</dt>
+<dd>
 <div tal:define="exif python:view.sourceExif()" tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
     <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
   </span>
 
 </div>
-
+</dd>
+</dl>
 <p />
 <span tal:content="string:${view/sourceImage}">sourceImage</span>
 <span tal:replace="structure view/sourceImage">source Image</span>
