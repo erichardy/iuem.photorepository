@@ -72,10 +72,11 @@ Metadatas
 </dd>
 </dl>
 
-
 <span tal:content="string:${view/viewImage}">viewImage</span>
 <span tal:replace="structure view/viewImage">viewImage</span>
 <p />
+<span tal:content="string:${view/sourceImage}">sourceImage</span>
+<span tal:replace="structure view/sourceImage">source Image</span>
 <dl class="collapsible collapsedOnLoad">
 <dt class="collapsibleHeader">
 Donnees EXIF
@@ -90,8 +91,7 @@ Donnees EXIF
 </dd>
 </dl>
 <p />
-<span tal:content="string:${view/sourceImage}">sourceImage</span>
-<span tal:replace="structure view/sourceImage">source Image</span>
+
 </div>
 </body>
 </html>

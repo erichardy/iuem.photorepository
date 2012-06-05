@@ -6,6 +6,18 @@ display: none !important;
 .formTabs {
 	display: none !important;
 }
+
+table.ManageMetadataFormView td {
+	padding: 5px;
+	color: Black;
+}
+table.ManageMetadataFormView tr:nth-child(odd) {
+	background: #EEC;
+	}
+table.ManageMetadataFormView tr:nth-child(even) {
+	background: #CEE;
+	}
+
 /*
 body {
 	background-color: #F9F9F9;

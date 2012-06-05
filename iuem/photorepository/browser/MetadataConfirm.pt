@@ -19,7 +19,7 @@
 
 <H1>Confirmation de la propagation des metadonnees...</h1>
 <form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
-<table border="1">
+<table border="1" class="ManageMetadataFormView">
 <tbody>
 <tr>
   <td>Niveau de Propagation</td>
