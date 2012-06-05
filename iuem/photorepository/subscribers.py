@@ -122,17 +122,40 @@ def updateVocabularies(obj , event):
     myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
+    import pdb;pdb.set_trace()
     for k in vocabs.keys():
+        # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
         # print 'k = ' + str(k) + ' ' + str(myVocab)
         # should call cleanupKeywords(obj[k])
         if '' in obj[k]: obj[k].remove('')
+        # Maybe, the solution is to use addTerm('term2', 'second time', silentignore=True)
+        # according to the doc at :
+        # https://svn.softwareborsen.dk/softwareborsen/products/ATVocabularyManager/doc/simplevocabulary.txt
+        # rechercher si des valeurs existent dans les vocabulaires, pas dans les keys()
+        # mais dans les values avec : myVocab.values()[NNN].getTermValue() ou getVocabularyValue()
+        # myVocab.values() est une liste de SimpleVocabularyTerm dont on peut extraire la 
+        # cle avec getTermKey() ou getVocabularyKey()
+        # la valeur avec getTermValue() ou getVocabularyValue()
+        # apres avoir supprime les espaces avant et apres les mots saisis, il faut parcourir
+        # l'ensemble des valeurs du vocabulaire (avec myVocab.values()[NNN].getTermValue())
+        # et si on ne trouve pas de cle correspondante, on fabrique une cle avec normalizer.normalize(...
+        # et on insere avec myVocab.addTerm
+        # si le vocabulaire est vide au depart, on pourrait prendre l'option de ne proceder
+        # qu'avec un remplissage au fur et a mesure avec 
+        # 1- la cle construite avec normalizer.normalize(
+        # 2- a chaque fois, on ajoute un nouveau term (avec addTerm) en utilisant l'option silentignore=True
+        #NB: on peut aussi travailler avec myVocab.getVocabularyDict() qui retourne un simple dictionnaire
+        # donc tester si : 'Mouillage' in myVocab.getVocabularyDict().values()
         for kword in obj[k]:
             ukword = unicode(kword,'utf-8')
-            normalizedWord = normalizer.normalize(ukword, locale = 'fr')
-            if not hasattr(myVocab , normalizedWord):
+            # ajout non teste
+            if not kword in myVocab.getVocabularyDict().values():
+                # on ajoute un couple (cle,valeur)
+                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
                 # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
                 # myVocab[normalizedWord].setTitle(word)
+                # use of kword or ukword ????
                 myVocab.addTerm(normalizedWord , kword)
         
     # import pdb;pdb.set_trace()
@@ -145,5 +168,13 @@ def updateVocabularies(obj , event):
                         tal:condition="python:not val in selectedItems"
                         tal:content="python:vocabulary.getValue(item)"
                         tal:attributes="value val;">Item</option>
+                  </tal:block>
+    original : 
+                  <tal:block repeat="item vocabulary/keys">
+                    <option
+                        value="#"
+                        tal:condition="python:not item in selectedItems"
+                        tal:content="python:vocabulary.getValue(item)"
+                        tal:attributes="value item;">Item</option>
                   </tal:block>
     """
