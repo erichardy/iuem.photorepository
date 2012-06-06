@@ -14,3 +14,10 @@ Event handlers :
 Manipulating images :
 - http://collective-docs.readthedocs.org/en/latest/images/content.html
 
+Un bug qui persiste : apres avoir procede a la propagation de metadonnees, si on ajoute un dossier ou
+une image, certains champs sont pre-remplis avec des valeurs. Ca semble aleatoire autant en ce qui
+concerne le type d'objet ajoute que les champs eux-memes....????
+C'est comme si les champs de metadonnees etaient pre-remplis lors de l'appel au formulaire d'ajout
+Ce n'est pas dependant du navigateur.
+Si on re-demarre le serveur, les champs sont bien re-initialises ˆ 'rien'
+En tout cas, c'est particulierement difficile a reproduire....

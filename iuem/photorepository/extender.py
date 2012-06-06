@@ -114,6 +114,7 @@ class FolderImageRepositoryExtender(object):
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
+            default_method = "Creator",
             widget = StringWidget(
                     label=u"Author of the photo",
                     description = u"Who owns this photo",

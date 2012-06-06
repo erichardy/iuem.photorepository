@@ -21,6 +21,11 @@
   
   <i18n:registerTranslations directory="locales" />
 
+  <permission
+    id="iuem_photorepository.viewFullImage"
+    title="iuem.photorepository: View Full Image"
+  />
+
   <genericsetup:registerProfile
       name="default"
       title="iuem.photorepository"
