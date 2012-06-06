@@ -1,29 +1,41 @@
 from zope.publisher.browser import BrowserView
+from Products.CMFCore.utils import getToolByName
+from iuem.photorepository.manageVocabulary import imMetadatas
 
 class repoFolderAlbumView(BrowserView):
     """customization of atct_album_view
     """
     
     def general(self):
-        return  eval(str(self.context.general))
-    
+        return self.metadataValues('general')
+
     def science(self):
-        return  eval(str(self.context.science))
+        return self.metadataValues('science')
     
     def where(self):
-        return eval(str(self.context.where))
+        return self.metadataValues('where')
     
     def laboratory(self):
-        return eval(str(self.context.laboratory))
+        return self.metadataValues('laboratory')
     
     def reseachproject(self):
-        return eval(str(self.context.reseachproject))
+        return self.metadataValues('reseachproject')
     
     def licencetype(self):
-        return eval(str(self.context.licencetype))
+        return self.metadataValues('licencetype')
     
     def recording_date_time(self):
         return str(self.context.recording_date_time)
     
     def photographer(self):
         return str(self.context.photographer)
+    
+    def metadataValues(self , field):
+        Kmetadatas = eval(str(self.context[field]))
+        myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
+        vocab = myVocabsTool[imMetadatas.vocabMetadata[field]]
+        metadatas = []
+        # import pdb;pdb.set_trace()
+        for k in Kmetadatas:
+            metadatas.append(vocab.getVocabularyDict()[k])
+        return metadatas

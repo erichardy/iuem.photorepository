@@ -87,7 +87,6 @@ class MetadataConfirmView(BrowserView):
 def nbField(obj , name):
     """returns the field number of the named field in the extended schema"""
     if obj.portal_type == 'Image':
-        l = len(ImageImageRepositoryExtender(obj).fields)
         for i in range(0,len(ImageImageRepositoryExtender(obj).fields)):
             if ImageImageRepositoryExtender(obj).fields[i].getName() == name:
                 return i
@@ -131,6 +130,28 @@ def updateMetadata(obj , form , context):
     print '------------------------'
     print 'in updateMetadata...'
     print obj.absolute_url()
+    # if request.form['addorreplace'] == 'Replace metadatas'
+    # we cleanup all the fields before to set new values
+    if form['addorreplace'] == 'Replace metadatas':
+        for k in commonMetadatas:
+            field = nbField(obj,k)
+            stringFields = ['recording_date_time','photographer']
+            emptyString = ''
+            emptyList = []
+            # import pdb;pdb.set_trace()
+            if k == 'description':
+                obj.setDescription(emptyString)
+            elif k in stringFields:
+                if obj.portal_type == 'Image':
+                    ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
+                else:
+                    FolderImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
+            else:
+                if obj.portal_type == 'Image':
+                    ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyList)
+                else:
+                    FolderImageRepositoryExtender(obj).fields[field].set(obj,emptyList)
+    #                         
     for k in form.keys():
         if k in commonMetadatas:
             print k + ':' + form[k] + ':::' + str(obj[k])
@@ -153,9 +174,10 @@ def updateMetadata(obj , form , context):
                 else:
                     field = nbField(obj,k)
                     if obj.portal_type == 'Image':
-                        ImageImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+                        ImageImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))
                     else:
-                        FolderImageRepositoryExtender(obj).fields[field].set(obj,form[k])
+                        FolderImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))                    
+                    
             print '...' + k + ':' + form[k] + ':::' + str(obj[k])                 
         
     print '------------------------'

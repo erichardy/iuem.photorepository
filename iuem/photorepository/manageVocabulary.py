@@ -15,17 +15,17 @@ def defineImVocs(self):
     imVocs = {}
     imVocs['imtypevoc'] = (('type1', u'jpeg'), ('type2', u'tiff'), ('type3', u'png'),('type4', u'gif'),('type5', u'psd'), )
     # imVocs['imtypevoc'] = [] or {} ???...
-    imVocs['imlocationvoc'] = (('loc1,',u'Brest'),('loc2,',u'Plouzané'),('loc3,',u'Golf de Gascogne'), )
+    imVocs['imlocationvoc'] = (('brest',u'Brest'),('plouzane',u'Plouzané'), )
     # imVocs['imlocationvoc'] = []
-    imVocs['imtagvoc'] = (('tag1', u'Mer'), ('tag2', u'Navire'), )
+    imVocs['imtagvoc'] = (('mer', u'Mer'), ('navire', u'Navire'), )
     # imVocs['imtagvoc'] = []
-    imVocs['imscitagvoc'] = (('scitag1', u'ADCP'), ('scitag2', u'Mouillage'), )
+    imVocs['imscitagvoc'] = (('adcp', u'ADCP'), ('mouillage', u'Mouillage'), )
     # imVocs['imscitagvoc'] = []
-    imVocs['imteamvoc'] = (('team1', u'LEMAR'), ('team2', u'Domaine Océanique'), ('team3', u'LMEE'),('team4', u'LPO'))
+    imVocs['imteamvoc'] = (('lemar', u'LEMAR'), ('lm2e', u'LMEE'),('lpo', u'LPO'))
     # imVocs['imteamvoc'] = []
-    imVocs['improjectvoc'] = (('camp1', u'Aspex'), ('camp2', u'Fromvar'), )
+    imVocs['improjectvoc'] = (('aspex', u'Aspex'), ('epure', u'EPURE'), )
     # imVocs['improjectvoc'] = []
-    imVocs['imlicencevoc'] = (('lic1', u'CCbySA'), ('lic2', u'Copyright'), )
+    imVocs['imlicencevoc'] = ()
     # imVocs['imlicencevoc'] = []
     return imVocs
 

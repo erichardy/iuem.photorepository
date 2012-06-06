@@ -9,7 +9,7 @@ from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
-from  Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
+from Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
 
 def installRepoImage(obj, event):
     # print 'entree dans installRepoImage.'
@@ -113,7 +113,17 @@ def cleanupKeywords(keywordsList):
     # code to cleanup newKeywordsList here...
     # 
     return newKeywordsList
-    
+
+def nbField(obj , name):
+    """returns the field number of the named field in the extended schema"""
+    if obj.portal_type == 'Image':
+        for i in range(0,len(ImageImageRepositoryExtender(obj).fields)):
+            if ImageImageRepositoryExtender(obj).fields[i].getName() == name:
+                return i
+    else:
+        for i in range(0,len(FolderImageRepositoryExtender(obj).fields)):
+            if FolderImageRepositoryExtender(obj).fields[i].getName() == name:
+                return i
 
 # obj and event.object are identical
 def updateVocabularies(obj , event):
@@ -122,44 +132,45 @@ def updateVocabularies(obj , event):
     myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
-    import pdb;pdb.set_trace()
+    # import pdb;pdb.set_trace()
     for k in vocabs.keys():
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
         # print 'k = ' + str(k) + ' ' + str(myVocab)
         # should call cleanupKeywords(obj[k])
         if '' in obj[k]: obj[k].remove('')
-        # Maybe, the solution is to use addTerm('term2', 'second time', silentignore=True)
-        # according to the doc at :
-        # https://svn.softwareborsen.dk/softwareborsen/products/ATVocabularyManager/doc/simplevocabulary.txt
-        # rechercher si des valeurs existent dans les vocabulaires, pas dans les keys()
-        # mais dans les values avec : myVocab.values()[NNN].getTermValue() ou getVocabularyValue()
-        # myVocab.values() est une liste de SimpleVocabularyTerm dont on peut extraire la 
-        # cle avec getTermKey() ou getVocabularyKey()
-        # la valeur avec getTermValue() ou getVocabularyValue()
-        # apres avoir supprime les espaces avant et apres les mots saisis, il faut parcourir
-        # l'ensemble des valeurs du vocabulaire (avec myVocab.values()[NNN].getTermValue())
-        # et si on ne trouve pas de cle correspondante, on fabrique une cle avec normalizer.normalize(...
-        # et on insere avec myVocab.addTerm
-        # si le vocabulaire est vide au depart, on pourrait prendre l'option de ne proceder
-        # qu'avec un remplissage au fur et a mesure avec 
-        # 1- la cle construite avec normalizer.normalize(
-        # 2- a chaque fois, on ajoute un nouveau term (avec addTerm) en utilisant l'option silentignore=True
-        #NB: on peut aussi travailler avec myVocab.getVocabularyDict() qui retourne un simple dictionnaire
-        # donc tester si : 'Mouillage' in myVocab.getVocabularyDict().values()
+        
+        needToCorrect = False
         for kword in obj[k]:
             ukword = unicode(kword,'utf-8')
             # ajout non teste
-            if not kword in myVocab.getVocabularyDict().values():
-                # on ajoute un couple (cle,valeur)
+            # import pdb;pdb.set_trace()
+            if not kword in myVocab.getVocabularyDict().keys():
                 normalizedWord = normalizer.normalize(ukword, locale = 'fr')
-                # myVocab.invokeFactory('SimpleVocabularyTerm', normalizedWord , title = word)
-                # myVocab[normalizedWord].setTitle(word)
-                # use of kword or ukword ????
-                myVocab.addTerm(normalizedWord , kword)
+                myVocab.addTerm(normalizedWord , kword , silentignore=True)
+                needToCorrect = True
+        
+        if needToCorrect:
+            # replace the new metadata by the correpondig key in the vocabulary
+            newMetadatas = []
+            for kword in obj[k]:
+                ukword = unicode(kword,'utf-8')
+                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
+                if kword == normalizedWord:
+                    newMetadatas.append(kword)
+                else:
+                    newMetadatas.append(normalizedWord)
+            i = nbField(obj,k)
+            if obj.portal_type == 'Image':
+                ImageImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
+            else:
+                FolderImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
+        # import pdb;pdb.set_trace()
+                
         
     # import pdb;pdb.set_trace()
     """
+    !!!! no MORE !!!!
     widget_addremove.pt modified !!!! : line 98
                       <tal:block repeat="item vocabulary/keys">
                     <option
