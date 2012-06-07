@@ -1,7 +1,7 @@
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from iuem.photorepository.manageVocabulary import imMetadatas
-
+from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 class repoImageView(BrowserView):
     """new view for image repository
@@ -61,3 +61,6 @@ class repoImageView(BrowserView):
         for k in Kmetadatas:
             metadatas.append(vocab.getVocabularyDict()[k])
         return metadatas
+    
+    def unRetour(self):
+        return _('a function return')

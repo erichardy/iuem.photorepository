@@ -151,7 +151,7 @@ def updateVocabularies(obj , event):
                 needToCorrect = True
         
         if needToCorrect:
-            # replace the new metadata by the correpondig key in the vocabulary
+            # replace the new metadata by the corresponding key in the vocabulary
             newMetadatas = []
             for kword in obj[k]:
                 ukword = unicode(kword,'utf-8')

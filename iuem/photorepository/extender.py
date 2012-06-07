@@ -9,6 +9,7 @@ from Products.ATContentTypes.interface import IATImage , IATFolder
 from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 from Products.AddRemoveWidget import AddRemoveWidget , ComboBoxWidget
 from Products.ATVocabularyManager.namedvocabulary import NamedVocabulary
+from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 from zope.component import adapts
 from zope.interface import implements
@@ -38,8 +39,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],               
             widget = AddRemoveWidget(
-                    label=u"Global key word",
-                    description = u"Global key word",
+                    label=_(u"Global key word"),
+                    description = _(u"Global key word"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -50,8 +51,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Scientific key word",
-                    description = u"Scientific key word",
+                    label=_(u"Scientific key word"),
+                    description = _(u"Scientific key word"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -62,8 +63,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Where",
-                    description = u"Area related to the photo",
+                    label=_(u"Where"),
+                    description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -74,8 +75,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],              
             widget = AddRemoveWidget(
-                    label=u"Laboratory",
-                    description = u"Photograph's Laboratory",
+                    label=_(u"Laboratory"),
+                    description = _(u"Photograph's Laboratory"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -86,8 +87,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [],              
             widget = AddRemoveWidget(
-                    label=u"Reseach Project",
-                    description = u"Reseach Project related to the images",
+                    label=_(u"Reseach Project"),
+                    description = _(u"Reseach Project related to the images"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -98,8 +99,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Licence Type",
-                    description = u"What type of restricted usage",
+                    label=_(u"Licence Type"),
+                    description = _(u"What type of restricted usage"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -108,22 +109,23 @@ class FolderImageRepositoryExtender(object):
         _ExtensionDateTimeField(u"recording_date_time",
             searchable=True,
             widget=CalendarWidget(
-                    label=u'Recording date and time',
-                    description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
+                    label=_(u'Recording date and time'),
+                    description=_(u'Recording date and time, may be extracted from XMP, EXIF or IPCT'),
                     ),
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
             default_method = "Creator",
             widget = StringWidget(
-                    label=u"Author of the photo",
-                    description = u"Who owns this photo",
+                    label=_(u"Author of the photo"),
+                    description = _(u"Who owns this photo"),
                     size = 50,
                     ),
         ),
         _ExtensionImageField(u"watermark",
         widget = ImageWidget(
-            label=u"Watermark",
+            label=_(u"Watermark"),
+            description=_(u'Image used for watermark'),
             visible={'view': 'invisible', 'edit': 'visible' }
             ),
         ),
@@ -156,8 +158,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Global key word",
-                    description = u"Global key word",
+                    label=_(u"Global key word"),
+                    description = _(u"Global key word"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -168,8 +170,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Scientific key word",
-                    description = u"Scientific key word",
+                    label=_(u"Scientific key word"),
+                    description = _(u"Scientific key word"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -180,8 +182,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Where",
-                    description = u"Area related to the photo",
+                    label=_(u"Where"),
+                    description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -192,8 +194,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],      
             widget = AddRemoveWidget(
-                    label=u"Laboratory",
-                    description = u"Photograph's Laboratory",
+                    label=_(u"Laboratory"),
+                    description = _(u"Photograph's Laboratory"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -204,8 +206,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [], 
             widget = AddRemoveWidget(
-                    label=u"Reseach Project",
-                    description = u"Reseach Project related to the images",
+                    label=_(u"Reseach Project"),
+                    description = _(u"Reseach Project related to the images"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -216,8 +218,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=u"Licence Type",
-                    description = u"What type of restricted usage",
+                    label=_(u"Licence Type"),
+                    description = _(u"What type of restricted usage"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -226,22 +228,23 @@ class ImageImageRepositoryExtender(object):
         _ExtensionDateTimeField(u"recording_date_time",
             searchable=True,
             widget=CalendarWidget(
-                    label=u'Recording date and time',
-                    description=u'Recording date and time, may be extracted from XMP, EXIF or IPCT',
+                    label=_(u'Recording date and time'),
+                    description=_(u'Recording date and time, may be extracted from XMP, EXIF or IPCT'),
                     ),
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
             default_method = "Creator",
             widget = StringWidget(
-                    label=u"Author of the photo",
-                    description = u"Who owns this photo",
+                    label=_(u"Author of the photo"),
+                    description = _(u"Who owns this photo"),
                     size = 50,
                     ),
         ),
         _ExtensionImageField(u"watermark",
         widget = ImageWidget(
-            label=u"Watermark",
+            label=_(u"Watermark"),
+            description=_(u'Image used for watermark'),
             visible={'view': 'invisible', 'edit': 'visible' }
             ),
         ),
@@ -250,7 +253,8 @@ class ImageImageRepositoryExtender(object):
             searchable = True,
             validators = ('isLatitude',),
             widget = StringWidget(
-                label = u"Latitude",
+                label = _(u"Latitude"),
+                description=_(u'latitude_format'),
                 maxlength = 50,
                 size = 50
                 ),
@@ -260,6 +264,7 @@ class ImageImageRepositoryExtender(object):
             validators = ('isLongitude',),
             widget = StringWidget(
                 label = u"Longitude",
+                description=_(u'longitude_format'),
                 maxlength = 50,
                 size = 50
                 ),
@@ -268,21 +273,24 @@ class ImageImageRepositoryExtender(object):
             expression = 'self.sourceImage.getEXIF()',
             widget = StringWidget(
                     modes=('view',),                
-                    label=u'EXIF metadata',
+                    label=_(u'EXIF metadata'),
+                    description=_(u'EXIF metadata description'),
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
         _ExtensionStringField (u"xmp",
             widget = StringWidget(
                     modes=('view',),           
-                    label=u'XMP metadata',
+                    label=_(u'XMP metadata description'),
+                    description=_(u'XMP metadata description'),
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),
         _ExtensionStringField (u"ipct",
             widget = StringWidget(
                     modes=('view',),
-                    label=u'IPCT metadata',
+                    label=_(u'IPCT metadata'),
+                    description=_(u'IPCT metadata description'),
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),

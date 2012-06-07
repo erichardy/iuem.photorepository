@@ -1,4 +1,5 @@
-# from iuem.photorepository import iuemMessageFactory as _
+from iuem.photorepository import iuemRepositoryMessageFactory as _
+
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IATFolder

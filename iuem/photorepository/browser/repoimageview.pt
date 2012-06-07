@@ -12,36 +12,36 @@
   Add class "collapsedOnLoad" to the dl tag below for a collapsed on load
 </span>
 <dl class="collapsible">
-<dt class="collapsibleHeader">
+<dt class="collapsibleHeader" i18n:translate="metadatas">
 Metadatas
 </dt>
 
 <dd class="collapsibleContent">
-<h3>description</h3>
+<h3 i18:translate="description">Description</h3>
   <span tal:content="string:${view/description}">descr...
   </span>
 <hr />
 
-<h3>General</h3>
+<h3 i18:translate="general_key_words">General</h3>
 <span tal:repeat="general view/general">
   <span tal:content="string:${general}">general</span>
   <br />
 </span>
 <hr />
-<h3>science</h3>
+<h3 i18n:translate="Scientific key word">science</h3>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>
     <br />
   </span>
 <hr />
 
-<h3>where</h3>
+<h3 i18n:translate="Where">where</h3>
   <span tal:repeat="where view/where">
     <span tal:content="string:${where}">where</span>
     <br />
   </span>
 <hr />
-<h3>laboratory</h3>
+<h3 i18n:translate="laboratory">laboratory</h3>
   <span tal:repeat="laboratory view/laboratory">
     <span tal:content="string:${laboratory}">laboratory</span>
     <br />

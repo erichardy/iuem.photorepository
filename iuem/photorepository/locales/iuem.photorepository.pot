@@ -1,16 +1,194 @@
-# Gettext Message File for iuem.photorepository
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2010-11-10 11:05+0000\n"
-"PO-Revision-Date: 2008-02-04 18:00+0000\n"
-"Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
-"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-06-07 14:22+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: iuem.photorepository\n"
+
+#: ./browser/ManageMetadataFormView.pt:36
+msgid "Add metadatas"
+msgstr ""
+
+#: ./browser/ManageMetadataFormView.pt:33
+msgid "Add or Replace"
+msgstr ""
+
+#: ./extender.py:67
+msgid "Area related to the photo"
+msgstr ""
+
+#: ./extender.py:120
+msgid "Author of the photo"
+msgstr ""
+
+#: ./extender.py:276
+msgid "EXIF metadata"
+msgstr ""
+
+#: ./extender.py:277
+msgid "EXIF metadata description"
+msgstr ""
+
+#: ./extender.py:42
+msgid "Global key word"
+msgstr ""
+
+#: ./extender.py:292
+msgid "IPCT metadata"
+msgstr ""
+
+#: ./extender.py:293
+msgid "IPCT metadata description"
+msgstr ""
+
+#: ./extender.py:128
+msgid "Image used for watermark"
+msgstr ""
+
+#: ./browser/ManageMetadataFormView.pt:28
+msgid "Images here and in all sub-folders"
+msgstr ""
+
+#: ./extender.py:78
+msgid "Laboratory"
+msgstr ""
+
+#: ./extender.py:256
+msgid "Latitude"
+msgstr ""
+
+#: ./extender.py:102
+msgid "Licence Type"
+msgstr ""
+
+#: ./browser/ManageMetadataFormView.pt:27
+msgid "Only Local Images"
+msgstr ""
+
+#: ./extender.py:79
+msgid "Photograph's Laboratory"
+msgstr ""
+
+#: ./extender.py:112
+msgid "Recording date and time"
+msgstr ""
+
+#: ./extender.py:113
+msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
+msgstr ""
+
+#: ./browser/ManageMetadataFormView.pt:37
+msgid "Replace metadatas"
+msgstr ""
+
+#: ./extender.py:90
+msgid "Reseach Project"
+msgstr ""
+
+#: ./extender.py:91
+msgid "Reseach Project related to the images"
+msgstr ""
+
+#: ./extender.py:54
+msgid "Scientific key word"
+msgstr ""
+
+#: ./extender.py:127
+msgid "Watermark"
+msgstr ""
+
+#: ./extender.py:103
+msgid "What type of restricted usage"
+msgstr ""
+
+#: ./extender.py:66
+msgid "Where"
+msgstr ""
+
+#: ./extender.py:121
+msgid "Who owns this photo"
+msgstr ""
+
+#: ./extender.py:284
+msgid "XMP metadata description"
+msgstr ""
+
+#: ./browser/repoImageView.py:66
+msgid "a function return"
+msgstr ""
+
+#. Default: "Description"
+#: ./browser/ManageMetadataFormView.pt:43
+msgid "description"
+msgstr ""
+
+#. Default: "General key words"
+#: ./browser/ManageMetadataFormView.pt:51
+msgid "general_key_words"
+msgstr ""
+
+#. Default: "Laboratory"
+#: ./browser/ManageMetadataFormView.pt:84
+msgid "laboratory"
+msgstr ""
+
+#: ./extender.py:257
+msgid "latitude_format"
+msgstr ""
+
+#. Default: "Licence type"
+#: ./browser/ManageMetadataFormView.pt:106
+msgid "licence_type"
+msgstr ""
+
+#. Default: "Localisation"
+#: ./browser/ManageMetadataFormView.pt:73
+msgid "localisation"
+msgstr ""
+
+#: ./extender.py:267
+msgid "longitude_format"
+msgstr ""
+
+#. Default: "Choix des metadonnees a propager..."
+#: ./browser/ManageMetadataFormView.pt:19
+msgid "metadata_choice"
+msgstr ""
+
+#. Default: "Photographer"
+#: ./browser/ManageMetadataFormView.pt:117
+msgid "photographer"
+msgstr ""
+
+#. Default: "Date and time recording"
+#: ./browser/ManageMetadataFormView.pt:125
+msgid "recording_date_time"
+msgstr ""
+
+#. Default: "Reseach project"
+#: ./browser/ManageMetadataFormView.pt:95
+msgid "reseachproject"
+msgstr ""
+
+#. Default: "Scientific key words"
+#: ./browser/ManageMetadataFormView.pt:62
+msgid "scientific_key_words"
+msgstr ""
+
+#. Default: "Niveau de Propagation"
+#: ./browser/ManageMetadataFormView.pt:24
+msgid "spread_depth"
+msgstr ""
+
