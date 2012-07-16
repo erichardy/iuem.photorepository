@@ -21,11 +21,15 @@
   
   <i18n:registerTranslations directory="locales" />
 
+<!-- see file profiles/default/rolemap.xml for permission configurations -->
   <permission
     id="iuem_photorepository.viewFullImage"
     title="iuem.photorepository: View Full Image"
   />
-
+  <permission
+    id="iuem_photorepository.manageRepositoryMetadatas"
+    title="iuem.photorepository: Manage Repository Metadatas"
+  />
   <genericsetup:registerProfile
       name="default"
       title="iuem.photorepository"

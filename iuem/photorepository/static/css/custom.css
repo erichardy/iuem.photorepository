@@ -18,6 +18,19 @@ table.ManageMetadataFormView tr:nth-child(even) {
 	background: #CEE;
 	}
 
+.iuemCollapsedHeading {
+    cursor: hand;
+    cursor: pointer;
+}
+ 
+.iuemCollapsedHeading.iuemCollapsed:before {
+    content: "▶ ";
+}
+ 
+.iuemCollapsedHeading:before {
+    content: "▼ ";
+}
+
 /*
 body {
 	background-color: #F9F9F9;

@@ -1,6 +1,7 @@
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from iuem.photorepository.manageVocabulary import imMetadatas
+from AccessControl import getSecurityManager
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 class repoImageView(BrowserView):
@@ -9,12 +10,15 @@ class repoImageView(BrowserView):
 
     def sourceImage(self):
         context = self.context
+        """
         tag = '<img src="' + context.absolute_url() + '/sourceImage" '
         tag += 'ALT="' + str(context.title) + '" '
         tag += 'title="' + str(context.title) + '" '
         tag += 'height="' + str(context.sourceImage.height) + '" '
         tag += 'width="' + str(context.sourceImage.width) + '" '
         tag += '/>'
+        """
+        tag = context.absolute_url() + '/sourceImage'
         return tag
     
     def viewImage(self):
@@ -61,6 +65,12 @@ class repoImageView(BrowserView):
         for k in Kmetadatas:
             metadatas.append(vocab.getVocabularyDict()[k])
         return metadatas
+    
+    def canViewFullImage(self):
+        sm = getSecurityManager()
+        if sm.checkPermission("iuem.photorepository: View Full Image" , self.context):
+            return True
+        
     
     def unRetour(self):
         return _('a function return')

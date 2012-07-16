@@ -21,7 +21,7 @@
 <span tal:replace="nothing">
   Add class "collapsedOnLoad" to the dl tag below for a collapsed on load
 </span>
-<dl class="collapsible">
+<dl class="collapsible collapsedOnLoad">
   <dt class="collapsibleHeader">
     Metadatas
   </dt>

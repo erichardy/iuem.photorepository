@@ -8,89 +8,92 @@
 <body>
 <div metal:fill-slot="content-core">
 <p />
-<span tal:replace="nothing">
-  Add class "collapsedOnLoad" to the dl tag below for a collapsed on load
-</span>
-<dl class="collapsible">
-<dt class="collapsibleHeader" i18n:translate="metadatas">
-Metadatas
-</dt>
 
-<dd class="collapsibleContent">
-<h3 i18:translate="description">Description</h3>
+<span tal:replace="structure view/viewImage">viewImage</span>
+<p />
+<a tal:condition="view/canViewFullImage" 
+   tal:attributes="href string:${view/sourceImage}; target string:_blank"
+   i18n:translate="View the original image">View the original image
+</a>
+
+<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
+Metadatas
+</H3>
+<span>
+<h4 i18:translate="description">Description</h4>
   <span tal:content="string:${view/description}">descr...
   </span>
-<hr />
-
-<h3 i18:translate="general_key_words">General</h3>
+<h4 i18:translate="general_key_words">Generallll</h4>
 <span tal:repeat="general view/general">
   <span tal:content="string:${general}">general</span>
   <br />
 </span>
-<hr />
-<h3 i18n:translate="Scientific key word">science</h3>
+<h4 i18n:translate="Scientific key word">science</h4>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>
     <br />
   </span>
-<hr />
-
-<h3 i18n:translate="Where">where</h3>
+<h4 i18n:translate="Where">where</h4>
   <span tal:repeat="where view/where">
     <span tal:content="string:${where}">where</span>
     <br />
   </span>
-<hr />
-<h3 i18n:translate="laboratory">laboratory</h3>
+<h4 i18n:translate="laboratory">laboratory</h4>
   <span tal:repeat="laboratory view/laboratory">
     <span tal:content="string:${laboratory}">laboratory</span>
     <br />
   </span>
-<hr />
-<h3>reseachproject</h3>
+<h4>reseachproject</h4>
   <span tal:repeat="reseachproject view/reseachproject">
     <span tal:content="string:${reseachproject}">reseachproject</span>
     <br />
   </span>
-<hr />
-<h3>licencetype</h3>
+<h4>licencetype</h4>
   <span tal:repeat="licencetype view/licencetype">
     <span tal:content="string:${licencetype}">licencetype</span>
     <br />
   </span>
-<hr />
-
-<h3>recording_date_time</h3>
+<h4>recording_date_time</h4>
   <span tal:content="string:${view/recording_date_time}">
   </span>
-<hr />
-<h3>photographer</h3>
+<h4>photographer</h4>
   <span tal:content="string:${view/photographer}">
   </span>
-<hr />
+</span>
 
-</dd>
-</dl>
+<br />
 
-<span tal:content="string:${view/viewImage}">viewImage</span>
-<span tal:replace="structure view/viewImage">viewImage</span>
-<p />
-<span tal:content="string:${view/sourceImage}">sourceImage</span>
-<span tal:replace="structure view/sourceImage">source Image</span>
-<dl class="collapsible collapsedOnLoad">
-<dt class="collapsibleHeader">
-Donnees EXIF
-</dt>
-<dd>
-<div tal:define="exif python:view.sourceExif()" tal:condition="python:view.sourceExif()">
+<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="EXIF metadatas">
+EXIF metadatas
+</H3>
+<span tal:define="exif python:view.sourceExif()" tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
     <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
   </span>
 
-</div>
-</dd>
-</dl>
+</span>
 <p />
+<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
+Metadatas
+</H3>
+<span>
+<span i18:translate="description">Description</span>
+  <span tal:content="string:${view/description}">descr...
+  </span>
+<br />
+<span i18:translate="general_key_words">Generallll</span>
+<br />
+<span tal:repeat="general view/general">
+  <span tal:content="string:${general}">general</span>
+  <br />
+</span>
+<span i18n:translate="Scientific key word">science</span>
+  <span tal:repeat="science view/science">
+    <span tal:content="string:${science}">science</span>
+    <br />
+  </span>
+</span>
+
 
 </div>
 </body>
