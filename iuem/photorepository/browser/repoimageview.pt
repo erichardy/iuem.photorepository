@@ -19,81 +19,97 @@
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas
 </H3>
-<span>
-<h4 i18:translate="description">Description</h4>
-  <span tal:content="string:${view/description}">descr...
-  </span>
-<h4 i18:translate="general_key_words">Generallll</h4>
+<table border="0" class="ManageMetadataFormView">
+<tbody>
+<tr>
+<td i18:translate="description">Description</td>
+  <td tal:content="string:${view/description}">descr...
+  </td>
+</tr>
+<tr>
+<td i18:translate="general_key_words">General</td>
+<td>
 <span tal:repeat="general view/general">
   <span tal:content="string:${general}">general</span>
   <br />
 </span>
-<h4 i18n:translate="Scientific key word">science</h4>
+</td>
+</tr>
+<tr>
+<td i18n:translate="Scientific key word">science</td>
+<td>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>
     <br />
   </span>
-<h4 i18n:translate="Where">where</h4>
+</td>
+</tr>
+<tr>
+<td i18n:translate="Where">where</td>
+<td>
   <span tal:repeat="where view/where">
     <span tal:content="string:${where}">where</span>
     <br />
   </span>
-<h4 i18n:translate="laboratory">laboratory</h4>
+</td>
+</tr>
+<tr>
+<td i18n:translate="laboratory">laboratory</td>
+<td>
   <span tal:repeat="laboratory view/laboratory">
     <span tal:content="string:${laboratory}">laboratory</span>
     <br />
   </span>
-<h4>reseachproject</h4>
-  <span tal:repeat="reseachproject view/reseachproject">
+</td>
+</tr>
+<tr>
+  <td i18n:translate="reseachproject">reseachproject</td>
+  <td>
+    <span tal:repeat="reseachproject view/reseachproject">
     <span tal:content="string:${reseachproject}">reseachproject</span>
     <br />
   </span>
-<h4>licencetype</h4>
-  <span tal:repeat="licencetype view/licencetype">
+  </td>
+</tr>
+<tr>
+  <td i18n:translate="licencetype">licencetype</td>
+  <td>
+    <span tal:repeat="licencetype view/licencetype">
     <span tal:content="string:${licencetype}">licencetype</span>
     <br />
   </span>
-<h4>recording_date_time</h4>
-  <span tal:content="string:${view/recording_date_time}">
-  </span>
-<h4>photographer</h4>
-  <span tal:content="string:${view/photographer}">
-  </span>
-</span>
+  </td>
+</tr>
+<tr>
+  <td i18n:translate="recording_date_time">recording_date_time</td>
+  <td tal:content="string:${view/recording_date_time}">recording_date_time</td>
+</tr>
+<tr>
+  <td i18n:translate="photographer">photographer</td>
+  <td tal:content="string:${view/photographer}"></td>
+</tr>
+</tbody>  
+</table>
 
 <br />
 
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="EXIF metadatas">
 EXIF metadatas
 </H3>
-<span tal:define="exif python:view.sourceExif()" tal:condition="python:view.sourceExif()">
+<span tal:define="exif python:view.sourceExif()"
+      tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
-    <span tal:define="v python:exif[k]" tal:content="structure string:${k}: ${v}<br />">k</span>
+    <span tal:define="v python:exif[k]"
+          tal:content="structure string:${k}: ${v}<br />">k</span>
   </span>
-
 </span>
 <p />
-<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
-Metadatas
-</H3>
-<span>
-<span i18:translate="description">Description</span>
-  <span tal:content="string:${view/description}">descr...
-  </span>
-<br />
-<span i18:translate="general_key_words">Generallll</span>
-<br />
-<span tal:repeat="general view/general">
-  <span tal:content="string:${general}">general</span>
-  <br />
-</span>
-<span i18n:translate="Scientific key word">science</span>
-  <span tal:repeat="science view/science">
-    <span tal:content="string:${science}">science</span>
-    <br />
-  </span>
-</span>
-
+<div class="field collapsible">
+  <label class="collapser">Test de collapse...</label>
+    <div class="collapse">
+ ici est le contenu a afficher ou chacher...
+    </div>
+</div>
 
 </div>
 </body>

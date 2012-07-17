@@ -5,7 +5,8 @@ from iuem.photorepository.manageVocabulary import imMetadatas
 class repoFolderAlbumView(BrowserView):
     """customization of atct_album_view
     """
-    
+    def description(self):
+        return str(self.context.Description())
     def general(self):
         return self.metadataValues('general')
 

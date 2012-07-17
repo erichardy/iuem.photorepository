@@ -74,13 +74,14 @@ def initImVocs(context):
     for imVocKey in imVocs.keys():
         if not hasattr(ATVocTools, imVocKey):
             ATVocTools.invokeFactory('SimpleVocabulary', imVocKey)
-            print("Creating imVocubaluries",imVocKey)
+            print("Creating Empty imVocubaluries",imVocKey)
+            """
             vocab = ATVocTools[imVocKey]
             for (imkey, value) in imVocs[imVocKey]:
                 if not hasattr(vocab, imkey):
                     vocab.invokeFactory('SimpleVocabularyTerm', imkey)
                     vocab[imkey].setTitle(value)
-
+            """
 class IUpdateVocabs(Interface):
     def __call__(context):
         """Interface to vocalularies updater

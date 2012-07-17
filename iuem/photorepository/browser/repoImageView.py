@@ -71,6 +71,3 @@ class repoImageView(BrowserView):
         if sm.checkPermission("iuem.photorepository: View Full Image" , self.context):
             return True
         
-    
-    def unRetour(self):
-        return _('a function return')

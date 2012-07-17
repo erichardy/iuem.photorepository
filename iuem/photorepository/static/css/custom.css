@@ -2,11 +2,11 @@
 #imphotosmall {
 display: none !important;
 }
-
+/*
 .formTabs {
 	display: none !important;
 }
-
+*/
 table.ManageMetadataFormView td {
 	padding: 5px;
 	color: Black;
@@ -17,12 +17,17 @@ table.ManageMetadataFormView tr:nth-child(odd) {
 table.ManageMetadataFormView tr:nth-child(even) {
 	background: #CEE;
 	}
-
+.ManageMetadataFormView tr td:nth-child(1) {
+	font-weight: bold;
+}
+.ManageMetadataFormView tr td:nth-child(2) {
+	font-style: italic;
+}
 .iuemCollapsedHeading {
     cursor: hand;
     cursor: pointer;
 }
- 
+
 .iuemCollapsedHeading.iuemCollapsed:before {
     content: "▶ ";
 }
@@ -31,8 +36,7 @@ table.ManageMetadataFormView tr:nth-child(even) {
     content: "▼ ";
 }
 
-/*
+
 body {
 	background-color: #F9F9F9;
 }
-*/
