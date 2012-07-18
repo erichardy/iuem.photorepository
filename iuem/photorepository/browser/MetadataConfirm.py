@@ -57,7 +57,7 @@ class MetadataConfirmView(BrowserView):
     
     def laboratory(self):
         try:
-            return self.request['laboratory']
+            return strToList(self.request['laboratory'])
         except:
             return False
     
@@ -128,9 +128,9 @@ def updateMetadata(obj , form , context):
     vocabs = getToolByName(context , 'portal_vocabularies')
     commonMetadatas = imMetadatas().commonMetadatas
     # import pdb;pdb.set_trace()
-    print '------------------------'
-    print 'in updateMetadata...'
-    print obj.absolute_url()
+    # print '------------------------'
+    # print 'in updateMetadata...'
+    # print obj.absolute_url()
     # if request.form['addorreplace'] == 'Replace metadatas'
     # we cleanup all the fields before to set new values
     if form['addorreplace'] == 'Replace metadatas':
@@ -155,7 +155,6 @@ def updateMetadata(obj , form , context):
     #                         
     for k in form.keys():
         if k in commonMetadatas:
-            print k + ':' + form[k] + ':::' + str(obj[k])
             if k == 'description':
                 obj.setDescription(form[k])
                 # import pdb;pdb.set_trace()
@@ -168,20 +167,28 @@ def updateMetadata(obj , form , context):
                     FolderImageRepositoryExtender(obj).fields[field].set(obj,form[k])
                 # import pdb;pdb.set_trace()
             else:
+                field = nbField(obj,k)
                 if form['addorreplace'] == 'Add metadatas':
+                    # form[k] = values to spread
+                    # obj[k] = metadatas values already set to obj
+                    lform = list(obj[k])
                     for data in eval(form[k]):
-                        if not data in obj[k]:
-                            obj[k].append(data)
+                        if not data in lform:
+                            # import pdb;pdb.set_trace()
+                            lform.append(data)
+                    if obj.portal_type == 'Image':
+                        ImageImageRepositoryExtender(obj).fields[field].set(obj,lform)
+                    else:
+                        FolderImageRepositoryExtender(obj).fields[field].set(obj,lform)                    
                 else:
-                    field = nbField(obj,k)
                     if obj.portal_type == 'Image':
                         ImageImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))
                     else:
                         FolderImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))                    
                     
-            print '...' + k + ':' + form[k] + ':::' + str(obj[k])                 
+            # print '...' + k + ':' + form[k] + ':::' + str(obj[k])                 
         
-    print '------------------------'
+    # print '------------------------'
     obj.reindexObject()
     return
 

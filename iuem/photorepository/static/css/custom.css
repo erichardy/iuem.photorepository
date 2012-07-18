@@ -7,6 +7,10 @@ display: none !important;
 	display: none !important;
 }
 */
+.XXXtests {
+	background: Blue;
+	display: none !important;
+}
 table.ManageMetadataFormView td {
 	padding: 5px;
 	color: Black;

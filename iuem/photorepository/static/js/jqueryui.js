@@ -4,10 +4,17 @@ jq(document).ready(function() {
 });
 
 jq(document).ready(function() {
-	$(".iuemCollapsedHeading.iuemCollapsed").next().hide();
+	jq(".iuemCollapsedHeading.iuemCollapsed").next().hide();
  
-	$(".iuemCollapsedHeading").click(function() {
-	  $(this).next().slideToggle("fast");
-	  $(this).toggleClass("iuemCollapsed");
+	jq(".iuemCollapsedHeading").click(function() {
+	  jq(this).next().slideToggle("fast");
+	  jq(this).toggleClass("iuemCollapsed");
 	});
 });
+
+/*
+jq(document).ready(function() {
+	jq('div.photoAlbumEntry').addClass('XXXtests');
+	
+});
+*/

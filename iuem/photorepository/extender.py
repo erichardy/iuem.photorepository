@@ -34,8 +34,11 @@ class FolderImageRepositoryExtender(object):
 
     fields = [
         # Common fields with images
-        _ExtensionStringField (u"general",
+        _ExtensionLinesField (u"general",
             searchable = True,
+            multiValued = True,
+            isMetadata = True,
+            # index_method="generalIndexMethod",
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],               
             widget = AddRemoveWidget(
@@ -48,6 +51,7 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"science",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -59,7 +63,8 @@ class FolderImageRepositoryExtender(object):
                     ),
         ),
         _ExtensionStringField (u"where",
-            searchable = True,                               
+            searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -72,6 +77,7 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"laboratory",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],              
             widget = AddRemoveWidget(
@@ -84,6 +90,7 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"reseachproject",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [],              
             widget = AddRemoveWidget(
@@ -96,6 +103,7 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"licencetype",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -133,6 +141,12 @@ class FolderImageRepositoryExtender(object):
     ]
     def __init__(self, context):
         self.context = context
+        
+    def generalIndexMethod(self):
+        print 'Dans generalIndexMethod'
+        fieldName = 'general'
+        termUID = self.getField(fieldName).get(self)
+        return self.getField(fieldName).vocabulary.getKeyPathForTerms(self, termUID)
 
     def getFields(self):
         return self.fields
@@ -153,8 +167,10 @@ class ImageImageRepositoryExtender(object):
             ),
         ),
         # Common fields with Folders
-        _ExtensionStringField (u"general",
+        _ExtensionLinesField (u"general",
             searchable = True,
+            multiValued = True,
+            isMetadata = True,
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -167,6 +183,7 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"science",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -178,7 +195,8 @@ class ImageImageRepositoryExtender(object):
                     ),                               
         ),
         _ExtensionStringField (u"where",
-            searchable = True,                               
+            searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
@@ -191,6 +209,7 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"laboratory",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imteamvoc"),
             default = [],      
             widget = AddRemoveWidget(
@@ -203,6 +222,7 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"reseachproject",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [], 
             widget = AddRemoveWidget(
@@ -215,6 +235,7 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"licencetype",
             searchable = True,
+            multiValued = True,
             vocabulary = NamedVocabulary(u"imlicencevoc"),
             default = [],
             widget = AddRemoveWidget(

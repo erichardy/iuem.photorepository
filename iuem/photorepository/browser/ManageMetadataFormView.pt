@@ -51,7 +51,6 @@
   <td i18n:translate="general_key_words">General key words</td>
   <td>
   	<span tal:repeat="gen view/general">
-  		
   		<input type="checkbox" name="general" tal:attributes="value string:${gen}" checked="checked">
   		<span tal:content="string:${gen}">general</span>
   	    <br />

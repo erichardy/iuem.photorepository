@@ -2,22 +2,22 @@
 
 
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
-  <index name="where" meta_type="FieldIndex">
+  <index name="where" meta_type="KeywordIndex">
     <indexed_attr value="where"/>
   </index>
-  <index name="laboratory" meta_type="FieldIndex">
+  <index name="laboratory" meta_type="KeywordIndex">
     <indexed_attr value="laboratory"/>
   </index>
-  <index name="reseachproject" meta_type="FieldIndex">
+  <index name="reseachproject" meta_type="KeywordIndex">
     <indexed_attr value="reseachproject"/>
   </index>
-  <index name="general" meta_type="FieldIndex">
+  <index name="general" meta_type="KeywordIndex">
     <indexed_attr value="general"/>
   </index>
-  <index name="science" meta_type="FieldIndex">
+  <index name="science" meta_type="KeywordIndex">
     <indexed_attr value="science"/>
   </index>
-  <index name="licencetype" meta_type="FieldIndex">
+  <index name="licencetype" meta_type="KeywordIndex">
     <indexed_attr value="licencetype"/>
   </index>
   <index name="recording_date_time" meta_type="DateIndex">

@@ -149,7 +149,7 @@ def updateVocabularies(obj , event):
                 normalizedWord = normalizer.normalize(ukword, locale = 'fr')
                 myVocab.addTerm(normalizedWord , kword , silentignore=True)
                 needToCorrect = True
-        
+
         if needToCorrect:
             # replace the new metadata by the corresponding key in the vocabulary
             newMetadatas = []
