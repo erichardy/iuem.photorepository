@@ -1,22 +1,15 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      lang="en"
+      lang="en-US"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="collective.googledocsviewer">
+      i18n:domain="iuem.photorepository">
 <body>
 <div metal:fill-slot="content-core">
 <p />
 
-<span tal:replace="structure view/viewImage">viewImage</span>
-<p />
-<a tal:condition="view/canViewFullImage" 
-   tal:attributes="href string:${view/sourceImage}; target string:_blank"
-   i18n:translate="View the original image">View the original image
-</a>
-
-<H3 class="iuemCollapsedHeading " i18n:translate="metadatas">
+<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas
 </H3>
 <table border="0" class="ManageMetadataFormView">
@@ -27,7 +20,7 @@ Metadatas
   </td>
 </tr>
 <tr>
-<td i18:translate="general_key_words">General</td>
+<td i18:translate="general_key_words">general_key_words</td>
 <td>
 <span tal:repeat="general view/general">
   <span tal:content="string:${general}">general</span>
@@ -36,7 +29,7 @@ Metadatas
 </td>
 </tr>
 <tr>
-<td i18n:translate="Scientific key word">science</td>
+<td i18n:translate="Scientific key word">Scientific key word</td>
 <td>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>
@@ -100,16 +93,24 @@ EXIF metadatas
       tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
     <span tal:define="v python:exif[k]"
-          tal:content="structure string:${k}: ${v}<br />">k</span>
+          tal:content="structure string:${k}: ${v}">k</span>
+          <br />
   </span>
 </span>
 <p />
-<div class="field collapsible">
+<div tal:replace="nothing" class="field collapsible">
   <label class="collapser">Test de collapse...</label>
     <div class="collapse">
  ici est le contenu a afficher ou chacher...
     </div>
 </div>
+<br />
+<span tal:replace="structure view/viewImage">viewImage</span>
+<p />
+<a tal:condition="view/canViewFullImage" 
+   tal:attributes="href string:${view/sourceImage}; target string:_blank"
+   i18n:translate="View the original image">View the original image
+</a>
 
 </div>
 </body>

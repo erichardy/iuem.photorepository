@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2012-06-07 14:22+0000\n"
+"POT-Creation-Date: 2012-07-19 14:56+0000\n"
 "PO-Revision-Date: 2010-11-13 11:07+0100\n"
 "Last-Translator: YOURNAME <name@email.com>\n"
 "Language-Team: French <plone-fr@lists.plone.org>\n"
@@ -21,71 +21,111 @@ msgstr ""
 msgid "Add metadatas"
 msgstr "Ajouter ces métadonnées à celles déjà existantes"
 
+#: ./browser/ManageMetadata_form-bug.py:56
+msgid "Add metadatas = add metadatas to metadatas already present; Replace metadatas = replace metadatas with this Folder metadatas"
+msgstr ""
+
 #: ./browser/ManageMetadataFormView.pt:33
+#: ./browser/ManageMetadata_form-bug.py:54
 msgid "Add or Replace"
 msgstr "Ajouter ou Remplacer"
 
-#: ./extender.py:67
+#: ./extender.py:72
 msgid "Area related to the photo"
 msgstr "Lieu de la photo"
 
-#: ./extender.py:120
+#: ./extender.py:128
 msgid "Author of the photo"
 msgstr "Auteur de la photo"
 
-#: ./extender.py:276
-msgid "EXIF metadata"
+#: ./browser/ManageMetadata_form-bug.py:172
+msgid "Cancel"
 msgstr ""
 
-#: ./extender.py:277
+#: ./browser/ManageMetadata_form-bug.py:129
+msgid "Decide where to spread metadatas and which metadatas"
+msgstr ""
+
+#: ./browser/ManageMetadata_form-bug.py:60
+msgid "Description content"
+msgstr ""
+
+#: ./extender.py:297
+msgid "EXIF metadata"
+msgstr "Métadonnées EXIF"
+
+#: ./extender.py:298
 msgid "EXIF metadata description"
 msgstr ""
 
-#: ./extender.py:42
+#: ./browser/ManageMetadata_form-bug.py:65
+msgid "General Description"
+msgstr ""
+
+#: ./extender.py:45
 msgid "Global key word"
 msgstr "Mots clés généraux"
 
-#: ./extender.py:292
+#: ./extender.py:313
 msgid "IPCT metadata"
-msgstr ""
+msgstr "Métadonnées IPCT"
 
-#: ./extender.py:293
+#: ./extender.py:314
 msgid "IPCT metadata description"
 msgstr ""
 
-#: ./extender.py:128
+#: ./extender.py:136
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
 
 #: ./browser/ManageMetadataFormView.pt:28
+#: ./browser/ManageMetadata_form-bug.py:52
 msgid "Images here and in all sub-folders"
 msgstr "Les images dans ce dossier et dans tous les sous-dossiers"
 
-#: ./extender.py:78
+#: ./browser/ManageMetadata_form-bug.py:89
+msgid "Laboratories"
+msgstr ""
+
+#: ./extender.py:84
 msgid "Laboratory"
 msgstr "Laboratoire"
 
-#: ./extender.py:256
+#: ./extender.py:277
 msgid "Latitude"
 msgstr "Latitude"
 
-#: ./extender.py:102
+#: ./extender.py:110
 msgid "Licence Type"
 msgstr "Type de Licence"
 
+#: ./browser/ManageMetadata_form-bug.py:82
+msgid "Localisation"
+msgstr ""
+
+#: ./browser/ManageMetadata_form-bug.py:84
+#: ./browser/ManageMetadata_form-old.py:37
+msgid "Localisations"
+msgstr ""
+
 #: ./browser/ManageMetadataFormView.pt:27
+#: ./browser/ManageMetadata_form-bug.py:52
 msgid "Only Local Images"
 msgstr "Seulement les images dans ce dossier"
 
-#: ./extender.py:79
+#: ./browser/ManageMetadata_form-bug.py:51
+msgid "Only Local Images = only images in this Folder; Images here and in all sub-folders = to all images and folders under this folder"
+msgstr ""
+
+#: ./extender.py:85
 msgid "Photograph's Laboratory"
 msgstr "Laboratoire du photographe"
 
-#: ./extender.py:112
+#: ./extender.py:120
 msgid "Recording date and time"
 msgstr "Date de la prise de vue"
 
-#: ./extender.py:113
+#: ./extender.py:121
 msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
 msgstr ""
 
@@ -93,46 +133,64 @@ msgstr ""
 msgid "Replace metadatas"
 msgstr "Remplacer les métadonnées par celles-ci"
 
-#: ./extender.py:90
+#: ./extender.py:97
 msgid "Reseach Project"
 msgstr "Projet de recherche"
 
-#: ./extender.py:91
+#: ./extender.py:98
 msgid "Reseach Project related to the images"
 msgstr ""
 
-#: ./extender.py:54
+#. Default: "science"
+#: ./browser/repofolderalbumview.pt:42
+#: ./browser/repoimageview.pt:32
+#: ./extender.py:58
 msgid "Scientific key word"
 msgstr "Mots clés scientifiques"
 
-#: ./extender.py:127
+#: ./browser/ManageMetadata_form-bug.py:162
+msgid "Spread Metadatas"
+msgstr ""
+
+#: ./extender.py:135
 msgid "Watermark"
 msgstr "Image pour le filigrane"
 
-#: ./extender.py:103
+#: ./extender.py:111
 msgid "What type of restricted usage"
 msgstr ""
 
-#: ./extender.py:66
+#. Default: "where"
+#: ./browser/repofolderalbumview.pt:51
+#: ./browser/repoimageview.pt:41
 msgid "Where"
 msgstr "Lieu de la prise de vue"
 
-#: ./extender.py:121
+#: ./browser/ManageMetadata_form-bug.py:49
+msgid "Where to spread"
+msgstr ""
+
+#: ./extender.py:129
 msgid "Who owns this photo"
 msgstr ""
 
-#: ./extender.py:284
+#: ./extender.py:305
 msgid "XMP metadata description"
 msgstr ""
 
-#: ./browser/repoImageView.py:66
-msgid "a function return"
+#: ./browser/ManageMetadata_form-bug.py:128
+msgid "attribute metadata to images and/or folders"
 msgstr ""
 
 #. Default: "Description"
 #: ./browser/ManageMetadataFormView.pt:43
+#: ./browser/ManageMetadata_form-bug.py:68
 msgid "description"
 msgstr "Description"
+
+#: ./browser/ManageMetadata_form-bug.py:74
+msgid "general"
+msgstr ""
 
 #. Default: "General key words"
 #: ./browser/ManageMetadataFormView.pt:51
@@ -140,25 +198,29 @@ msgid "general_key_words"
 msgstr "Mots clé généraux"
 
 #. Default: "Laboratory"
-#: ./browser/ManageMetadataFormView.pt:84
+#: ./browser/ManageMetadataFormView.pt:83
 msgid "laboratory"
 msgstr "Laboratoire"
 
-#: ./extender.py:257
+#: ./extender.py:278
 msgid "latitude_format"
 msgstr ""
 
 #. Default: "Licence type"
-#: ./browser/ManageMetadataFormView.pt:106
+#: ./browser/ManageMetadataFormView.pt:105
 msgid "licence_type"
 msgstr "Type de licence"
 
+#: ./browser/ManageMetadata_form-bug.py:99
+msgid "licencetype"
+msgstr ""
+
 #. Default: "Localisation"
-#: ./browser/ManageMetadataFormView.pt:73
+#: ./browser/ManageMetadataFormView.pt:72
 msgid "localisation"
 msgstr "Localisation"
 
-#: ./extender.py:267
+#: ./extender.py:288
 msgid "longitude_format"
 msgstr ""
 
@@ -167,23 +229,36 @@ msgstr ""
 msgid "metadata_choice"
 msgstr "Choix des Métadonnées à propager..."
 
+#. Default: "Metadatas"
+#: ./browser/repofolderalbumview.pt:23
+#: ./browser/repoimageview.pt:12
+msgid "metadatas"
+msgstr "Métadonnées"
+
 #. Default: "Photographer"
-#: ./browser/ManageMetadataFormView.pt:117
+#: ./browser/ManageMetadataFormView.pt:116
+#: ./browser/ManageMetadata_form-bug.py:112
 msgid "photographer"
 msgstr "Nom du photographe"
 
 #. Default: "Date and time recording"
-#: ./browser/ManageMetadataFormView.pt:125
+#: ./browser/ManageMetadataFormView.pt:124
+#: ./browser/ManageMetadata_form-bug.py:105
 msgid "recording_date_time"
 msgstr "Date et heure de la photo"
 
 #. Default: "Reseach project"
-#: ./browser/ManageMetadataFormView.pt:95
+#: ./browser/ManageMetadataFormView.pt:94
+#: ./browser/ManageMetadata_form-bug.py:94
 msgid "reseachproject"
 msgstr "Projet de recherche"
 
+#: ./browser/ManageMetadata_form-bug.py:79
+msgid "science"
+msgstr ""
+
 #. Default: "Scientific key words"
-#: ./browser/ManageMetadataFormView.pt:62
+#: ./browser/ManageMetadataFormView.pt:61
 msgid "scientific_key_words"
 msgstr "Mots clé scientifiques"
 
@@ -191,4 +266,8 @@ msgstr "Mots clé scientifiques"
 #: ./browser/ManageMetadataFormView.pt:24
 msgid "spread_depth"
 msgstr "Profondeur de la propagation des Métadonnées"
+
+#: ./extender.py:71
+msgid "where"
+msgstr ""
 

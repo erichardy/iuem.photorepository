@@ -11,10 +11,3 @@ jq(document).ready(function() {
 	  jq(this).toggleClass("iuemCollapsed");
 	});
 });
-
-/*
-jq(document).ready(function() {
-	jq('div.photoAlbumEntry').addClass('XXXtests');
-	
-});
-*/

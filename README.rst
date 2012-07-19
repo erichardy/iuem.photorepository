@@ -21,3 +21,13 @@ C'est comme si les champs de metadonnees etaient pre-remplis lors de l'appel au 
 Ce n'est pas dependant du navigateur.
 Si on re-demarre le serveur, les champs sont bien re-initialises ˆ 'rien'
 En tout cas, c'est particulierement difficile a reproduire....
+
+patch de eea.facetednavigation-4.8-py2.6.egg/eea/facetednavigation/views/preview-item.pt
+<a ...
+   ...
+   urlview string:${url}/view;
+   ...
+   tal:attributes="href urlview; title description;target string:_blank">
+
+
+   

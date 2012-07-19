@@ -1,7 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-      lang="en-US"
+	  xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="iuem.photorepository">
 
 <body>
 
@@ -24,11 +26,11 @@ Metadatas
 <table border="0" class="ManageMetadataFormView">
 <tbody>
 <tr>
-<td i18:translate="description">Description</td>
+<td i18:translate="">description</td>
   <td tal:content="string:${view/description}">description</td>
 </tr>
 <tr>
-<td i18:translate="general_key_words">General</td>
+<td i18:translate="general_key_words">general</td>
 <td>
 <span tal:repeat="general view/general">
   <span tal:content="string:${general}">general</span>
@@ -37,7 +39,7 @@ Metadatas
 </td>
 </tr>
 <tr>
-<td i18n:translate="Scientific key word">science</td>
+<td i18n:translate="Scientific key word">Scientific key word</td>
 <td>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>

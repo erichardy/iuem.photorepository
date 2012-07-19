@@ -68,7 +68,7 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"Where"),
+                    label=_(u"where"),
                     description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,
@@ -200,7 +200,7 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"Where"),
+                    label=_(u"where"),
                     description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,

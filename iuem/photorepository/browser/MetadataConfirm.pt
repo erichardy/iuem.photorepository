@@ -17,7 +17,7 @@
 } 
 </style>
 
-<H1>Confirmation de la propagation des metadonnees...</h1>
+<H1>Confirmation de la propagation des metadonnees...</H1>
 <form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
 <table border="1" class="ManageMetadataFormView">
 <tbody>
@@ -25,21 +25,21 @@
   <td>Niveau de Propagation</td>
   <td>
   <span tal:content="view/wheretospread">whereToSpread</span>
-  <input type="hidden" name="wheretospread" tal:attributes="value view/wheretospread">
+  <input type="hidden" name="wheretospread" tal:attributes="value view/wheretospread" />
   </td>
 </tr>
 <tr>
   <td>Ajouter ou Remplacer</td>
   <td>
   <span tal:content="view/addorreplace">addorreplace</span>
-  <input type="hidden" name="addorreplace" tal:attributes="value view/addorreplace">
+  <input type="hidden" name="addorreplace" tal:attributes="value view/addorreplace" />
   </td>
 </tr>
 <tr tal:condition="view/description">
   <td>Description</td>
   <td>
   <span tal:content="view/description">description</span>
-  <input type="hidden" name="description" tal:attributes="value view/description">
+  <input type="hidden" name="description" tal:attributes="value view/description" />
   </td>
 </tr>
 
@@ -50,7 +50,7 @@
       <span tal:content="string:${general}">general</span>
       <br />
     </span>
-    <input type="hidden" name="general" tal:attributes="value view/general">
+    <input type="hidden" name="general" tal:attributes="value view/general" />
   </td>
 </tr>
 
@@ -61,7 +61,7 @@
       <span tal:content="string:${science}">science</span>
       <br />
     </span>
-    <input type="hidden" name="science" tal:attributes="value view/science">
+    <input type="hidden" name="science" tal:attributes="value view/science" />
   </td>
 </tr>
 
@@ -72,7 +72,7 @@
       <span tal:content="string:${where}">science</span>
       <br />
     </span>
-    <input type="hidden" name="where" tal:attributes="value view/where">
+    <input type="hidden" name="where" tal:attributes="value view/where" />
   </td>
 </tr>
 
@@ -83,7 +83,7 @@
       <span tal:content="string:${laboratory}">laboratory</span>
       <br />
     </span>
-    <input type="hidden" name="laboratory" tal:attributes="value view/laboratory">
+    <input type="hidden" name="laboratory" tal:attributes="value view/laboratory" />
   </td>
 </tr>
 
@@ -94,7 +94,7 @@
       <span tal:content="string:${reseachproject}">reseachproject</span>
       <br />
     </span>
-    <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject">
+    <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject" />
   </td>
 </tr>
 
@@ -105,7 +105,7 @@
       <span tal:content="string:${licencetype}">licencetype</span>
       <br />
     </span>
-    <input type="hidden" name="licencetype" tal:attributes="value view/licencetype">
+    <input type="hidden" name="licencetype" tal:attributes="value view/licencetype" />
   </td>
 </tr>
 
@@ -113,7 +113,7 @@
   <td>Photographe</td>
   <td>
     <span tal:content="string:${view/photographer}">photographer</span>
-    <input type="hidden" name="photographer" tal:attributes="value view/photographer">
+    <input type="hidden" name="photographer" tal:attributes="value view/photographer" />
   </td>
 </tr>
 
@@ -121,13 +121,13 @@
   <td>Date et heure des Photos</td>
   <td>
   <span tal:content="string:${view/recording_date_time}">recording_date_time</span>
-  <input type="hidden" name="recording_date_time" tal:attributes="value view/recording_date_time">
+  <input type="hidden" name="recording_date_time" tal:attributes="value view/recording_date_time" />
   </td>
 </tr>
 </tbody>
 </table>
 
-  <input name="Validation de la propagation" value="Validation de la propagation" type="submit">
+  <input name="Validation de la propagation" value="Validation de la propagation" type="submit" />
 </form>
 <p />
 <span tal:content="structure string:${request/form};">request</span>
