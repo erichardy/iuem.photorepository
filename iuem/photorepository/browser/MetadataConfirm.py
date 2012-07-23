@@ -7,6 +7,7 @@ from zope.component import adapts
 from iuem.photorepository.manageVocabulary import imMetadatas
 from iuem.photorepository.extender import ImageImageRepositoryExtender
 from iuem.photorepository.extender import FolderImageRepositoryExtender
+from Products.CMFCore.utils import getToolByName
 
 def strToList(strOrList):
     """ returns a list even if strOrList is a str"""
@@ -84,6 +85,14 @@ class MetadataConfirmView(BrowserView):
             return self.request['photographer']
         except:
             return False
+    
+    def value_of (self , value , vocabulary):
+        myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
+        try:
+            vocab = myVocabsTool[vocabulary]
+            return vocab.getVocabularyDict()[value]
+        except:
+            return ''
     
 def nbField(obj , name):
     """returns the field number of the named field in the extended schema"""

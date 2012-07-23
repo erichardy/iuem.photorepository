@@ -12,24 +12,24 @@
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas
 </H3>
-<table border="0" class="ManageMetadataFormView">
+<table border="0" class="MetadataTable">
 <tbody>
 <tr>
-<td i18:translate="description">Description</td>
+<td i18n:translate="description">Description</td>
   <td tal:content="string:${view/description}">descr...
   </td>
 </tr>
 <tr>
-<td i18:translate="general_key_words">general_key_words</td>
+<td i18n:translate="General keywords">General keywords</td>
 <td>
-<span tal:repeat="general view/general">
-  <span tal:content="string:${general}">general</span>
-  <br />
-</span>
+  <span tal:repeat="general view/general">
+    <span tal:content="string:${general}">general</span>
+    <br />
+  </span>
 </td>
 </tr>
 <tr>
-<td i18n:translate="Scientific key word">Scientific key word</td>
+<td i18n:translate="Scientific keywords">Scientific keywords</td>
 <td>
   <span tal:repeat="science view/science">
     <span tal:content="string:${science}">science</span>
@@ -38,7 +38,7 @@ Metadatas
 </td>
 </tr>
 <tr>
-<td i18n:translate="Where">where</td>
+<td i18n:translate="Where">Where</td>
 <td>
   <span tal:repeat="where view/where">
     <span tal:content="string:${where}">where</span>
@@ -47,7 +47,7 @@ Metadatas
 </td>
 </tr>
 <tr>
-<td i18n:translate="laboratory">laboratory</td>
+<td i18n:translate="Laboratory">Laboratory</td>
 <td>
   <span tal:repeat="laboratory view/laboratory">
     <span tal:content="string:${laboratory}">laboratory</span>
@@ -56,7 +56,7 @@ Metadatas
 </td>
 </tr>
 <tr>
-  <td i18n:translate="reseachproject">reseachproject</td>
+  <td i18n:translate="Research Project">Research Project</td>
   <td>
     <span tal:repeat="reseachproject view/reseachproject">
     <span tal:content="string:${reseachproject}">reseachproject</span>
@@ -65,7 +65,7 @@ Metadatas
   </td>
 </tr>
 <tr>
-  <td i18n:translate="licencetype">licencetype</td>
+  <td i18n:translate="Licence Type">Licence Type</td>
   <td>
     <span tal:repeat="licencetype view/licencetype">
     <span tal:content="string:${licencetype}">licencetype</span>
@@ -74,11 +74,11 @@ Metadatas
   </td>
 </tr>
 <tr>
-  <td i18n:translate="recording_date_time">recording_date_time</td>
+  <td i18n:translate="Recording date and time">Recording date and time</td>
   <td tal:content="string:${view/recording_date_time}">recording_date_time</td>
 </tr>
 <tr>
-  <td i18n:translate="photographer">photographer</td>
+  <td i18n:translate="Photographer">Photographer</td>
   <td tal:content="string:${view/photographer}"></td>
 </tr>
 </tbody>  
@@ -86,9 +86,7 @@ Metadatas
 
 <br />
 
-<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="EXIF metadatas">
-EXIF metadatas
-</H3>
+<h3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="EXIF metadatas">EXIF metadatas</h3>
 <span tal:define="exif python:view.sourceExif()"
       tal:condition="python:view.sourceExif()">
   <span tal:repeat="k python:view.sourceExif().keys()">
@@ -98,19 +96,13 @@ EXIF metadatas
   </span>
 </span>
 <p />
-<div tal:replace="nothing" class="field collapsible">
-  <label class="collapser">Test de collapse...</label>
-    <div class="collapse">
- ici est le contenu a afficher ou chacher...
-    </div>
-</div>
+
 <br />
 <span tal:replace="structure view/viewImage">viewImage</span>
 <p />
 <a tal:condition="view/canViewFullImage" 
    tal:attributes="href string:${view/sourceImage}; target string:_blank"
-   i18n:translate="View the original image">View the original image
-</a>
+   i18n:translate="view_original_image">View the original image</a>
 
 </div>
 </body>

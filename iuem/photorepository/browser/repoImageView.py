@@ -70,4 +70,6 @@ class repoImageView(BrowserView):
         sm = getSecurityManager()
         if sm.checkPermission("iuem.photorepository: View Full Image" , self.context):
             return True
+        else:
+            return False
         

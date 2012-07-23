@@ -42,8 +42,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],               
             widget = AddRemoveWidget(
-                    label=_(u"Global key word"),
-                    description = _(u"Global key word"),
+                    label=_(u"General keywords"),
+                    description = _(u"General keywords"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -55,8 +55,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"Scientific key word"),
-                    description = _(u"Scientific key word"),
+                    label=_(u"Scientific keywords"),
+                    description = _(u"Scientific keywords"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -68,7 +68,7 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"where"),
+                    label=_(u"Where"),
                     description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,
@@ -94,8 +94,8 @@ class FolderImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [],              
             widget = AddRemoveWidget(
-                    label=_(u"Reseach Project"),
-                    description = _(u"Reseach Project related to the images"),
+                    label=_(u"Research Project"),
+                    description = _(u"Research Project related to the picture"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -174,8 +174,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imtagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"Global key word"),
-                    description = _(u"Global key word"),
+                    label=_(u"General keywords"),
+                    description = _(u"General keywords"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -187,8 +187,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imscitagvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"Scientific key word"),
-                    description = _(u"Scientific key word"),
+                    label=_(u"Scientific keywords"),
+                    description = _(u"Scientific keywords"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -200,7 +200,7 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"imlocationvoc"),
             default = [],
             widget = AddRemoveWidget(
-                    label=_(u"where"),
+                    label=_(u"Where"),
                     description = _(u"Area related to the photo"),
                     allow_add = 1,
                     role_based_add = 1,
@@ -226,8 +226,8 @@ class ImageImageRepositoryExtender(object):
             vocabulary = NamedVocabulary(u"improjectvoc"),
             default = [], 
             widget = AddRemoveWidget(
-                    label=_(u"Reseach Project"),
-                    description = _(u"Reseach Project related to the images"),
+                    label=_(u"Research Project"),
+                    description = _(u"Research Project related to the picture"),
                     allow_add = 1,
                     role_based_add = 1,
                     size = 5,
@@ -257,7 +257,7 @@ class ImageImageRepositoryExtender(object):
             searchable = True,
             default_method = "Creator",
             widget = StringWidget(
-                    label=_(u"Author of the photo"),
+                    label=_(u"Photographer"),
                     description = _(u"Who owns this photo"),
                     size = 50,
                     ),
@@ -294,8 +294,8 @@ class ImageImageRepositoryExtender(object):
             expression = 'self.sourceImage.getEXIF()',
             widget = StringWidget(
                     modes=('view',),                
-                    label=_(u'EXIF metadata'),
-                    description=_(u'EXIF metadata description'),
+                    label=_(u'EXIF metadatas'),
+                    description=_(u'EXIF metadata in the picture'),
                     visible={'view': 'visible', 'edit': 'hidden' },
                     ),
         ),

@@ -3,7 +3,7 @@ from Products.Five import BrowserView
 # from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IATFolder
 from zope.component import adapts
-# from iuem.photorepository.manageVocabulary import imMetadatas
+from Products.CMFCore.utils import getToolByName
 
 class ManageMetadataFormView(BrowserView):    
     adapts(IATFolder)
@@ -23,7 +23,7 @@ class ManageMetadataFormView(BrowserView):
         try:
             return self.context.general
         except:
-            return False
+            return False        
     
     def science(self):
         try:
@@ -66,3 +66,16 @@ class ManageMetadataFormView(BrowserView):
             return self.context.photographer
         except:
             return False
+    
+    def value_of (self , value , vocabulary):
+        myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
+        try:
+            vocab = myVocabsTool[vocabulary]
+            return vocab.getVocabularyDict()[value]
+        except:
+            return '' 
+                
+        
+        
+        
+        
