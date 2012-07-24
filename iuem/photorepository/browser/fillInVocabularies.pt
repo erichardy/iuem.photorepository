@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="fr"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="iuem.photorepository">
+<body>
+<div metal:fill-slot="content-core">
+<div>
+
+dans fillInVocabularies.pt
+<p />
+
+<span tal:content="view/vocabs">vocabs</span>
+
+
+
+
+</div>
+</div>
+</body>
+</html>

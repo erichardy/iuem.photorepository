@@ -47,7 +47,7 @@
   <td i18n:translate="General keywords">General keywords</td>
   <td>
     <span tal:repeat="general view/general">
-      <span tal:content="python:view.value_of(general,'imtagvoc')">general</span>
+      <span tal:content="python:view.value_of(general,'general_voc')">general</span>
       <br />
     </span>
     <input type="hidden" name="general" tal:attributes="value view/general" />
@@ -58,7 +58,7 @@
   <td i18n:translate="Scientific keywords">Scientific keywords</td>
   <td>
     <span tal:repeat="science view/science">
-      <span tal:content="python:view.value_of(science,'imscitagvoc')">science</span>
+      <span tal:content="python:view.value_of(science,'science_voc')">science</span>
       <br />
     </span>
     <input type="hidden" name="science" tal:attributes="value view/science" />
@@ -69,7 +69,7 @@
   <td i18n:translate="Where">Where</td>
   <td>
     <span tal:repeat="where view/where">
-      <span tal:content="python:view.value_of(where,'imlocationvoc')">science</span>
+      <span tal:content="python:view.value_of(where,'localization_voc')">science</span>
       <br />
     </span>
     <input type="hidden" name="where" tal:attributes="value view/where" />
@@ -80,7 +80,7 @@
   <td i18n:translate="Laboratory">Laboratory</td>
   <td>
     <span tal:repeat="laboratory view/laboratory">
-      <span tal:content="python:view.value_of(laboratory,'imteamvoc')">laboratory</span>
+      <span tal:content="python:view.value_of(laboratory,'laboratory_voc')">laboratory</span>
       <br />
     </span>
     <input type="hidden" name="laboratory" tal:attributes="value view/laboratory" />
@@ -91,7 +91,7 @@
   <td i18n:translate="Research Project">Research Project</td>
   <td>
     <span tal:repeat="reseachproject view/reseachproject">
-      <span tal:content="python:view.value_of(reseachproject,'improjectvoc')">reseachproject</span>
+      <span tal:content="python:view.value_of(reseachproject,'researchproj_voc')">reseachproject</span>
       <br />
     </span>
     <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject" />
@@ -102,7 +102,7 @@
   <td i18n:translate="Licence Type">Licence Type</td>
   <td>
     <span tal:repeat="licencetype view/licencetype">
-      <span tal:content="python:view.value_of(licencetype,'imlicencevoc')">licencetype</span>
+      <span tal:content="python:view.value_of(licencetype,'licencetype_voc')">licencetype</span>
       <br />
     </span>
     <input type="hidden" name="licencetype" tal:attributes="value view/licencetype" />

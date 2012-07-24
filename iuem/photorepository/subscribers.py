@@ -168,24 +168,3 @@ def updateVocabularies(obj , event):
         # import pdb;pdb.set_trace()
                 
         
-    # import pdb;pdb.set_trace()
-    """
-    !!!! no MORE !!!!
-    widget_addremove.pt modified !!!! : line 98
-                      <tal:block repeat="item vocabulary/keys">
-                    <option
-                        value="#"
-                        tal:define="val python:vocabulary.getValue(item)"
-                        tal:condition="python:not val in selectedItems"
-                        tal:content="python:vocabulary.getValue(item)"
-                        tal:attributes="value val;">Item</option>
-                  </tal:block>
-    original : 
-                  <tal:block repeat="item vocabulary/keys">
-                    <option
-                        value="#"
-                        tal:condition="python:not item in selectedItems"
-                        tal:content="python:vocabulary.getValue(item)"
-                        tal:attributes="value item;">Item</option>
-                  </tal:block>
-    """

@@ -13,39 +13,36 @@ from zope.interface import Interface , implements
 
 def defineImVocs(self):
     imVocs = {}
-    imVocs['imtypevoc'] = (('type1', u'jpeg'), ('type2', u'tiff'), ('type3', u'png'),('type4', u'gif'),('type5', u'psd'), )
-    # imVocs['imtypevoc'] = [] or {} ???...
-    imVocs['imlocationvoc'] = (('brest',u'Brest'),('plouzane',u'Plouzané'), )
-    # imVocs['imlocationvoc'] = []
-    imVocs['imtagvoc'] = (('mer', u'Mer'), ('navire', u'Navire'), )
-    # imVocs['imtagvoc'] = []
-    imVocs['imscitagvoc'] = (('adcp', u'ADCP'), ('mouillage', u'Mouillage'), )
-    # imVocs['imscitagvoc'] = []
-    imVocs['imteamvoc'] = (('lemar', u'LEMAR'), ('lm2e', u'LMEE'),('lpo', u'LPO'))
-    # imVocs['imteamvoc'] = []
-    imVocs['improjectvoc'] = (('aspex', u'Aspex'), ('epure', u'EPURE'), )
-    # imVocs['improjectvoc'] = []
-    imVocs['imlicencevoc'] = ()
-    # imVocs['imlicencevoc'] = []
+    imVocs['localization_voc'] = (('brest',u'Brest'),('plouzane',u'Plouzané'), )
+    # imVocs['localization_voc'] = []
+    imVocs['general_voc'] = (('mer', u'Mer'), ('navire', u'Navire'), )
+    # imVocs['general_voc'] = []
+    imVocs['science_voc'] = (('adcp', u'ADCP'), ('mouillage', u'Mouillage'), )
+    # imVocs['science_voc'] = []
+    imVocs['laboratory_voc'] = (('lemar', u'LEMAR'), ('lm2e', u'LMEE'),('lpo', u'LPO'))
+    # imVocs['laboratory_voc'] = []
+    imVocs['researchproj_voc'] = (('aspex', u'Aspex'), ('epure', u'EPURE'), )
+    # imVocs['researchproj_voc'] = []
+    imVocs['licencetype_voc'] = ()
+    # imVocs['licencetype_voc'] = []
     return imVocs
 
 class imMetadatas:
     listVocabularies = []
-    listVocabularies.append('imlocationvoc')
-    listVocabularies.append('imtagvoc')
-    listVocabularies.append('imscitagvoc')
-    listVocabularies.append('imteamvoc')
-    listVocabularies.append('improjectvoc')
-    listVocabularies.append('improjectvoc')
-    listVocabularies.append('imlicencevoc')
+    listVocabularies.append('localization_voc')
+    listVocabularies.append('general_voc')
+    listVocabularies.append('science_voc')
+    listVocabularies.append('laboratory_voc')
+    listVocabularies.append('researchproj_voc')
+    listVocabularies.append('licencetype_voc')
     
     vocabMetadata = {}
-    vocabMetadata['general'] = 'imtagvoc'
-    vocabMetadata['science'] = 'imscitagvoc'
-    vocabMetadata['where'] = 'imlocationvoc'
-    vocabMetadata['laboratory'] = 'imteamvoc'
-    vocabMetadata['reseachproject'] = 'improjectvoc'
-    vocabMetadata['licencetype'] = 'imlicencevoc'
+    vocabMetadata['general'] = 'general_voc'
+    vocabMetadata['science'] = 'science_voc'
+    vocabMetadata['where'] = 'localization_voc'
+    vocabMetadata['laboratory'] = 'laboratory_voc'
+    vocabMetadata['reseachproject'] = 'researchproj_voc'
+    vocabMetadata['licencetype'] = 'licencetype_voc'
     
     commonMetadatas = []
     commonMetadatas.append('description')
@@ -99,7 +96,7 @@ class UpdateVocabs(object):
             # print k + ' ' + FORM[k]
             if k == 'where':
                 val = FORM[k]
-                vocab = vocabs['imlocationvoc']
+                vocab = vocabs['localization_voc']
                 if not hasattr(vocab, val) and val:
                     vocab.invokeFactory('SimpleVocabularyTerm', val)
                     vocab[val].setTitle(val)
@@ -116,7 +113,7 @@ class UpdateVocs(BrowserView):
             # print k + ' ' + FORM[k]
             if k == 'where':
                 val = FORM[k]
-                vocab = vocabs['imlocationvoc']
+                vocab = vocabs['localization_voc']
                 if not hasattr(vocab, val) and val:
                     vocab.invokeFactory('SimpleVocabularyTerm', val)
                     vocab[val].setTitle(val)

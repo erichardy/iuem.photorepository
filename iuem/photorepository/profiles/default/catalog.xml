@@ -2,34 +2,34 @@
 
 
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
-  <index name="where" meta_type="KeywordIndex">
+  <index name="IMG_Localization" meta_type="KeywordIndex">
     <indexed_attr value="where"/>
   </index>
-  <index name="laboratory" meta_type="KeywordIndex">
+  <index name="IMG_Laboratory" meta_type="KeywordIndex">
     <indexed_attr value="laboratory"/>
   </index>
-  <index name="reseachproject" meta_type="KeywordIndex">
+  <index name="IMG_Reseach_Project" meta_type="KeywordIndex">
     <indexed_attr value="reseachproject"/>
   </index>
-  <index name="general" meta_type="KeywordIndex">
+  <index name="IMG_General" meta_type="KeywordIndex">
     <indexed_attr value="general"/>
   </index>
-  <index name="science" meta_type="KeywordIndex">
+  <index name="IMG_Science" meta_type="KeywordIndex">
     <indexed_attr value="science"/>
   </index>
-  <index name="licencetype" meta_type="KeywordIndex">
+  <index name="IMG_Licence_Type" meta_type="KeywordIndex">
     <indexed_attr value="licencetype"/>
   </index>
-  <index name="recording_date_time" meta_type="DateIndex">
+  <index name="IMG_RecordingDateTime" meta_type="DateIndex">
     <indexed_attr value="recording_date_time"/>
   </index>
-  <index name="photographer" meta_type="FieldIndex">
+  <index name="IMG_Photographer" meta_type="FieldIndex">
     <indexed_attr value="photographer"/>
   </index>
-  <index name="latitude" meta_type="FieldIndex">
+  <index name="IMG_Latitude" meta_type="FieldIndex">
     <indexed_attr value="latitude"/>
   </index>
-  <index name="longitude" meta_type="FieldIndex">
+  <index name="IMG_Longitude" meta_type="FieldIndex">
     <indexed_attr value="longitude"/>
   </index>
   

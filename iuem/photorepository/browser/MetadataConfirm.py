@@ -7,7 +7,6 @@ from zope.component import adapts
 from iuem.photorepository.manageVocabulary import imMetadatas
 from iuem.photorepository.extender import ImageImageRepositoryExtender
 from iuem.photorepository.extender import FolderImageRepositoryExtender
-from Products.CMFCore.utils import getToolByName
 
 def strToList(strOrList):
     """ returns a list even if strOrList is a str"""
