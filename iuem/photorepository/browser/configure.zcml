@@ -8,21 +8,6 @@
       name="iuem.photorepository"
       />
   <browser:page
-      for="*"
-      name="test_view"
-      class=".test_view.testView"
-      template="test_view.pt"
-      layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-  <browser:page
-      for="*"
-      name="testformview"
-      class=".testForm.TestFormView"
-      layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-  <browser:page
       name="repo_image_view"
       for="*"
       class=".repoImageView.repoImageView"
@@ -58,30 +43,6 @@
       name="spread_metadata"
       class=".MetadataConfirm.SpreadMetadata"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-
-  <browser:page
-      for="*"
-      name="metadataform_view"
-      class=".metadataform.MetadataForm"
-      layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-  <browser:page
-      for="*"
-      name="metadata_view_pt"
-      class=".metadata_view.MetadataView"
-      template="metadata_view.pt"
-      layer=".interfaces.ILayer"
-      permission="zope2.View"
-      />
-  <browser:page
-      for="*"
-      name="imphoto_view"
-      class=".imphoto_view.imPhotoView"
-      template="imphoto_view.pt"
-      layer="iuem.photorepository.browser.interfaces.ILayer"
       permission="zope2.View"
       />
 
