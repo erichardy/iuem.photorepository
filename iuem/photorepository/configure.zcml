@@ -102,30 +102,4 @@
     permission="zope2.View"
   />
 
-
-
-
-
-
-  <!-- no more used....
-    <subscriber handler=".subscribers.createSmallImage" />
-  
-    <subscriber
-    for="Products.Archetypes.interfaces.IObjectInitializedEvent"
-    handler=".manageAddImPhoto.imPhotoObjectInitializedEvent"
-  />
-  <subscriber
-    for="zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-    handler=".manageImPhotoModified.imIObjectModifiedEvent"
-  />
-  handler for imPhoto initialization
-  usefull documentation at :
-  http://plone.org/documentation/kb/five-zope3-walkthrough/events
-  and list of events : zope/app/container/interfaces.py
-  
-  <adapter factory=".metadatamanager.AnnotationMetadaManager" />
-  
-  
-  -->
-
 </configure>

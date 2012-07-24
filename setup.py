@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0'
+version = '1.0a1'
 
 setup(name='iuem.photorepository',
       version=version,
@@ -39,6 +39,7 @@ setup(name='iuem.photorepository',
           'Products.ATVocabularyManager',
           'Products.AddRemoveWidget',
           'collective.js.jqueryui',
+          'eea.facetednavigation',
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(
