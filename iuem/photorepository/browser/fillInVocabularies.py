@@ -24,5 +24,5 @@ class fillInVocabularies(BrowserView):
         vocabs = getToolByName(context , 'portal_vocabularies')
         for voc in vocabs:
             print voc
-        vocabs['general_voc'].addTerm(key='lacle' , value = u'La clé' , termtype='SimpleVocabularyTerm',silentignore=True)
+        vocabs['general_voc'].addTerm(key='lacle' , value = u'La cle' , termtype='SimpleVocabularyTerm',silentignore=True)
         # import pdb;pdb.set_trace()
