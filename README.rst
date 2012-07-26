@@ -12,14 +12,18 @@ department.
 Special Thanks to :
 ===================
 Bertrand Gobert : communication department in IUEM
+
 Jean-Michel François (aka toutpt) for his courses
+
 Tristan Le Toullec (new plone integrator and developer in IUEM) 
 
 Features :
 ========== 
 
 The two main ideas of this product are :
+
 1- extend metadatas for a finer grain research and selection
+
 2- spread metadatas folder to the contained objects
 
 This product aim to make your entire plone site dedicated for photos/images
