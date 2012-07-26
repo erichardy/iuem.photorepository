@@ -9,13 +9,13 @@
 <div metal:fill-slot="content-core">
 <div>
 
-dans fillInVocabularies.pt
+@@fill_in_vocabularies : fillInVocabularies.pt + fillInVocabularies.py
 <p />
 
-<span tal:content="view/vocabs">vocabs</span>
-
-
-
+<span tal:repeat="v view/vocabs">
+  <span tal:content="string:${v}">v</span>
+    <br />
+</span>
 
 </div>
 </div>

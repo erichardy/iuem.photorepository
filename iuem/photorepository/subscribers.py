@@ -12,14 +12,10 @@ from plone.app.imaging.traverse import DefaultImageScaleHandler
 from Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
 
 def installRepoImage(obj, event):
-    # print 'entree dans installRepoImage.'
     f_uploaded =  obj.getImageAsFile()
-    # currentImage = Image.open(f_uploaded)
     ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-    print exif
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
-    # import pdb;pdb.set_trace()
     doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
@@ -33,31 +29,16 @@ def updateRepoImage(obj, event):
         if request.form['image_file'].filename != '':
             ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-            # print exif
             ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
             doThumbnail(obj)
 
-# @adapter(IATImage , IObjectInitializedEvent)
 def createSmallImage(obj, event):
     # copy the image loaded to 'original' (extended) field
-    # ImageImageRepositoryExtender(obj).fields[0].copy(obj.getImage())
     f_uploaded =  obj.getImageAsFile()
     currentImage = Image.open(f_uploaded)
-    # f_sourceImage = ImageImageRepositoryExtender(obj).fields[0].getRaw(obj).getBlob().committed()
-    # sourceImage = Image.open(f_sourceImage)
-    """
-    if sameImages(currentImage , sourceImage):
-        print "Images identiques"
-        return
-    else:
-        print "pas pareilles..."
-    """
-    import pdb;pdb.set_trace()
     ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif) 
-    print exif
-        # reduce the image field and add the watermark
     doThumbnail(obj)
     
 def sameImages(im1, im2):
@@ -129,22 +110,23 @@ def nbField(obj , name):
 def updateVocabularies(obj , event):
     """update vocabularies according to new values entered"""
     portal = obj.portal_url.getPortalObject()
-    myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
+    try:
+        myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
+    except:
+        print 'Products.ATVocabularyManager not yet installed... skipped'
+        return
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
     # import pdb;pdb.set_trace()
     for k in vocabs.keys():
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
-        # print 'k = ' + str(k) + ' ' + str(myVocab)
         # should call cleanupKeywords(obj[k])
         if '' in obj[k]: obj[k].remove('')
         
         needToCorrect = False
         for kword in obj[k]:
             ukword = unicode(kword,'utf-8')
-            # ajout non teste
-            # import pdb;pdb.set_trace()
             if not kword in myVocab.getVocabularyDict().keys():
                 normalizedWord = normalizer.normalize(ukword, locale = 'fr')
                 myVocab.addTerm(normalizedWord , kword , silentignore=True)
@@ -165,6 +147,5 @@ def updateVocabularies(obj , event):
                 ImageImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
             else:
                 FolderImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
-        # import pdb;pdb.set_trace()
                 
         
