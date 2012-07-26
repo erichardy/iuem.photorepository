@@ -53,7 +53,7 @@ def doThumbnail(obj):
     image = Image.open(f_image)
     if image.mode != 'RGBA':
         image = image.convert('RGBA')
-    size = 300 , 300
+    size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
     draw = ImageDraw.Draw(image)
     draw.line((0, 0) + image.size, fill=(255, 255, 255))

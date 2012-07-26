@@ -24,18 +24,18 @@ The two main ideas of this product are :
 
 1- extend metadatas for a finer grain research and selection
 
-2- spread metadatas folder to the contained objects
+2- spread folders metadatas to contained objects
 
 This product aim to make your entire plone site dedicated for photos/images
 repository. Large use of archetypes.schemaextender is done to extend metadatas
 of folder and images. So _ALL_ folders and images are extended.
 
 When you add a new folder or image, you can use metadatas already included in
-the vocabularies (like a thesorus) or add new values which are included in the
+the vocabularies (like a thesorus) or add new values which are added to the
 vocabularies when you save your new object.
 
 collective.quickupload is a dependency of this product because we want that the
-users upload photos easily. When this process is used, it's a good idea to spread
+photos upload easy for users. When this process is used, it's a good idea to spread
 the container metadatas to the inserted photos.
 
 Because eea.facetednavigation seems to be very good tool to browse the database,

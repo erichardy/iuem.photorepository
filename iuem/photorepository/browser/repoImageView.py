@@ -21,6 +21,18 @@ class repoImageView(BrowserView):
         tag = context.absolute_url() + '/sourceImage'
         return tag
     
+    def originalHeight(self):
+        context = self.context
+        return str(context.sourceImage.height)
+    
+    def originalWidth(self):
+        context = self.context
+        return str(context.sourceImage.width)
+    
+    def originalType(self):
+        context = self.context
+        return str(context.sourceImage.content_type)
+    
     def viewImage(self):
         return self.context.tag()
     

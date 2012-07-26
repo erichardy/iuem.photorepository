@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="CMF Workflow Tool">
+ <property name="title"></property>
+ <bindings>
+  <type type_id="Image">
+   <bound-workflow workflow_id="(Default)"/>
+  </type>
+ </bindings>
+</object>
