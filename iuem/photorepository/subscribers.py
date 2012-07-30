@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import logging
 from PIL import Image , ImageDraw
 from PIL import ImageChops
 from StringIO import StringIO
@@ -10,6 +11,8 @@ from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
 from Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
+
+logger = logging.getLogger('iuem.photorepository')
 
 def installRepoImage(obj, event):
     f_uploaded =  obj.getImageAsFile()
@@ -109,11 +112,11 @@ def nbField(obj , name):
 # obj and event.object are identical
 def updateVocabularies(obj , event):
     """update vocabularies according to new values entered"""
-    portal = obj.portal_url.getPortalObject()
     try:
-        myVocabsTool = getToolByName(portal , ATVOCABULARYTOOL)
-    except:
-        print 'Products.ATVocabularyManager not yet installed... skipped'
+        myVocabsTool = getToolByName(obj , ATVOCABULARYTOOL)
+    except :
+        msg = 'Products.ATVocabularyManager not yet installed... skipped'
+        logger.info(msg)
         return
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
