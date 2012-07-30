@@ -152,7 +152,8 @@ def updateMetadata(obj , form , context):
                 obj.setDescription(emptyString)
             elif k in stringFields:
                 if obj.portal_type == 'Image':
-                    ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
+                    #ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
+                    obj.getField(k).set(obj, emptyString)
                 else:
                     FolderImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
             else:
