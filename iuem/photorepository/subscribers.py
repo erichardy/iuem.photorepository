@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
 from PIL import Image , ImageDraw
-from PIL import ImageChops
 from StringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
@@ -10,15 +9,22 @@ from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
-from Products.Archetypes.event import ObjectEditedEvent , ObjectInitializedEvent
+from Products.Archetypes.event import ObjectEditedEvent
 
 logger = logging.getLogger('iuem.photorepository')
 
+def setSourceimageAndExif(obj, sourceImage):
+    obj.getField("sourceImage").set(obj , sourceImage)
+    exif = ImageImageRepositoryExtender(obj).context.getEXIF()
+    obj.getField("exif").set(obj, exif)
+
 def installRepoImage(obj, event):
-    f_uploaded =  obj.getImageAsFile()
+    """
     ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
     ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+    """
+    setSourceimageAndExif(obj, obj.getImage())
     doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
@@ -30,26 +36,30 @@ def updateRepoImage(obj, event):
     # If the image field was modified...
     if request.form.has_key('image_file'):
         if request.form['image_file'].filename != '':
-            ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
+            """
+            obj.getField("sourceImage").set(obj, obj.getImage())
+            # ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
             exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-            ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+            obj.getField("exif").set(obj, exif)
+            # ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+            """
+            setSourceimageAndExif(obj, obj.getImage())
             doThumbnail(obj)
 
 def createSmallImage(obj, event):
-    # copy the image loaded to 'original' (extended) field
+    # copy the image loaded to 'sourceImage' (extended) field
     f_uploaded =  obj.getImageAsFile()
-    currentImage = Image.open(f_uploaded)
-    ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
+    """
+    obj.getField("sourceImage").set(obj, f_uploaded.read())
+    # ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-    ImageImageRepositoryExtender(obj).fields[12].set(obj , exif) 
+    obj.getField("exif").set(obj, exif)
+    # ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
+    """
+    setSourceimageAndExif(obj, f_uploaded.read())
     doThumbnail(obj)
-    
-def sameImages(im1, im2):
-    return ImageChops.difference(im1, im2).getbbox() is None
 
 def doThumbnail(obj):
-    # f_uploaded =  obj.getImageAsFile()
-    # uploaded = Image.open(f_uploaded)
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
     f_image = StringIO(scaled.data)
@@ -120,7 +130,6 @@ def updateVocabularies(obj , event):
         return
     vocabs = getVocabularies(obj)
     normalizer = getUtility(INormalizer)
-    # import pdb;pdb.set_trace()
     for k in vocabs.keys():
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
@@ -145,10 +154,12 @@ def updateVocabularies(obj , event):
                     newMetadatas.append(kword)
                 else:
                     newMetadatas.append(normalizedWord)
+            obj.getField(k).set(obj, newMetadatas)
+            """
             i = nbField(obj,k)
             if obj.portal_type == 'Image':
                 ImageImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
             else:
                 FolderImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
-                
+            """ 
         

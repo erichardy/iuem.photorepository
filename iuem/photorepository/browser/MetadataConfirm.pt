@@ -20,7 +20,20 @@
 <H1 i18n:translate="Confirm metadata spread">Confirm metadata spread</H1>
 <form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
 <table border="1" class="MetadataTable">
-<tbody>
+<tbody
+    tal:define="wheretospread view/wheretospread;
+                addorreplace view/addorreplace;
+                description python:view.kwValue('description');
+                general python:view.kwValue('general');
+                science python:view.kwValue('science');
+                where python:view.kwValue('where');
+                laboratory python:view.kwValue('laboratory');
+                reseachproject python:view.kwValue('reseachproject');
+                licencetype python:view.kwValue('licencetype');
+                photographer python:view.kwValue('photographer');
+                recording_date_time python:view.kwValue('recording_date_time');
+                "
+>
 <tr>
   <td i18n:translate="Spread depth">Spread depth</td>
   <td>
@@ -35,93 +48,93 @@
   <input type="hidden" name="addorreplace" tal:attributes="value view/addorreplace" />
   </td>
 </tr>
-<tr tal:condition="view/description">
+<tr tal:condition="description">
   <td i18n:translate="description">Description</td>
   <td>
-  <span tal:content="view/description">description</span>
-  <input type="hidden" name="description" tal:attributes="value view/description" />
+  <span tal:content="string:${description}">description</span>
+  <input type="hidden" name="description" tal:attributes="value string:${description}" />
   </td>
 </tr>
 
-<tr tal:condition="view/general">
+<tr tal:condition="general">
   <td i18n:translate="General keywords">General keywords</td>
   <td>
-    <span tal:repeat="general view/general">
-      <span tal:content="python:view.value_of(general,'general_voc')">general</span>
+    <span tal:repeat="xgeneral general">
+      <span tal:content="python:view.value_of(xgeneral,'general_voc')">general</span>
       <br />
     </span>
-    <input type="hidden" name="general" tal:attributes="value view/general" />
+    <input type="hidden" name="general" tal:attributes="value string:${general}" />
   </td>
 </tr>
 
-<tr tal:condition="view/science">
+<tr tal:condition="science">
   <td i18n:translate="Scientific keywords">Scientific keywords</td>
   <td>
-    <span tal:repeat="science view/science">
-      <span tal:content="python:view.value_of(science,'science_voc')">science</span>
+    <span tal:repeat="xscience science">
+      <span tal:content="python:view.value_of(xscience,'science_voc')">science</span>
       <br />
     </span>
-    <input type="hidden" name="science" tal:attributes="value view/science" />
+    <input type="hidden" name="science" tal:attributes="value string:${science}" />
   </td>
 </tr>
 
-<tr tal:condition="view/where">
+<tr tal:condition="where">
   <td i18n:translate="Where">Where</td>
   <td>
-    <span tal:repeat="where view/where">
-      <span tal:content="python:view.value_of(where,'localization_voc')">science</span>
+    <span tal:repeat="xwhere where">
+      <span tal:content="python:view.value_of(xwhere,'localization_voc')">science</span>
       <br />
     </span>
-    <input type="hidden" name="where" tal:attributes="value view/where" />
+    <input type="hidden" name="where" tal:attributes="value string:${where}" />
   </td>
 </tr>
 
-<tr tal:condition="view/laboratory">
+<tr tal:condition="laboratory">
   <td i18n:translate="Laboratory">Laboratory</td>
   <td>
-    <span tal:repeat="laboratory view/laboratory">
-      <span tal:content="python:view.value_of(laboratory,'laboratory_voc')">laboratory</span>
+    <span tal:repeat="xlaboratory laboratory">
+      <span tal:content="python:view.value_of(xlaboratory,'laboratory_voc')">laboratory</span>
       <br />
     </span>
-    <input type="hidden" name="laboratory" tal:attributes="value view/laboratory" />
+    <input type="hidden" name="laboratory" tal:attributes="value string:${laboratory}" />
   </td>
 </tr>
 
-<tr tal:condition="view/reseachproject">
+<tr tal:condition="reseachproject">
   <td i18n:translate="Research Project">Research Project</td>
   <td>
-    <span tal:repeat="reseachproject view/reseachproject">
-      <span tal:content="python:view.value_of(reseachproject,'researchproj_voc')">reseachproject</span>
+    <span tal:repeat="xreseachproject reseachproject">
+      <span tal:content="python:view.value_of(xreseachproject,'researchproj_voc')">reseachproject</span>
       <br />
     </span>
-    <input type="hidden" name="reseachproject" tal:attributes="value view/reseachproject" />
+    <input type="hidden" name="reseachproject" tal:attributes="value string:${reseachproject}" />
   </td>
 </tr>
 
-<tr tal:condition="view/licencetype">
+<tr tal:condition="licencetype">
   <td i18n:translate="Licence Type">Licence Type</td>
   <td>
-    <span tal:repeat="licencetype view/licencetype">
-      <span tal:content="python:view.value_of(licencetype,'licencetype_voc')">licencetype</span>
+    <span tal:repeat="xlicencetype licencetype">
+      <span tal:content="python:view.value_of(xlicencetype,'licencetype_voc')">licencetype</span>
       <br />
     </span>
-    <input type="hidden" name="licencetype" tal:attributes="value view/licencetype" />
+    <input type="hidden" name="licencetype" tal:attributes="value string:${licencetype}" />
   </td>
 </tr>
 
-<tr tal:condition="view/photographer">
+<tr tal:condition="photographer">
   <td i18n:translate="Photographer">Photographer</td>
   <td>
-    <span tal:content="string:${view/photographer}">photographer</span>
-    <input type="hidden" name="photographer" tal:attributes="value view/photographer" />
+    <span tal:content="string:${photographer}">photographer</span>
+    <input type="hidden" name="photographer" tal:attributes="value string:${photographer}" />
   </td>
 </tr>
 
-<tr tal:condition="view/recording_date_time">
+<tr tal:condition="recording_date_time">
   <td i18n:translate="Recording date and time">Recording date and time</td>
   <td>
-  <span tal:content="string:${view/recording_date_time}">recording_date_time</span>
-  <input type="hidden" name="recording_date_time" tal:attributes="value view/recording_date_time" />
+  <span tal:content="string:${recording_date_time}">recording_date_time</span>
+  <input type="hidden" name="recording_date_time" tal:attributes="value string:${recording_date_time}" />
   </td>
 </tr>
 </tbody>

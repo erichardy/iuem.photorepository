@@ -11,17 +11,19 @@
 
 <span tal:replace="structure view/viewImage">viewImage</span>
 <br />
-<span tal:define="type view/originalType;
-                  height view/originalHeight;
-                  width view/originalWidth"
-      tal:content="string:(${type} , ${width} x ${height})">
-      type , h x w
-</span>
+
 <p />
-<a tal:condition="view/canViewFullImage" 
+<span tal:condition="view/canViewFullImage">
+<a 
    tal:attributes="href string:${view/sourceImage}; target string:_blank"
    i18n:translate="view_original_image">View the original image</a>
-
+   <span tal:define="type view/originalType;
+                  height view/originalHeight;
+                  width view/originalWidth"
+      tal:content="string: (${type} , ${width} x ${height})">
+      type , h x w
+   </span>
+</span>
 <br />
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas

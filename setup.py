@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0a1'
+version = '0.1'
 
 setup(name='iuem.photorepository',
       version=version,
@@ -13,14 +13,13 @@ setup(name='iuem.photorepository',
       classifiers=[
         "Programming Language :: Python",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.0",
         "Framework :: Plone :: 4.1",
         "Framework :: Plone :: 4.2",
         ],
-      keywords='',
-      author='',
-      author_email='',
-      url='http://svn.plone.org/svn/collective/',
+      keywords='image repository',
+      author='Eric Hardy',
+      author_email='Eric.Hardy@univ-brest.fr',
+      url='https://github.com/erichardy/iuem.photorepository',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['iuem'],
@@ -30,16 +29,12 @@ setup(name='iuem.photorepository',
           'setuptools',
           'plone.app.z3cform',
           'plone.directives.form',
-          'collective.quickupload',
-          'collective.galleria',
           'pillow',
-          'plone.app.theming',
           'archetypes.schemaextender',
           'plone.app.registry',
           'Products.ATVocabularyManager',
           'Products.AddRemoveWidget',
           'collective.js.jqueryui',
-          'eea.facetednavigation',
           # -*- Extra requirements: -*-
       ],
       extras_require = dict(

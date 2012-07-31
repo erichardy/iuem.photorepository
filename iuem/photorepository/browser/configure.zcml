@@ -24,7 +24,7 @@
   <browser:page
       for="*"
       name="manage_metadata"
-      class=".ManageMetadata_form.ManageMetadataFormView"
+      class=".manageMetadata_form.ManageMetadataFormView"
       template="ManageMetadataFormView.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
@@ -33,15 +33,15 @@
   <browser:page
       for="*"
       name="metadataconfirm_view"
-      template="MetadataConfirm.pt"
-      class=".MetadataConfirm.MetadataConfirmView"
+      template="metadataConfirm.pt"
+      class=".metadataConfirm.MetadataConfirmView"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
   <browser:page
       for="*"
       name="spread_metadata"
-      class=".MetadataConfirm.SpreadMetadata"
+      class=".metadataConfirm.SpreadMetadata"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

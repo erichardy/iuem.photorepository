@@ -19,7 +19,18 @@
 <H1 i18n:translate="metadata_choice">Which metadatas to spread...</H1>
 <form name="choice_spread_metadata" tal:attributes="action string:@@metadataconfirm_view" method="post">
 <table border="0" class="MetadataTable">
-<tbody>
+<tbody
+    tal:define="description python:view.kwValue('description');
+                general python:view.kwValue('general');
+                science python:view.kwValue('science');
+                where python:view.kwValue('where');
+                laboratory python:view.kwValue('laboratory');
+                reseachproject python:view.kwValue('reseachproject');
+                licencetype python:view.kwValue('licencetype');
+                photographer python:view.kwValue('photographer');
+                recording_date_time python:view.kwValue('recording_date_time');
+                "
+>
 <tr>
   <td i18n:translate="Spread depth">Spread depth</td>
   <td>
@@ -39,92 +50,92 @@
   </td>
 </tr>
 
-<tr tal:condition="view/description">
+<tr tal:condition="description">
   <td i18n:translate="description">Description</td>
   <td>
-  <input type="checkbox" name="description" tal:attributes="value view/description" />
-  <span tal:content="string: ${view/description}">description</span>
+  <input type="checkbox" name="description" tal:attributes="value string:${description}" />
+  <span tal:content="string: ${description}">description</span>
   </td>
 </tr>
 
-<tr tal:condition="view/general">
+<tr tal:condition="general">
   <td i18n:translate="General keywords">General keywords</td>
   <td>
-  	<span tal:repeat="gen view/general">
-  		<input type="checkbox" name="general" tal:attributes="value string:${gen}" checked="checked" />
-  		<span tal:define="vgen python:view.value_of(gen,'general_voc')" tal:content="string:${vgen}">general</span>
+  	<span tal:repeat="xgeneral general">
+  		<input type="checkbox" name="general" tal:attributes="value string:${xgeneral}" checked="checked" />
+  		<span tal:define="vgen python:view.value_of(xgeneral,'general_voc')" tal:content="string:${vgen}">general</span>
   	    <br />
   	</span>
   </td>
 </tr>
-<tr tal:condition="view/science">
+<tr tal:condition="science">
   <td i18n:translate="Scientific keywords">Scientific keywords</td>
   <td>
-  	<span tal:repeat="science view/science">
-  		<input type="checkbox" name="science" tal:attributes="value string:${science}" checked="checked" />
-  		<span tal:define="vscience python:view.value_of(science,'science_voc')" tal:content="string:${vscience}">science</span>
+  	<span tal:repeat="xscience science">
+  		<input type="checkbox" name="science" tal:attributes="value string:${xscience}" checked="checked" />
+  		<span tal:define="vscience python:view.value_of(xscience,'science_voc')" tal:content="string:${vscience}">science</span>
   	    <br />
   	</span>
   </td>
 </tr>
 
-<tr tal:condition="view/where">
+<tr tal:condition="where">
   <td i18n:translate="Where">Where</td>
   <td>
-    <span tal:repeat="where view/where">
-  		<input type="checkbox" name="where" tal:attributes="value string:${where}" checked="checked" />
-  		<span tal:define="vwhere python:view.value_of(where,'localization_voc')" tal:content="string:${vwhere}">where</span>
+    <span tal:repeat="xwhere where">
+  		<input type="checkbox" name="where" tal:attributes="value string:${xwhere}" checked="checked" />
+  		<span tal:define="vwhere python:view.value_of(xwhere,'localization_voc')" tal:content="string:${vwhere}">where</span>
   	    <br />
   	</span>
   </td>
 </tr>
 
-<tr tal:condition="view/laboratory">
+<tr tal:condition="laboratory">
   <td i18n:translate="Laboratory">Laboratory</td>
   <td>
-    <span tal:repeat="laboratory view/laboratory">
-  		<input type="checkbox" name="laboratory" tal:attributes="value string:${laboratory}" checked="checked" />
-   		<span tal:define="vlaboratory python:view.value_of(laboratory,'laboratory_voc')" tal:content="string:${vlaboratory}">laboratory</span>
+    <span tal:repeat="xlaboratory view/laboratory">
+  		<input type="checkbox" name="laboratory" tal:attributes="value string:${xlaboratory}" checked="checked" />
+   		<span tal:define="vlaboratory python:view.value_of(xlaboratory,'laboratory_voc')" tal:content="string:${vlaboratory}">laboratory</span>
    	    <br />
   	</span>
   </td>
 </tr>
 
-<tr tal:condition="view/reseachproject">
+<tr tal:condition="reseachproject">
   <td i18n:translate="Research Project">Research Project</td>
   <td>
-    <span tal:repeat="reseachproject view/reseachproject">
-  		<input type="checkbox" name="reseachproject" tal:attributes="value string:${reseachproject}" checked="checked" />
-  		<span tal:define="vreseachproject python:view.value_of(reseachproject,'researchproj_voc')" tal:content="string:${vreseachproject}">reseachproject</span>
+    <span tal:repeat="xreseachproject reseachproject">
+  		<input type="checkbox" name="reseachproject" tal:attributes="value string:${xreseachproject}" checked="checked" />
+  		<span tal:define="vreseachproject python:view.value_of(xreseachproject,'researchproj_voc')" tal:content="string:${vreseachproject}">reseachproject</span>
   	    <br />
   	</span>
   </td>
 </tr>
 
-<tr tal:condition="view/licencetype">
+<tr tal:condition="licencetype">
   <td i18n:translate="Licence Type">Licence Type</td>
   <td>
-    <span tal:repeat="licencetype view/licencetype">
-  		<input type="checkbox" name="licencetype" tal:attributes="value string:${licencetype}" checked="checked" />
-  		<span tal:define="vlicencetype python:view.value_of(licencetype,'licencetype_voc')" tal:content="string:${vlicencetype}">licencetype</span>
+    <span tal:repeat="xlicencetype licencetype">
+  		<input type="checkbox" name="licencetype" tal:attributes="value string:${xlicencetype}" checked="checked" />
+  		<span tal:define="vlicencetype python:view.value_of(xlicencetype,'licencetype_voc')" tal:content="string:${vlicencetype}">licencetype</span>
   	    <br />
   	</span>
   </td>
 </tr>
 
-<tr tal:condition="view/photographer">
+<tr tal:condition="photographer">
   <td i18n:translate="Photographer">Photographer</td>
   <td>
-      <input type="checkbox" name="photographer" tal:attributes="value view/photographer" checked="checked" />
-      <span tal:content="string:${view/photographer}">photographer</span>
+      <input type="checkbox" name="photographer" tal:attributes="value string:${photographer}" checked="checked" />
+      <span tal:content="string:${photographer}">photographer</span>
   </td>
 </tr>
 
-<tr tal:condition="view/recording_date_time">
+<tr tal:condition="recording_date_time">
   <td i18n:translate="Recording date and time">Recording date and time</td>
   <td>
-    <input type="checkbox" name="recording_date_time" tal:attributes="value view/recording_date_time" />
-    <span tal:content="string:${view/recording_date_time}">recording_date_time</span>
+    <input type="checkbox" name="recording_date_time" tal:attributes="value string:${recording_date_time}" />
+    <span tal:content="string:${recording_date_time}">recording_date_time</span>
   </td>
 </tr>
 

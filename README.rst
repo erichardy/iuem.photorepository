@@ -2,12 +2,12 @@ Introduction
 ============
 Plone 4 products to manage Photos repository
 
-I'm new in plone development and this product is my first product.
-So advises, corrections and suggestions are really welcome !
+I'm new in plone development and this is my first product.
+So advise, corrections and suggestions are really welcome !
 
-This product has to satisfy a need in my institute (IUEM, Institut Universitaire
-Européen de la Mer, www-iuem.univ-brest.fr) and was initiated by the communication
-service.
+This product is meant to satisfy a need at the institute where I work (IUEM,
+Institut Universitaire Européen de la Mer, www-iuem.univ-brest.fr) and was
+initiated by the communication service.
 
 Special Thanks to :
 ===================
@@ -22,13 +22,13 @@ Features :
 
 The two main ideas of this product are :
 
-1- extend metadatas for a finer grain research and selection
+1- to add metadata for a finer grain research and selection
 
-2- spread folders metadatas to contained objects
+2- to attribute folder metadata to contained
 
-This product aim to make your entire plone site dedicated for photos/images
-repository. Large use of archetypes.schemaextender is done to extend metadatas
-of folder and images. So _ALL_ folders and images are extended.
+This product aims to dedicate your entire Plone site to a photos/images
+repository. Archetypes.schemaextender is largely used to extend metadata of
+folders and images. So _ALL_ folders and images are extended.
 
 When you add a new folder or image, you can use metadatas already included in
 the vocabularies (like a thesaurus) or add new values which are added to the
@@ -39,5 +39,5 @@ photos upload easy for users. When this process is used, it's a good idea to spr
 the container metadatas to the inserted photos.
 
 Because eea.facetednavigation seems to be very good tool to browse the database,
-a special search form wasn't developed.   
+I haven't developed a special search form.   
  
