@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.1a2.dev0'
+version = '0.1a2'
 
 setup(name='iuem.photorepository',
       version=version,
