@@ -34,10 +34,27 @@ When you add a new folder or image, you can use metadatas already included in
 the vocabularies (like a thesaurus) or add new values which are added to the
 vocabularies when you save your new object.
 
-collective.quickupload is a dependency of this product because we want that the
-photos upload easy for users. When this process is used, it's a good idea to spread
-the container metadatas to the inserted photos.
+When an image is uploaded, the original image is copied to a new field and
+the Image field is modified : it is reduced and to diagonal lines
+are drawn. Only a user with permission 'iuem.photorepository: View Full Image',
+owner and manager by default, can access the original image.
 
 Because eea.facetednavigation seems to be very good tool to browse the database,
 I haven't developed a special search form.   
  
+We use collective.quickupload to upload groups of photos
+
+Installation :
+==============
+
+Just add iuem.photorepository to egg section of your buildout.cfg
+
+
+TODO :
+======
+
+- really manage watermarks
+- latitude and longitude fields : how to set values....?
+- config view to manage some parameters : image transformation, watermarks,
+  permissions, etc...
+  
