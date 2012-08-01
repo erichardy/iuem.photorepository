@@ -6,16 +6,16 @@ I'm new in plone development and this is my first product.
 So advise, corrections and suggestions are really welcome !
 
 This product is meant to satisfy a need at the institute where I work (IUEM,
-Institut Universitaire Européen de la Mer, www-iuem.univ-brest.fr) and was
+Institut Universitaire Europeen de la Mer, www-iuem.univ-brest.fr) and was
 initiated by the communication service.
 
 Special Thanks to :
 ===================
-Bertrand Gobert : communication service in IUEM
+Bertrand GOBERT : communication service in IUEM
 
-Jean-Michel François (aka toutpt) for his courses
+Jean-Michel FRANCOIS (aka toutpt) for his courses
 
-Tristan Le Toullec (new plone integrator and developer in IUEM) 
+Tristan LE TOULLEC (new plone integrator and developer in IUEM) 
 
 Features :
 ========== 
