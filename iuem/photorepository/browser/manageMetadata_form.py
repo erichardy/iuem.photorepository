@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
 from Products.Five import BrowserView
-# from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IATFolder
 from zope.component import adapts
 from Products.CMFCore.utils import getToolByName
