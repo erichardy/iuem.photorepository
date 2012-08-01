@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2012-07-23 14:11+0000\n"
+"POT-Creation-Date: 2012-08-01 13:32+0000\n"
 "PO-Revision-Date: 2010-11-13 11:07+0100\n"
 "Last-Translator: YOURNAME <name@email.com>\n"
 "Language-Team: French <plone-fr@lists.plone.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Domain: iuem.photorepository\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
-#: ./browser/ManageMetadataFormView.pt:36
+#: ./browser/manageMetadataFormView.pt:47
 msgid "Add metadatas"
 msgstr "Ajouter aux métadonnées existantes"
 
-#: ./browser/ManageMetadataFormView.pt:33
-#: ./browser/MetadataConfirm.pt:32
+#: ./browser/manageMetadataFormView.pt:44
+#: ./browser/metadataConfirm.pt:45
 msgid "Add or Replace"
 msgstr "Ajouter ou Remplacer"
 
@@ -34,7 +34,7 @@ msgstr "Lieu de la photo"
 msgid "Author of the photo"
 msgstr "Auteur de la photo"
 
-#: ./browser/MetadataConfirm.pt:20
+#: ./browser/metadataConfirm.pt:20
 msgid "Confirm metadata spread"
 msgstr "Confirmer cette propagation de métadonnées"
 
@@ -42,13 +42,13 @@ msgstr "Confirmer cette propagation de métadonnées"
 msgid "EXIF metadata in the picture"
 msgstr "Les métadonnées EXIF propres à cette photo"
 
-#: ./browser/repoimageview.pt:89
+#: ./browser/repoimageview.pt:105
 #: ./extender.py:297
 msgid "EXIF metadatas"
 msgstr "Métadonnées EXIF"
 
-#: ./browser/ManageMetadataFormView.pt:51
-#: ./browser/MetadataConfirm.pt:47
+#: ./browser/manageMetadataFormView.pt:62
+#: ./browser/metadataConfirm.pt:60
 #: ./browser/repofolderalbumview.pt:33
 msgid "General keywords"
 msgstr "Mots clé généraux"
@@ -65,12 +65,12 @@ msgstr "Les métadonnées IPCT"
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
 
-#: ./browser/ManageMetadataFormView.pt:28
+#: ./browser/manageMetadataFormView.pt:39
 msgid "Images here and in all sub-folders"
 msgstr "Les images dans ce dossier et dans tous les sous-dossiers"
 
-#: ./browser/ManageMetadataFormView.pt:83
-#: ./browser/MetadataConfirm.pt:80
+#: ./browser/manageMetadataFormView.pt:94
+#: ./browser/metadataConfirm.pt:93
 #: ./browser/repofolderalbumview.pt:60
 msgid "Laboratory"
 msgstr "Laboratoire"
@@ -80,17 +80,21 @@ msgid "Latitude"
 msgstr "Latitude"
 
 #. Default: "licencetype"
-#: ./browser/ManageMetadataFormView.pt:105
-#: ./browser/MetadataConfirm.pt:102
+#: ./browser/manageMetadataFormView.pt:116
+#: ./browser/metadataConfirm.pt:115
 #: ./browser/repofolderalbumview.pt:78
 msgid "Licence Type"
 msgstr "Type de Licence"
+
+#: ./extender.py:203
+msgid "Localization"
+msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Manage Metadata"
 msgstr "Gérer les Métadonnées"
 
-#: ./browser/ManageMetadataFormView.pt:27
+#: ./browser/manageMetadataFormView.pt:38
 msgid "Only Local Images"
 msgstr "Seulement les images de ce dossier"
 
@@ -98,14 +102,14 @@ msgstr "Seulement les images de ce dossier"
 msgid "Photograph's Laboratory"
 msgstr "Laboratoire du photographe"
 
-#: ./browser/ManageMetadataFormView.pt:116
-#: ./browser/MetadataConfirm.pt:113
+#: ./browser/manageMetadataFormView.pt:127
+#: ./browser/metadataConfirm.pt:126
 #: ./browser/repofolderalbumview.pt:91
 msgid "Photographer"
 msgstr "Photographe"
 
-#: ./browser/ManageMetadataFormView.pt:124
-#: ./browser/MetadataConfirm.pt:121
+#: ./browser/manageMetadataFormView.pt:135
+#: ./browser/metadataConfirm.pt:134
 #: ./browser/repofolderalbumview.pt:87
 msgid "Recording date and time"
 msgstr "Date de la prise de vue"
@@ -114,12 +118,12 @@ msgstr "Date de la prise de vue"
 msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
 msgstr "Instant de la prise de vue, pourrait être extraite des données EXIF"
 
-#: ./browser/ManageMetadataFormView.pt:37
+#: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
 msgstr "Remplacer les métadonnées par celles-ci"
 
-#: ./browser/ManageMetadataFormView.pt:94
-#: ./browser/MetadataConfirm.pt:91
+#: ./browser/manageMetadataFormView.pt:105
+#: ./browser/metadataConfirm.pt:104
 #: ./browser/repofolderalbumview.pt:69
 msgid "Research Project"
 msgstr "Projet de recherche"
@@ -128,18 +132,18 @@ msgstr "Projet de recherche"
 msgid "Research Project related to the picture"
 msgstr "Projet de recherche associé à cette photo"
 
-#: ./browser/ManageMetadataFormView.pt:61
-#: ./browser/MetadataConfirm.pt:58
+#: ./browser/manageMetadataFormView.pt:72
+#: ./browser/metadataConfirm.pt:71
 #: ./browser/repofolderalbumview.pt:42
 msgid "Scientific keywords"
 msgstr "Mots clé scientifiques"
 
-#: ./browser/ManageMetadataFormView.pt:24
-#: ./browser/MetadataConfirm.pt:25
+#: ./browser/manageMetadataFormView.pt:35
+#: ./browser/metadataConfirm.pt:38
 msgid "Spread depth"
 msgstr "Profondeur de la propagation"
 
-#: ./browser/ManageMetadataFormView.pt:134
+#: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
 msgstr "Valider cette propagation de métadonnées"
 
@@ -152,8 +156,8 @@ msgid "What type of restricted usage"
 msgstr "Restrictions d'utilisation, licence"
 
 #. Default: "where"
-#: ./browser/ManageMetadataFormView.pt:72
-#: ./browser/MetadataConfirm.pt:69
+#: ./browser/manageMetadataFormView.pt:83
+#: ./browser/metadataConfirm.pt:82
 #: ./browser/repofolderalbumview.pt:51
 msgid "Where"
 msgstr "Lieu de la prise de vue"
@@ -167,8 +171,8 @@ msgid "XMP metadata description"
 msgstr "Les métadonnées XMP"
 
 #. Default: "Description"
-#: ./browser/ManageMetadataFormView.pt:43
-#: ./browser/MetadataConfirm.pt:39
+#: ./browser/manageMetadataFormView.pt:54
+#: ./browser/metadataConfirm.pt:52
 #: ./browser/repofolderalbumview.pt:29
 msgid "description"
 msgstr "Description"
@@ -182,18 +186,18 @@ msgid "longitude_format"
 msgstr ""
 
 #. Default: "Which metadatas to spread..."
-#: ./browser/ManageMetadataFormView.pt:19
+#: ./browser/manageMetadataFormView.pt:19
 msgid "metadata_choice"
 msgstr "Sélectionner les métadonnées à propager"
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:23
-#: ./browser/repoimageview.pt:12
+#: ./browser/repoimageview.pt:28
 msgid "metadatas"
 msgstr "Métadonnées"
 
 #. Default: "View the original image"
-#: ./browser/repoimageview.pt:103
+#: ./browser/repoimageview.pt:17
 msgid "view_original_image"
 msgstr "Visualiser l'original"
 

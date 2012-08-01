@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2012-07-23 14:11+0000\n"
+"POT-Creation-Date: 2012-08-01 13:32+0000\n"
 "PO-Revision-Date: 2008-02-04 18:00+0000\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: iuem.photorepository\n"
 
-#: ./browser/ManageMetadataFormView.pt:36
+#: ./browser/manageMetadataFormView.pt:47
 msgid "Add metadatas"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:33
-#: ./browser/MetadataConfirm.pt:32
+#: ./browser/manageMetadataFormView.pt:44
+#: ./browser/metadataConfirm.pt:45
 msgid "Add or Replace"
 msgstr ""
 
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Author of the photo"
 msgstr ""
 
-#: ./browser/MetadataConfirm.pt:20
+#: ./browser/metadataConfirm.pt:20
 msgid "Confirm metadata spread"
 msgstr ""
 
@@ -40,13 +40,13 @@ msgstr ""
 msgid "EXIF metadata in the picture"
 msgstr ""
 
-#: ./browser/repoimageview.pt:89
+#: ./browser/repoimageview.pt:105
 #: ./extender.py:297
 msgid "EXIF metadatas"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:51
-#: ./browser/MetadataConfirm.pt:47
+#: ./browser/manageMetadataFormView.pt:62
+#: ./browser/metadataConfirm.pt:60
 #: ./browser/repofolderalbumview.pt:33
 msgid "General keywords"
 msgstr ""
@@ -63,12 +63,12 @@ msgstr ""
 msgid "Image used for watermark"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:28
+#: ./browser/manageMetadataFormView.pt:39
 msgid "Images here and in all sub-folders"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:83
-#: ./browser/MetadataConfirm.pt:80
+#: ./browser/manageMetadataFormView.pt:94
+#: ./browser/metadataConfirm.pt:93
 #: ./browser/repofolderalbumview.pt:60
 msgid "Laboratory"
 msgstr ""
@@ -78,17 +78,21 @@ msgid "Latitude"
 msgstr ""
 
 #. Default: "licencetype"
-#: ./browser/ManageMetadataFormView.pt:105
-#: ./browser/MetadataConfirm.pt:102
+#: ./browser/manageMetadataFormView.pt:116
+#: ./browser/metadataConfirm.pt:115
 #: ./browser/repofolderalbumview.pt:78
 msgid "Licence Type"
+msgstr ""
+
+#: ./extender.py:203
+msgid "Localization"
 msgstr ""
 
 #: ./profiles/default/actions.xml
 msgid "Manage Metadata"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:27
+#: ./browser/manageMetadataFormView.pt:38
 msgid "Only Local Images"
 msgstr ""
 
@@ -96,14 +100,14 @@ msgstr ""
 msgid "Photograph's Laboratory"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:116
-#: ./browser/MetadataConfirm.pt:113
+#: ./browser/manageMetadataFormView.pt:127
+#: ./browser/metadataConfirm.pt:126
 #: ./browser/repofolderalbumview.pt:91
 msgid "Photographer"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:124
-#: ./browser/MetadataConfirm.pt:121
+#: ./browser/manageMetadataFormView.pt:135
+#: ./browser/metadataConfirm.pt:134
 #: ./browser/repofolderalbumview.pt:87
 msgid "Recording date and time"
 msgstr ""
@@ -112,12 +116,12 @@ msgstr ""
 msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:37
+#: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:94
-#: ./browser/MetadataConfirm.pt:91
+#: ./browser/manageMetadataFormView.pt:105
+#: ./browser/metadataConfirm.pt:104
 #: ./browser/repofolderalbumview.pt:69
 msgid "Research Project"
 msgstr ""
@@ -126,18 +130,18 @@ msgstr ""
 msgid "Research Project related to the picture"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:61
-#: ./browser/MetadataConfirm.pt:58
+#: ./browser/manageMetadataFormView.pt:72
+#: ./browser/metadataConfirm.pt:71
 #: ./browser/repofolderalbumview.pt:42
 msgid "Scientific keywords"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:24
-#: ./browser/MetadataConfirm.pt:25
+#: ./browser/manageMetadataFormView.pt:35
+#: ./browser/metadataConfirm.pt:38
 msgid "Spread depth"
 msgstr ""
 
-#: ./browser/ManageMetadataFormView.pt:134
+#: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
 msgstr ""
 
@@ -150,8 +154,8 @@ msgid "What type of restricted usage"
 msgstr ""
 
 #. Default: "where"
-#: ./browser/ManageMetadataFormView.pt:72
-#: ./browser/MetadataConfirm.pt:69
+#: ./browser/manageMetadataFormView.pt:83
+#: ./browser/metadataConfirm.pt:82
 #: ./browser/repofolderalbumview.pt:51
 msgid "Where"
 msgstr ""
@@ -165,8 +169,8 @@ msgid "XMP metadata description"
 msgstr ""
 
 #. Default: "Description"
-#: ./browser/ManageMetadataFormView.pt:43
-#: ./browser/MetadataConfirm.pt:39
+#: ./browser/manageMetadataFormView.pt:54
+#: ./browser/metadataConfirm.pt:52
 #: ./browser/repofolderalbumview.pt:29
 msgid "description"
 msgstr ""
@@ -180,18 +184,18 @@ msgid "longitude_format"
 msgstr ""
 
 #. Default: "Which metadatas to spread..."
-#: ./browser/ManageMetadataFormView.pt:19
+#: ./browser/manageMetadataFormView.pt:19
 msgid "metadata_choice"
 msgstr ""
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:23
-#: ./browser/repoimageview.pt:12
+#: ./browser/repoimageview.pt:28
 msgid "metadatas"
 msgstr ""
 
 #. Default: "View the original image"
-#: ./browser/repoimageview.pt:103
+#: ./browser/repoimageview.pt:17
 msgid "view_original_image"
 msgstr ""
 

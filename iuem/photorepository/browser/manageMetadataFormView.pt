@@ -93,7 +93,7 @@
 <tr tal:condition="laboratory">
   <td i18n:translate="Laboratory">Laboratory</td>
   <td>
-    <span tal:repeat="xlaboratory view/laboratory">
+    <span tal:repeat="xlaboratory laboratory">
   		<input type="checkbox" name="laboratory" tal:attributes="value string:${xlaboratory}" checked="checked" />
    		<span tal:define="vlaboratory python:view.value_of(xlaboratory,'laboratory_voc')" tal:content="string:${vlaboratory}">laboratory</span>
    	    <br />
