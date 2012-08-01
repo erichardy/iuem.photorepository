@@ -6,7 +6,7 @@ version = '0.1a3.dev0'
 setup(name='iuem.photorepository',
       version=version,
       description="Addon for Plone",
-      long_description=open("README.rst").read() + "\n" +
+      long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
