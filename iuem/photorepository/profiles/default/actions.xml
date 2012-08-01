@@ -8,7 +8,7 @@
  <object name="object" meta_type="CMF Action Category">
    <object name="manage_metadata" meta_type="CMF Action" i18n:domain="iuem.photorepository">
      <property name="title" i18n:translate="">Manage Metadata</property>
-     <property name="url_expr">string:${object_url}/@@manage_metadata</property>
+     <property name="url_expr">string:${object_url}/@@manage-metadata</property>
      <property
        name="available_expr">python:folder is object
      </property>

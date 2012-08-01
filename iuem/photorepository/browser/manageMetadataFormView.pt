@@ -17,7 +17,7 @@
 </style>
 
 <H1 i18n:translate="metadata_choice">Which metadatas to spread...</H1>
-<form name="choice_spread_metadata" tal:attributes="action string:@@metadataconfirm_view" method="post">
+<form name="choice_spread_metadata" tal:attributes="action string:@@metadataconfirm-view" method="post">
 <table border="0" class="MetadataTable">
 <tbody
     tal:define="description python:view.kwValue('description');

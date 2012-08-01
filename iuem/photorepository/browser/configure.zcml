@@ -23,16 +23,16 @@
       />
   <browser:page
       for="*"
-      name="manage_metadata"
+      name="manage-metadata"
       class=".manageMetadata_form.ManageMetadataFormView"
-      template="ManageMetadataFormView.pt"
+      template="manageMetadataFormView.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
 
   <browser:page
       for="*"
-      name="metadataconfirm_view"
+      name="metadataconfirm-view"
       template="metadataConfirm.pt"
       class=".metadataConfirm.MetadataConfirmView"
       layer=".interfaces.ILayer"
@@ -40,14 +40,14 @@
       />
   <browser:page
       for="*"
-      name="spread_metadata"
+      name="spread-metadata"
       class=".metadataConfirm.SpreadMetadata"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
   <browser:page
       for="*"
-      name="fill_in_vocabularies"
+      name="fill-in-vocabularies"
       class=".fillInVocabularies.fillInVocabularies"
       template="fillInVocabularies.pt"
       layer=".interfaces.ILayer"

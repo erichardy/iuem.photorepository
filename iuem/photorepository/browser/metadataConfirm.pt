@@ -18,7 +18,7 @@
 </style>
 
 <H1 i18n:translate="Confirm metadata spread">Confirm metadata spread</H1>
-<form name="confirm_spread_metadata" tal:attributes="action string:@@spread_metadata" method="post">
+<form name="confirm_spread_metadata" tal:attributes="action string:@@spread-metadata" method="post">
 <table border="1" class="MetadataTable">
 <tbody
     tal:define="wheretospread view/wheretospread;
