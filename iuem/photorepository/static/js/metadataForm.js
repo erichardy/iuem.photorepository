@@ -2,7 +2,7 @@
 jq(document).ready(function() { 
 	 jq('#formfield-form-widgets-description input').attr('checked', true);
 	 });
-*/
+
 jq(document).ready(function() { 
 	 jq('#formfield-form-widgets-where input').attr('checked', true);
 	 });
@@ -25,7 +25,7 @@ jq(document).ready(function() {
 jq(document).ready(function() { 
 	 jq('#formfield-form-widgets-licencetype input').attr('checked', true);
 	 });
-/*
+
 jq(document).ready(function() { 
 	 jq('#formfield-form-widgets-recording_date_time input').attr('checked', true);
 	 });

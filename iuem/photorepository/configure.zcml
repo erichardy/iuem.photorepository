@@ -81,7 +81,9 @@
          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.updateVocabularies"
   />
-
+  
+  <plone:static directory="static" type="theme" name="iuem.photorepository" />
+  
   <browser:resourceDirectory
       name="iuem_repository_static"
       directory="static"

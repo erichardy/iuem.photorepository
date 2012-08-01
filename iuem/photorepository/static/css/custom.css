@@ -31,7 +31,7 @@ table.MetadataTable tr:nth-child(even) {
     cursor: hand;
     cursor: pointer;
 }
-
+/*
 .iuemCollapsedHeading.iuemCollapsed:before {
     content: "▶ ";
 }
@@ -39,7 +39,14 @@ table.MetadataTable tr:nth-child(even) {
 .iuemCollapsedHeading:before {
     content: "▼ ";
 }
-
+*/
+.iuemCollapsedHeading.iuemCollapsed:before {
+    content: "+ ";
+}
+ 
+.iuemCollapsedHeading:before {
+    content: "- ";
+}
 
 body {
 	background-color: #F9F9F9;
