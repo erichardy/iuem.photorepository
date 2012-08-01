@@ -57,4 +57,4 @@ TODO :
 - latitude and longitude fields : how to set values....?
 - config view to manage some parameters : image transformation, watermarks,
   permissions, etc...
-  
+
