@@ -9,5 +9,9 @@
       <role name="Manager"/>
       <role name="Owner"/>
     </permission>
+    <permission name="Add ATVocabularyManager content" acquire="True">
+      <role name="Manager"/>
+      <role name="Member"/>
+    </permission>
   </permissions>
 </rolemap>

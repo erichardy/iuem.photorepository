@@ -16,7 +16,11 @@
        <element value="Modify portal content"/>
      </property>
    </object>
- 
+   <!--
+   <object name="repo_folder_album_view" meta_type="CMF Action" i18n:domain="iuem.photorepository">
+     <property name="title" i18n:translate="">Repository album view</property>
+   </object>
+   -->
  </object>
  
 </object> 

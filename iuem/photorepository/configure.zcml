@@ -87,6 +87,7 @@
   <browser:resourceDirectory
       name="iuem_repository_static"
       directory="static"
+      permission="zope.Public"
   />
   
   <browser:view

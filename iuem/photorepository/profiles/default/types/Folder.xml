@@ -4,8 +4,7 @@
  i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
  <property name="view_methods" purge="False">
- <!-- We retrofit these new views for Folders in portal_types info -->
- <element value="repo_folder_album_view"/>
+   <element value="repo_folder_album_view" title="Repository Folder Album View"/>
  </property>
  <property name="default_view">repo_folder_album_view</property>
 </object>

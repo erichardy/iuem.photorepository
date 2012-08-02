@@ -31,6 +31,12 @@ table.MetadataTable tr:nth-child(even) {
     cursor: hand;
     cursor: pointer;
 }
+
+#archetypes-fieldname-latitude,
+#archetypes-fieldname-longitude,
+#archetypes-fieldname-watermark {
+	display: none;
+}
 /*
 .iuemCollapsedHeading.iuemCollapsed:before {
     content: "▶ ";

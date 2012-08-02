@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-01 13:32+0000\n"
+"POT-Creation-Date: 2012-08-02 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr ""
 msgid "Confirm metadata spread"
 msgstr ""
 
-#: ./extender.py:298
+#: ./extender.py:300
 msgid "EXIF metadata in the picture"
 msgstr ""
 
 #: ./browser/repoimageview.pt:105
-#: ./extender.py:297
+#: ./extender.py:299
 msgid "EXIF metadatas"
 msgstr ""
 
@@ -53,11 +53,11 @@ msgstr ""
 msgid "General keywords"
 msgstr ""
 
-#: ./extender.py:313
+#: ./extender.py:315
 msgid "IPCT metadata"
 msgstr ""
 
-#: ./extender.py:314
+#: ./extender.py:316
 msgid "IPCT metadata description"
 msgstr ""
 
@@ -83,10 +83,6 @@ msgstr ""
 #: ./browser/metadataConfirm.pt:115
 #: ./browser/repofolderalbumview.pt:78
 msgid "Licence Type"
-msgstr ""
-
-#: ./extender.py:203
-msgid "Localization"
 msgstr ""
 
 #: ./profiles/default/actions.xml
@@ -119,6 +115,10 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Repository album view"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:105
@@ -164,7 +164,7 @@ msgstr ""
 msgid "Who owns this photo"
 msgstr ""
 
-#: ./extender.py:305
+#: ./extender.py:307
 msgid "XMP metadata description"
 msgstr ""
 
@@ -179,7 +179,7 @@ msgstr ""
 msgid "latitude_format"
 msgstr ""
 
-#: ./extender.py:288
+#: ./extender.py:289
 msgid "longitude_format"
 msgstr ""
 

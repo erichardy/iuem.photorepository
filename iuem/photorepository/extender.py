@@ -134,7 +134,7 @@ class FolderImageRepositoryExtender(object):
         widget = ImageWidget(
             label=_(u"Watermark"),
             description=_(u'Image used for watermark'),
-            visible={'view': 'invisible', 'edit': 'invisible' },
+            visible={'view': 'invisible', 'edit': 'visible' },
             ),
         ),
         # Common fields with images
@@ -266,7 +266,7 @@ class ImageImageRepositoryExtender(object):
         widget = ImageWidget(
             label=_(u"Watermark"),
             description=_(u'Image used for watermark'),
-            visible={'view': 'invisible', 'edit': 'invisible' },
+            visible={'view': 'invisible', 'edit': 'visible' },
             ),
         ),
         # End of common fields with Folders
@@ -276,7 +276,7 @@ class ImageImageRepositoryExtender(object):
             widget = StringWidget(
                 label = _(u"Latitude"),
                 description=_(u'latitude_format'),
-                visible={'view': 'invisible', 'edit': 'invisible' },
+                visible={'view': 'invisible', 'edit': 'visible' },
                 maxlength = 50,
                 size = 50
                 ),
@@ -287,7 +287,7 @@ class ImageImageRepositoryExtender(object):
             widget = StringWidget(
                 label = u"Longitude",
                 description=_(u'longitude_format'),
-                visible={'view': 'invisible', 'edit': 'invisible' },
+                visible={'view': 'invisible', 'edit': 'visible' },
                 maxlength = 50,
                 size = 50
                 ),
