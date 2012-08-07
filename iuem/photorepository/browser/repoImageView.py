@@ -61,6 +61,8 @@ class repoImageView(BrowserView):
         return str(self.context.recording_date_time)
     
     def photographer(self):
+        if self.context.photographer == '':
+            return ''
         myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
         vocab = myVocabsTool['photographer_voc']
         vocab.getVocabularyDict()[self.context.photographer]

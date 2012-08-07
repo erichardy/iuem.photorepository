@@ -55,6 +55,12 @@
     handler=".subscribers.updateVocabularies"
   />
   <subscriber 
+    for="Products.ATContentTypes.interface.IATFolder
+         Products.Archetypes.interfaces.IObjectInitializedEvent"
+    handler=".subscribers.nextPrevious"
+  />
+
+  <subscriber 
     for="Products.ATContentTypes.interface.IATImage
          Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".subscribers.installRepoImage"
@@ -82,13 +88,12 @@
     handler=".subscribers.updateVocabularies"
   />
 
-<!--  
-  <plone:static directory="static" type="theme" name="iuem.photorepository" />
--->
+   <plone:static directory="static" type="theme" name="iuem.photorepository" />
+
   <browser:resourceDirectory
       name="iuem_repository_static"
       directory="static"
-      permission="zope2.View"
+      permission="zope.Public"
   />
   
   <browser:view
@@ -103,5 +108,13 @@
     provides=".manageVocabulary.IUpdateVocabs"
     permission="zope2.View"
   />
+  
+  <!-- viewlets -->
+      <browser:viewlet  
+        name="plone.nextprevious"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class="plone.app.layout.nextprevious.view.NextPreviousViewlet"
+        permission="zope2.View" 
+        />
 
 </configure>

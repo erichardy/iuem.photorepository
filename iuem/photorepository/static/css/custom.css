@@ -39,6 +39,12 @@ table.MetadataTable tr:nth-child(even) {
 	background-repeat: no-repeat;
 }
 */
+
+/* actions hidden to users */
+#plone-contentmenu-display {
+	display: none;
+}
+
 /* We hide fields no more used */
 #fieldsetlegend-categorization,
 #fieldsetlegend-dates,

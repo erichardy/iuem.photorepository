@@ -115,15 +115,17 @@ def updateVocabularies(obj , event):
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
         if k == 'photographer':
-            logger.info('pour photographer...' + k + '/' + obj[k].decode('utf-8'))
+            # logger.info('pour photographer...' + k + '/' + obj[k].decode('utf-8'))
+            # import pdb;pdb.set_trace()
             kword = obj[k]
             ukword = unicode(kword,'utf-8')
             normalizedWord = normalizer.normalize(ukword, locale = 'fr')
             if not kword in myVocab.getVocabularyDict().keys():
-                myVocab.addTerm(normalizedWord , kword , silentignore=True)
+                if kword != '':
+                    myVocab.addTerm(normalizedWord , kword , silentignore=True)
             obj.getField(k).set(obj, normalizedWord)
         else:
-            logger.info('k = ' + k)
+            # logger.info('k = ' + k)
             # should call cleanupKeywords(obj[k])
             if '' in obj[k]: obj[k].remove('')
         
@@ -146,3 +148,5 @@ def updateVocabularies(obj , event):
                         newMetadatas.append(normalizedWord)
                 obj.getField(k).set(obj, newMetadatas)
         
+def nextPrevious(obj,event):
+    obj.setNextPreviousEnabled("True")    

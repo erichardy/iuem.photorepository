@@ -5,6 +5,6 @@
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++theme++iuem.photorepository/css/custom.css" media=""
     rel="stylesheet" rendering="import"
-    authenticated="True" applyPrefix="True" />
+    authenticated="False" applyPrefix="True" />
     
 </object>
