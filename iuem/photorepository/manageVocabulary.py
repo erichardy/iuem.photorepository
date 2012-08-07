@@ -24,6 +24,7 @@ def defineImVocs(self):
     imVocs['researchproj_voc'] = (('aspex', u'Aspex'), ('epure', u'EPURE'), )
     # imVocs['researchproj_voc'] = []
     imVocs['licencetype_voc'] = ()
+    imVocs['photographer_voc'] = ()
     # imVocs['licencetype_voc'] = []
     return imVocs
 
@@ -35,6 +36,7 @@ class imMetadatas:
     listVocabularies.append('laboratory_voc')
     listVocabularies.append('researchproj_voc')
     listVocabularies.append('licencetype_voc')
+    listVocabularies.append('photographer_voc')
     
     vocabMetadata = {}
     vocabMetadata['general'] = 'general_voc'
@@ -43,6 +45,7 @@ class imMetadatas:
     vocabMetadata['laboratory'] = 'laboratory_voc'
     vocabMetadata['reseachproject'] = 'researchproj_voc'
     vocabMetadata['licencetype'] = 'licencetype_voc'
+    vocabMetadata['photographer'] = 'photographer_voc'
     
     commonMetadatas = []
     commonMetadatas.append('description')

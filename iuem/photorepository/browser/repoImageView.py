@@ -61,7 +61,10 @@ class repoImageView(BrowserView):
         return str(self.context.recording_date_time)
     
     def photographer(self):
-        return str(self.context.photographer)
+        myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
+        vocab = myVocabsTool['photographer_voc']
+        vocab.getVocabularyDict()[self.context.photographer]
+        return str(vocab.getVocabularyDict()[self.context.photographer])
 
     def sourceExif(self):
         try:

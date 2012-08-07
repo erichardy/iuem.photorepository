@@ -29,7 +29,10 @@ class repoFolderAlbumView(BrowserView):
         return str(self.context.recording_date_time)
     
     def photographer(self):
-        return str(self.context.photographer.encode('utf-8'))
+        myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
+        vocab = myVocabsTool['photographer_voc']
+        vocab.getVocabularyDict()[self.context.photographer]
+        return str(vocab.getVocabularyDict()[self.context.photographer])
     
     def metadataValues(self , field):
         Kmetadatas = eval(str(self.context[field]))

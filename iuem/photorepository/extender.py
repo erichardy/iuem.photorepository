@@ -123,11 +123,10 @@ class FolderImageRepositoryExtender(object):
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
-            default_method = "Creator",
-            widget = StringWidget(
+            vocabulary = NamedVocabulary(u"photographer_voc"),
+            widget = ComboBoxWidget(
                     label=_(u"Author of the photo"),
                     description = _(u"Who owns this photo"),
-                    size = 50,
                     ),
         ),
         _ExtensionImageField(u"watermark",
@@ -255,11 +254,10 @@ class ImageImageRepositoryExtender(object):
             ),
         _ExtensionStringField (u"photographer",
             searchable = True,
-            default_method = "Creator",
-            widget = StringWidget(
+            vocabulary = NamedVocabulary(u"photographer_voc"),
+            widget = ComboBoxWidget(
                     label=_(u"Author of the photo"),
                     description = _(u"Who owns this photo"),
-                    size = 50,
                     ),
         ),
         _ExtensionImageField(u"watermark",

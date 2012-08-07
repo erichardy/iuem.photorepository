@@ -114,26 +114,35 @@ def updateVocabularies(obj , event):
     for k in vocabs.keys():
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
-        # should call cleanupKeywords(obj[k])
-        if '' in obj[k]: obj[k].remove('')
-        
-        needToCorrect = False
-        for kword in obj[k]:
+        if k == 'photographer':
+            logger.info('pour photographer...' + k + '/' + obj[k].decode('utf-8'))
+            kword = obj[k]
             ukword = unicode(kword,'utf-8')
+            normalizedWord = normalizer.normalize(ukword, locale = 'fr')
             if not kword in myVocab.getVocabularyDict().keys():
-                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
                 myVocab.addTerm(normalizedWord , kword , silentignore=True)
-                needToCorrect = True
-
-        if needToCorrect:
-            # replace the new metadata by the corresponding key in the vocabulary
-            newMetadatas = []
+            obj.getField(k).set(obj, normalizedWord)
+        else:
+            logger.info('k = ' + k)
+            # should call cleanupKeywords(obj[k])
+            if '' in obj[k]: obj[k].remove('')
+        
+            needToCorrect = False
             for kword in obj[k]:
                 ukword = unicode(kword,'utf-8')
-                normalizedWord = normalizer.normalize(ukword, locale = 'fr')
-                if kword == normalizedWord:
-                    newMetadatas.append(kword)
-                else:
-                    newMetadatas.append(normalizedWord)
-            obj.getField(k).set(obj, newMetadatas)
+                if not kword in myVocab.getVocabularyDict().keys():
+                    normalizedWord = normalizer.normalize(ukword, locale = 'fr')
+                    myVocab.addTerm(normalizedWord , kword , silentignore=True)
+                needToCorrect = True
+            if needToCorrect:
+            # replace the new metadata by the corresponding key in the vocabulary
+                newMetadatas = []
+                for kword in obj[k]:
+                    ukword = unicode(kword,'utf-8')
+                    normalizedWord = normalizer.normalize(ukword, locale = 'fr')
+                    if kword == normalizedWord:
+                        newMetadatas.append(kword)
+                    else:
+                        newMetadatas.append(normalizedWord)
+                obj.getField(k).set(obj, newMetadatas)
         
