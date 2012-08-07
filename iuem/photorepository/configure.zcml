@@ -27,8 +27,8 @@
     title="iuem.photorepository: View Full Image"
   />
   <permission
-    id="iuem_photorepository.manageRepositoryMetadatas"
-    title="iuem.photorepository: Manage Repository Metadatas"
+    id="iuem_photorepository.manageRepository"
+    title="iuem.photorepository: Manage Repository"
   />
   <genericsetup:registerProfile
       name="default"
@@ -81,13 +81,14 @@
          zope.lifecycleevent.interfaces.IObjectModifiedEvent"
     handler=".subscribers.updateVocabularies"
   />
-  
+
+<!--  
   <plone:static directory="static" type="theme" name="iuem.photorepository" />
-  
+-->
   <browser:resourceDirectory
       name="iuem_repository_static"
       directory="static"
-      permission="zope.Public"
+      permission="zope2.View"
   />
   
   <browser:view

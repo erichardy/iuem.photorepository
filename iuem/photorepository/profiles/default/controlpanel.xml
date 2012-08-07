@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+ <configlet  i18n:domain="atvocabularymanager"
+    title="Vocabulary Library" action_id="portal_vocabularies"
+    appId="VocabularyLibraryID" category="Products" condition_expr=""
+    url_expr="string:${portal_url}/portal_vocabularies/"
+    visible="True" i18n:attributes="title">
+  <permission>iuem.photorepository: Manage Repository</permission>
+ </configlet>
+</object>
