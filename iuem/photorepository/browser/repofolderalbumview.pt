@@ -20,7 +20,7 @@
                  templateId template/getId;
                  batch python:Batch(images, 12, int(b_start), orphan=1)">
 <p />
-<H3 class="iuemCollapsedHeading " i18n:translate="metadatas">
+<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas
 </H3>
 <table border="0" class="MetadataTable">

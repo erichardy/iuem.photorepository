@@ -257,7 +257,7 @@ class ImageImageRepositoryExtender(object):
             searchable = True,
             default_method = "Creator",
             widget = StringWidget(
-                    label=_(u"Photographer"),
+                    label=_(u"Author of the photo"),
                     description = _(u"Who owns this photo"),
                     size = 50,
                     ),

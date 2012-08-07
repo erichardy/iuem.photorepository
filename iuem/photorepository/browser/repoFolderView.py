@@ -29,7 +29,7 @@ class repoFolderAlbumView(BrowserView):
         return str(self.context.recording_date_time)
     
     def photographer(self):
-        return str(self.context.photographer)
+        return str(self.context.photographer.encode('utf-8'))
     
     def metadataValues(self , field):
         Kmetadatas = eval(str(self.context[field]))

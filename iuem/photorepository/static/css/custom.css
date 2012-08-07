@@ -32,6 +32,21 @@ table.MetadataTable tr:nth-child(even) {
     cursor: pointer;
 }
 
+/* To change the visual of a folder */
+/*
+.photoAlbumFolder {
+	background-image: url('polaroid-multi.png');
+	background-repeat: no-repeat;
+}
+*/
+/* We hide fields no more used */
+#fieldsetlegend-categorization,
+#fieldsetlegend-dates,
+#fieldsetlegend-ownership {
+	display: none !important;
+}
+
+/* We hide fields which are not yet used */
 #archetypes-fieldname-latitude,
 #archetypes-fieldname-longitude,
 #archetypes-fieldname-watermark {

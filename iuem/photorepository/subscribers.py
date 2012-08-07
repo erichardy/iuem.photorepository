@@ -19,43 +19,24 @@ def setSourceimageAndExif(obj, sourceImage):
     obj.getField("exif").set(obj, exif)
 
 def installRepoImage(obj, event):
-    """
-    ImageImageRepositoryExtender(obj).fields[0].set(obj , obj.getImage())
-    exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-    ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
-    """
     setSourceimageAndExif(obj, obj.getImage())
-    doThumbnail(obj)    
+    if obj.getField('title').get(obj)[:3] != '00-':
+        doThumbnail(obj)    
 
 def updateRepoImage(obj, event):
-    """
-    """
     if not isinstance(event,ObjectEditedEvent):
         return
     request = obj.REQUEST
     # If the image field was modified...
     if request.form.has_key('image_file'):
         if request.form['image_file'].filename != '':
-            """
-            obj.getField("sourceImage").set(obj, obj.getImage())
-            # ImageImageRepositoryExtender(obj).fields[0].set(obj ,obj.getImage())
-            exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-            obj.getField("exif").set(obj, exif)
-            # ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
-            """
             setSourceimageAndExif(obj, obj.getImage())
-            doThumbnail(obj)
+            if obj.getField('title').get(obj)[:3] != '00-':
+                doThumbnail(obj)
 
 def createSmallImage(obj, event):
     # copy the image loaded to 'sourceImage' (extended) field
     f_uploaded =  obj.getImageAsFile()
-    """
-    obj.getField("sourceImage").set(obj, f_uploaded.read())
-    # ImageImageRepositoryExtender(obj).fields[0].set(obj , f_uploaded.read())
-    exif = ImageImageRepositoryExtender(obj).context.getEXIF()
-    obj.getField("exif").set(obj, exif)
-    # ImageImageRepositoryExtender(obj).fields[12].set(obj , exif)
-    """
     setSourceimageAndExif(obj, f_uploaded.read())
     doThumbnail(obj)
 
@@ -155,11 +136,4 @@ def updateVocabularies(obj , event):
                 else:
                     newMetadatas.append(normalizedWord)
             obj.getField(k).set(obj, newMetadatas)
-            """
-            i = nbField(obj,k)
-            if obj.portal_type == 'Image':
-                ImageImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
-            else:
-                FolderImageRepositoryExtender(obj).fields[i].set(obj,newMetadatas)
-            """ 
         
