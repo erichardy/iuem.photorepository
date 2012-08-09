@@ -13,6 +13,16 @@ from Products.Archetypes.event import ObjectEditedEvent
 
 logger = logging.getLogger('iuem.photorepository')
 
+
+def getObjectEvents(obj, event):
+    """
+    some debugging to do !!!
+    see : http://plone.org/documentation/manual/developer-manual/archetypes/other-useful-archetypes-features/how-to-use-events-to-hook-the-archetypes-creation-process/
+    
+    """
+    logger.info('getObjectEvents: ' + str(event) + ' ' + str(obj.Title()))
+    # import pdb;pdb.set_trace()
+    
 def setSourceimageAndExif(obj, sourceImage):
     obj.getField("sourceImage").set(obj , sourceImage)
     exif = ImageImageRepositoryExtender(obj).context.getEXIF()
@@ -20,8 +30,12 @@ def setSourceimageAndExif(obj, sourceImage):
 
 def installRepoImage(obj, event):
     setSourceimageAndExif(obj, obj.getImage())
+    logger.info('installRepoImage: avant appel a doThum...')
     if obj.getField('title').get(obj)[:3] != '00-':
-        doThumbnail(obj)    
+        logger.info('installRepoImage: juste avant appel a doThum...')
+        doThumbnail(obj)
+        logger.info('installRepoImage: juste apres appel a doThum...')
+
 
 def updateRepoImage(obj, event):
     if not isinstance(event,ObjectEditedEvent):
@@ -32,6 +46,7 @@ def updateRepoImage(obj, event):
         if request.form['image_file'].filename != '':
             setSourceimageAndExif(obj, obj.getImage())
             if obj.getField('title').get(obj)[:3] != '00-':
+                logger.info('updateRepoImage: juste avant appel a doThum...')
                 doThumbnail(obj)
 
 def createSmallImage(obj, event):

@@ -9,6 +9,6 @@
     <dependency>profile-Products.AddRemoveWidget:default</dependency>
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
-    
+    <dependency>profile-Products.PloneFormGen:default</dependency>
   </dependencies>
 </metadata>

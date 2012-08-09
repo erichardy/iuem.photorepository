@@ -1,6 +1,11 @@
 jq(document).ready(function() {
     // Accordion
     jq("#accordion").accordion({ header: "h3" });
+    jq('#siteaction-sitemap a').prepOverlay({
+        subtype: 'iframe',
+        config: {expose:{color:'#00f'}}
+        });
+
 });
 
 jq(document).ready(function() {
@@ -11,3 +16,4 @@ jq(document).ready(function() {
 	  jq(this).toggleClass("iuemCollapsed");
 	});
 });
+

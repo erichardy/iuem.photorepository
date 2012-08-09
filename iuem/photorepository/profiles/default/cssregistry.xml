@@ -3,7 +3,7 @@
 
  <stylesheet title="" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
-    id="++theme++iuem.photorepository/css/custom.css" media=""
+    id="++theme++iuem.photorepository/css/IUEMcustom.css" media=""
     rel="stylesheet" rendering="import"
     authenticated="False" applyPrefix="True" />
     

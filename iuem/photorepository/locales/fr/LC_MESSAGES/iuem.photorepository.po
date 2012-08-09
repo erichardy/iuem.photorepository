@@ -88,7 +88,7 @@ msgstr "Type de Licence"
 
 #: ./profiles/default/actions.xml
 msgid "Manage Metadata"
-msgstr "Gérer les Métadonnées"
+msgstr "Propagation..."
 
 #: ./browser/manageMetadataFormView.pt:38
 msgid "Only Local Images"

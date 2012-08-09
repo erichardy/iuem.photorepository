@@ -59,7 +59,6 @@
          Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".subscribers.nextPrevious"
   />
-
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
          Products.Archetypes.interfaces.IObjectInitializedEvent"
@@ -69,6 +68,12 @@
     for="Products.ATContentTypes.interface.IATImage
          Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".subscribers.updateVocabularies"
+  />
+  <!-- for tests: ZIPFileTransport / events generated ??? -->
+  <subscriber 
+    for="Products.ATContentTypes.interface.IATImage
+         zope.component.interfaces.IObjectEvent"
+    handler=".subscribers.getObjectEvents"
   />
   
 <!-- Objects modified -->

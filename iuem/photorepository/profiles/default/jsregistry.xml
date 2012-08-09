@@ -7,7 +7,7 @@
     conditionalcomment=""
     cookable="True" 
     expression=""
-    id="++resource++iuem_repository_static/js/jqueryui.js"
+    id="++resource++iuem_repository_static/js/IUEMjqueryui.js"
     enabled="True" 
     inline="True" 
   />
