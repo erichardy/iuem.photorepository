@@ -7,8 +7,7 @@ display: none !important;
 	display: none !important;
 }
 */
-.XXXtests {
-	background: Blue;
+.documentDescription {
 	display: none !important;
 }
 table.MetadataTable td {
@@ -41,7 +40,8 @@ table.MetadataTable tr:nth-child(even) {
 */
 
 /* actions hidden to users */
-#plone-contentmenu-display {
+#plone-contentmenu-display,
+#contentview-contentrules {
 	display: none;
 }
 

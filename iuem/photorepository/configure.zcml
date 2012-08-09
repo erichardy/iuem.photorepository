@@ -110,11 +110,11 @@
   />
   
   <!-- viewlets -->
-      <browser:viewlet  
-        name="plone.nextprevious"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
-        class="plone.app.layout.nextprevious.view.NextPreviousViewlet"
-        permission="zope2.View" 
-        />
+  <browser:viewlet  
+     name="plone.nextprevious"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+     class="plone.app.layout.nextprevious.view.NextPreviousViewlet"
+     permission="zope2.View" 
+  />
 
 </configure>

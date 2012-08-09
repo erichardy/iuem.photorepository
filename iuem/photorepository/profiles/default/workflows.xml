@@ -1,9 +1,57 @@
 <?xml version="1.0"?>
-<object name="portal_workflow" meta_type="CMF Workflow Tool">
- <property name="title"></property>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+ <property
+    name="title">Contains workflow definitions for your portal</property>
+ <object name="comment_review_workflow" meta_type="Workflow"/>
+ <object name="folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_folder_workflow" meta_type="Workflow"/>
+ <object name="intranet_workflow" meta_type="Workflow"/>
+ <object name="one_state_workflow" meta_type="Workflow"/>
+ <object name="plone_workflow" meta_type="Workflow"/>
+ <object name="simple_publication_workflow" meta_type="Workflow"/>
+ <object name="two_states_workflow" meta_type="Workflow"/>
  <bindings>
-  <type type_id="Image">
-   <bound-workflow workflow_id="(Default)"/>
+  <default>
+   <bound-workflow workflow_id="simple_publication_workflow"/>
+  </default>
+  <type type_id="ATBooleanCriterion"/>
+  <type type_id="ATCurrentAuthorCriterion"/>
+  <type type_id="ATDateCriteria"/>
+  <type type_id="ATDateRangeCriterion"/>
+  <type type_id="ATListCriterion"/>
+  <type type_id="ATPathCriterion"/>
+  <type type_id="ATPortalTypeCriterion"/>
+  <type type_id="ATReferenceCriterion"/>
+  <type type_id="ATRelativePathCriterion"/>
+  <type type_id="ATSelectionCriterion"/>
+  <type type_id="ATSimpleIntCriterion"/>
+  <type type_id="ATSimpleStringCriterion"/>
+  <type type_id="ATSortCriterion"/>
+  <type type_id="AliasVocabulary"/>
+  <type type_id="Discussion Item">
+   <bound-workflow workflow_id="one_state_workflow"/>
   </type>
+  <type type_id="File">
+   <bound-workflow workflow_id="two_states_workflow"/>
+  </type>
+  <type type_id="Image">
+   <bound-workflow workflow_id="two_states_workflow"/>
+  </type>
+  <type type_id="Folder">
+   <bound-workflow workflow_id="two_states_workflow"/>
+  </type>
+  <type type_id="Plone Site"/>
+  <type type_id="SimpleVocabulary"/>
+  <type type_id="SimpleVocabularyTerm"/>
+  <type type_id="SortedSimpleVocabulary"/>
+  <type type_id="TreeVocabulary"/>
+  <type type_id="TreeVocabularyTerm"/>
+  <type type_id="VdexFileVocabulary"/>
+  <type type_id="VdexLangstring"/>
+  <type type_id="VdexMediaDescriptor"/>
+  <type type_id="VdexRelationEndPoint"/>
+  <type type_id="VdexTerm"/>
+  <type type_id="VdexVocabulary"/>
+  <type type_id="VocabularyLibrary"/>
  </bindings>
 </object>
