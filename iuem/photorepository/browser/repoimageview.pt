@@ -24,6 +24,14 @@
       type , h x w
    </span>
 </span>
+
+<span tal:condition="python:not view.canViewFullImage()">
+<a id="ask-an-image"
+   tal:attributes="href string:${portal_url}/azeaze/demande-dimage?url=tototiti"
+   tal:content="string:demander l image"
+   >ask an image</a>
+</span>
+
 <br />
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas

@@ -10,5 +10,6 @@
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
     <dependency>profile-Products.PloneFormGen:default</dependency>
+    <dependency>profile-collective.zipfiletransport:default</dependency>
   </dependencies>
 </metadata>

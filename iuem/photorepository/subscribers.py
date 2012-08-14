@@ -21,6 +21,12 @@ def getObjectEvents(obj, event):
     
     """
     logger.info('getObjectEvents: ' + str(event) + ' ' + str(obj.Title()))
+    mmm = obj.getField('sourceImage').get(obj)
+    imageSize = mmm.getSize()
+    if imageSize == (0,0):
+        logger.info('getObjectEvents: size = ' + str(mmm.getSize()))
+    else:
+        logger.info('getObjectEvents: size = pas zero,zero')
     # import pdb;pdb.set_trace()
     
 def setSourceimageAndExif(obj, sourceImage):
@@ -29,12 +35,20 @@ def setSourceimageAndExif(obj, sourceImage):
     obj.getField("exif").set(obj, exif)
 
 def installRepoImage(obj, event):
-    setSourceimageAndExif(obj, obj.getImage())
-    logger.info('installRepoImage: avant appel a doThum...')
-    if obj.getField('title').get(obj)[:3] != '00-':
-        logger.info('installRepoImage: juste avant appel a doThum...')
+    sourceImageSize = obj.getField('sourceImage').get(obj).getSize()
+    # msg = 'installRepoImage: before call to setSourceimageAndExif... '
+    # msg = msg + str(sourceImageSize)
+    # logger.info(msg)
+    # sometimes, IObjectInitializedEvent is sent even no appropriate
+    # so, we don't want that the original image is replaced by the
+    # transformed one
+    notYetAnImage = (sourceImageSize == (0,0))
+    if notYetAnImage:
+        setSourceimageAndExif(obj, obj.getImage())
+    # we want that some images are not processed : when title tarts with '00-'
+    no00title = (obj.getField('title').get(obj)[:3] != '00-')
+    if no00title:
         doThumbnail(obj)
-        logger.info('installRepoImage: juste apres appel a doThum...')
 
 
 def updateRepoImage(obj, event):
@@ -46,7 +60,7 @@ def updateRepoImage(obj, event):
         if request.form['image_file'].filename != '':
             setSourceimageAndExif(obj, obj.getImage())
             if obj.getField('title').get(obj)[:3] != '00-':
-                logger.info('updateRepoImage: juste avant appel a doThum...')
+                # logger.info('updateRepoImage: just before call doThum...')
                 doThumbnail(obj)
 
 def createSmallImage(obj, event):

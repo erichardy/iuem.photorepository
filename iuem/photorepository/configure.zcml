@@ -7,19 +7,27 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:monkey="http://namespaces.plone.org/monkey"
     i18n_domain="iuem.photorepository">
 
   <includeDependencies package="." />
-
-  <include package="five.grok" />
+    
   <include package="plone.directives.form" file="meta.zcml" />
   <include package="plone.directives.form" />
+  <include package="collective.monkeypatcher" />
   
   <include package="archetypes.schemaextender" />
   <include package=".browser" />
   <include package=".upgrades" />
   
   <i18n:registerTranslations directory="locales" />
+
+  <monkey:patch
+    description="Fire a ObjectInitializedEvent when an object is created with zipfiletransport"
+    class="collective.zipfiletransport.utilities.utils.ZipFileTransportUtility"
+    original="_createObject"
+    replacement=".utilities._patchedcreateObject"
+  />
 
 <!-- see file profiles/default/rolemap.xml for permission configurations -->
   <permission
@@ -69,13 +77,13 @@
          Products.Archetypes.interfaces.IObjectInitializedEvent"
     handler=".subscribers.updateVocabularies"
   />
-  <!-- for tests: ZIPFileTransport / events generated ??? -->
+  <!-- for tests: ZIPFileTransport / events generated ???
   <subscriber 
     for="Products.ATContentTypes.interface.IATImage
          zope.component.interfaces.IObjectEvent"
     handler=".subscribers.getObjectEvents"
   />
-  
+  -->
 <!-- Objects modified -->
   <subscriber 
     for="Products.ATContentTypes.interface.IATFolder

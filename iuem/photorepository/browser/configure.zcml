@@ -56,6 +56,14 @@
 
   <browser:page
       for="*"
+      name="queryImage"
+      class=".queryImage.queryImage"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
       name="testSet"
       class=".debugSet.create"
       template="debugSet.pt"
