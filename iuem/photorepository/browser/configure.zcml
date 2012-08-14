@@ -53,11 +53,10 @@
       layer=".interfaces.ILayer"
       permission="cmf.ManagePortal"
       />
-
   <browser:page
       for="*"
-      name="queryImage"
-      class=".queryImage.queryImage"
+      name="query-image"
+      class=".queryImage.QueryImage"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

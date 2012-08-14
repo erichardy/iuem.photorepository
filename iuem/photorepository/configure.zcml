@@ -11,6 +11,7 @@
     i18n_domain="iuem.photorepository">
 
   <includeDependencies package="." />
+  <grok:grok package="." />
     
   <include package="plone.directives.form" file="meta.zcml" />
   <include package="plone.directives.form" />

@@ -27,7 +27,7 @@
 
 <span tal:condition="python:not view.canViewFullImage()">
 <a id="ask-an-image"
-   tal:attributes="href string:${portal_url}/azeaze/demande-dimage?url=tototiti"
+   tal:attributes="href string:@@query-image"
    tal:content="string:demander l image"
    >ask an image</a>
 </span>
