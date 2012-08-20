@@ -57,9 +57,20 @@
       for="*"
       name="query-image"
       class=".queryImage.QueryImage"
+      template="queryImage.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
+query-image-form-result
+  <browser:page
+      for="*"
+      name="query-image-form-result"
+      class=".queryImage.QueryImageFormResult"
+      template="queryImageFormResult.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+
 
   <browser:page
       for="*"

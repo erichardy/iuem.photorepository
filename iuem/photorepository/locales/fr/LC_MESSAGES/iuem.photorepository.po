@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2012-08-02 14:13+0000\n"
+"POT-Creation-Date: 2012-08-20 13:05+0000\n"
 "PO-Revision-Date: 2010-11-13 11:07+0100\n"
 "Last-Translator: YOURNAME <name@email.com>\n"
 "Language-Team: French <plone-fr@lists.plone.org>\n"
@@ -38,12 +38,12 @@ msgstr "Auteur de la photo"
 msgid "Confirm metadata spread"
 msgstr "Confirmer cette propagation de métadonnées"
 
-#: ./extender.py:300
+#: ./extender.py:298
 msgid "EXIF metadata in the picture"
 msgstr "Les métadonnées EXIF propres à cette photo"
 
-#: ./browser/repoimageview.pt:105
-#: ./extender.py:299
+#: ./browser/repoimageview.pt:120
+#: ./extender.py:297
 msgid "EXIF metadatas"
 msgstr "Métadonnées EXIF"
 
@@ -53,15 +53,15 @@ msgstr "Métadonnées EXIF"
 msgid "General keywords"
 msgstr "Mots clé généraux"
 
-#: ./extender.py:315
+#: ./extender.py:313
 msgid "IPCT metadata"
 msgstr "Métadonnées IPCT"
 
-#: ./extender.py:316
+#: ./extender.py:314
 msgid "IPCT metadata description"
 msgstr "Les métadonnées IPCT"
 
-#: ./extender.py:136
+#: ./extender.py:135
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
 
@@ -75,7 +75,7 @@ msgstr "Les images dans ce dossier et dans tous les sous-dossiers"
 msgid "Laboratory"
 msgstr "Laboratoire"
 
-#: ./extender.py:277
+#: ./extender.py:275
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -104,6 +104,11 @@ msgstr "Laboratoire du photographe"
 msgid "Photographer"
 msgstr "Photographe"
 
+#. Default: "Veuillez entrer votre nom"
+#: ./browser/queryImage.pt:24
+msgid "Please, enter your firstname and name : "
+msgstr "Veuillez indiquer vos prénom et nom : "
+
 #: ./browser/manageMetadataFormView.pt:135
 #: ./browser/metadataConfirm.pt:134
 #: ./browser/repofolderalbumview.pt:87
@@ -117,10 +122,6 @@ msgstr "Instant de la prise de vue, pourrait être extraite des données EXIF"
 #: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
 msgstr "Remplacer les métadonnées par celles-ci"
-
-#: ./profiles/default/actions.xml
-msgid "Repository album view"
-msgstr "Vue Album du dossier"
 
 #: ./browser/manageMetadataFormView.pt:105
 #: ./browser/metadataConfirm.pt:104
@@ -147,7 +148,7 @@ msgstr "Profondeur de la propagation"
 msgid "Validate this metadata spread"
 msgstr "Valider cette propagation de métadonnées"
 
-#: ./extender.py:135
+#: ./extender.py:134
 msgid "Watermark"
 msgstr "Image pour le filigrane"
 
@@ -166,7 +167,7 @@ msgstr "Lieu de la prise de vue"
 msgid "Who owns this photo"
 msgstr "A qui appartient cette photo"
 
-#: ./extender.py:307
+#: ./extender.py:305
 msgid "XMP metadata description"
 msgstr "Les métadonnées XMP"
 
@@ -177,11 +178,11 @@ msgstr "Les métadonnées XMP"
 msgid "description"
 msgstr "Description"
 
-#: ./extender.py:278
+#: ./extender.py:276
 msgid "latitude_format"
 msgstr ""
 
-#: ./extender.py:289
+#: ./extender.py:287
 msgid "longitude_format"
 msgstr ""
 
@@ -192,12 +193,36 @@ msgstr "Sélectionner les métadonnées à propager"
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:23
-#: ./browser/repoimageview.pt:28
+#: ./browser/repoimageview.pt:43
 msgid "metadatas"
 msgstr "Métadonnées"
+
+#. Default: "ask an image"
+#: ./browser/repoimageview.pt:29
+msgid "query-original-image"
+msgstr "Demander l'image originale"
+
+#. Default: "sdfqssdf"
+#: ./browser/queryImage.pt:16
+msgid "query_image_text"
+msgstr "Vous avez demandé l'image originale correspondant à l'image ci-dessous.<br />Veuillez renseigner les champs ci-dessous afin que nous puissions répondre à votre demande.<br />Merci"
+
+#. Default: "usage description"
+#: ./browser/queryImage.pt:47
+msgid "short_usage_description"
+msgstr "Une courte description de l'usage que vous allez faire de cette photo, <br />par exemple : poster, publication, séminaire, etc..."
+
+#: ./browser/queryImage.pt:39
+msgid "unity"
+msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
 
 #. Default: "View the original image"
 #: ./browser/repoimageview.pt:17
 msgid "view_original_image"
 msgstr "Visualiser l'original"
+
+#. Default: "et votre adresse e-mail :"
+#: ./browser/queryImage.pt:31
+msgid "your email adress : "
+msgstr "Votre adresse de courrier électronique : "
 

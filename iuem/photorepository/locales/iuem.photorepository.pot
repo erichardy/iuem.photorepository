@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-02 14:13+0000\n"
+"POT-Creation-Date: 2012-08-20 13:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr ""
 msgid "Confirm metadata spread"
 msgstr ""
 
-#: ./extender.py:300
+#: ./extender.py:298
 msgid "EXIF metadata in the picture"
 msgstr ""
 
-#: ./browser/repoimageview.pt:105
-#: ./extender.py:299
+#: ./browser/repoimageview.pt:120
+#: ./extender.py:297
 msgid "EXIF metadatas"
 msgstr ""
 
@@ -53,15 +53,15 @@ msgstr ""
 msgid "General keywords"
 msgstr ""
 
-#: ./extender.py:315
+#: ./extender.py:313
 msgid "IPCT metadata"
 msgstr ""
 
-#: ./extender.py:316
+#: ./extender.py:314
 msgid "IPCT metadata description"
 msgstr ""
 
-#: ./extender.py:136
+#: ./extender.py:135
 msgid "Image used for watermark"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Laboratory"
 msgstr ""
 
-#: ./extender.py:277
+#: ./extender.py:275
 msgid "Latitude"
 msgstr ""
 
@@ -103,6 +103,11 @@ msgstr ""
 msgid "Photographer"
 msgstr ""
 
+#. Default: "Veuillez entrer votre nom"
+#: ./browser/queryImage.pt:24
+msgid "Please, enter your firstname and name : "
+msgstr ""
+
 #: ./browser/manageMetadataFormView.pt:135
 #: ./browser/metadataConfirm.pt:134
 #: ./browser/repofolderalbumview.pt:87
@@ -115,10 +120,6 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
-msgstr ""
-
-#: ./profiles/default/actions.xml
-msgid "Repository album view"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:105
@@ -146,7 +147,7 @@ msgstr ""
 msgid "Validate this metadata spread"
 msgstr ""
 
-#: ./extender.py:135
+#: ./extender.py:134
 msgid "Watermark"
 msgstr ""
 
@@ -164,7 +165,7 @@ msgstr ""
 msgid "Who owns this photo"
 msgstr ""
 
-#: ./extender.py:307
+#: ./extender.py:305
 msgid "XMP metadata description"
 msgstr ""
 
@@ -175,11 +176,11 @@ msgstr ""
 msgid "description"
 msgstr ""
 
-#: ./extender.py:278
+#: ./extender.py:276
 msgid "latitude_format"
 msgstr ""
 
-#: ./extender.py:289
+#: ./extender.py:287
 msgid "longitude_format"
 msgstr ""
 
@@ -190,12 +191,36 @@ msgstr ""
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:23
-#: ./browser/repoimageview.pt:28
+#: ./browser/repoimageview.pt:43
 msgid "metadatas"
+msgstr ""
+
+#. Default: "ask an image"
+#: ./browser/repoimageview.pt:29
+msgid "query-original-image"
+msgstr ""
+
+#. Default: "sdfqssdf"
+#: ./browser/queryImage.pt:16
+msgid "query_image_text"
+msgstr ""
+
+#. Default: "usage description"
+#: ./browser/queryImage.pt:47
+msgid "short_usage_description"
+msgstr ""
+
+#: ./browser/queryImage.pt:39
+msgid "unity"
 msgstr ""
 
 #. Default: "View the original image"
 #: ./browser/repoimageview.pt:17
 msgid "view_original_image"
+msgstr ""
+
+#. Default: "et votre adresse e-mail :"
+#: ./browser/queryImage.pt:31
+msgid "your email adress : "
 msgstr ""
 

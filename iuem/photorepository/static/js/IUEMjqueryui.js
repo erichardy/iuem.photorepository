@@ -6,7 +6,7 @@ jq(document).ready(function() {
         filter: '#content > *',
         config: {expose:{color:'#00f'}}
         });
-    jq('#ask-an-image').prepOverlay({
+    jq('#query-an-image').prepOverlay({
         subtype: 'ajax',
         filter: '#content > *',
         formselector: 'form',

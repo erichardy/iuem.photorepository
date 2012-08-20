@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="iuem.photorepository">
+<body>
+<div metal:fill-slot="content-core"
+     tal:define="currentUser view/currentUser;
+                 fullname string:${currentUser/fullname};
+                 email string:${currentUser/email};
+                 urlSourceImage string:${request/form/urlSourceImage}"
+     >
+
+<br />
+<p class="informational-text" i18n:translate="query_image_text" >query_image_text</p>
+
+<form name="query_image_form" tal:attributes="action string:${here/absolute_url}/@@query-image-form-result">
+
+<table border="0" class="MetadataTable">
+<tbody>
+<tr>
+  <td>
+    <span i18n:translate="Please, enter your firstname and name : ">Veuillez entrer votre nom</span>
+  </td>
+  <td>
+    <input type="text" size="60" name="fullname" tal:attributes="value string:${fullname}" />
+  </td>
+<tr>
+  <td>
+    <span i18n:translate="your email adress : ">et votre adresse e-mail :</span>
+  </td>
+  <td>
+    <input type="text" size="60" name="email" tal:attributes="value string:${email}" />
+  </td>
+</tr>
+<tr>
+  <td>
+    <span i18n:translate="unity">unity</span>
+  </td>
+  <td>
+    <input type="text" size="50" name="unity" />
+  </td>
+</tr>
+<tr>
+  <td>
+    <span i18n:translate="short_usage_description">usage description</span>
+  </td>
+  <td>
+    <input type="text" size="70" name="usage_description" />
+  </td>
+</tr>
+<tbody>
+</table>
+<input type="hidden" name="urlSourceImage" tal:attributes="value string:${urlSourceImage}" />
+
+<input type="submit" name="submit" />
+</form>
+<br />
+<img src="" tal:attributes="src string:${here/absolute_url}" />
+
+</div>
+</body>
+</html>
