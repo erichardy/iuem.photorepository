@@ -15,7 +15,7 @@
 <br />
 <p class="informational-text" i18n:translate="query_image_text" >query_image_text</p>
 
-<form name="query_image_form" tal:attributes="action string:${here/absolute_url}/@@query-image-form-result">
+<form name="query_image_form" tal:attributes="action string:${here/absolute_url}/@@query-image-form-result" method="POST">
 
 <table border="0" class="MetadataTable">
 <tbody>
@@ -50,11 +50,17 @@
     <input type="text" size="70" name="usage_description" />
   </td>
 </tr>
+<tr>
+  <td>
+    &nbsp;
+  </td>
+  <td>
+    <input type="submit" name="submit" />
+  </td>
+</tr>
 <tbody>
 </table>
 <input type="hidden" name="urlSourceImage" tal:attributes="value string:${urlSourceImage}" />
-
-<input type="submit" name="submit" />
 </form>
 <br />
 <img src="" tal:attributes="src string:${here/absolute_url}" />

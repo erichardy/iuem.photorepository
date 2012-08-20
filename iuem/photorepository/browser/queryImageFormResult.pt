@@ -8,8 +8,8 @@
 <div metal:fill-slot="content-core">
 
 <span tal:content="view/sendQuery">sendQuery</span>
-
-
+<br />
+<span tal:content="view/getMailAddr">getMailAddr</span>
 
 </div>
 

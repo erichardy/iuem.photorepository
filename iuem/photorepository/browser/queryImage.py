@@ -1,5 +1,7 @@
 import logging
 from Products.Five import BrowserView
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 
 from Products.CMFCore.utils import getToolByName
 
@@ -10,6 +12,7 @@ from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
 
 from iuem.photorepository import iuemRepositoryMessageFactory as _
+from iuem.photorepository.interfaces import IPhotorepositorySettings
 
 logger = logging.getLogger('iuem.photorepository')
 
@@ -39,9 +42,19 @@ class QueryImageFormResult(BrowserView):
     
     def sendQuery(self):
         request = self.request
-        print request['email']
-        print request['fullname']
-        print request['unity']
-        print request['usage_description']
-        print request['urlSourceImage']
+        """
+        logger.info("---------------")
+        for k in request.keys():
+            logger.info(str(k) + ':' + str(request[k]))
+        logger.info("---------------")
+        """
         return
+    
+    def getMailAddr(self):
+        reg = getUtility(IRegistry)
+        settings = reg.forInterface(IPhotorepositorySettings)
+        for m in settings.query_image_emails:
+            logger.info(m)
+        
+
+

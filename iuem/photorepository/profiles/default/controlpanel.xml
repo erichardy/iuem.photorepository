@@ -8,4 +8,16 @@
     visible="True" i18n:attributes="title">
   <permission>iuem.photorepository: Manage Repository</permission>
  </configlet>
+ 
+ <configlet
+    title="IUEM Photorepository"
+    action_id="photorepository"
+    appId="iuem.photorepository"
+    category="Products"
+    condition_expr=""
+    url_expr="string:${portal_url}/@@photorepository-settings"
+    visible="True" i18n:attributes="title">
+   <permission>iuem.photorepository: Manage Repository</permission>
+  </configlet>
+ 
 </object>

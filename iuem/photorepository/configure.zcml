@@ -12,7 +12,8 @@
 
   <includeDependencies package="." />
   <grok:grok package="." />
-    
+  
+  <include package="plone.app.registry" />
   <include package="plone.directives.form" file="meta.zcml" />
   <include package="plone.directives.form" />
   <include package="collective.monkeypatcher" />
@@ -129,6 +130,14 @@
      manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
      class="plone.app.layout.nextprevious.view.NextPreviousViewlet"
      permission="zope2.View" 
+  />
+  
+  <!-- Control panel -->
+  <browser:page
+     name="photorepository-settings"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     class=".controlpanel.PhotorepositorySettingsControlPanel"
+     permission="cmf.ManagePortal"
   />
 
 </configure>
