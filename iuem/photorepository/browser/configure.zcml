@@ -69,6 +69,21 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
+  <browser:page
+      for="*"
+      name="request-album"
+      class=".requestAlbum.RequestAlbum"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+  <browser:page
+      for="*"
+      name="request-album-form-result"
+      class=".requestAlbum.RequestAlbumFormResult"
+      template="requestImageFormResult.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
 
 
   <browser:page

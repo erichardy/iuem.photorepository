@@ -3,6 +3,7 @@ from Products.Five import BrowserView
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 
+
 from Products.CMFCore.utils import getToolByName
 
 # from Products.CMFCore.interfaces import ISiteRoot
@@ -54,13 +55,21 @@ class RequestImageFormResult(BrowserView):
     def sendRequestImageMail(self):
         request           = self.request
         email             = request['email']
+        request_content = {}
         if not validateaddress(email):
-            msg = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
-            return msg
+            request_content['sent'] = 'no'
+            request_content['msg'] = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
+            request_content['fullname'] = ''
+            request_content['email'] = ''
+            request_content['unity'] = ''
+            request_content['usage_description'] = ''
+            request_content['urlSourceImage'] = ''
+            return request_content
         fullname          = request['fullname']
         unity             = request['unity']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
+
         subject = _(u'[IUEM Photo repository] Image request')
         message = fullname + '\n' + email + '\n' + unity + '\n'
         message = message + usage_description + '\n'
@@ -81,12 +90,12 @@ class RequestImageFormResult(BrowserView):
         copy_message = _(u"copy-of-message :\n\n") + message
         mailhost.send(copy_message , subject = subject ,\
                       mto = email , mfrom = mfrom)
-        request_content = {}
+        request_content['sent'] = 'ok'
         request_content['fullname'] = fullname
         request_content['email'] = email
         request_content['unity'] = unity
         request_content['usage_description'] = usage_description
-        request_content['urlSourceImage'] = urlSourceImage        
+        request_content['urlSourceImage'] = urlSourceImage
         return request_content
 
         

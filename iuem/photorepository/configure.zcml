@@ -12,10 +12,9 @@
 
   <includeDependencies package="." />
   <grok:grok package="." />
-  
+  <include package="z3c.form" />
   <include package="plone.app.registry" />
   <include package="plone.directives.form" file="meta.zcml" />
-  <include package="plone.directives.form" />
   <include package="collective.monkeypatcher" />
   
   <include package="archetypes.schemaextender" />

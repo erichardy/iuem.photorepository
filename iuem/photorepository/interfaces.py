@@ -1,8 +1,12 @@
 
 from zope.interface import Interface
 from zope import schema
+from z3c.form import field , button
 
 from iuem.photorepository import iuemRepositoryMessageFactory as _
+
+# thanks to
+# http://plone.org/documentation/kb/how-to-create-a-plone-control-panel-with-plone.app.registry
 
 class IPhotorepositorySettings(Interface):
     
@@ -34,7 +38,4 @@ class IPhotorepositorySettings(Interface):
                         )
 
 
-# thanks to
-# http://plone.org/documentation/kb/how-to-create-a-plone-control-panel-with-plone.app.registry
-
-
+    
