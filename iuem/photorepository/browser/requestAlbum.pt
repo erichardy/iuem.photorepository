@@ -13,15 +13,15 @@
      >
 
 <br />
-<p class="informational-text" i18n:translate="query_image_text" >query_image_text</p>
+<p class="informational-text" i18n:translate="request_image_text" >request_image_text</p>
 
-<form name="query_image_form" tal:attributes="action string:${here/absolute_url}/@@query-image-form-result" method="POST">
+<form name="request_image_form" tal:attributes="action string:${here/absolute_url}/@@request-image-form-result" method="POST">
 
 <table border="0" class="MetadataTable">
 <tbody>
 <tr>
   <td>
-    <span i18n:translate="Please, enter your firstname and name : ">Veuillez entrer votre nom</span>
+    <span i18n:translate="Please, enter your firstname and name : " class="required">Veuillez entrer votre nom</span>
   </td>
   <td>
     <input type="text" size="60" name="fullname" tal:attributes="value string:${fullname}" />

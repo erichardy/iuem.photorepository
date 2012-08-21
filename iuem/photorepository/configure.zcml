@@ -137,7 +137,7 @@
      name="photorepository-settings"
      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
      class=".controlpanel.PhotorepositorySettingsControlPanel"
-     permission="cmf.ManagePortal"
+     permission="zope2.View"
   />
 
 </configure>

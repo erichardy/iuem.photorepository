@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="iuem.photorepository">
+<body>
+<div metal:fill-slot="content-core"
+  tal:define="sendRequestImageMail view/sendRequestImageMail"
+  >
+
+<h2>
+<span i18ntranslate="request-image-returned-message">request-image-returned-message</span>
+</h2>
+<span tal:define="fullname string:${sendRequestImageMail/fullname};
+                  email string:${sendRequestImageMail/email};
+                  unity string:${sendRequestImageMail/unity};
+                  usage_description string:${sendRequestImageMail/usage_description};
+                  urlSourceImage string:${sendRequestImageMail/urlSourceImage}">
+
+<table border="1" class="MetadataTable">
+<tr>
+  <td i18n:translate="fullname">fullname</td>
+  <td tal:content="string:${fullname}">fullname</td>
+</tr>
+<tr>
+  <td i18n:translate="email">email</td>
+  <td tal:content="string:${email}">email</td>
+</tr>
+<tr>
+  <td i18n:translate="unity">unity</td>
+  <td tal:content="string:${unity}">unity</td>
+</tr>
+<tr>
+  <td i18n:translate="usage_description">usage_description</td>
+  <td tal:content="string:${usage_description}">usage_description</td>
+</tr>
+<tr>
+  <td i18n:translate="urlSourceImage">urlSourceImage</td>
+  <td tal:content="string:${urlSourceImage}">urlSourceImage</td>
+</tr>
+</table>
+
+</span>
+</div>
+
+</body>
+</html>

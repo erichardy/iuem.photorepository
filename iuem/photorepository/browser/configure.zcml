@@ -55,18 +55,17 @@
       />
   <browser:page
       for="*"
-      name="query-image"
-      class=".queryImage.QueryImage"
-      template="queryImage.pt"
+      name="request-image"
+      class=".requestImage.RequestImage"
+      template="requestImage.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
-query-image-form-result
   <browser:page
       for="*"
-      name="query-image-form-result"
-      class=".queryImage.QueryImageFormResult"
-      template="queryImageFormResult.pt"
+      name="request-image-form-result"
+      class=".requestImage.RequestImageFormResult"
+      template="requestImageFormResult.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: iuem.photorepository\n"
-"POT-Creation-Date: 2012-08-20 13:05+0000\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: 2010-11-13 11:07+0100\n"
 "Last-Translator: YOURNAME <name@email.com>\n"
 "Language-Team: French <plone-fr@lists.plone.org>\n"
@@ -42,10 +42,18 @@ msgstr "Confirmer cette propagation de métadonnées"
 msgid "EXIF metadata in the picture"
 msgstr "Les métadonnées EXIF propres à cette photo"
 
-#: ./browser/repoimageview.pt:120
+#: ./browser/repoimageview.pt:132
 #: ./extender.py:297
 msgid "EXIF metadatas"
 msgstr "Métadonnées EXIF"
+
+#: ./interfaces.py:30
+msgid "From field for album requests"
+msgstr "Expéditeur des demandes d'album"
+
+#: ./interfaces.py:17
+msgid "From field for original image requests"
+msgstr "Expéditeur des demandes d'imge originale"
 
 #: ./browser/manageMetadataFormView.pt:62
 #: ./browser/metadataConfirm.pt:60
@@ -60,6 +68,14 @@ msgstr "Métadonnées IPCT"
 #: ./extender.py:314
 msgid "IPCT metadata description"
 msgstr "Les métadonnées IPCT"
+
+#: ./browser/requestImage.py:73
+msgid "Image URL : "
+msgstr "URL de l'image : "
+
+#: ./browser/requestImage.py:72
+msgid "Image usage : "
+msgstr "Utilisation de l'image : "
 
 #: ./extender.py:135
 msgid "Image used for watermark"
@@ -90,6 +106,10 @@ msgstr "Type de Licence"
 msgid "Manage Metadata"
 msgstr "Propagation..."
 
+#: ./browser/requestImage.py:69
+msgid "Name : "
+msgstr "Nom : "
+
 #: ./browser/manageMetadataFormView.pt:38
 msgid "Only Local Images"
 msgstr "Seulement les images de ce dossier"
@@ -104,8 +124,16 @@ msgstr "Laboratoire du photographe"
 msgid "Photographer"
 msgstr "Photographe"
 
+#: ./controlpanel.py:8
+msgid "Photorepository Settings"
+msgstr "Configuration du dépôt d'image"
+
+#: ./controlpanel.py:9
+msgid "PhotorepositorySettingsDescription"
+msgstr "Entrez les valeurs adaptées à votre site..."
+
 #. Default: "Veuillez entrer votre nom"
-#: ./browser/queryImage.pt:24
+#: ./browser/requestImage.pt:24
 msgid "Please, enter your firstname and name : "
 msgstr "Veuillez indiquer vos prénom et nom : "
 
@@ -139,10 +167,18 @@ msgstr "Projet de recherche associé à cette photo"
 msgid "Scientific keywords"
 msgstr "Mots clé scientifiques"
 
+#: ./browser/requestImage.py:58
+msgid "Sorry, your email adress is invalid, the request can't be satisfied..."
+msgstr "Désolé, votre adresse mail n'est pas valide, votre demande ne peut être satisfaite..."
+
 #: ./browser/manageMetadataFormView.pt:35
 #: ./browser/metadataConfirm.pt:38
 msgid "Spread depth"
 msgstr "Profondeur de la propagation"
+
+#: ./browser/requestImage.py:71
+msgid "Unity : "
+msgstr "Nom de l'unité : "
 
 #: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
@@ -171,12 +207,40 @@ msgstr "A qui appartient cette photo"
 msgid "XMP metadata description"
 msgstr "Les métadonnées XMP"
 
+#: ./browser/requestImage.py:64
+msgid "[IUEM Photo repository] Image request"
+msgstr "[IUEM Photo repository] Demande d'image"
+
 #. Default: "Description"
 #: ./browser/manageMetadataFormView.pt:54
 #: ./browser/metadataConfirm.pt:52
 #: ./browser/repofolderalbumview.pt:29
 msgid "description"
 msgstr "Description"
+
+#: ./browser/requestImageFormResult.pt:27
+msgid "email"
+msgstr "Courriel"
+
+#: ./interfaces.py:23
+msgid "email addresses which receive album requests"
+msgstr "liste des adresses mail qui vont recevoir les demandes d'album"
+
+#: ./interfaces.py:10
+msgid "email addresses which receive image requests"
+msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale"
+
+#: ./browser/requestImage.py:70
+msgid "email adress : "
+msgstr "Courriel : "
+
+#: ./interfaces.py:18
+msgid "enter a valid email adress"
+msgstr "Entrez une adresse mail valide"
+
+#: ./browser/requestImageFormResult.pt:23
+msgid "fullname"
+msgstr "Prénom, nom"
 
 #: ./extender.py:276
 msgid "latitude_format"
@@ -193,28 +257,44 @@ msgstr "Sélectionner les métadonnées à propager"
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:23
-#: ./browser/repoimageview.pt:43
+#: ./browser/repoimageview.pt:55
 msgid "metadatas"
 msgstr "Métadonnées"
 
-#. Default: "ask an image"
+#. Default: "request this image"
 #: ./browser/repoimageview.pt:29
-msgid "query-original-image"
+msgid "request-original-image"
 msgstr "Demander l'image originale"
 
-#. Default: "sdfqssdf"
-#: ./browser/queryImage.pt:16
-msgid "query_image_text"
-msgstr "Vous avez demandé l'image originale correspondant à l'image ci-dessous.<br />Veuillez renseigner les champs ci-dessous afin que nous puissions répondre à votre demande.<br />Merci"
+#: ./interfaces.py:24
+msgid "request_album_emails_description"
+msgstr "Entrer une adresse mail par ligne"
+
+#: ./interfaces.py:11
+msgid "request_image_emails_description"
+msgstr "Entrer une adresse mail par ligne"
+
+#: ./browser/requestImage.pt:16
+msgid "request_image_text"
+msgstr "Vous demander l'image originale qui correspond à l'image \"dégradée\" ci-dessous.<br />Veuillez renseigner les champs avec soin afin que nous puissions satisfaire votre demande.<br />Merci !<br />"
 
 #. Default: "usage description"
-#: ./browser/queryImage.pt:47
+#: ./browser/requestImage.pt:47
 msgid "short_usage_description"
 msgstr "Une courte description de l'usage que vous allez faire de cette photo, <br />par exemple : poster, publication, séminaire, etc..."
 
-#: ./browser/queryImage.pt:39
+#: ./browser/requestImage.pt:39
+#: ./browser/requestImageFormResult.pt:31
 msgid "unity"
 msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
+
+#: ./browser/requestImageFormResult.pt:39
+msgid "urlSourceImage"
+msgstr "URL de l'image originale"
+
+#: ./browser/requestImageFormResult.pt:35
+msgid "usage_description"
+msgstr "Description de l'usage de l'image demandée"
 
 #. Default: "View the original image"
 #: ./browser/repoimageview.pt:17
@@ -222,7 +302,7 @@ msgid "view_original_image"
 msgstr "Visualiser l'original"
 
 #. Default: "et votre adresse e-mail :"
-#: ./browser/queryImage.pt:31
+#: ./browser/requestImage.pt:31
 msgid "your email adress : "
 msgstr "Votre adresse de courrier électronique : "
 
