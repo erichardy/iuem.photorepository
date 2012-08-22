@@ -10,14 +10,6 @@ class repoImageView(BrowserView):
 
     def sourceImage(self):
         context = self.context
-        """
-        tag = '<img src="' + context.absolute_url() + '/sourceImage" '
-        tag += 'ALT="' + str(context.title) + '" '
-        tag += 'title="' + str(context.title) + '" '
-        tag += 'height="' + str(context.sourceImage.height) + '" '
-        tag += 'width="' + str(context.sourceImage.width) + '" '
-        tag += '/>'
-        """
         tag = context.absolute_url() + '/sourceImage'
         return tag
     

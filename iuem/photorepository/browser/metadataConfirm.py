@@ -41,62 +41,7 @@ class MetadataConfirmView(BrowserView):
                 return strToList(form[kw])
         else:
             return False
-    """
-    def description(self):
-        if 'description' in self.request.form.keys():
-            return self.request.form['description']
-        else:
-            return False
-    
-    def general(self):
-        if 'general' in self.request.form.keys():
-            return strToList(self.request.form['general'])
-        else:
-            return False
 
-    def science(self):
-        # import pdb;pdb.set_trace()
-        if 'science' in self.request.form.keys():
-            return strToList(self.request.form['science'])
-        else:
-            return False
-    
-    def where(self):
-        try:
-            return strToList(self.request['where'])
-        except:
-            return False
-    
-    def laboratory(self):
-        try:
-            return strToList(self.request['laboratory'])
-        except:
-            return False
-    
-    def reseachproject(self):
-        try:
-            return strToList(self.request['reseachproject'])
-        except:
-            return False
-    
-    def licencetype(self):
-        try:
-            return strToList(self.request['licencetype'])
-        except:
-            return False
-    
-    def recording_date_time(self):
-        try:
-            return self.request['recording_date_time']
-        except:
-            return False
-    
-    def photographer(self):
-        try:
-            return self.request['photographer']
-        except:
-            return False
-    """
     def value_of (self , value , vocabulary):
         myVocabsTool = getToolByName(self.context , 'portal_vocabularies')
         try:
@@ -104,18 +49,7 @@ class MetadataConfirmView(BrowserView):
             return vocab.getVocabularyDict()[value]
         except:
             return ''
-"""
-def nbField(obj , name):
-    # returns the field number of the named field in the extended schema
-    if obj.portal_type == 'Image':
-        for i in range(0,len(ImageImageRepositoryExtender(obj).fields)):
-            if ImageImageRepositoryExtender(obj).fields[i].getName() == name:
-                return i
-    else:
-        for i in range(0,len(FolderImageRepositoryExtender(obj).fields)):
-            if FolderImageRepositoryExtender(obj).fields[i].getName() == name:
-                return i
-"""
+
 class SpreadMetadata(BrowserView):
     
     def __call__(self):
@@ -161,20 +95,7 @@ def updateMetadata(obj , form , context):
                 obj.getField(k).set(obj, emptyString)
             else:
                 obj.getField(k).set(obj, emptyList)
-                """
-                if obj.portal_type == 'Image':
-                    #ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
-                    obj.getField(k).set(obj, emptyString)
-                    import pdb;pdb.set_trace()
-                else:
-                    FolderImageRepositoryExtender(obj).fields[field].set(obj,emptyString)
-            else:
-                if obj.portal_type == 'Image':
-                    ImageImageRepositoryExtender(obj).fields[field].set(obj,emptyList)
-                else:
-                    FolderImageRepositoryExtender(obj).fields[field].set(obj,emptyList)
-                    """
-    #                         
+
     for k in form.keys():
         if k in commonMetadatas:
             if k == 'description':
@@ -183,14 +104,6 @@ def updateMetadata(obj , form , context):
             elif k in ['recording_date_time','photographer']:
                 # we always replace non vocabulary values                
                 obj.getField(k).set(obj, form[k])
-                """
-                field = nbField(obj,k)
-                if obj.portal_type == 'Image':
-                    ImageImageRepositoryExtender(obj).fields[field].set(obj,form[k])
-                else:
-                    FolderImageRepositoryExtender(obj).fields[field].set(obj,form[k])
-                # import pdb;pdb.set_trace()
-                """
             else:
                 # field = nbField(obj,k)
                 if form['addorreplace'] == 'Add metadatas':
@@ -202,22 +115,8 @@ def updateMetadata(obj , form , context):
                             # import pdb;pdb.set_trace()
                             lform.append(data)
                     obj.getField(k).set(obj, lform)
-                    """
-                    if obj.portal_type == 'Image':
-                        ImageImageRepositoryExtender(obj).fields[field].set(obj,lform)
-                    else:
-                        FolderImageRepositoryExtender(obj).fields[field].set(obj,lform)
-                    """                    
                 else:
-                    obj.getField(k).set(obj, eval(form[k]))
-                    """
-                    if obj.portal_type == 'Image':
-                        ImageImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))
-                    else:
-                        FolderImageRepositoryExtender(obj).fields[field].set(obj,eval(form[k]))
-                    """                    
-            # print '...' + k + ':' + form[k] + ':::' + str(obj[k])                 
-        
+                    obj.getField(k).set(obj, eval(form[k]))        
     obj.reindexObject()
     return
 
