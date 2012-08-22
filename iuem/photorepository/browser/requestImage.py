@@ -61,23 +61,23 @@ class RequestImageFormResult(BrowserView):
             request_content['msg'] = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
             request_content['fullname'] = ''
             request_content['email'] = ''
-            request_content['unity'] = ''
+            request_content['team'] = ''
             request_content['usage_description'] = ''
             request_content['urlSourceImage'] = ''
             return request_content
         fullname          = request['fullname']
-        unity             = request['unity']
+        team             = request['team']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
 
         subject = _(u'[IUEM Photo repository] Image request')
-        message = fullname + '\n' + email + '\n' + unity + '\n'
+        message = fullname + '\n' + email + '\n' + team + '\n'
         message = message + usage_description + '\n'
         message = message + urlSourceImage + '\n'
         message = _(u"Original image request from :\n")
         message += _(u"Name : ") + fullname + '\n'
         message += _(u"email adress : ") + email + '\n'
-        message += _(u"Unity : ") + unity + '\n'
+        message += _(u"team : ") + team + '\n'
         message += _(u"Image usage : ") + usage_description + '\n\n'
         message += _(u"Image URL : ") + urlSourceImage
         reg = getUtility(IRegistry)
@@ -93,7 +93,7 @@ class RequestImageFormResult(BrowserView):
         request_content['sent'] = 'ok'
         request_content['fullname'] = fullname
         request_content['email'] = email
-        request_content['unity'] = unity
+        request_content['team'] = team
         request_content['usage_description'] = usage_description
         request_content['urlSourceImage'] = urlSourceImage
         return request_content

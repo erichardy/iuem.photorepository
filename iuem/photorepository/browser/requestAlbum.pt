@@ -17,49 +17,7 @@
 
 <form name="request_image_form" tal:attributes="action string:${here/absolute_url}/@@request-image-form-result" method="POST">
 
-<table border="0" class="MetadataTable">
-<tbody>
-<tr>
-  <td>
-    <span i18n:translate="Please, enter your firstname and name : " class="required">Veuillez entrer votre nom</span>
-  </td>
-  <td>
-    <input type="text" size="60" name="fullname" tal:attributes="value string:${fullname}" />
-  </td>
-<tr>
-  <td>
-    <span i18n:translate="your email adress : ">et votre adresse e-mail :</span>
-  </td>
-  <td>
-    <input type="text" size="60" name="email" tal:attributes="value string:${email}" />
-  </td>
-</tr>
-<tr>
-  <td>
-    <span i18n:translate="unity">unity</span>
-  </td>
-  <td>
-    <input type="text" size="50" name="unity" />
-  </td>
-</tr>
-<tr>
-  <td>
-    <span i18n:translate="short_usage_description">usage description</span>
-  </td>
-  <td>
-    <input type="text" size="70" name="usage_description" />
-  </td>
-</tr>
-<tr>
-  <td>
-    &nbsp;
-  </td>
-  <td>
-    <input type="submit" name="submit" />
-  </td>
-</tr>
-<tbody>
-</table>
+
 <input type="hidden" name="urlSourceImage" tal:attributes="value string:${urlSourceImage}" />
 </form>
 <br />

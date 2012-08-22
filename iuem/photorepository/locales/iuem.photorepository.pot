@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-08-21 10:00+0000\n"
+"POT-Creation-Date: 2012-08-22 09:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,17 +47,17 @@ msgstr ""
 msgid "EXIF metadatas"
 msgstr ""
 
-#: ./interfaces.py:30
+#: ./interfaces.py:34
 msgid "From field for album requests"
 msgstr ""
 
-#: ./interfaces.py:17
+#: ./interfaces.py:21
 msgid "From field for original image requests"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:62
 #: ./browser/metadataConfirm.pt:60
-#: ./browser/repofolderalbumview.pt:33
+#: ./browser/repofolderalbumview.pt:57
 msgid "General keywords"
 msgstr ""
 
@@ -69,11 +69,13 @@ msgstr ""
 msgid "IPCT metadata description"
 msgstr ""
 
-#: ./browser/requestImage.py:73
+#: ./browser/requestAlbum.py:148
+#: ./browser/requestImage.py:82
 msgid "Image URL : "
 msgstr ""
 
-#: ./browser/requestImage.py:72
+#: ./browser/requestAlbum.py:147
+#: ./browser/requestImage.py:81
 msgid "Image usage : "
 msgstr ""
 
@@ -87,7 +89,7 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:94
 #: ./browser/metadataConfirm.pt:93
-#: ./browser/repofolderalbumview.pt:60
+#: ./browser/repofolderalbumview.pt:84
 msgid "Laboratory"
 msgstr ""
 
@@ -97,7 +99,7 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:116
 #: ./browser/metadataConfirm.pt:115
-#: ./browser/repofolderalbumview.pt:78
+#: ./browser/repofolderalbumview.pt:102
 msgid "Licence Type"
 msgstr ""
 
@@ -105,7 +107,8 @@ msgstr ""
 msgid "Manage Metadata"
 msgstr ""
 
-#: ./browser/requestImage.py:69
+#: ./browser/requestAlbum.py:144
+#: ./browser/requestImage.py:78
 msgid "Name : "
 msgstr ""
 
@@ -113,7 +116,8 @@ msgstr ""
 msgid "Only Local Images"
 msgstr ""
 
-#: ./browser/requestImage.py:68
+#: ./browser/requestAlbum.py:143
+#: ./browser/requestImage.py:77
 msgid "Original image request from :
 "
 msgstr ""
@@ -124,7 +128,7 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:127
 #: ./browser/metadataConfirm.pt:126
-#: ./browser/repofolderalbumview.pt:91
+#: ./browser/repofolderalbumview.pt:115
 msgid "Photographer"
 msgstr ""
 
@@ -136,14 +140,18 @@ msgstr ""
 msgid "PhotorepositorySettingsDescription"
 msgstr ""
 
-#. Default: "Veuillez entrer votre nom"
+#: ./browser/requestAlbum.py:34
+msgid "Please enter your name and your firstname"
+msgstr ""
+
+#: ./browser/requestAlbum.py:33
 #: ./browser/requestImage.pt:24
 msgid "Please, enter your firstname and name : "
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:135
 #: ./browser/metadataConfirm.pt:134
-#: ./browser/repofolderalbumview.pt:87
+#: ./browser/repofolderalbumview.pt:111
 msgid "Recording date and time"
 msgstr ""
 
@@ -157,7 +165,7 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:105
 #: ./browser/metadataConfirm.pt:104
-#: ./browser/repofolderalbumview.pt:69
+#: ./browser/repofolderalbumview.pt:93
 msgid "Research Project"
 msgstr ""
 
@@ -167,11 +175,12 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:72
 #: ./browser/metadataConfirm.pt:71
-#: ./browser/repofolderalbumview.pt:42
+#: ./browser/repofolderalbumview.pt:66
 msgid "Scientific keywords"
 msgstr ""
 
-#: ./browser/requestImage.py:58
+#: ./browser/requestAlbum.py:133
+#: ./browser/requestImage.py:61
 msgid "Sorry, your email adress is invalid, the request can't be satisfied..."
 msgstr ""
 
@@ -180,8 +189,8 @@ msgstr ""
 msgid "Spread depth"
 msgstr ""
 
-#: ./browser/requestImage.py:71
-msgid "Unity : "
+#: ./browser/requestAlbum.py:45
+msgid "The URL of the Image"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:145
@@ -192,13 +201,17 @@ msgstr ""
 msgid "Watermark"
 msgstr ""
 
+#: ./browser/requestAlbum.py:39
+msgid "We need your email address to contact you later"
+msgstr ""
+
 #: ./extender.py:111
 msgid "What type of restricted usage"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:83
 #: ./browser/metadataConfirm.pt:82
-#: ./browser/repofolderalbumview.pt:51
+#: ./browser/repofolderalbumview.pt:75
 msgid "Where"
 msgstr ""
 
@@ -210,11 +223,17 @@ msgstr ""
 msgid "XMP metadata description"
 msgstr ""
 
-#: ./browser/requestImage.py:64
+#: ./browser/requestAlbum.py:38
+msgid "Your email address"
+msgstr ""
+
+#: ./browser/requestAlbum.py:139
+#: ./browser/requestImage.py:73
 msgid "[IUEM Photo repository] Image request"
 msgstr ""
 
-#: ./browser/requestImage.py:81
+#: ./browser/requestAlbum.py:156
+#: ./browser/requestImage.py:90
 msgid "copy-of-message :
 
 "
@@ -223,31 +242,34 @@ msgstr ""
 #. Default: "Description"
 #: ./browser/manageMetadataFormView.pt:54
 #: ./browser/metadataConfirm.pt:52
-#: ./browser/repofolderalbumview.pt:29
+#: ./browser/repofolderalbumview.pt:53
 msgid "description"
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:27
+#: ./browser/requestAlbumFormResult.pt:27
+#: ./browser/requestImageFormResult.pt:33
 msgid "email"
 msgstr ""
 
-#: ./interfaces.py:23
+#: ./interfaces.py:27
 msgid "email addresses which receive album requests"
 msgstr ""
 
-#: ./interfaces.py:10
+#: ./interfaces.py:14
 msgid "email addresses which receive image requests"
 msgstr ""
 
-#: ./browser/requestImage.py:70
+#: ./browser/requestAlbum.py:145
+#: ./browser/requestImage.py:79
 msgid "email adress : "
 msgstr ""
 
-#: ./interfaces.py:18
+#: ./interfaces.py:22
 msgid "enter a valid email adress"
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:23
+#: ./browser/requestAlbumFormResult.pt:23
+#: ./browser/requestImageFormResult.pt:29
 msgid "fullname"
 msgstr ""
 
@@ -265,7 +287,7 @@ msgid "metadata_choice"
 msgstr ""
 
 #. Default: "Metadatas"
-#: ./browser/repofolderalbumview.pt:23
+#: ./browser/repofolderalbumview.pt:47
 #: ./browser/repoimageview.pt:55
 msgid "metadatas"
 msgstr ""
@@ -275,14 +297,15 @@ msgstr ""
 msgid "request-original-image"
 msgstr ""
 
-#: ./interfaces.py:24
+#: ./interfaces.py:28
 msgid "request_album_emails_description"
 msgstr ""
 
-#: ./interfaces.py:11
+#: ./interfaces.py:15
 msgid "request_image_emails_description"
 msgstr ""
 
+#: ./browser/requestAlbum.pt:16
 #: ./browser/requestImage.pt:16
 msgid "request_image_text"
 msgstr ""
@@ -292,16 +315,28 @@ msgstr ""
 msgid "short_usage_description"
 msgstr ""
 
+#: ./browser/requestAlbumFormResult.pt:31
 #: ./browser/requestImage.pt:39
-#: ./browser/requestImageFormResult.pt:31
-msgid "unity"
+#: ./browser/requestImageFormResult.pt:37
+msgid "team"
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:39
+#: ./browser/requestAlbum.py:146
+#: ./browser/requestImage.py:80
+msgid "team : "
+msgstr ""
+
+#: ./browser/requestAlbum.py:44
+msgid "url"
+msgstr ""
+
+#: ./browser/requestAlbumFormResult.pt:39
+#: ./browser/requestImageFormResult.pt:45
 msgid "urlSourceImage"
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:35
+#: ./browser/requestAlbumFormResult.pt:35
+#: ./browser/requestImageFormResult.pt:41
 msgid "usage_description"
 msgstr ""
 
@@ -310,7 +345,7 @@ msgstr ""
 msgid "view_original_image"
 msgstr ""
 
-#. Default: "et votre adresse e-mail :"
+#. Default: "your email adress :"
 #: ./browser/requestImage.pt:31
 msgid "your email adress : "
 msgstr ""

@@ -2,6 +2,7 @@ import logging
 from Products.Five import BrowserView
 
 from plone.autoform.form import AutoExtensibleForm
+from plone.autoform.view import WidgetsView
 from plone.z3cform import layout
 
 from zope import interface
@@ -30,7 +31,7 @@ def validateaddress(value):
 
 class IRequestAlbum(interface.Interface):
     name = schema.TextLine (
-                title = _(u"Name and Firstname"),
+                title = _(u"Please, enter your firstname and name : "),
                 description = _(u"Please enter your name and your firstname"),
                 required = True
                 )
@@ -40,9 +41,9 @@ class IRequestAlbum(interface.Interface):
                 constraint = validateaddress,
                 required = True
                 )
-    urlSourceImage = schema.TextLine (
-                title = _(u"url"),
-                description = _(u"The URL of the Image"),
+    album = schema.TextLine (
+                title = _(u"album"),
+                description = _(u"The location of the new album"),
                 required = True
                 )
     
@@ -53,6 +54,7 @@ class RequestAlbum(AutoExtensibleForm , form.Form):
     # grok.context(IATImage)
     schema = IRequestAlbum
     ignoreContext = True
+    ignoreRequest = False
     
     label = u"Query an Image"
     descrition = u"this form is used to query an image to the owner"
@@ -78,9 +80,10 @@ class RequestAlbum(AutoExtensibleForm , form.Form):
         nextUrl = self.request.HTTP_REFERER
         request.response.redirect(nextUrl)
 
-class RequestAlbumView(layout.FormWrapper):
+class RequestAlbumView(WidgetsView):
     label = u"The form wrapper"
-    form = RequestAlbum
+    schema = IRequestAlbum
+    # form = RequestAlbum
 
 
 
@@ -92,8 +95,8 @@ class IRequestAlbum(interface.Interface):
     email = schema.TextLine(
             title = _(u"email"),
             )
-    unity = schema.TextLine  (
-            title = _(u"unity"),
+    team = schema.TextLine  (
+            title = _(u"team"),
             )
 
 class RequestAlbum(AutoExtensibleForm , form.Form):
@@ -133,17 +136,17 @@ class RequestAlbumFormResult(BrowserView):
             msg = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
             return msg
         fullname          = request['fullname']
-        unity             = request['unity']
+        team             = request['team']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
         subject = _(u'[IUEM Photo repository] Image request')
-        message = fullname + '\n' + email + '\n' + unity + '\n'
+        message = fullname + '\n' + email + '\n' + team + '\n'
         message = message + usage_description + '\n'
         message = message + urlSourceImage + '\n'
         message = _(u"Original image request from :\n")
         message += _(u"Name : ") + fullname + '\n'
         message += _(u"email adress : ") + email + '\n'
-        message += _(u"Unity : ") + unity + '\n'
+        message += _(u"team : ") + team + '\n'
         message += _(u"Image usage : ") + usage_description + '\n\n'
         message += _(u"Image URL : ") + urlSourceImage
         reg = getUtility(IRegistry)
@@ -159,7 +162,7 @@ class RequestAlbumFormResult(BrowserView):
         request_content = {}
         request_content['fullname'] = fullname
         request_content['email'] = email
-        request_content['unity'] = unity
+        request_content['team'] = team
         request_content['usage_description'] = usage_description
         request_content['urlSourceImage'] = urlSourceImage        
         return request_content

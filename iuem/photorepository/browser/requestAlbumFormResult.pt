@@ -14,7 +14,7 @@
 </h2>
 <span tal:define="fullname string:${sendRequestImageMail/fullname};
                   email string:${sendRequestImageMail/email};
-                  unity string:${sendRequestImageMail/unity};
+                  team string:${sendRequestImageMail/team};
                   usage_description string:${sendRequestImageMail/usage_description};
                   urlSourceImage string:${sendRequestImageMail/urlSourceImage}">
 
@@ -28,8 +28,8 @@
   <td tal:content="string:${email}">email</td>
 </tr>
 <tr>
-  <td i18n:translate="unity">unity</td>
-  <td tal:content="string:${unity}">unity</td>
+  <td i18n:translate="team">team</td>
+  <td tal:content="string:${team}">team</td>
 </tr>
 <tr>
   <td i18n:translate="usage_description">usage_description</td>

@@ -73,6 +73,7 @@
       for="*"
       name="request-album"
       class=".requestAlbum.RequestAlbum"
+      template="requestAlbum.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

@@ -38,7 +38,6 @@ class FolderImageRepositoryExtender(object):
             searchable = True,
             multiValued = True,
             isMetadata = True,
-            # index_method="generalIndexMethod",
             vocabulary = NamedVocabulary(u"general_voc"),
             default = [],               
             widget = AddRemoveWidget(
@@ -141,12 +140,6 @@ class FolderImageRepositoryExtender(object):
     def __init__(self, context):
         self.context = context
         
-    def generalIndexMethod(self):
-        print 'Dans generalIndexMethod'
-        fieldName = 'general'
-        termUID = self.getField(fieldName).get(self)
-        return self.getField(fieldName).vocabulary.getKeyPathForTerms(self, termUID)
-
     def getFields(self):
         return self.fields
     

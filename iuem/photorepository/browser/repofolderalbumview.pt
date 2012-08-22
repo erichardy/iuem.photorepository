@@ -19,6 +19,30 @@
                  getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                  templateId template/getId;
                  batch python:Batch(images, 12, int(b_start), orphan=1)">
+
+<style type="text/css">
+#parent-fieldname-description {
+  display: none;
+  }
+.documentFirstHeading {
+  display: none;
+}
+.with-h1 {
+  padding-top: 20px;
+  padding-left: 10px;
+  }
+</style>
+<table>
+<tbody>
+<tr>
+  <td><h1 tal:content="string:${here/title_or_id}">Titre </h1></td>
+  <td class="with-h1"><span class="discreeeet">
+      <a href="" tal:attributes="href string:${here/absolute_url}/@@request-album?album=${here/absolute_url}"
+         id="request-album"> (obtenir un access)</a></span></td>
+</tr>
+</tbody>
+</table>
+
 <p />
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas

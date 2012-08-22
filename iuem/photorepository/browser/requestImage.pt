@@ -21,14 +21,14 @@
 <tbody>
 <tr>
   <td>
-    <span i18n:translate="Please, enter your firstname and name : " class="required">Veuillez entrer votre nom</span>
+    <span i18n:translate="Please, enter your firstname and name : " class="required"></span>
   </td>
   <td>
     <input type="text" size="60" name="fullname" tal:attributes="value string:${fullname}" />
   </td>
 <tr>
   <td>
-    <span i18n:translate="your email adress : ">et votre adresse e-mail :</span>
+    <span i18n:translate="your email adress : ">your email adress : </span>
   </td>
   <td>
     <input type="text" size="60" name="email" tal:attributes="value string:${email}" />
@@ -36,10 +36,10 @@
 </tr>
 <tr>
   <td>
-    <span i18n:translate="unity">unity</span>
+    <span i18n:translate="team">team</span>
   </td>
   <td>
-    <input type="text" size="50" name="unity" />
+    <input type="text" size="50" name="team" />
   </td>
 </tr>
 <tr>

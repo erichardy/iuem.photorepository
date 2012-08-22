@@ -12,6 +12,12 @@ jq(document).ready(function() {
         formselector: 'form',
         config: {expose:{color:'#00f'}}
         });
+    jq('#request-album').prepOverlay({
+        subtype: 'ajax',
+        filter: '#content > *',
+        formselector: 'form',
+        config: {expose:{color:'#00f'}}
+        });
 
 
 });
