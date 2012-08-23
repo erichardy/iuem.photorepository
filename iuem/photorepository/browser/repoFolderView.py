@@ -1,5 +1,8 @@
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+from iuem.photorepository.interfaces import IPhotorepositorySettings
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from iuem.photorepository.manageVocabulary import imMetadatas
 
 class repoFolderAlbumView(BrowserView):
@@ -45,3 +48,8 @@ class repoFolderAlbumView(BrowserView):
         for k in Kmetadatas:
             metadatas.append(vocab.getVocabularyDict()[k])
         return metadatas
+
+    def requestAlbumURL(self):
+        reg = getUtility(IRegistry)
+        settings = reg.forInterface(IPhotorepositorySettings)
+        return settings.request_album_url

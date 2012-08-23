@@ -2,6 +2,9 @@ from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from iuem.photorepository.manageVocabulary import imMetadatas
 from AccessControl import getSecurityManager
+from iuem.photorepository.interfaces import IPhotorepositorySettings
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 class repoImageView(BrowserView):
@@ -81,4 +84,8 @@ class repoImageView(BrowserView):
             return True
         else:
             return False
-        
+    
+    def requestImageURL(self):
+        reg = getUtility(IRegistry)
+        settings = reg.forInterface(IPhotorepositorySettings)
+        return settings.request_image_url

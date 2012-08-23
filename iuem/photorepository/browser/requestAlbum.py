@@ -4,22 +4,16 @@ from Products.Five import BrowserView
 from plone.autoform.form import AutoExtensibleForm
 from plone.autoform.view import WidgetsView
 from plone.z3cform import layout
-
 from zope import interface
 from zope import schema
 from z3c.form import form, button, field
-
-
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
-
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 logger = logging.getLogger('iuem.photorepository')
-
-#http://plone.org/documentation/kb/easy-forms-with-plone3
 
 def validateaddress(value):
     try:
@@ -29,94 +23,19 @@ def validateaddress(value):
         # raise EmailAddressInvalid(value)
     return True
 
-class IRequestAlbum(interface.Interface):
-    name = schema.TextLine (
-                title = _(u"Please, enter your firstname and name : "),
-                description = _(u"Please enter your name and your firstname"),
-                required = True
-                )
-    email = schema.TextLine (
-                title = _(u"Your email address"),
-                description = _(u"We need your email address to contact you later"),
-                constraint = validateaddress,
-                required = True
-                )
-    album = schema.TextLine (
-                title = _(u"album"),
-                description = _(u"The location of the new album"),
-                required = True
-                )
-    
-    
-class RequestAlbum(AutoExtensibleForm , form.Form):
-    # grok.name('query-image')
-    # grok.require('zope2.View')
-    # grok.context(IATImage)
-    schema = IRequestAlbum
-    ignoreContext = True
-    ignoreRequest = False
-    
-    label = u"Query an Image"
-    descrition = u"this form is used to query an image to the owner"
-    # import pdb;pdb.set_trace()
-    """
-    def getContent(self):
-        data = {}
-        data['name'] = 'Mon nom a moi'
-        data['email'] = 'eric.hhh@tre.fr'
-        data['urlSourceImage'] = 'http://url.oftheImage.fr'
-        logger.info('in getContent: ' + str(self.request.HTTP_REFERER))
-        # import pdb;pdb.set_trace()
-        return data
-    """
-    @button.buttonAndHandler(u'Ok...')
-    def handleOk(self, action):
-        data, errors = self.extractData()
-        if errors:
-            self.status = self.formErrorsMessage
-            return
-        request = self.request
-        # nextUrl = '%s/@@metadata_view_pt'%self.context.absolute_url()
-        nextUrl = self.request.HTTP_REFERER
-        request.response.redirect(nextUrl)
+class RequestAlbum(BrowserView):
 
-class RequestAlbumView(WidgetsView):
-    label = u"The form wrapper"
-    schema = IRequestAlbum
-    # form = RequestAlbum
+    def currentUser(self):
+        ms = getToolByName(self.context , 'portal_membership')
+        member = ms.getAuthenticatedMember()
+        currentUser = {}
+        currentUser['email'] = member.getProperty('email')
+        currentUser['fullname'] = member.getProperty('fullname')
+        for k in currentUser.keys():
+            if currentUser[k] == None:
+                currentUser[k] = ''
+        return currentUser
 
-
-
-"""
-class IRequestAlbum(interface.Interface):
-    fullname = schema.TextLine (
-            title = _(u"fullname"),
-            )
-    email = schema.TextLine(
-            title = _(u"email"),
-            )
-    team = schema.TextLine  (
-            title = _(u"team"),
-            )
-
-class RequestAlbum(AutoExtensibleForm , form.Form):
-
-    fields = field.Fields(IRequestAlbum)
-    label = _(u"request album")
-    description = _(u"request album description")
-    ingnoreContext = True
-
-    @button.buttonAndHandler(_(u'Send Request'))
-    def handleApply(self, action):
-        data, errors = self.extractData()
-        if errors:
-            self.status = self.forErrorMessage
-            return
-
-class RequestAlbumView(layout.FormWrapper):
-    label = u"The form wrapper"
-    form = RequestAlbum
-"""
 class RequestAlbumFormResult(BrowserView):
     
     def sendRequest(self):
@@ -139,7 +58,7 @@ class RequestAlbumFormResult(BrowserView):
         team             = request['team']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
-        subject = _(u'[IUEM Photo repository] Image request')
+        subject = _(u'[IUEM Photo repository] Album or access request')
         message = fullname + '\n' + email + '\n' + team + '\n'
         message = message + usage_description + '\n'
         message = message + urlSourceImage + '\n'

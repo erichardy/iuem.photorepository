@@ -18,7 +18,9 @@
                  kssClassesView context/@@kss_field_decorator_view;
                  getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                  templateId template/getId;
-                 batch python:Batch(images, 12, int(b_start), orphan=1)">
+                 batch python:Batch(images, 12, int(b_start), orphan=1);
+                 requestAlbumURL python:view.requestAlbumURL()"
+                 >
 
 <style type="text/css">
 #parent-fieldname-description {
@@ -37,7 +39,7 @@
 <tr>
   <td><h1 tal:content="string:${here/title_or_id}">Titre </h1></td>
   <td class="with-h1"><span class="discreeeet">
-      <a href="" tal:attributes="href string:${here/absolute_url}/@@request-album?album=${here/absolute_url}"
+      <a href="" tal:attributes="href string:${here/absolute_url}/${requestAlbumURL}?album=${here/absolute_url}"
          id="request-album"> (obtenir un access)</a></span></td>
 </tr>
 </tbody>

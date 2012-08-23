@@ -81,7 +81,7 @@
       for="*"
       name="request-album-form-result"
       class=".requestAlbum.RequestAlbumFormResult"
-      template="requestImageFormResult.pt"
+      template="requestAlbumFormResult.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />

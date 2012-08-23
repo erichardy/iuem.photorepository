@@ -11,7 +11,6 @@
 
 <span tal:replace="structure view/viewImage">viewImage</span>
 <br />
-
 <p />
 <span tal:condition="view/canViewFullImage">
 <a 
@@ -24,10 +23,11 @@
       type , h x w
    </span>
 </span>
-
+<span tal:replace="nothing">
 <span tal:condition="python:view.canViewFullImage()">
 <a id="request-this-image"
-   tal:attributes="href string:${here/absolute_url}/@@request-image?urlSourceImage=${here/absolute_url}"
+   tal:define="requestImageURL python:view.requestImageURL();"
+   tal:attributes="href string:${here/absolute_url}/${requestImageURL}?urlSourceImage=${here/absolute_url}"
    i18n:translate="request-original-image"
    >request this image</a>
    <span tal:define="type view/originalType;
@@ -37,10 +37,14 @@
       type , h x w
    </span>
 </span>
+</span>
 
-<span tal:condition="python:not view.canViewFullImage()">
+<span tal:condition="python:not view.canViewFullImage()"
+      
+>
 <a id="request-this-image"
-   tal:attributes="href string:${here/absolute_url}/@@request-image?urlSourceImage=${here/absolute_url}"
+   tal:define="requestImageURL python:view.requestImageURL();"
+   tal:attributes="href string:${here/absolute_url}/${requestImageURL}?urlSourceImage=${here/absolute_url}"
    i18n:translate="request-original-image"
    >request this image</a>
    <span tal:define="type view/originalType;

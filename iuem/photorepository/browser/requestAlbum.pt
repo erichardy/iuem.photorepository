@@ -9,19 +9,69 @@
      tal:define="currentUser view/currentUser;
                  fullname string:${currentUser/fullname};
                  email string:${currentUser/email};
-                 urlSourceImage string:${request/form/urlSourceImage}"
+                 album string:${request/form/album}"
      >
 
 <br />
-<p class="informational-text" i18n:translate="request_image_text" >request_image_text</p>
+<p class="informational-text" i18n:translate="request_album_text" ></p>
 
-<form name="request_image_form" tal:attributes="action string:${here/absolute_url}/@@request-image-form-result" method="POST">
+<form name="request_album_form" tal:attributes="action string:${here/absolute_url}/@@request-album-form-result" method="POST">
+<table border="0" class="MetadataTable">
+<tbody>
+<tr>
+  <td>
+    <span i18n:translate="Please, enter your firstname and name : " class="required"></span>
+  </td>
+  <td>
+    <input type="text" size="60" name="fullname" tal:attributes="value string:${fullname}" />
+  </td>
+<tr>
+  <td>
+    <span i18n:translate="your email adress : ">your email adress : </span>
+  </td>
+  <td>
+    <input type="text" size="60" name="email" tal:attributes="value string:${email}" />
+  </td>
+</tr>
+<tr>
+  <td>
+    <span i18n:translate="team">team</span>
+  </td>
+  <td>
+    <input type="text" size="50" name="team" />
+  </td>
+</tr>
+<tr>
+  <td>
+    <span i18n:translate="access or album">access or album</span>
+  </td>
+  <td>
+    <input type="checkbox" name="access_type" value="Full access to this album" />Full access to this album<br />
+    <input type="checkbox" name="access_type" value="Creation of a new album" />Creation of a new album
+  </td>
+</tr>
+<tr>
+  <td>
+    <span i18n:translate="short_usage_album_description">usage description</span>
+  </td>
+  <td>
+    <input type="text" size="70" name="usage_description" />
+  </td>
+</tr>
+<tr>
+  <td>
+    &nbsp;
+  </td>
+  <td>
+    <input type="submit" name="submit" />
+  </td>
+</tr>
+<tbody>
+</table>
 
-
-<input type="hidden" name="urlSourceImage" tal:attributes="value string:${urlSourceImage}" />
+<input type="hidden" name="album" tal:attributes="value string:${album}" />
 </form>
 <br />
-<img src="" tal:attributes="src string:${here/absolute_url}" />
 
 </div>
 </body>

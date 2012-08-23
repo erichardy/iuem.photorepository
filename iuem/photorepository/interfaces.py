@@ -23,6 +23,13 @@ class IPhotorepositorySettings(Interface):
                         default = u"iuem.photorepository@iuem-photorepository.org",
                         required = True,
                         )
+    request_image_url = schema.TextLine (
+                        title = _(u"View name of the form for request an image"),
+                        description = _(u"TAL expression (@@request-image)"),
+                        default = u"@@request-image",
+                        required = True,
+                        )
+
     request_album_emails = schema.List (
                         title = _(u"email addresses which receive album requests"),
                         description = _(u"request_album_emails_description"),
@@ -36,6 +43,11 @@ class IPhotorepositorySettings(Interface):
                         default = u"iuem.photorepository@iuem-photorepository.org",
                         required = True,
                         )
-
+    request_album_url = schema.TextLine (
+                        title = _(u"View name of the form for request an access or an album"),
+                        description = _(u"TAL expression (string:${absolute_url}/@@request-album)"),
+                        default = u"@@request-album",
+                        required = True,
+                        )
 
     
