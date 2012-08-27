@@ -17,6 +17,10 @@ msgstr ""
 "Domain: iuem.photorepository\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
+#: ./browser/repofolderalbumview.pt:42
+msgid "(new album or privileged access)"
+msgstr "(demande de nouvel album ou d'accès privilégié à celui-ci)"
+
 #: ./browser/manageMetadataFormView.pt:47
 msgid "Add metadatas"
 msgstr "Ajouter aux métadonnées existantes"
@@ -26,11 +30,11 @@ msgstr "Ajouter aux métadonnées existantes"
 msgid "Add or Replace"
 msgstr "Ajouter ou Remplacer"
 
-#: ./extender.py:72
+#: ./extender.py:71
 msgid "Area related to the photo"
 msgstr "Lieu de la photo"
 
-#: ./extender.py:128
+#: ./extender.py:127
 msgid "Author of the photo"
 msgstr "Auteur de la photo"
 
@@ -38,48 +42,54 @@ msgstr "Auteur de la photo"
 msgid "Confirm metadata spread"
 msgstr "Confirmer cette propagation de métadonnées"
 
-#: ./extender.py:298
+#: ./extender.py:291
 msgid "EXIF metadata in the picture"
 msgstr "Les métadonnées EXIF propres à cette photo"
 
-#: ./browser/repoimageview.pt:132
-#: ./extender.py:297
+#: ./browser/repoimageview.pt:135
+#: ./extender.py:290
 msgid "EXIF metadatas"
 msgstr "Métadonnées EXIF"
 
-#: ./interfaces.py:34
+#: ./interfaces.py:43
 msgid "From field for album requests"
 msgstr "Expéditeur des demandes d'album"
 
-#: ./interfaces.py:21
+#: ./interfaces.py:23
 msgid "From field for original image requests"
 msgstr "Expéditeur des demandes d'imge originale"
 
+#: ./browser/requestAlbum.pt:50
+msgid "Full access to this album"
+msgstr "Accès complet (ajout/modifications/suppressions) à cet album"
+
 #: ./browser/manageMetadataFormView.pt:62
 #: ./browser/metadataConfirm.pt:60
-#: ./browser/repofolderalbumview.pt:57
+#: ./browser/repofolderalbumview.pt:59
 msgid "General keywords"
 msgstr "Mots clé généraux"
 
-#: ./extender.py:313
+#: ./extender.py:306
 msgid "IPCT metadata"
 msgstr "Métadonnées IPCT"
 
-#: ./extender.py:314
+#: ./extender.py:307
 msgid "IPCT metadata description"
 msgstr "Les métadonnées IPCT"
 
-#: ./browser/requestAlbum.py:148
-#: ./browser/requestImage.py:82
+#: ./browser/requestAlbum.pt:56
+msgid "If you request a new album, please enter a name and a description for it..."
+msgstr "Si vous demandez la création d'un nouvel album, veuillez proposer un nom et en donner une description succinte..."
+
+#: ./browser/requestImage.py:76
 msgid "Image URL : "
 msgstr "URL de l'image : "
 
-#: ./browser/requestAlbum.py:147
-#: ./browser/requestImage.py:81
+#: ./browser/requestImage.py:75
 msgid "Image usage : "
 msgstr "Utilisation de l'image : "
 
-#: ./extender.py:135
+#: ./extender.py:134
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
 
@@ -89,18 +99,18 @@ msgstr "Les images dans ce dossier et dans tous les sous-dossiers"
 
 #: ./browser/manageMetadataFormView.pt:94
 #: ./browser/metadataConfirm.pt:93
-#: ./browser/repofolderalbumview.pt:84
+#: ./browser/repofolderalbumview.pt:86
 msgid "Laboratory"
 msgstr "Laboratoire"
 
-#: ./extender.py:275
+#: ./extender.py:268
 msgid "Latitude"
 msgstr "Latitude"
 
 #. Default: "licencetype"
 #: ./browser/manageMetadataFormView.pt:116
 #: ./browser/metadataConfirm.pt:115
-#: ./browser/repofolderalbumview.pt:102
+#: ./browser/repofolderalbumview.pt:104
 msgid "Licence Type"
 msgstr "Type de Licence"
 
@@ -108,22 +118,30 @@ msgstr "Type de Licence"
 msgid "Manage Metadata"
 msgstr "Propagation..."
 
-#: ./browser/requestAlbum.py:144
-#: ./browser/requestImage.py:78
+#: ./browser/requestAlbum.py:80
+#: ./browser/requestImage.py:72
 msgid "Name : "
 msgstr "Nom : "
+
+#: ./browser/requestAlbum.pt:61
+msgid "New album name"
+msgstr "Nom du nouvel album"
+
+#: ./browser/requestAlbum.pt:49
+msgid "New album request"
+msgstr "Demande de création d'un album"
 
 #: ./browser/manageMetadataFormView.pt:38
 msgid "Only Local Images"
 msgstr "Seulement les images de ce dossier"
 
-#: ./extender.py:85
+#: ./extender.py:84
 msgid "Photograph's Laboratory"
 msgstr "Laboratoire du photographe"
 
 #: ./browser/manageMetadataFormView.pt:127
 #: ./browser/metadataConfirm.pt:126
-#: ./browser/repofolderalbumview.pt:115
+#: ./browser/repofolderalbumview.pt:117
 msgid "Photographer"
 msgstr "Photographe"
 
@@ -135,23 +153,19 @@ msgstr "Configuration du dépôt d'image"
 msgid "PhotorepositorySettingsDescription"
 msgstr "Entrez les valeurs adaptées à votre site..."
 
-#: ./browser/requestAlbum.py:34
-msgid "Please enter your name and your firstname"
-msgstr ""
-
 #. Default: "Veuillez entrer votre nom"
-#: ./browser/requestAlbum.py:33
+#: ./browser/requestAlbum.pt:23
 #: ./browser/requestImage.pt:24
 msgid "Please, enter your firstname and name : "
 msgstr "Veuillez indiquer vos prénom et nom : "
 
 #: ./browser/manageMetadataFormView.pt:135
 #: ./browser/metadataConfirm.pt:134
-#: ./browser/repofolderalbumview.pt:111
+#: ./browser/repofolderalbumview.pt:113
 msgid "Recording date and time"
 msgstr "Date de la prise de vue"
 
-#: ./extender.py:121
+#: ./extender.py:120
 msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
 msgstr "Instant de la prise de vue, pourrait être extraite des données EXIF"
 
@@ -161,113 +175,144 @@ msgstr "Remplacer les métadonnées par celles-ci"
 
 #: ./browser/manageMetadataFormView.pt:105
 #: ./browser/metadataConfirm.pt:104
-#: ./browser/repofolderalbumview.pt:93
+#: ./browser/repofolderalbumview.pt:95
 msgid "Research Project"
 msgstr "Projet de recherche"
 
-#: ./extender.py:98
+#: ./extender.py:97
 msgid "Research Project related to the picture"
 msgstr "Projet de recherche associé à cette photo"
 
 #: ./browser/manageMetadataFormView.pt:72
 #: ./browser/metadataConfirm.pt:71
-#: ./browser/repofolderalbumview.pt:66
+#: ./browser/repofolderalbumview.pt:68
 msgid "Scientific keywords"
 msgstr "Mots clé scientifiques"
 
-#: ./browser/requestAlbum.py:133
-#: ./browser/requestImage.py:61
-msgid "Sorry, your email adress is invalid, the request can't be satisfied..."
-msgstr "Désolé, votre adresse mail n'est pas valide, votre demande ne peut être satisfaite..."
+#: ./browser/requestAlbumFormResult.pt:25
+msgid "Sorry, fields are missing in your form,"
+msgstr "Désolé, certains champs du formulaire ne sont pas renseignés"
+
+#: ./browser/requestImageFormResult.pt:17
+msgid "Sorry, your email address is invalid, the request can't be satisfied..."
+msgstr "Désolé, votre adresse de couriel n'est pas valide, votre demande ne peut être satisfaite..."
 
 #: ./browser/manageMetadataFormView.pt:35
 #: ./browser/metadataConfirm.pt:38
 msgid "Spread depth"
 msgstr "Profondeur de la propagation"
 
-#: ./browser/requestAlbum.py:45
-msgid "The URL of the Image"
+#: ./interfaces.py:30
+msgid "TAL expression (@@request-image)"
+msgstr ""
+
+#: ./interfaces.py:50
+msgid "TAL expression (string:${absolute_url}/@@request-album)"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
 msgstr "Valider cette propagation de métadonnées"
 
-#: ./extender.py:134
+#: ./interfaces.py:49
+msgid "View name of the form for request an access or an album"
+msgstr ""
+
+#: ./interfaces.py:29
+msgid "View name of the form for request an image"
+msgstr ""
+
+#: ./extender.py:133
 msgid "Watermark"
 msgstr "Image pour le filigrane"
 
-#: ./browser/requestAlbum.py:39
-msgid "We need your email address to contact you later"
-msgstr ""
-
-#: ./extender.py:111
+#: ./extender.py:110
 msgid "What type of restricted usage"
 msgstr "Restrictions d'utilisation, licence"
 
 #. Default: "where"
 #: ./browser/manageMetadataFormView.pt:83
 #: ./browser/metadataConfirm.pt:82
-#: ./browser/repofolderalbumview.pt:75
+#: ./browser/repofolderalbumview.pt:77
 msgid "Where"
 msgstr "Lieu de la prise de vue"
 
-#: ./extender.py:129
+#: ./extender.py:128
 msgid "Who owns this photo"
 msgstr "A qui appartient cette photo"
 
-#: ./extender.py:305
+#: ./extender.py:298
 msgid "XMP metadata description"
 msgstr "Les métadonnées XMP"
 
-#: ./browser/requestAlbum.py:38
-msgid "Your email address"
-msgstr ""
+#: ./browser/requestImage.pt:31
+msgid "Your email adress : "
+msgstr "Votre adresse de couriel"
 
-#: ./browser/requestAlbum.py:139
-#: ./browser/requestImage.py:73
+#: ./browser/requestAlbum.py:79
+#: ./browser/requestAlbumFormResult.pt:32
+msgid "Your request : "
+msgstr "Votre demande : "
+
+#: ./browser/requestAlbum.py:75
+msgid "[IUEM Photo repository] Album or access request"
+msgstr "[IUEM Photo repository] Demande d'album ou d'accès nouveau"
+
+#: ./browser/requestImage.py:67
 msgid "[IUEM Photo repository] Image request"
 msgstr "[IUEM Photo repository] Demande d'image"
+
+#: ./browser/requestAlbum.pt:46
+msgid "access or album"
+msgstr "Demande d'un nouvel album dans celui-ci ou d'accès élargis à à cet album "
+
+#: ./browser/requestAlbum.py:84
+msgid "album usage : "
+msgstr "Desription succinte de l'usage de cet album"
 
 #. Default: "Description"
 #: ./browser/manageMetadataFormView.pt:54
 #: ./browser/metadataConfirm.pt:52
-#: ./browser/repofolderalbumview.pt:53
+#: ./browser/repofolderalbumview.pt:55
 msgid "description"
 msgstr "Description"
 
-#: ./browser/requestAlbumFormResult.pt:27
+#: ./browser/requestAlbumFormResult.pt:40
 #: ./browser/requestImageFormResult.pt:33
 msgid "email"
 msgstr "Courriel"
 
-#: ./interfaces.py:27
+#: ./interfaces.py:36
 msgid "email addresses which receive album requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes d'album"
 
-#: ./interfaces.py:14
+#: ./interfaces.py:16
 msgid "email addresses which receive image requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale"
 
-#: ./browser/requestAlbum.py:145
-#: ./browser/requestImage.py:79
+#: ./browser/requestAlbum.py:81
+#: ./browser/requestImage.py:73
 msgid "email adress : "
 msgstr "Courriel : "
 
-#: ./interfaces.py:22
+#: ./interfaces.py:24
 msgid "enter a valid email adress"
 msgstr "Entrez une adresse mail valide"
 
-#: ./browser/requestAlbumFormResult.pt:23
+#: ./browser/requestAlbum.py:83
+msgid "full album URL : "
+msgstr "URL complète de l'album demandé"
+
+#: ./browser/requestAlbumFormResult.pt:36
 #: ./browser/requestImageFormResult.pt:29
 msgid "fullname"
 msgstr "Prénom, nom"
 
-#: ./extender.py:276
+#: ./extender.py:269
 msgid "latitude_format"
 msgstr ""
 
-#: ./extender.py:287
+#: ./extender.py:280
 msgid "longitude_format"
 msgstr ""
 
@@ -277,66 +322,93 @@ msgid "metadata_choice"
 msgstr "Sélectionner les métadonnées à propager"
 
 #. Default: "Metadatas"
-#: ./browser/repofolderalbumview.pt:47
-#: ./browser/repoimageview.pt:55
+#: ./browser/repofolderalbumview.pt:49
+#: ./browser/repoimageview.pt:58
 msgid "metadatas"
 msgstr "Métadonnées"
 
+#: ./browser/requestAlbumFormResult.pt:52
+msgid "new album location"
+msgstr "URL du nouvel album"
+
+#: ./browser/requestAlbumFormResult.pt:26
+msgid "or your email address in not valid... !"
+msgstr "ou votre adresse de couriel n'est pas valide... !"
+
+#: ./browser/requestAlbumFormResult.pt:13
+msgid "request-album-returned-message"
+msgstr "Si votre demande a pu être satisfaite, vous recevrez une copie du message<br />qui a été transmis aux responsables de la base.<br />Dans le cas contraire, veuillez corriger les données que vous avez saisi..."
+
+#: ./browser/requestImageFormResult.pt:13
+msgid "request-image-returned-message"
+msgstr "Si votre demande a pu être satisfaite, vous recevrez une copie du message<br />qui a été transmis aux responsables de la base.<br />Dans le cas contraire, veuillez corriger les données que vous avez saisi..."
+
 #. Default: "request this image"
-#: ./browser/repoimageview.pt:29
+#: ./browser/repoimageview.pt:44
 msgid "request-original-image"
 msgstr "Demander l'image originale"
 
-#: ./interfaces.py:28
+#: ./interfaces.py:37
 msgid "request_album_emails_description"
 msgstr "Entrer une adresse mail par ligne"
 
-#: ./interfaces.py:15
+#: ./browser/requestAlbum.pt:16
+msgid "request_album_text"
+msgstr "Remplissez ce formulaire si vous désirez avoir un album à cet emplacement<br />ou si vous voulez avoir un accès complet à celui-ci (ajout/modification/suppression)."
+
+#: ./interfaces.py:17
 msgid "request_image_emails_description"
 msgstr "Entrer une adresse mail par ligne"
 
-#: ./browser/requestAlbum.pt:16
 #: ./browser/requestImage.pt:16
 msgid "request_image_text"
 msgstr "Vous demander l'image originale qui correspond à l'image \"dégradée\" ci-dessous.<br />Veuillez renseigner les champs avec soin afin que nous puissions satisfaire votre demande.<br />Merci !<br />"
+
+#. Default: "usage description"
+#: ./browser/requestAlbum.pt:69
+msgid "short_usage_album_description"
+msgstr "Une courte description de l'usage que vous comptez faire de cet album."
 
 #. Default: "usage description"
 #: ./browser/requestImage.pt:47
 msgid "short_usage_description"
 msgstr "Une courte description de l'usage que vous allez faire de cette photo, <br />par exemple : poster, publication, séminaire, etc..."
 
-#: ./browser/requestAlbumFormResult.pt:31
+#: ./browser/requestAlbum.pt:38
+#: ./browser/requestAlbumFormResult.pt:44
 #: ./browser/requestImage.pt:39
-#: ./browser/requestImageFormResult.pt:37
 msgid "team"
 msgstr "Votre unité ou laboratoire"
 
-#: ./browser/requestAlbum.py:146
-#: ./browser/requestImage.py:80
+#: ./browser/requestAlbum.py:82
+#: ./browser/requestImage.py:74
 msgid "team : "
 msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
 
-#: ./browser/requestAlbum.py:44
-msgid "url"
-msgstr ""
+#: ./browser/requestAlbumFormResult.pt:27
+msgid "the request can't be satisfied..."
+msgstr "Votre demande ne peut aboutir..."
 
-#: ./browser/requestAlbumFormResult.pt:39
 #: ./browser/requestImageFormResult.pt:45
 msgid "urlSourceImage"
 msgstr "URL de l'image originale"
 
-#: ./browser/requestAlbumFormResult.pt:35
+#. Default: "usage_description"
+#: ./browser/requestAlbumFormResult.pt:48
+msgid "usage_album_description"
+msgstr "Une courte description de l'usage que vous comptez faire de cet album."
+
 #: ./browser/requestImageFormResult.pt:41
 msgid "usage_description"
 msgstr "Description de l'usage de l'image demandée"
 
 #. Default: "View the original image"
-#: ./browser/repoimageview.pt:17
+#: ./browser/repoimageview.pt:16
 msgid "view_original_image"
 msgstr "Visualiser l'original"
 
 #. Default: "your email adress :"
-#: ./browser/requestImage.pt:31
+#: ./browser/requestAlbum.pt:30
 #, fuzzy
 msgid "your email adress : "
 msgstr "Votre adresse de courrier électronique : "

@@ -9,7 +9,7 @@
      tal:define="currentUser view/currentUser;
                  fullname string:${currentUser/fullname};
                  email string:${currentUser/email};
-                 album string:${request/form/album}"
+                 album string:${here/absolute_url}"
      >
 
 <br />
@@ -41,16 +41,30 @@
     <input type="text" size="50" name="team" />
   </td>
 </tr>
-<tr>
+<tr id="request-album-access-type">
   <td>
     <span i18n:translate="access or album">access or album</span>
   </td>
   <td>
-    <input type="checkbox" name="access_type" value="Full access to this album" />Full access to this album<br />
-    <input type="checkbox" name="access_type" value="Creation of a new album" />Creation of a new album
+    <input id="new-album-request" checked="checked" type="radio" name="access_type" value="New album request"><span i18n:translate="New album request"> New album request</span><br />
+    <input type="radio" name="access_type" value="Full access to this album"><span i18n:translate="Full access to this album"> Full access to this album</span>
+    
   </td>
 </tr>
 <tr>
+ <td colspan="2">
+   <span i18n:translate="">If you request a new album, please enter a name and a description for it...</span>
+ </td>
+</tr>
+<tr id="request-album-album-name">
+  <td>
+    <span i18n:translate="New album name">New album name</span>
+  </td>
+  <td>
+    <input type="text" size="30" name="new_album_name" />
+  </td>
+</tr>
+<tr id="request-album-description">
   <td>
     <span i18n:translate="short_usage_album_description">usage description</span>
   </td>

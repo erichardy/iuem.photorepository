@@ -40,7 +40,7 @@
   <td><h1 tal:content="string:${here/title_or_id}">Titre </h1></td>
   <td class="with-h1"><span class="discreeeet">
       <a href="" tal:attributes="href string:${here/absolute_url}/${requestAlbumURL}?album=${here/absolute_url}"
-         id="request-album"> (obtenir un access)</a></span></td>
+         id="request-album" i18n:translate=""> (new album or privileged access)</a></span></td>
 </tr>
 </tbody>
 </table>

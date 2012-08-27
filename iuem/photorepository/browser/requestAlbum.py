@@ -1,12 +1,9 @@
 import logging
 from Products.Five import BrowserView
+from zope.component import getUtility
+from plone.registry.interfaces import IRegistry
+from iuem.photorepository.interfaces import IPhotorepositorySettings
 
-from plone.autoform.form import AutoExtensibleForm
-from plone.autoform.view import WidgetsView
-from plone.z3cform import layout
-from zope import interface
-from zope import schema
-from z3c.form import form, button, field
 from Products.CMFCore.utils import getToolByName
 
 from Products.CMFDefault.utils import checkEmailAddress
@@ -48,44 +45,53 @@ class RequestAlbumFormResult(BrowserView):
         for m in settings.request_image_emails:
             logger.info(m)
 
-    def sendRequestImageMail(self):
+    def sendRequestAlbumMail(self):
         request           = self.request
-        email             = request['email']
-        if not validateaddress(email):
-            msg = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
-            return msg
         fullname          = request['fullname']
-        team             = request['team']
+        email             = request['email']
+        team              = request['team']
+        access_type       = request['access_type']
+        new_album_name    = request['new_album_name']
         usage_description = request['usage_description']
-        urlSourceImage    = request['urlSourceImage'] + '/view'
+        album              = request['album']
+        request_content = {}
+        validForm = validateaddress(email)
+        validForm = validForm and fullname and team
+        if (access_type=="New album request"):
+            validForm = validForm and new_album_name and usage_description
+        request_content['fullname'] = fullname
+        request_content['email'] = email
+        request_content['team'] = team
+        request_content['usage_description'] = usage_description
+        request_content['access_type'] = access_type
+        request_content['new_album_name'] = new_album_name
+        request_content['album'] = album
+
+        if not validForm:
+            request_content['sent'] = 'no'
+            return request_content
+        
+        request_content['sent'] = 'ok'
         subject = _(u'[IUEM Photo repository] Album or access request')
         message = fullname + '\n' + email + '\n' + team + '\n'
         message = message + usage_description + '\n'
-        message = message + urlSourceImage + '\n'
-        message = _(u"Original image request from :\n")
+        message = message + '\n'
+        message = _(u"Your request : ") + _(access_type) + '\n'
         message += _(u"Name : ") + fullname + '\n'
         message += _(u"email adress : ") + email + '\n'
         message += _(u"team : ") + team + '\n'
-        message += _(u"Image usage : ") + usage_description + '\n\n'
-        message += _(u"Image URL : ") + urlSourceImage
+        message += _(u"full album URL : ") + album + '/' + new_album_name + '\n'
+        message += _(u"album usage : ") + usage_description + '\n\n'
+        
         reg = getUtility(IRegistry)
         settings = reg.forInterface(IPhotorepositorySettings)
         mailhost = getToolByName(self.context , 'MailHost')
-        mfrom = settings.request_image_from
-        for target in settings.request_image_emails:
+        mfrom = settings.request_album_from
+        for target in settings.request_album_emails:
             mailhost.send(message , subject = subject ,\
                           mto = target , mfrom = mfrom)
         copy_message = _(u"copy-of-message :\n\n") + message
         mailhost.send(copy_message , subject = subject ,\
                       mto = email , mfrom = mfrom)
-        request_content = {}
-        request_content['fullname'] = fullname
-        request_content['email'] = email
-        request_content['team'] = team
-        request_content['usage_description'] = usage_description
-        request_content['urlSourceImage'] = urlSourceImage        
-        return request_content
-
         
-
-
+        return request_content

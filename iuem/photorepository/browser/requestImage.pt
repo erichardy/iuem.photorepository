@@ -28,7 +28,7 @@
   </td>
 <tr>
   <td>
-    <span i18n:translate="your email adress : ">your email adress : </span>
+    <span i18n:translate="Your email adress : "></span>
   </td>
   <td>
     <input type="text" size="60" name="email" tal:attributes="value string:${email}" />

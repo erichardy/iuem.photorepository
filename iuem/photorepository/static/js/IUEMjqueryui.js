@@ -18,10 +18,14 @@ jq(document).ready(function() {
         formselector: 'form',
         config: {expose:{color:'#00f'}}
         });
-
-
 });
-
+/*
+jq(document).ready(function() {
+	jq("input#new-album-request:checked")({
+		jq("#request-album-album-name").toggle("hidden");
+	});
+});
+*/
 jq(document).ready(function() {
 	jq(".iuemCollapsedHeading.iuemCollapsed").next().hide();
  

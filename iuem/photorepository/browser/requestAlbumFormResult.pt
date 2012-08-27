@@ -6,19 +6,32 @@
       i18n:domain="iuem.photorepository">
 <body>
 <div metal:fill-slot="content-core"
-  tal:define="sendRequestImageMail view/sendRequestImageMail"
+  tal:define="sendRequestAlbumMail view/sendRequestAlbumMail"
   >
 
 <h2>
-<span i18ntranslate="request-image-returned-message">request-image-returned-message</span>
+<span i18n:translate="request-album-returned-message">request-album-returned-message</span>
 </h2>
-<span tal:define="fullname string:${sendRequestImageMail/fullname};
-                  email string:${sendRequestImageMail/email};
-                  team string:${sendRequestImageMail/team};
-                  usage_description string:${sendRequestImageMail/usage_description};
-                  urlSourceImage string:${sendRequestImageMail/urlSourceImage}">
+<span tal:define="fullname string:${sendRequestAlbumMail/fullname};
+                  email string:${sendRequestAlbumMail/email};
+                  team string:${sendRequestAlbumMail/team};
+                  access_type string:${sendRequestAlbumMail/access_type};
+                  usage_description string:${sendRequestAlbumMail/usage_description};
+                  new_album_name string:${sendRequestAlbumMail/new_album_name};
+                  album string:${sendRequestAlbumMail/album}">
 
-<table border="1" class="MetadataTable">
+<span tal:condition="python:sendRequestAlbumMail['sent']=='no'"
+      class="requestError">
+      <span i18n:translate="Sorry, fields are missing in your form,"></span><br />
+      <span i18n:translate="or your email address in not valid... !"></span><br />
+      <span i18n:translate="the request can't be satisfied..."></span>
+</span>
+
+<table border="0" class="MetadataTable">
+<tr>
+  <td><span i18n:translate="Your request : "></span>
+  <td><span i18n:translate="" tal:content="string:${access_type}"></span></td>
+</tr>
 <tr>
   <td i18n:translate="fullname">fullname</td>
   <td tal:content="string:${fullname}">fullname</td>
@@ -32,15 +45,14 @@
   <td tal:content="string:${team}">team</td>
 </tr>
 <tr>
-  <td i18n:translate="usage_description">usage_description</td>
+  <td i18n:translate="usage_album_description">usage_description</td>
   <td tal:content="string:${usage_description}">usage_description</td>
 </tr>
 <tr>
-  <td i18n:translate="urlSourceImage">urlSourceImage</td>
-  <td tal:content="string:${urlSourceImage}">urlSourceImage</td>
+  <td i18n:translate="">new album location</td>
+  <td tal:content="string:${album}/${new_album_name}">album</td>
 </tr>
 </table>
-
 </span>
 </div>
 

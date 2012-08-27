@@ -74,6 +74,14 @@ table.MetadataTable tr:nth-child(even) {
     content: "- ";
 }
 
+.hidden {
+	display: none;
+}
+
+.requestError {
+	color: Red;
+}
+
 body {
 	background-color: #F9F9F9;
 }

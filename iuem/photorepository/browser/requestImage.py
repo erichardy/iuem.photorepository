@@ -54,22 +54,24 @@ class RequestImageFormResult(BrowserView):
 
     def sendRequestImageMail(self):
         request           = self.request
-        email             = request['email']
-        request_content = {}
-        if not validateaddress(email):
-            request_content['sent'] = 'no'
-            request_content['msg'] = _(u"Sorry, your email adress is invalid, the request can't be satisfied...")
-            request_content['fullname'] = ''
-            request_content['email'] = ''
-            request_content['team'] = ''
-            request_content['usage_description'] = ''
-            request_content['urlSourceImage'] = ''
-            return request_content
         fullname          = request['fullname']
+        email             = request['email']
         team             = request['team']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
-
+        
+        request_content = {}
+        request_content['fullname'] = fullname
+        request_content['email'] = email
+        request_content['team'] = team
+        request_content['usage_description'] = usage_description
+        request_content['urlSourceImage'] = urlSourceImage
+        validForm = validateaddress(email)
+        validForm = validForm and fullname and team and usage_description
+        if not validForm:
+            request_content['sent'] = 'no'
+            return request_content
+        
         subject = _(u'[IUEM Photo repository] Image request')
         message = fullname + '\n' + email + '\n' + team + '\n'
         message = message + usage_description + '\n'
@@ -91,11 +93,7 @@ class RequestImageFormResult(BrowserView):
         mailhost.send(copy_message , subject = subject ,\
                       mto = email , mfrom = mfrom)
         request_content['sent'] = 'ok'
-        request_content['fullname'] = fullname
-        request_content['email'] = email
-        request_content['team'] = team
-        request_content['usage_description'] = usage_description
-        request_content['urlSourceImage'] = urlSourceImage
+        
         return request_content
 
         
