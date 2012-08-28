@@ -1,3 +1,4 @@
+import logging
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from iuem.photorepository.manageVocabulary import imMetadatas
@@ -7,13 +8,25 @@ from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
+logger = logging.getLogger('iuem.photorepository')
+
 class repoImageView(BrowserView):
     """new view for image repository
     """
-
-    def sourceImage(self):
+    def canViewFullImage(self):
+        sm = getSecurityManager()
+        if sm.checkPermission("iuem.photorepository: View Full Image" , self.context):
+            return True
+        else:
+            return False
+        
+    def fullImage(self):
+        # logger.info('in sourceImage...')
         context = self.context
-        tag = context.absolute_url() + '/sourceImage'
+        if self.canViewFullImage():
+            tag = context.absolute_url() + '/sourceImage'
+        else:
+            tag = context.absolute_url() + '/view'
         return tag
     
     def originalHeight(self):
@@ -77,13 +90,6 @@ class repoImageView(BrowserView):
         for k in Kmetadatas:
             metadatas.append(vocab.getVocabularyDict()[k])
         return metadatas
-    
-    def canViewFullImage(self):
-        sm = getSecurityManager()
-        if sm.checkPermission("iuem.photorepository: View Full Image" , self.context):
-            return True
-        else:
-            return False
     
     def requestImageURL(self):
         reg = getUtility(IRegistry)

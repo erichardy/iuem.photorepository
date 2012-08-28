@@ -2,6 +2,7 @@
 # widgets are in Products.Archetypes.Widget
 # both are imported by Products.Archetypes.atapi
 from Products.Archetypes.atapi import *
+from Products.CMFCore.permissions import ModifyPortalContent
 from archetypes.schemaextender.field import ExtensionField
 from plone.app.blob.subtypes.image import ExtensionBlobField
 from archetypes.schemaextender.interfaces import ISchemaExtender
@@ -153,6 +154,8 @@ class ImageImageRepositoryExtender(object):
         accessor = 'getSourceImage',
         mutator = 'setSourceImage',
         languageIndependent = True,
+        mode = 'rw',
+        read_permission = ModifyPortalContent,
         widget = ImageWidget(
             label=u"Original hi-res image",
             visible={'view': 'visible', 'edit': 'invisible' }
@@ -321,30 +324,3 @@ class ImageImageRepositoryExtender(object):
     
     def getSourceExif(self):
         return self.fields[12]
-
-class imPhotoSmallImageExtender(object):
-    adapts(IATImage)
-    implements(ISchemaExtender)
-
-    """part of code from unweb.watermark"""
-    fields = [
-        ExtensionBlobField("original",
-        accessor = 'getOriginal',
-        mutator = 'setOriginal',
-        languageIndependent = True,
-        widget = ImageWidget(
-            label="Original hi-res image",
-            visible={'view': 'visible', 'edit': 'invisible' }
-            ),
-        ),
-        ]
-
-    def __init__(self, context):
-        self.context = context
-
-    def getFields(self):
-        return self.fields
-
-
-    
-

@@ -14,7 +14,7 @@
 <p />
 <span tal:condition="view/canViewFullImage">
 <a 
-   tal:attributes="href string:${view/sourceImage}; target string:_blank"
+   tal:attributes="href string:${view/fullImage}; target string:_blank"
    i18n:translate="view_original_image">View the original image</a>
    <span tal:define="type view/originalType;
                   height view/originalHeight;
@@ -39,7 +39,7 @@
 </span>
 </span>
 
-<!-- <span tal:condition="python:not view.canViewFullImage()"> -->
+<span tal:condition="python:not view.canViewFullImage()">
 <span>
   <a id="request-this-image"
    tal:define="requestImageURL python:view.requestImageURL();"
@@ -53,7 +53,7 @@
       type , h x w
    </span>
 </span>
-
+</span>
 <br />
 <H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
 Metadatas

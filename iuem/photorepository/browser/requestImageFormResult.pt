@@ -12,18 +12,18 @@
 <h2>
 <span i18n:translate="request-image-returned-message">request-image-returned-message</span>
 </h2>
+<span tal:define="fullname string:${sendRequestImageMail/fullname};
+                  email string:${sendRequestImageMail/email};
+                  team string:${sendRequestImageMail/team};
+                  usage_description string:${sendRequestImageMail/usage_description};
+                  urlSourceImage string:${sendRequestImageMail/urlSourceImage}">
+
 <span tal:condition="python:sendRequestImageMail['sent']=='no'"
       class="requestError">
       <span i18n:translate="Sorry, fields are missing in your form,"></span><br />
       <span i18n:translate="or your email address in not valid... !"></span><br />
       <span i18n:translate="the request can't be satisfied..."></span>
 </span>
-<span tal:condition="python:sendRequestImageMail['sent']=='ok'"
-      tal:define="fullname string:${sendRequestImageMail/fullname};
-                  email string:${sendRequestImageMail/email};
-                  team string:${sendRequestImageMail/team};
-                  usage_description string:${sendRequestImageMail/usage_description};
-                  urlSourceImage string:${sendRequestImageMail/urlSourceImage}">
 
 <table border="1" class="MetadataTable">
 <tr>
