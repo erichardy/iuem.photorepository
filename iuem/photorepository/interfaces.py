@@ -3,8 +3,6 @@ from zope.interface import Interface
 from zope import schema
 from z3c.form import field , button
 
-from Products.TALESField import TALESString
-
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 # thanks to

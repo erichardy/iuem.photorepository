@@ -40,7 +40,8 @@ table.MetadataTable tr:nth-child(even) {
 */
 
 /* actions hidden to users */
-#plone-contentmenu-display {
+#plone-contentmenu-display,
+#contentview-transform {
 	display: none;
 }
 

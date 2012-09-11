@@ -16,11 +16,20 @@
        <element value="Modify portal content"/>
      </property>
    </object>
-   <!--
-   <object name="repo_folder_album_view" meta_type="CMF Action" i18n:domain="iuem.photorepository">
-     <property name="title" i18n:translate="">Repository album view</property>
-   </object>
-   -->
+</object>
+
+<object name="object" meta_type="CMF Action Category">
+  <object name="import" meta_type="CMF Action" i18n:domain="iuem.photorepository">
+   <property name="title" i18n:translate="">Import Zip File</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:@@import_form</property>
+   <property name="available_expr">python:folder is object</property>
+   <property name="icon_expr"></property>
+   <property name="permissions">
+    <element value="Modify portal content"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
  </object>
  
 </object> 
