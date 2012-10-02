@@ -72,7 +72,20 @@
     <input type="text" size="70" name="usage_description" />
   </td>
 </tr>
+</tbody>
+</table>
+<table class="MetadataTable">
+<tr><td colspan="3">&nbsp;</td>
+</tr>
 <tr>
+  <td><input type="checkbox" name="accept_conditions"></td>
+  <td>&nbsp;&nbsp;</td>
+  <td i18n:translate="">usage conditions</td>
+</tr>
+<tr>
+  <td>
+    &nbsp;
+  </td>
   <td>
     &nbsp;
   </td>

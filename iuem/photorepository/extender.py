@@ -28,7 +28,6 @@ class _ExtensionBooleanField(ExtensionField, BooleanField): pass
 class _ExtensionComputedField(ExtensionField, ComputedField): pass
 
 
-
 class FolderImageRepositoryExtender(object):
     adapts(IATFolder)
     implements(ISchemaExtender)
@@ -103,15 +102,14 @@ class FolderImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"licencetype",
             searchable = True,
-            multiValued = True,
+            multiValued = False,
             vocabulary = NamedVocabulary(u"licencetype_voc"),
             default = [],
             widget = AddRemoveWidget(
                     label=_(u"Licence Type"),
                     description = _(u"What type of restricted usage"),
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
+                    allow_add = 0,
+                    size = 2,
                     ),
         ),
         _ExtensionDateTimeField(u"recording_date_time",
@@ -230,15 +228,15 @@ class ImageImageRepositoryExtender(object):
         ),
         _ExtensionStringField (u"licencetype",
             searchable = True,
-            multiValued = True,
+            multiValued = False,
             vocabulary = NamedVocabulary(u"licencetype_voc"),
             default = [],
             widget = AddRemoveWidget(
                     label=_(u"Licence Type"),
                     description = _(u"What type of restricted usage"),
-                    allow_add = 1,
-                    role_based_add = 1,
-                    size = 5,
+                    allow_add = 0,
+                    role_based_add = 0,
+                    size = 2,
                     ),
         ),
         _ExtensionDateTimeField(u"recording_date_time",

@@ -53,10 +53,14 @@ class RequestAlbumFormResult(BrowserView):
         access_type       = request['access_type']
         new_album_name    = request['new_album_name']
         usage_description = request['usage_description']
-        album              = request['album']
+        album             = request['album']
+        try:
+            accept_conditions = request['accept_conditions']
+        except:
+            accept_conditions = False
         request_content = {}
         validForm = validateaddress(email)
-        validForm = validForm and fullname and team
+        validForm = validForm and fullname and team and accept_conditions
         if (access_type=="New album request"):
             validForm = validForm and new_album_name and usage_description
         request_content['fullname'] = fullname
@@ -66,6 +70,7 @@ class RequestAlbumFormResult(BrowserView):
         request_content['access_type'] = access_type
         request_content['new_album_name'] = new_album_name
         request_content['album'] = album
+        request_content['accept_conditions'] = accept_conditions
 
         if not validForm:
             request_content['sent'] = 'no'

@@ -143,7 +143,7 @@ def updateVocabularies(obj , event):
     for k in vocabs.keys():
         # parse each vocabulary : myVocab is the vocabulary associated with a key
         myVocab = myVocabsTool[vocabs[k]]
-        if k == 'photographer':
+        if (k == 'photographer'):
             # logger.info('pour photographer...' + k + '/' + obj[k].decode('utf-8'))
             # import pdb;pdb.set_trace()
             kword = obj[k]

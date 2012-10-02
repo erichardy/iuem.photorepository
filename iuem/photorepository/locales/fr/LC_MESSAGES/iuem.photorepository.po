@@ -30,11 +30,11 @@ msgstr "Ajouter aux métadonnées existantes"
 msgid "Add or Replace"
 msgstr "Ajouter ou Remplacer"
 
-#: ./extender.py:72
+#: ./extender.py:71
 msgid "Area related to the photo"
 msgstr "Lieu de la photo"
 
-#: ./extender.py:128
+#: ./extender.py:126
 msgid "Author of the photo"
 msgstr "Auteur de la photo"
 
@@ -42,12 +42,12 @@ msgstr "Auteur de la photo"
 msgid "Confirm metadata spread"
 msgstr "Confirmer cette propagation de métadonnées"
 
-#: ./extender.py:294
+#: ./extender.py:292
 msgid "EXIF metadata in the picture"
 msgstr "Les métadonnées EXIF propres à cette photo"
 
 #: ./browser/repoimageview.pt:135
-#: ./extender.py:293
+#: ./extender.py:291
 msgid "EXIF metadatas"
 msgstr "Métadonnées EXIF"
 
@@ -69,11 +69,11 @@ msgstr "Accès complet (ajout/modifications/suppressions) à ce dossier"
 msgid "General keywords"
 msgstr "Mots clé généraux"
 
-#: ./extender.py:309
+#: ./extender.py:307
 msgid "IPCT metadata"
 msgstr "Métadonnées IPCT"
 
-#: ./extender.py:310
+#: ./extender.py:308
 msgid "IPCT metadata description"
 msgstr "Les métadonnées IPCT"
 
@@ -89,7 +89,7 @@ msgstr "URL de l'image : "
 msgid "Image usage : "
 msgstr "Utilisation de l'image : "
 
-#: ./extender.py:135
+#: ./extender.py:133
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
 
@@ -107,7 +107,7 @@ msgstr "Importer un fichier ZIP"
 msgid "Laboratory"
 msgstr "Laboratoire"
 
-#: ./extender.py:271
+#: ./extender.py:269
 msgid "Latitude"
 msgstr "Latitude"
 
@@ -116,13 +116,13 @@ msgstr "Latitude"
 #: ./browser/metadataConfirm.pt:115
 #: ./browser/repofolderalbumview.pt:104
 msgid "Licence Type"
-msgstr "Type de Licence"
+msgstr "Conditions d'utilisation (ne saisir qu'une seule valeur)"
 
 #: ./profiles/default/actions.xml
 msgid "Manage Metadata"
 msgstr "Propagation..."
 
-#: ./browser/requestAlbum.py:80
+#: ./browser/requestAlbum.py:85
 #: ./browser/requestImage.py:80
 msgid "Name : "
 msgstr "Nom : "
@@ -139,7 +139,7 @@ msgstr "Demande de création d'un dossier"
 msgid "Only Local Images"
 msgstr "Seulement les images de ce dossier"
 
-#: ./extender.py:85
+#: ./extender.py:84
 msgid "Photograph's Laboratory"
 msgstr "Laboratoire du photographe"
 
@@ -163,13 +163,17 @@ msgstr "Entrez les valeurs adaptées à votre site..."
 msgid "Please, enter your firstname and name : "
 msgstr "Veuillez indiquer vos prénom et nom : "
 
+#: ./browser/requestAlbumFormResult.pt:33
+msgid "Please, read and accept usage conditions !"
+msgstr "Veuillez aussi lire et accepter les conditions d'utilisation..."
+
 #: ./browser/manageMetadataFormView.pt:135
 #: ./browser/metadataConfirm.pt:134
 #: ./browser/repofolderalbumview.pt:113
 msgid "Recording date and time"
 msgstr "Date de la prise de vue"
 
-#: ./extender.py:121
+#: ./extender.py:119
 msgid "Recording date and time, may be extracted from XMP, EXIF or IPCT"
 msgstr "Instant de la prise de vue, pourrait être extraite des données EXIF"
 
@@ -183,7 +187,7 @@ msgstr "Remplacer les métadonnées par celles-ci"
 msgid "Research Project"
 msgstr "Projet de recherche"
 
-#: ./extender.py:98
+#: ./extender.py:97
 msgid "Research Project related to the picture"
 msgstr "Projet de recherche associé à cette photo"
 
@@ -193,7 +197,7 @@ msgstr "Projet de recherche associé à cette photo"
 msgid "Scientific keywords"
 msgstr "Mots clé scientifiques"
 
-#: ./browser/requestAlbumFormResult.pt:25
+#: ./browser/requestAlbumFormResult.pt:26
 #: ./browser/requestImageFormResult.pt:23
 msgid "Sorry, fields are missing in your form,"
 msgstr "Désolé, certains champs du formulaire ne sont pas renseignés"
@@ -223,11 +227,11 @@ msgstr ""
 msgid "View name of the form for request an image"
 msgstr ""
 
-#: ./extender.py:134
+#: ./extender.py:132
 msgid "Watermark"
 msgstr "Image pour le filigrane"
 
-#: ./extender.py:111
+#: ./extender.py:110
 msgid "What type of restricted usage"
 msgstr "Restrictions d'utilisation, licence"
 
@@ -238,11 +242,11 @@ msgstr "Restrictions d'utilisation, licence"
 msgid "Where"
 msgstr "Lieu de la prise de vue"
 
-#: ./extender.py:129
+#: ./extender.py:127
 msgid "Who owns this photo"
 msgstr "A qui appartient cette photo"
 
-#: ./extender.py:301
+#: ./extender.py:299
 msgid "XMP metadata description"
 msgstr "Les métadonnées XMP"
 
@@ -251,12 +255,12 @@ msgstr "Les métadonnées XMP"
 msgid "Your email adress : "
 msgstr "Votre adresse de couriel"
 
-#: ./browser/requestAlbum.py:79
-#: ./browser/requestAlbumFormResult.pt:32
+#: ./browser/requestAlbum.py:84
+#: ./browser/requestAlbumFormResult.pt:37
 msgid "Your request : "
 msgstr "Votre demande : "
 
-#: ./browser/requestAlbum.py:75
+#: ./browser/requestAlbum.py:80
 msgid "[IUEM Photo repository] Album or access request"
 msgstr "[IUEM Photo repository] Demande de nouveau dossier ou d'accès à un dossier existant"
 
@@ -264,11 +268,15 @@ msgstr "[IUEM Photo repository] Demande de nouveau dossier ou d'accès à un dos
 msgid "[IUEM Photo repository] Image request"
 msgstr "[IUEM Photo repository] Demande d'image"
 
+#: ./browser/requestAlbumFormResult.pt:61
+msgid "accept_conditions"
+msgstr "Acceptation des conditions d'utilisation"
+
 #: ./browser/requestAlbum.pt:46
 msgid "access or album"
 msgstr "Demande d'un nouveau dossier dans celui-ci ou d'accès élargis à celui-ci"
 
-#: ./browser/requestAlbum.py:84
+#: ./browser/requestAlbum.py:89
 msgid "album usage : "
 msgstr "Desription succinte de l'usage de ce dossier"
 
@@ -279,7 +287,7 @@ msgstr "Desription succinte de l'usage de ce dossier"
 msgid "description"
 msgstr "Description"
 
-#: ./browser/requestAlbumFormResult.pt:40
+#: ./browser/requestAlbumFormResult.pt:45
 #: ./browser/requestImageFormResult.pt:34
 msgid "email"
 msgstr "Courriel"
@@ -292,7 +300,7 @@ msgstr "liste des adresses mail qui vont recevoir les demandes de dossier"
 msgid "email addresses which receive image requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale"
 
-#: ./browser/requestAlbum.py:81
+#: ./browser/requestAlbum.py:86
 #: ./browser/requestImage.py:81
 msgid "email adress : "
 msgstr "Courriel : "
@@ -301,20 +309,20 @@ msgstr "Courriel : "
 msgid "enter a valid email adress"
 msgstr "Entrez une adresse mail valide"
 
-#: ./browser/requestAlbum.py:83
+#: ./browser/requestAlbum.py:88
 msgid "full album URL : "
 msgstr "URL complète du dossier demandé"
 
-#: ./browser/requestAlbumFormResult.pt:36
+#: ./browser/requestAlbumFormResult.pt:41
 #: ./browser/requestImageFormResult.pt:30
 msgid "fullname"
 msgstr "Prénom, nom"
 
-#: ./extender.py:272
+#: ./extender.py:270
 msgid "latitude_format"
 msgstr ""
 
-#: ./extender.py:283
+#: ./extender.py:281
 msgid "longitude_format"
 msgstr ""
 
@@ -329,11 +337,11 @@ msgstr "Sélectionner les métadonnées à propager"
 msgid "metadatas"
 msgstr "Métadonnées"
 
-#: ./browser/requestAlbumFormResult.pt:52
+#: ./browser/requestAlbumFormResult.pt:57
 msgid "new album location"
 msgstr "URL du nouveau dossier"
 
-#: ./browser/requestAlbumFormResult.pt:26
+#: ./browser/requestAlbumFormResult.pt:27
 #: ./browser/requestImageFormResult.pt:24
 msgid "or your email address in not valid... !"
 msgstr "ou votre adresse de couriel n'est pas valide... !"
@@ -378,17 +386,17 @@ msgid "short_usage_description"
 msgstr "Une courte description de l'usage que vous allez faire de cette photo, <br />par exemple : poster, publication, séminaire, etc..."
 
 #: ./browser/requestAlbum.pt:38
-#: ./browser/requestAlbumFormResult.pt:44
+#: ./browser/requestAlbumFormResult.pt:49
 #: ./browser/requestImage.pt:39
 msgid "team"
 msgstr "Votre unité ou laboratoire"
 
-#: ./browser/requestAlbum.py:82
+#: ./browser/requestAlbum.py:87
 #: ./browser/requestImage.py:82
 msgid "team : "
 msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
 
-#: ./browser/requestAlbumFormResult.pt:27
+#: ./browser/requestAlbumFormResult.pt:28
 #: ./browser/requestImageFormResult.pt:25
 msgid "the request can't be satisfied..."
 msgstr "Votre demande ne peut aboutir..."
@@ -397,8 +405,12 @@ msgstr "Votre demande ne peut aboutir..."
 msgid "urlSourceImage"
 msgstr "URL de l'image originale"
 
+#: ./browser/requestAlbum.pt:83
+msgid "usage conditions"
+msgstr "Je reconnais avoir pris connaissance de la charte Pix-mer et en accepter les termes"
+
 #. Default: "usage_description"
-#: ./browser/requestAlbumFormResult.pt:48
+#: ./browser/requestAlbumFormResult.pt:53
 msgid "usage_album_description"
 msgstr "Une courte description de l'usage que vous comptez faire de ce dossier."
 
