@@ -59,15 +59,20 @@ class RequestImageFormResult(BrowserView):
         team             = request['team']
         usage_description = request['usage_description']
         urlSourceImage    = request['urlSourceImage'] + '/view'
-        
+        try:
+            accept_conditions = request['accept_conditions']
+        except:
+            accept_conditions = False
         request_content = {}
         request_content['fullname'] = fullname
         request_content['email'] = email
         request_content['team'] = team
         request_content['usage_description'] = usage_description
         request_content['urlSourceImage'] = urlSourceImage
+        request_content['accept_conditions'] = accept_conditions
         validForm = validateaddress(email)
         validForm = validForm and fullname and team and usage_description
+        validForm = validForm and accept_conditions
         if not validForm:
             request_content['sent'] = 'no'
             return request_content

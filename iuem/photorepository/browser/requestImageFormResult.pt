@@ -24,6 +24,12 @@
       <span i18n:translate="or your email address in not valid... !"></span><br />
       <span i18n:translate="the request can't be satisfied..."></span>
 </span>
+<span tal:condition="python:sendRequestImageMail['accept_conditions']==False"
+      class="requestError">
+      <br /><br />
+      <span i18n:translate="">Please, read and accept usage conditions !</span><br />
+</span>
+
 
 <table border="1" class="MetadataTable">
 <tr>

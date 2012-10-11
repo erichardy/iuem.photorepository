@@ -116,7 +116,7 @@ msgstr "Latitude"
 #: ./browser/metadataConfirm.pt:115
 #: ./browser/repofolderalbumview.pt:104
 msgid "Licence Type"
-msgstr "Conditions d'utilisation (ne saisir qu'une seule valeur)"
+msgstr "Restrictions d'utilisation"
 
 #: ./profiles/default/actions.xml
 msgid "Manage Metadata"
@@ -233,7 +233,7 @@ msgstr "Image pour le filigrane"
 
 #: ./extender.py:110
 msgid "What type of restricted usage"
-msgstr "Restrictions d'utilisation, licence"
+msgstr "Ne saisir qu'une valeur parmi les deux ci-dessous"
 
 #. Default: "where"
 #: ./browser/manageMetadataFormView.pt:83
@@ -373,7 +373,7 @@ msgstr "Entrer une adresse mail par ligne"
 
 #: ./browser/requestImage.pt:16
 msgid "request_image_text"
-msgstr "Vous demander l'image originale qui correspond à l'image \"dégradée\" ci-dessous.<br />Veuillez renseigner les champs avec soin afin que nous puissions satisfaire votre demande.<br />Merci !<br />"
+msgstr "Vous demandez l'image originale qui correspond à l'image \"dégradée\" ci-dessous.<br />Veuillez renseigner les champs avec soin afin que nous puissions satisfaire votre demande.<br />Merci !<br />"
 
 #. Default: "usage description"
 #: ./browser/requestAlbum.pt:69
