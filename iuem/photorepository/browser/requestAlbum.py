@@ -95,9 +95,9 @@ class RequestAlbumFormResult(BrowserView):
         mfrom = settings.request_album_from
         for target in settings.request_album_emails:
             mailhost.send(message.encode('utf8') , subject = subject ,\
-                          mto = target , mfrom = mfrom)
+                          mto = target , mfrom = mfrom , charset='utf8')
         copy_message = _(u"copy-of-message :\n\n") + message
         mailhost.send(copy_message.encode('utf8') , subject = subject ,\
-                      mto = email , mfrom = mfrom)
+                      mto = email , mfrom = mfrom , charset='utf8')
         
         return request_content
