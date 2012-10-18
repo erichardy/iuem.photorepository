@@ -78,24 +78,24 @@ class RequestImageFormResult(BrowserView):
             return request_content
         
         subject = _(u'[IUEM Photo repository] Image request')
-        message = fullname + '\n' + email + '\n' + team + '\n'
-        message = message + usage_description + '\n'
-        message = message + urlSourceImage + '\n'
+        # message = fullname + '\n' + email + '\n' + team + '\n'
+        # message = message + usage_description + '\n'
+        # message = message + urlSourceImage + '\n'
         message = _(u"Original image request from :\n")
-        message += _(u"Name : ") + fullname + '\n'
+        message += _(u"Name : ") + unicode(fullname,'utf8') + '\n'
         message += _(u"email adress : ") + email + '\n'
-        message += _(u"team : ") + team + '\n'
-        message += _(u"Image usage : ") + usage_description + '\n\n'
+        message += _(u"team : ") + unicode(team,'utf-8') + '\n'
+        message += _(u"Image usage : ") + unicode(usage_description,'utf-8') + '\n\n'
         message += _(u"Image URL : ") + urlSourceImage
         reg = getUtility(IRegistry)
         settings = reg.forInterface(IPhotorepositorySettings)
         mailhost = getToolByName(self.context , 'MailHost')
         mfrom = settings.request_image_from
         for target in settings.request_image_emails:
-            mailhost.send(message , subject = subject ,\
+            mailhost.send(message.encode('utf8') , subject = subject ,\
                           mto = target , mfrom = mfrom)
         copy_message = _(u"copy-of-message :\n\n") + message
-        mailhost.send(copy_message , subject = subject ,\
+        mailhost.send(copy_message.encode('utf8') , subject = subject ,\
                       mto = email , mfrom = mfrom)
         request_content['sent'] = 'ok'
         

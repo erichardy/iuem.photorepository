@@ -78,25 +78,26 @@ class RequestAlbumFormResult(BrowserView):
         
         request_content['sent'] = 'ok'
         subject = _(u'[IUEM Photo repository] Album or access request')
-        message = fullname + '\n' + email + '\n' + team + '\n'
-        message = message + usage_description + '\n'
-        message = message + '\n'
+        # message = fullname + '\n' + email + '\n' + team + '\n'
+        # message = message + usage_description + '\n'
+        # message = message + '\n'
+        # import pdb;pdb.set_trace()
         message = _(u"Your request : ") + _(access_type) + '\n'
-        message += _(u"Name : ") + fullname + '\n'
-        message += _(u"email adress : ") + email + '\n'
-        message += _(u"team : ") + team + '\n'
-        message += _(u"full album URL : ") + album + '/' + new_album_name + '\n'
-        message += _(u"album usage : ") + usage_description + '\n\n'
+        message += _(u"Name : ") + unicode(fullname,'utf8') + '\n'
+        message += _(u"email adress : ") + unicode(email,'utf-8') + '\n'
+        message += _(u"team : ") + unicode(team,'utf-8') + '\n'
+        message += _(u"full album URL : ") + unicode(album,'utf-8') + '/' + unicode(new_album_name,'utf-8') + '\n'
+        message += _(u"album usage : ") + unicode(usage_description,'utf-8') + '\n\n'
         
         reg = getUtility(IRegistry)
         settings = reg.forInterface(IPhotorepositorySettings)
         mailhost = getToolByName(self.context , 'MailHost')
         mfrom = settings.request_album_from
         for target in settings.request_album_emails:
-            mailhost.send(message , subject = subject ,\
+            mailhost.send(message.encode('utf8') , subject = subject ,\
                           mto = target , mfrom = mfrom)
         copy_message = _(u"copy-of-message :\n\n") + message
-        mailhost.send(copy_message , subject = subject ,\
+        mailhost.send(copy_message.encode('utf8') , subject = subject ,\
                       mto = email , mfrom = mfrom)
         
         return request_content
