@@ -1,0 +1,4 @@
+$ git clone https://github.com/erichardy/iuem.photorepository.git
+$ cd iuem.photorepository
+$ git remote add upstream https://github.com/erichardy/iuem.photorepository.git
+$ git fetch upstream
