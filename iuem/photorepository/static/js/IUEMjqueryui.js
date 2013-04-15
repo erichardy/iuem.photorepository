@@ -1,5 +1,6 @@
 jq(document).ready(function() {
     // Accordion
+
     jq("#accordion").accordion({ header: "h3" });
     jq('#siteaction-sitemap a').prepOverlay({
         subtype: 'ajax',
@@ -19,13 +20,15 @@ jq(document).ready(function() {
         config: {expose:{color:'#00f'}}
         });
 });
-/*
+
+
 jq(document).ready(function() {
 	jq("input#new-album-request:checked")({
 		jq("#request-album-album-name").toggle("hidden");
 	});
 });
-*/
+
+
 jq(document).ready(function() {
 	jq(".iuemCollapsedHeading.iuemCollapsed").next().hide();
  
@@ -34,3 +37,4 @@ jq(document).ready(function() {
 	  jq(this).toggleClass("iuemCollapsed");
 	});
 });
+
