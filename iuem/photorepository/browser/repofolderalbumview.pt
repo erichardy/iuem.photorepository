@@ -18,7 +18,7 @@
                  kssClassesView context/@@kss_field_decorator_view;
                  getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                  templateId template/getId;
-                 batch python:Batch(images, 12, int(b_start), orphan=1);
+                 batch python:Batch(images, 50, int(b_start), orphan=1);
                  requestAlbumURL python:view.requestAlbumURL()"
                  >
 

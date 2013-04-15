@@ -21,16 +21,17 @@ class repoImageView(BrowserView):
             return False
         
     def fullImage(self):
-        # logger.info('in sourceImage...')
         context = self.context
         if self.canViewFullImage():
+            #logger.info('in sourceImage... test test test')
+            prompt('')
             tag = context.absolute_url() + '/sourceImage'
         else:
             tag = context.absolute_url() + '/view'
         return tag
     
     def originalHeight(self):
-        context = self.context
+        context = self.context 
         return str(context.sourceImage.height)
     
     def originalWidth(self):
@@ -95,3 +96,6 @@ class repoImageView(BrowserView):
         reg = getUtility(IRegistry)
         settings = reg.forInterface(IPhotorepositorySettings)
         return settings.request_image_url
+    
+    #def saveImage(self):
+        #return self.context.__name__

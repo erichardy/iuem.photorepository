@@ -32,12 +32,12 @@ table.MetadataTable tr:nth-child(even) {
 }
 
 /* To change the visual of a folder */
-/*
+
 .photoAlbumFolder {
-	background-image: url('polaroid-multi.png');
+	background-image: url('++resource++iuem_repository_static/img/polaroid-multi-vert.png');
 	background-repeat: no-repeat;
 }
-*/
+
 
 /* actions hidden to users */
 #plone-contentmenu-display,
