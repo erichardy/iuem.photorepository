@@ -24,7 +24,6 @@ class repoImageView(BrowserView):
         context = self.context
         if self.canViewFullImage():
             #logger.info('in sourceImage... test test test')
-            prompt('')
             tag = context.absolute_url() + '/sourceImage'
         else:
             tag = context.absolute_url() + '/view'

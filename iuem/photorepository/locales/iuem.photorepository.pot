@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-02 14:14+0000\n"
+"POT-Creation-Date: 2013-05-13 11:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,11 +81,11 @@ msgstr ""
 msgid "If you request a new album, please enter a name and a description for it..."
 msgstr ""
 
-#: ./browser/requestImage.py:84
+#: ./browser/requestImage.py:89
 msgid "Image URL : "
 msgstr ""
 
-#: ./browser/requestImage.py:83
+#: ./browser/requestImage.py:88
 msgid "Image usage : "
 msgstr ""
 
@@ -121,8 +121,8 @@ msgstr ""
 msgid "Manage Metadata"
 msgstr ""
 
-#: ./browser/requestAlbum.py:85
-#: ./browser/requestImage.py:80
+#: ./browser/requestAlbum.py:86
+#: ./browser/requestImage.py:85
 msgid "Name : "
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Only Local Images"
 msgstr ""
 
-#: ./browser/requestImage.py:79
+#: ./browser/requestImage.py:84
 msgid "Original image request from :
 "
 msgstr ""
@@ -167,6 +167,7 @@ msgid "Please, enter your firstname and name : "
 msgstr ""
 
 #: ./browser/requestAlbumFormResult.pt:33
+#: ./browser/requestImageFormResult.pt:30
 msgid "Please, read and accept usage conditions !"
 msgstr ""
 
@@ -257,7 +258,7 @@ msgstr ""
 msgid "Your email adress : "
 msgstr ""
 
-#: ./browser/requestAlbum.py:84
+#: ./browser/requestAlbum.py:85
 #: ./browser/requestAlbumFormResult.pt:37
 msgid "Your request : "
 msgstr ""
@@ -266,7 +267,7 @@ msgstr ""
 msgid "[IUEM Photo repository] Album or access request"
 msgstr ""
 
-#: ./browser/requestImage.py:75
+#: ./browser/requestImage.py:80
 msgid "[IUEM Photo repository] Image request"
 msgstr ""
 
@@ -278,12 +279,12 @@ msgstr ""
 msgid "access or album"
 msgstr ""
 
-#: ./browser/requestAlbum.py:89
+#: ./browser/requestAlbum.py:90
 msgid "album usage : "
 msgstr ""
 
-#: ./browser/requestAlbum.py:98
-#: ./browser/requestImage.py:92
+#: ./browser/requestAlbum.py:99
+#: ./browser/requestImage.py:97
 msgid "copy-of-message :
 
 "
@@ -297,7 +298,7 @@ msgid "description"
 msgstr ""
 
 #: ./browser/requestAlbumFormResult.pt:45
-#: ./browser/requestImageFormResult.pt:34
+#: ./browser/requestImageFormResult.pt:40
 msgid "email"
 msgstr ""
 
@@ -309,8 +310,8 @@ msgstr ""
 msgid "email addresses which receive image requests"
 msgstr ""
 
-#: ./browser/requestAlbum.py:86
-#: ./browser/requestImage.py:81
+#: ./browser/requestAlbum.py:87
+#: ./browser/requestImage.py:86
 msgid "email adress : "
 msgstr ""
 
@@ -318,12 +319,12 @@ msgstr ""
 msgid "enter a valid email adress"
 msgstr ""
 
-#: ./browser/requestAlbum.py:88
+#: ./browser/requestAlbum.py:89
 msgid "full album URL : "
 msgstr ""
 
 #: ./browser/requestAlbumFormResult.pt:41
-#: ./browser/requestImageFormResult.pt:30
+#: ./browser/requestImageFormResult.pt:36
 msgid "fullname"
 msgstr ""
 
@@ -400,8 +401,8 @@ msgstr ""
 msgid "team"
 msgstr ""
 
-#: ./browser/requestAlbum.py:87
-#: ./browser/requestImage.py:82
+#: ./browser/requestAlbum.py:88
+#: ./browser/requestImage.py:87
 msgid "team : "
 msgstr ""
 
@@ -410,11 +411,12 @@ msgstr ""
 msgid "the request can't be satisfied..."
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:46
+#: ./browser/requestImageFormResult.pt:52
 msgid "urlSourceImage"
 msgstr ""
 
 #: ./browser/requestAlbum.pt:83
+#: ./browser/requestImage.pt:61
 msgid "usage conditions"
 msgstr ""
 
@@ -423,7 +425,7 @@ msgstr ""
 msgid "usage_album_description"
 msgstr ""
 
-#: ./browser/requestImageFormResult.pt:42
+#: ./browser/requestImageFormResult.pt:48
 msgid "usage_description"
 msgstr ""
 

@@ -1,4 +1,9 @@
 /* Tricks to remove imPhotoSmall content from Add Menu */
+
+#archetypes-fieldname-licencetype td {
+	padding-right: 10px;
+}
+//*[@id="archetypes-fieldname-licencetype"]/td[1]
 #imphotosmall {
 display: none !important;
 }

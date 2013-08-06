@@ -81,11 +81,11 @@ msgstr "Les métadonnées IPCT"
 msgid "If you request a new album, please enter a name and a description for it..."
 msgstr "Si vous demandez la création d'un nouveau dossier, veuillez proposer un nom et en donner une description succinte..."
 
-#: ./browser/requestImage.py:84
+#: ./browser/requestImage.py:89
 msgid "Image URL : "
 msgstr "URL de l'image : "
 
-#: ./browser/requestImage.py:83
+#: ./browser/requestImage.py:88
 msgid "Image usage : "
 msgstr "Utilisation de l'image : "
 
@@ -122,8 +122,8 @@ msgstr "Restrictions d'utilisation"
 msgid "Manage Metadata"
 msgstr "Propagation..."
 
-#: ./browser/requestAlbum.py:85
-#: ./browser/requestImage.py:80
+#: ./browser/requestAlbum.py:86
+#: ./browser/requestImage.py:85
 msgid "Name : "
 msgstr "Nom : "
 
@@ -164,6 +164,7 @@ msgid "Please, enter your firstname and name : "
 msgstr "Veuillez indiquer vos prénom et nom : "
 
 #: ./browser/requestAlbumFormResult.pt:33
+#: ./browser/requestImageFormResult.pt:30
 msgid "Please, read and accept usage conditions !"
 msgstr "Veuillez aussi lire et accepter les conditions d'utilisation..."
 
@@ -255,7 +256,7 @@ msgstr "Les métadonnées XMP"
 msgid "Your email adress : "
 msgstr "Votre adresse de couriel"
 
-#: ./browser/requestAlbum.py:84
+#: ./browser/requestAlbum.py:85
 #: ./browser/requestAlbumFormResult.pt:37
 msgid "Your request : "
 msgstr "Votre demande : "
@@ -264,7 +265,7 @@ msgstr "Votre demande : "
 msgid "[IUEM Photo repository] Album or access request"
 msgstr "[IUEM Photo repository] Demande de nouveau dossier ou d'accès à un dossier existant"
 
-#: ./browser/requestImage.py:75
+#: ./browser/requestImage.py:80
 msgid "[IUEM Photo repository] Image request"
 msgstr "[IUEM Photo repository] Demande d'image"
 
@@ -276,7 +277,7 @@ msgstr "Acceptation des conditions d'utilisation"
 msgid "access or album"
 msgstr "Demande d'un nouveau dossier dans celui-ci ou d'accès élargis à celui-ci"
 
-#: ./browser/requestAlbum.py:89
+#: ./browser/requestAlbum.py:90
 msgid "album usage : "
 msgstr "Desription succinte de l'usage de ce dossier"
 
@@ -288,7 +289,7 @@ msgid "description"
 msgstr "Description"
 
 #: ./browser/requestAlbumFormResult.pt:45
-#: ./browser/requestImageFormResult.pt:34
+#: ./browser/requestImageFormResult.pt:40
 msgid "email"
 msgstr "Courriel"
 
@@ -300,8 +301,8 @@ msgstr "liste des adresses mail qui vont recevoir les demandes de dossier"
 msgid "email addresses which receive image requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale"
 
-#: ./browser/requestAlbum.py:86
-#: ./browser/requestImage.py:81
+#: ./browser/requestAlbum.py:87
+#: ./browser/requestImage.py:86
 msgid "email adress : "
 msgstr "Courriel : "
 
@@ -309,12 +310,12 @@ msgstr "Courriel : "
 msgid "enter a valid email adress"
 msgstr "Entrez une adresse mail valide"
 
-#: ./browser/requestAlbum.py:88
+#: ./browser/requestAlbum.py:89
 msgid "full album URL : "
 msgstr "URL complète du dossier demandé"
 
 #: ./browser/requestAlbumFormResult.pt:41
-#: ./browser/requestImageFormResult.pt:30
+#: ./browser/requestImageFormResult.pt:36
 msgid "fullname"
 msgstr "Prénom, nom"
 
@@ -391,8 +392,8 @@ msgstr "Une courte description de l'usage que vous allez faire de cette photo, <
 msgid "team"
 msgstr "Votre unité ou laboratoire"
 
-#: ./browser/requestAlbum.py:87
-#: ./browser/requestImage.py:82
+#: ./browser/requestAlbum.py:88
+#: ./browser/requestImage.py:87
 msgid "team : "
 msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
 
@@ -401,11 +402,12 @@ msgstr "Votre unité ou laboratoire : <br />(UMS3113, LPO, LEMAR, ...)"
 msgid "the request can't be satisfied..."
 msgstr "Votre demande ne peut aboutir..."
 
-#: ./browser/requestImageFormResult.pt:46
+#: ./browser/requestImageFormResult.pt:52
 msgid "urlSourceImage"
 msgstr "URL de l'image originale"
 
 #: ./browser/requestAlbum.pt:83
+#: ./browser/requestImage.pt:61
 msgid "usage conditions"
 msgstr "Je reconnais avoir pris connaissance de la charte Pix-mer et en accepter les termes"
 
@@ -414,7 +416,7 @@ msgstr "Je reconnais avoir pris connaissance de la charte Pix-mer et en accepter
 msgid "usage_album_description"
 msgstr "Une courte description de l'usage que vous comptez faire de ce dossier."
 
-#: ./browser/requestImageFormResult.pt:42
+#: ./browser/requestImageFormResult.pt:48
 msgid "usage_description"
 msgstr "Description de l'usage de l'image demandée"
 
