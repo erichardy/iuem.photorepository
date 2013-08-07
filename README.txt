@@ -60,5 +60,4 @@ TODO :
 
 TEMP test
 =========
-test with branches
-modif for more test...
+deleted lines in repriseVC...
