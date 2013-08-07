@@ -57,8 +57,3 @@ TODO :
 - latitude and longitude fields : how to set values....?
 - config view to manage some parameters : image transformation, watermarks,
   permissions, etc...
-
-TEMP test
-=========
-deleted lines in repriseVC...
-and re-insert it in master
