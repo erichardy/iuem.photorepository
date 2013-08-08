@@ -23,7 +23,7 @@ msgstr "(demande de nouveau dossier ou d'accès privilégié à celui-ci)"
 
 #: ./browser/manageMetadataFormView.pt:47
 msgid "Add metadatas"
-msgstr "Ajouter aux métadonnées existantes"
+msgstr "Ajouter aux descripteurs existants"
 
 #: ./browser/manageMetadataFormView.pt:44
 #: ./browser/metadataConfirm.pt:45
@@ -40,16 +40,16 @@ msgstr "Auteur de la photo"
 
 #: ./browser/metadataConfirm.pt:20
 msgid "Confirm metadata spread"
-msgstr "Confirmer cette propagation de métadonnées"
+msgstr "Confirmer cette propagation de descripteurs"
 
 #: ./extender.py:292
 msgid "EXIF metadata in the picture"
-msgstr "Les métadonnées EXIF propres à cette photo"
+msgstr "Les données EXIF propres à cette photo"
 
 #: ./browser/repoimageview.pt:135
 #: ./extender.py:291
 msgid "EXIF metadatas"
-msgstr "Métadonnées EXIF"
+msgstr "Données EXIF"
 
 #: ./interfaces.py:41
 msgid "From field for album requests"
@@ -71,11 +71,11 @@ msgstr "Mots clé généraux"
 
 #: ./extender.py:307
 msgid "IPCT metadata"
-msgstr "Métadonnées IPCT"
+msgstr "Données IPCT"
 
 #: ./extender.py:308
 msgid "IPCT metadata description"
-msgstr "Les métadonnées IPCT"
+msgstr "Les données IPCT"
 
 #: ./browser/requestAlbum.pt:56
 msgid "If you request a new album, please enter a name and a description for it..."
@@ -180,7 +180,7 @@ msgstr "Instant de la prise de vue, pourrait être extraite des données EXIF"
 
 #: ./browser/manageMetadataFormView.pt:48
 msgid "Replace metadatas"
-msgstr "Remplacer les métadonnées par celles-ci"
+msgstr "Remplacer les descripteurs par ceux-ci"
 
 #: ./browser/manageMetadataFormView.pt:105
 #: ./browser/metadataConfirm.pt:104
@@ -218,7 +218,7 @@ msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
-msgstr "Valider cette propagation de métadonnées"
+msgstr "Valider cette propagation de descripteurs"
 
 #: ./interfaces.py:47
 msgid "View name of the form for request an access or an album"
@@ -249,7 +249,7 @@ msgstr "A qui appartient cette photo"
 
 #: ./extender.py:299
 msgid "XMP metadata description"
-msgstr "Les métadonnées XMP"
+msgstr "Les données XMP"
 
 #: ./browser/requestAlbum.pt:30
 #: ./browser/requestImage.pt:31
@@ -330,13 +330,13 @@ msgstr ""
 #. Default: "Which metadatas to spread..."
 #: ./browser/manageMetadataFormView.pt:19
 msgid "metadata_choice"
-msgstr "Sélectionner les métadonnées à propager"
+msgstr "Sélectionner les descripteurs à propager"
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:49
 #: ./browser/repoimageview.pt:58
 msgid "metadatas"
-msgstr "Métadonnées"
+msgstr "Descripteurs"
 
 #: ./browser/requestAlbumFormResult.pt:57
 msgid "new album location"

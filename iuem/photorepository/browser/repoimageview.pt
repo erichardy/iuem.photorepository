@@ -55,7 +55,7 @@
 </span>
 </span>
 <br />
-<H3 class="iuemCollapsedHeading iuemCollapsed" i18n:translate="metadatas">
+<H3 class="iuemCollapsedHeading" i18n:translate="metadatas">
 Metadatas
 </H3>
 <table border="0" class="MetadataTable">
