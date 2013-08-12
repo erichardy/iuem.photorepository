@@ -32,11 +32,11 @@ jq(document).ready(function() {
 	});
 });
 
-// Resize box _selected and _unselected depending on max nodes number. Max is 20 and min 5
-// this script is to be modified :
-// * change algoritm : determine size before everything by count of items, then apply widget size
-// * (option) onChange : resize according to the number of items in each side of the widget
+// Resize box _selected and _unselected depending on items number.
+// if the sum of items is beetween 5 and 20, the size is this sum
+// else, the size of at min 5 and at max 20
 // * must apply to photographer field also
+
 jq(document).ready(function() {
 	var fieldTab = ['general','science','where','laboratory','reseachproject'];
 	const MINFIELD = 5;
@@ -45,7 +45,8 @@ jq(document).ready(function() {
 	function itemsCount(elementId) {
 		return jq(elementId).attr('length');
 	}
-	for (var i=0; i<fieldTab.length; i++) {
+	
+	for (var i = 0 ; i < fieldTab.length ; i++) {
 		elementSelected   = jq('select#' + fieldTab[i] + '_selected');
 		elementUnselected = jq('select#' + fieldTab[i] + '_unselected');
 		if (elementSelected.length == 0) {
@@ -54,44 +55,21 @@ jq(document).ready(function() {
 		}
 		selectedLength   = itemsCount(elementSelected);
 		unselectedLength = itemsCount(elementUnselected);
-		console.log(selectedLength + ' ' + unselectedLength);
-		newSize = Math.max(selectedLength , unselectedLength);
-		console.log('newSize = ' + newSize);
-		if (newSize < 20) { newSize = 5 ;}
-		elementSelected.attr('size' , Math.min(newSize , 20));
-		elementUnselected.attr('size' , Math.min(newSize , 20));
-	}
-});
-
-/*
-jq(document).ready(function() {
-	var fieldTab = ['general','science','where','laboratory','reseachproject'];
-	const MINFIELD = 5;
-	const MAXFIELD = 20;
-	for (var i=0; i<fieldTab.length; i++) {
-		var fieldSelectedLength = jq('#' + fieldTab[i] + '_selected').attr('length');
-		var fieldUnselectedLength = jq('#' + fieldTab[i] + '_unselected').attr('length');
-		if(fieldSelectedLength >= fieldUnselectedLength) {
-			if(fieldSelectedLength > MINFIELD)  {
-				if(fieldSelectedLength > MAXFIELD) {
-					jq('#' + fieldTab[i] + '_selected').attr('size', MAXFIELD);
-					jq('#' + fieldTab[i] + '_unselected').attr('size', MAXFIELD);
-				} else {
-					jq('#' + fieldTab[i] + '_selected').attr('size', fieldSelectedLength);
-					jq('#' + fieldTab[i] + '_unselected').attr('size', fieldSelectedLength);
-				}
-			} 
-		} else {
-			if(fieldUnselectedLength > MINFIELD)  {
-				if(fieldUnselectedLength > MAXFIELD) {
-					jq('#' + fieldTab[i] + '_unselected').attr('size', MAXFIELD);
-					jq('#' + fieldTab[i] + '_selected').attr('size', MAXFIELD);
-				} else {
-					jq('#' + fieldTab[i] + '_unselected').attr('size', fieldUnselectedLength);
-					jq('#' + fieldTab[i] + '_selected').attr('size', fieldUnselectedLength);
-				}
-			} 
+		newSize = selectedLength + unselectedLength ;
+		console.log(selectedLength + ' ' + unselectedLength + ' ' + newSize);
+		if (newSize < 5) { newSize = 5 ;}
+		if (newSize > 20) { newSize = 20 ;}
+		jq(elementSelected).attr('size' ,newSize);
+		jq(elementUnselected).attr('size' , newSize);
 		}
-	}		
+	photographer = jq('select#photographer') ;
+	nbPhotographers = itemsCount(photographer);
+	if (nbPhotographers > 20) { jq(photographer).attr('size',20); }
+	else {
+		if (nbPhotographers < 5) { jq(photographer).attr('size',5); }
+		else {
+			jq(photographer).attr('size',nbPhotographers);
+			}
+		}
+	// nb = (nbPhotographers < 5) ? 5 : ((nbPhotographers > 20 ) ? 20 : nbPhotographers) ;
 });
-*/
