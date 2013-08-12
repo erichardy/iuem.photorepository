@@ -50,7 +50,7 @@ jq(document).ready(function() {
 		elementSelected   = jq('select#' + fieldTab[i] + '_selected');
 		elementUnselected = jq('select#' + fieldTab[i] + '_unselected');
 		if (elementSelected.length == 0) {
-			console.log('on n est pas dans une page d edition');
+			// console.log('on n est pas dans une page d edition');
 			return false;
 		}
 		selectedLength   = itemsCount(elementSelected);

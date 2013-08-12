@@ -1,9 +1,19 @@
+# -*- coding: utf-8 -*-
 
 from zope.interface import Interface
 from zope import schema
 from z3c.form import field , button
+from plone.directives import form
 
 from iuem.photorepository import iuemRepositoryMessageFactory as _
+
+defaultWatermarkConfigValue = u"var config = {\n"
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left\n"'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left", // default "bottom-right\n"'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "opacity": 8, // default 50\n'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "className": "watermark", // default "watermark"'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "path": "filigrane2.png"// this image must be placed in an accessible folder. ie. portal_skins/custom\n'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'};'
 
 # thanks to
 # http://plone.org/documentation/kb/how-to-create-a-plone-control-panel-with-plone.app.registry
@@ -49,3 +59,12 @@ class IPhotorepositorySettings(Interface):
                         default = u"@@request-album",
                         required = True,
                         )
+    watermark_config = schema.Text (
+                        title = _(u"Javascript code for the configuration of watermark"),
+                        description = _(u"Must be a valid Javascript code"),
+                        default = defaultWatermarkConfigValue,
+                        required = True,
+                        )
+    
+# @form.default_value(field=IPhotorepositorySettings['watermark_config'])
+    

@@ -44,8 +44,17 @@
     expression=""
     id="++resource++iuem_repository_static/js/metadataform.js"
     enabled="True" 
+    inline="True"
+  />
+  <javascript 
+    cacheable="True" 
+    compression="safe" 
+    conditionalcomment=""
+    cookable="True" 
+    expression=""
+    id="++resource++iuem_repository_static/js/watermark.jquery.min.js"
+    enabled="True" 
     inline="True" 
   />
-
 
 </object>

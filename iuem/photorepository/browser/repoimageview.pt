@@ -5,11 +5,18 @@
       lang="en-US"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="iuem.photorepository">
+      
+<head>
+</head>
 <body>
-<div metal:fill-slot="content-core">
-<p />
 
-<span tal:replace="structure view/viewImage">viewImage</span>
+<div metal:fill-slot="content-core">
+<span tal:replace="python:context.portal_registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_config']">totototo</span>
+
+<p />
+<div class="toWatermark">
+	<span tal:replace="structure view/viewImage">viewImage</span>
+</div>
 <br />
 <p />
 <span tal:condition="view/canViewFullImage">
