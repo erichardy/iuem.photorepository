@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import logging
-from PIL import Image , ImageDraw
+from PIL import Image , ImageDraw , ImageEnhance
 from StringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
 from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
+from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
@@ -69,6 +70,35 @@ def createSmallImage(obj, event):
     setSourceimageAndExif(obj, f_uploaded.read())
     doThumbnail(obj)
 
+def reduce_opacity(im, opacity):
+    """Returns an image with reduced opacity."""
+    assert opacity >= 0 and opacity <= 1
+    if im.mode != 'RGBA':
+        im = im.convert('RGBA')
+    else:
+        im = im.copy()
+    alpha = im.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(opacity)
+    im.putalpha(alpha)
+    return im
+
+def searchWatermark(obj):
+    """
+    this function returns a watermark for the object:
+    if the object has a empty watermark field,
+    it is searched to it's parent, and if it's parent doesn't have,
+    it is searched until to reach the root plone site
+    If, there is no watermark, the registry watermark is returned if there is one
+    elsewhere, False is returned
+    NB: the watermark must be an image with tranparency 
+    """
+    wm = obj.getField('watermark')
+    import pdb;pdb.set_trace()
+    watermark = False
+    return watermark
+
+# thanks to http://pydoc.net/Python/unweb.watermark/0.3/unweb.watermark.subscribers/
+# docs for PIL : http://python.developpez.com/cours/pilhandbook/
 def doThumbnail(obj):
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
@@ -79,6 +109,16 @@ def doThumbnail(obj):
     size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
     # draw = ImageDraw.Draw(image)
+    # registry = getUtility(IRegistry)
+    # wm = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image']
+    wm = searchWatermark(obj)
+    if wm:
+        mark = Image.open(StringIO(wm))
+        # opacity = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_opacity']
+        # mark = reduce_opacity(mark, opacity)
+        image.paste(mark , (0,0) , mark)
+    # import pdb;pdb.set_trace()
+    # image.paste(wm , (0,0) , wm)
     # draw.line((0, 0) + image.size, fill=(255, 255, 255))
     # draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
     f_data = StringIO()

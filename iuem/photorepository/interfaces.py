@@ -64,6 +64,14 @@ class IPhotorepositorySettings(Interface):
                         default = defaultWatermarkConfigValue,
                         required = True,
                         )
+    watermark_image = schema.Bytes(
+                        title = u'Watermark image file',
+                        )
+    watermark_opacity = schema.Float(title = u'Watermark opacity percentage',
+                        min = 0.1, 
+                        max = 1.0, 
+                        default = 0.15,
+                        )
     
 # @form.default_value(field=IPhotorepositorySettings['watermark_config'])
     

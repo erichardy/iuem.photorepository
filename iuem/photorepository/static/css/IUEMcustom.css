@@ -59,8 +59,7 @@ table.MetadataTable tr:nth-child(even) {
 
 /* We hide fields which are not yet used */
 #archetypes-fieldname-latitude,
-#archetypes-fieldname-longitude,
-#archetypes-fieldname-watermark {
+#archetypes-fieldname-longitude {
 	display: none;
 }
 /*

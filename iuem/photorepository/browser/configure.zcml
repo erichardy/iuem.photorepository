@@ -102,6 +102,12 @@
       layer=".interfaces.ILayer"
       permission="cmf.ManagePortal"
       />
+    <browser:page
+    for="*"
+    name="imDebug"
+    class=".imdebug.imDebug"
+    permission="cmf.ManagePortal"
+  />
   <!-- EXAMPLE:
   <browser:viewlet
       name="iuem.someviewlet"
