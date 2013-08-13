@@ -78,9 +78,9 @@ def doThumbnail(obj):
         image = image.convert('RGBA')
     size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
-    draw = ImageDraw.Draw(image)
-    draw.line((0, 0) + image.size, fill=(255, 255, 255))
-    draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
+    # draw = ImageDraw.Draw(image)
+    # draw.line((0, 0) + image.size, fill=(255, 255, 255))
+    # draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
     f_data = StringIO()
     image.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())

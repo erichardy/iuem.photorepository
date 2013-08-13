@@ -86,7 +86,6 @@
       permission="zope2.View"
       />
 
-
   <browser:page
       for="*"
       name="testSet"
@@ -94,6 +93,14 @@
       template="debugSet.pt"
       layer=".interfaces.ILayer"
       permission="zope2.View"
+      />
+      
+  <browser:page
+      for="*"
+      name="restore-thumbnails"
+      class=".restorethumbnails.restoreThumbnails"
+      layer=".interfaces.ILayer"
+      permission="cmf.ManagePortal"
       />
   <!-- EXAMPLE:
   <browser:viewlet
