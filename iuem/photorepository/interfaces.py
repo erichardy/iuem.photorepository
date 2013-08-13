@@ -8,10 +8,10 @@ from plone.directives import form
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
 defaultWatermarkConfigValue = u"var config = {\n"
-defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left\n"'
-defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left", // default "bottom-right\n"'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left"\n'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "position": "bottom-left", // default bottom-right\n'
 defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "opacity": 8, // default 50\n'
-defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "className": "watermark", // default "watermark"'
+defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "className": "watermark", // default "watermark"\n'
 defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'    "path": "filigrane2.png"// this image must be placed in an accessible folder. ie. portal_skins/custom\n'
 defaultWatermarkConfigValue = defaultWatermarkConfigValue + u'};'
 

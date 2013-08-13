@@ -7,12 +7,45 @@
       i18n:domain="iuem.photorepository">
       
 <head>
+<metal:block metal:fill-slot="head_slot">
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=.." />
+	</noscript>
+</metal:block>
+
+<metal:js fill-slot="javascript_head_slot">
+<script type="text/javascript" tal:content="python:context.portal_registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_config']">
+	must contain sometihing like :
+		var config = {
+			  "position": "bottom-left", // "top-left"|"top-right"|"bottom-right"|"bottom-left"
+			  "opacity": 10,
+			  "className": "watermark",
+			  "path": "filigrane2.png" // This image must be accessible from the entire site (ie. portal_skins/custom)
+			  };
+</script>
+<script type="text/javascript">
+//WATERMARK
+//http://www.patrick-wied.at/static/watermarkjs/
+//warning : the usage is not like the sources of the demo,
+//see : http://stackoverflow.com/questions/10841367/how-do-i-add-a-watermark-to-an-image-client-side-with-javascript
+//it should be more useful if the config is passed thru controlpannel...?
+//TODO : adapt controlpanel for config of watermark... probably with textarea containing the javascript code
+//for the config (see below 'var config = { ......')
+
+jq(document).ready(function() {
+	jq('div.toWatermark img').addClass('watermark');
+
+	jq(document).watermark(config);
+});
+</script>
+
+</metal:js>
+
 </head>
 <body>
 
-<div metal:fill-slot="content-core">
-<span tal:replace="python:context.portal_registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_config']">totototo</span>
 
+<div metal:fill-slot="content-core">
 <p />
 <div class="toWatermark">
 	<span tal:replace="structure view/viewImage">viewImage</span>
@@ -151,7 +184,6 @@ Metadatas
 <p />
 
 <br />
-
 
 </div>
 </body>
