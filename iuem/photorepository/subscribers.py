@@ -11,6 +11,7 @@ from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
 from Products.Archetypes.event import ObjectEditedEvent
+from zope.traversing.api import traverse
 
 logger = logging.getLogger('iuem.photorepository')
 
@@ -117,13 +118,22 @@ def searchWatermark(obj):
             return mark
         obj = obj.aq_parent
     registry = getUtility(IRegistry)
-    globalWatermark = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image']
-    wm = Image.open(StringIO(globalWatermark))
-    return wm
+    globalWatermark_name = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image_name']
+    try:
+        globalWatermark = traverse(obj , 'portal_skins/custom/' + globalWatermark_name)
+        wm = Image.open(StringIO(globalWatermark.data))
+        return wm
+    except:
+        logger.info('WARNING! no watermark applied !... no global watermark found...')
+        return False
 
 # thanks to http://pydoc.net/Python/unweb.watermark/0.3/unweb.watermark.subscribers/
 # docs for PIL : http://python.developpez.com/cours/pilhandbook/
 def doThumbnail(obj):
+    title00 = (obj.getField('title').get(obj)[:3] == '00-')
+    if title00:
+        return False
+
     restoreFull(obj)
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
@@ -133,18 +143,9 @@ def doThumbnail(obj):
         image = image.convert('RGBA')
     size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
-    # draw = ImageDraw.Draw(image)
-    # registry = getUtility(IRegistry)
-    # wm = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image']
     wm = searchWatermark(obj)
     if wm:
-        # opacity = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_opacity']
-        # mark = reduce_opacity(mark, opacity)
         image.paste(wm , (0,0) , wm)
-    # import pdb;pdb.set_trace()
-    # image.paste(wm , (0,0) , wm)
-    # draw.line((0, 0) + image.size, fill=(255, 255, 255))
-    # draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
     f_data = StringIO()
     image.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())

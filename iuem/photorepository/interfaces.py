@@ -58,22 +58,11 @@ class IPhotorepositorySettings(Interface):
                         default = u"@@request-album",
                         required = True,
                         )
-    watermark_config = schema.Text (
-                        title = _(u"Javascript code for the configuration of watermark"),
-                        description = _(u"Must be a valid Javascript code"),
-                        default = defaultWatermarkConfigValue,
-                        required = True,
-                        )
-    watermark_image = schema.Bytes(
+    watermark_image_name = schema.TextLine(
                         title = _(u'Watermark image file'),
-                        description = _(u'Image with transparency used for global watermark'),
-                        required = False,
-                        )
-    watermark_opacity = schema.Float(title = u'Watermark opacity percentage',
-                        min = 0.1, 
-                        max = 1.0, 
-                        default = 0.15,
-                        required = False,
+                        description = _(u'Image with transparency used for global watermark, must be put in portal_skins/custom by administrator'),
+                        default = u"watermark.png",
+                        required = True,
                         )
     
 # @form.default_value(field=IPhotorepositorySettings['watermark_config'])

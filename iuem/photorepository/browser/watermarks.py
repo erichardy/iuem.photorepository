@@ -6,13 +6,15 @@ import logging
 
 logger = logging.getLogger('iuem.photorepository')
 
-class restoreThumbnails(BrowserView):
+class watermarks(BrowserView):
+    """ Must be done in a Folder"""
     def __call__(self):
-        
         context = self.context
+        if context.portal_type != 'Folder':
+            return False
         portal = context.portal_url.getPortalObject()
         catalog = getToolByName(portal , 'portal_catalog')
-        logger.info("in restore thumbnails...")
+        logger.info("in restore watermarks...")
         query = {}
         query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':9}
         query['portal_type'] = ('Image')
@@ -30,8 +32,7 @@ class watermark(BrowserView):
     def __call__(self):
         context = self.context
         if context.portal_type != 'Image':
-            return
-        
+            return False
         doThumbnail(context)
 
 class full(BrowserView):
