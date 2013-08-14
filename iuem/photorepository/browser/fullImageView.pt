@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="iuem.photorepository">
+      
+<head>
+<metal:block metal:fill-slot="head_slot">
+
+ <span tal:content="view/header">header</span>    
+
+</metal:block>
+</head>
+<body>
+<div metal:fill-slot="content-core">
+
+<p />
+
+NEW VIEW for fullImage !
+<br />
+
+
+<img tal:attributes="src string:${context/absolute_url}/sourceImage" name='qsdqsdqsd' alt='une source image' title='titre de la source image'>
+
+<br />
+
+<br />
+
+<p />
+
+<br />
+</div>
+
+</body>
+</html>

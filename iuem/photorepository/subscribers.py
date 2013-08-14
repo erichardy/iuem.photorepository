@@ -133,7 +133,7 @@ def doThumbnail(obj):
     title00 = (obj.getField('title').get(obj)[:3] == '00-')
     if title00:
         return False
-
+    # we don't want to apply a watermark on a watermarked image
     restoreFull(obj)
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')

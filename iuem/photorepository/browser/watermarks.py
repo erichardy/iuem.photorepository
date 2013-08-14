@@ -14,7 +14,7 @@ class watermarks(BrowserView):
             return False
         portal = context.portal_url.getPortalObject()
         catalog = getToolByName(portal , 'portal_catalog')
-        logger.info("in restore watermarks...")
+        logger.info("in apply watermarks...")
         query = {}
         query['path'] = {'query':'/'.join(context.getPhysicalPath()) , 'depth':9}
         query['portal_type'] = ('Image')
@@ -27,6 +27,8 @@ class watermarks(BrowserView):
                 sourceImage = obj.getField("sourceImage").get(obj)
                 obj.setImage(sourceImage)
                 doThumbnail(obj)
+        redir = context.REQUEST.response.redirect(context.absolute_url() + '/view')
+        return redir
 
 class watermark(BrowserView):
     def __call__(self):
@@ -34,6 +36,8 @@ class watermark(BrowserView):
         if context.portal_type != 'Image':
             return False
         doThumbnail(context)
+        redir = context.REQUEST.response.redirect(context.absolute_url() + '/view')
+        return redir
 
 class full(BrowserView):
     def __call__(self):
@@ -42,3 +46,6 @@ class full(BrowserView):
             return
         source = context.getField("sourceImage")
         context.setImage(source.get(context).data)
+        redir = context.REQUEST.response.redirect(context.absolute_url() + '/view')
+        return redir
+

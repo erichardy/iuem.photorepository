@@ -30,6 +30,14 @@ msgstr "Ajouter aux descripteurs existants"
 msgid "Add or Replace"
 msgstr "Ajouter ou Remplacer"
 
+#: ./profiles/default/actions.xml
+msgid "Apply watermark"
+msgstr "Appliquer le filigrane"
+
+#: ./profiles/default/actions.xml
+msgid "Apply watermarks"
+msgstr "Appliquer les filigranes"
+
 #: ./extender.py:71
 msgid "Area related to the photo"
 msgstr "Lieu de la photo"
@@ -46,16 +54,16 @@ msgstr "Confirmer cette propagation de descripteurs"
 msgid "EXIF metadata in the picture"
 msgstr "Les données EXIF propres à cette photo"
 
-#: ./browser/repoimageview.pt:135
+#: ./browser/repoimageview.pt:176
 #: ./extender.py:291
 msgid "EXIF metadatas"
 msgstr "Données EXIF"
 
-#: ./interfaces.py:41
+#: ./interfaces.py:50
 msgid "From field for album requests"
 msgstr "Expéditeur des demandes de dossier"
 
-#: ./interfaces.py:21
+#: ./interfaces.py:30
 msgid "From field for original image requests"
 msgstr "Expéditeur des demandes d'image originale"
 
@@ -92,6 +100,10 @@ msgstr "Utilisation de l'image : "
 #: ./extender.py:133
 msgid "Image used for watermark"
 msgstr "Image utilisée pour le filigrane"
+
+#: ./interfaces.py:63
+msgid "Image with transparency used for global watermark, must be put in portal_skins/custom by administrator"
+msgstr "Image avec transparence utilisée pour le filigrane global, elle doit avoir été mise dans portal_skins/custom par l'administrateur système de la base"
 
 #: ./browser/manageMetadataFormView.pt:39
 msgid "Images here and in all sub-folders"
@@ -208,11 +220,11 @@ msgstr "Désolé, certains champs du formulaire ne sont pas renseignés"
 msgid "Spread depth"
 msgstr "Profondeur de la propagation"
 
-#: ./interfaces.py:28
+#: ./interfaces.py:37
 msgid "TAL expression (@@request-image)"
 msgstr ""
 
-#: ./interfaces.py:48
+#: ./interfaces.py:57
 msgid "TAL expression (string:${absolute_url}/@@request-album)"
 msgstr ""
 
@@ -220,17 +232,21 @@ msgstr ""
 msgid "Validate this metadata spread"
 msgstr "Valider cette propagation de descripteurs"
 
-#: ./interfaces.py:47
+#: ./interfaces.py:56
 msgid "View name of the form for request an access or an album"
 msgstr ""
 
-#: ./interfaces.py:27
+#: ./interfaces.py:36
 msgid "View name of the form for request an image"
 msgstr ""
 
 #: ./extender.py:132
 msgid "Watermark"
 msgstr "Image pour le filigrane"
+
+#: ./interfaces.py:62
+msgid "Watermark image file"
+msgstr "Fichier image pour le filigrane"
 
 #: ./extender.py:110
 msgid "What type of restricted usage"
@@ -293,11 +309,11 @@ msgstr "Description"
 msgid "email"
 msgstr "Courriel"
 
-#: ./interfaces.py:34
+#: ./interfaces.py:43
 msgid "email addresses which receive album requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes de dossier"
 
-#: ./interfaces.py:14
+#: ./interfaces.py:23
 msgid "email addresses which receive image requests"
 msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale"
 
@@ -306,7 +322,7 @@ msgstr "liste des adresses mail qui vont recevoir les demandes d'image originale
 msgid "email adress : "
 msgstr "Courriel : "
 
-#: ./interfaces.py:22
+#: ./interfaces.py:31
 msgid "enter a valid email adress"
 msgstr "Entrez une adresse mail valide"
 
@@ -334,7 +350,7 @@ msgstr "Sélectionner les descripteurs à propager"
 
 #. Default: "Metadatas"
 #: ./browser/repofolderalbumview.pt:49
-#: ./browser/repoimageview.pt:58
+#: ./browser/repoimageview.pt:99
 msgid "metadatas"
 msgstr "Descripteurs"
 
@@ -356,11 +372,11 @@ msgid "request-image-returned-message"
 msgstr "Si votre demande a pu être transmise, vous recevrez une copie du message<br />qui a été transmis aux responsables de la base.<br />Dans le cas contraire, veuillez corriger les données que vous avez saisi..."
 
 #. Default: "request this image"
-#: ./browser/repoimageview.pt:44
+#: ./browser/repoimageview.pt:85
 msgid "request-original-image"
 msgstr "Demander l'image originale"
 
-#: ./interfaces.py:35
+#: ./interfaces.py:44
 msgid "request_album_emails_description"
 msgstr "Entrer une adresse mail par ligne"
 
@@ -368,7 +384,7 @@ msgstr "Entrer une adresse mail par ligne"
 msgid "request_album_text"
 msgstr "Remplissez ce formulaire si vous désirez avoir un dossier à cet emplacement<br />ou si vous voulez avoir un accès complet à celui-ci (ajout/modification/suppression)."
 
-#: ./interfaces.py:15
+#: ./interfaces.py:24
 msgid "request_image_emails_description"
 msgstr "Entrer une adresse mail par ligne"
 
@@ -421,7 +437,7 @@ msgid "usage_description"
 msgstr "Description de l'usage de l'image demandée"
 
 #. Default: "View the original image"
-#: ./browser/repoimageview.pt:16
+#: ./browser/repoimageview.pt:57
 msgid "view_original_image"
 msgstr "Visualiser l'original"
 
