@@ -70,6 +70,12 @@ def createSmallImage(obj, event):
     setSourceimageAndExif(obj, f_uploaded.read())
     doThumbnail(obj)
 
+def restoreFull(obj):
+    if obj.portal_type != 'Image':
+            return
+    source = obj.getField("sourceImage")
+    obj.setImage(source.get(obj).data)
+
 def reduce_opacity(im, opacity):
     """Returns an image with reduced opacity."""
     assert opacity >= 0 and opacity <= 1
@@ -82,6 +88,14 @@ def reduce_opacity(im, opacity):
     im.putalpha(alpha)
     return im
 
+def hasWatermark(obj):
+    logger.info('hasWatermark ? ' + obj.title)
+    try:
+        wm = obj.getField('watermark')
+    except:
+        return False
+    return wm.getSize(obj) != (0,0)
+
 def searchWatermark(obj):
     """
     this function returns a watermark for the object:
@@ -92,14 +106,25 @@ def searchWatermark(obj):
     elsewhere, False is returned
     NB: the watermark must be an image with tranparency 
     """
-    wm = obj.getField('watermark')
-    import pdb;pdb.set_trace()
-    watermark = False
-    return watermark
+    if hasWatermark(obj):
+        wm = obj.getField('watermark').get(obj).data
+        mark = Image.open(StringIO(wm))
+        return mark
+    while obj.aq_parent.portal_type == 'Folder':
+        if hasWatermark(obj):
+            wm = obj.getField('watermark').get(obj).data
+            mark = Image.open(StringIO(wm))
+            return mark
+        obj = obj.aq_parent
+    registry = getUtility(IRegistry)
+    globalWatermark = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image']
+    wm = Image.open(StringIO(globalWatermark))
+    return wm
 
 # thanks to http://pydoc.net/Python/unweb.watermark/0.3/unweb.watermark.subscribers/
 # docs for PIL : http://python.developpez.com/cours/pilhandbook/
 def doThumbnail(obj):
+    restoreFull(obj)
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
     f_image = StringIO(scaled.data)
@@ -113,10 +138,9 @@ def doThumbnail(obj):
     # wm = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image']
     wm = searchWatermark(obj)
     if wm:
-        mark = Image.open(StringIO(wm))
         # opacity = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_opacity']
         # mark = reduce_opacity(mark, opacity)
-        image.paste(mark , (0,0) , mark)
+        image.paste(wm , (0,0) , wm)
     # import pdb;pdb.set_trace()
     # image.paste(wm , (0,0) , wm)
     # draw.line((0, 0) + image.size, fill=(255, 255, 255))

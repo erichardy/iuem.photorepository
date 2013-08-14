@@ -26,4 +26,18 @@ class restoreThumbnails(BrowserView):
                 obj.setImage(sourceImage)
                 doThumbnail(obj)
 
-                
+class watermark(BrowserView):
+    def __call__(self):
+        context = self.context
+        if context.portal_type != 'Image':
+            return
+        
+        doThumbnail(context)
+
+class full(BrowserView):
+    def __call__(self):
+        context = self.context
+        if context.portal_type != 'Image':
+            return
+        source = context.getField("sourceImage")
+        context.setImage(source.get(context).data)

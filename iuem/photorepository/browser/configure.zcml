@@ -102,6 +102,14 @@
       layer=".interfaces.ILayer"
       permission="cmf.ManagePortal"
       />
+  <browser:page
+      for="*"
+      name="watermark"
+      class=".restorethumbnails.watermark"
+      layer=".interfaces.ILayer"
+      permission="cmf.ManagePortal"
+      />
+
     <browser:page
     for="*"
     name="imDebug"
