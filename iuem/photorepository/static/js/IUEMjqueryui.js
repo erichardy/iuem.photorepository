@@ -44,6 +44,5 @@ jq(document).ready(function() {
 	jq('div.toWatermark img').bind("contextmenu", function(e) {
 	    return false;
 	});
-
 });
 */

@@ -7,50 +7,80 @@ from AccessControl import getSecurityManager
 from iuem.photorepository.interfaces import IPhotorepositorySettings
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
+from zope.traversing.api import traverse
+from DateTime import DateTime
 from iuem.photorepository import iuemRepositoryMessageFactory as _
-import imp
 
 logger = logging.getLogger('iuem.photorepository')
 
 class fullImageView(BrowserView):
     """full view for image repository
     """
-    def duplique(self):
+    def duplicate(self):
         context = self.context
-        # import pdb;pdb.set_trace()
         registry = getUtility(IRegistry)
         targetFolder = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.fullimages_folder']
         try:
             target = api.content.get(path = targetFolder)
-            tId = target.getId()
             logger.info('Folder for full images found ! (%s)' , targetFolder)
         except:
             logger.info('Folder for full images NOT found ! (%s)' , targetFolder)
             return
         # import pdb;pdb.set_trace()
         try:
-            newfull = api.content.get(path = targetFolder + '/' + context.getId())
-            api.content.delete(obj = newfull)
-            logger.info('old full image deleted (%s)' , newfull.getId())
+            logger.info('old full image to be deleted (%s)' , context.getId())
+            with api.env.adopt_roles(['Manager']):
+                logger.info('.')
+                newfull = api.content.get(path = targetFolder + '/' + context.getId())
+                logger.info('..' + newfull.getId())
+                target.manage_delObjects([context.getId(),])
+                logger.info('...')
+                logger.info('old full image deleted (%s)' , newfull.getId())
         except:
-            pass
-        newimage = api.content.copy(source = context, target = target , safe_id = False)
-        # import pdb;pdb.set_trace()
-        # RESPONSE = self.context.REQUEST.RESPONSE
-        # RESPONSE.redirect(newimage.absolute_url())
-        # return RESPONSE.redirect
+            logger.info('No previous full image deleted...')
+        
+        with api.env.adopt_roles(['Manager']):
+            target.invokeFactory(type_name='Image', id = self.context.getId())
+        return
     
-    def redirect(self):
-        # import pdb;pdb.set_trace()
+    def deleteOldObjects(self , target):
+        with api.env.adopt_roles(['Manager']):
+            now = DateTime()
+            for objId in target.keys():
+                logger.info(target[objId].creation_date)
+                logger.info(objId)
+                obj = target[objId]
+                logger.info(obj)
+                creationDate = obj.creation_date
+                if now > (creationDate + 0.01):
+                    target.manage_delObjects([objId , ])
+                # import pdb;pdb.set_trace()
+                
+        
+    def fullImage(self):
         context = self.context
         registry = getUtility(IRegistry)
         targetFolder = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.fullimages_folder']
-        newimage = api.content.get(targetFolder + '/' + context.getId())
+        target = api.content.get(path = targetFolder)
+        newimage = target[context.getId()]
+        """ Security """
+        workflowTool = getToolByName(context, "portal_workflow")
+        workflowTool.doActionFor(newimage, "retract")
+        mt = getToolByName(context, 'portal_membership')
+        currentMember = mt.getAuthenticatedMember()
+        logger.info('Current User : ' + str(currentMember))
+        newimage.changeOwnership(currentMember)
+        newimage.manage_setLocalRoles(currentMember , ("Owner",))
+        context.reindexObjectSecurity()
+        """ Delete old objects """
+        self.deleteOldObjects(target)
+        source = context.getField("sourceImage")
+        newimage.setImage(source.get(context).data)
         newimageId = newimage.getId()
+        newimageContainer = newimage.aq_parent
         RESPONSE = self.context.REQUEST.RESPONSE
-        RESPONSE.redirect(newimage.absolute_url())
+        RESPONSE.redirect(newimageContainer.absolute_url() + '/' + newimageId)
         return RESPONSE.redirect
-        
         
     def header(self):
         RESPONSE = self.context.REQUEST.RESPONSE
