@@ -37,7 +37,7 @@ jq(document).ready(function() {
 	});
 });
 
-
+/*
 // Disable right click script
 // source http://www.electrictoolbox.com/jquery-modify-right-click-menu/
 jq(document).ready(function() {
@@ -46,3 +46,4 @@ jq(document).ready(function() {
 	});
 
 });
+*/

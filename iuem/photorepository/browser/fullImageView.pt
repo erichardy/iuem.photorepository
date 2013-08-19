@@ -8,9 +8,9 @@
       
 <head>
 <metal:block metal:fill-slot="head_slot">
-
+<span tal:replace="nothing">
  <span tal:content="view/header">header</span>    
-
+</span>
 </metal:block>
 </head>
 <body>
@@ -19,10 +19,18 @@
 <p />
 
 NEW VIEW for fullImage !
+
+<span tal:content="python:view.duplique()">DUPLICATA</span>
+<span tal:content="python:view.redirect()">REDIRECTION</span>
+
 <br />
+<div class="imaage">
+<span tal:replace="structure python:here.tag()">viewImage</span>
+</div>
+<p />
+<img class="watermarked" alt="" tal:attributes="src string:${context/absolute_url}/image" />
 
-
-<img tal:attributes="src string:${context/absolute_url}/sourceImage" name='qsdqsdqsd' alt='une source image' title='titre de la source image'>
+<img class="fullimage" tal:attributes="src string:${context/absolute_url}/sourceImage" name='qsdqsdqsd' alt='une source image' title='titre de la source image'>
 
 <br />
 

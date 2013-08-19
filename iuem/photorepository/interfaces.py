@@ -64,6 +64,12 @@ class IPhotorepositorySettings(Interface):
                         default = u"watermark.png",
                         required = True,
                         )
+    fullimages_folder = schema.TextLine(
+                        title = _(u'Folder for full images views'),
+                        description = _(u'The absolute pathname of the folder which will contains fullimages. This folder must exist before to use it !'),
+                        default = u"/fullimages",
+                        required = True,
+                        )
     
 # @form.default_value(field=IPhotorepositorySettings['watermark_config'])
     
