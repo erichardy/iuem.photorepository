@@ -15,6 +15,7 @@
     </permission>
     <permission name="Add ATVocabularyManager content" acquire="True">
       <role name="Manager"/>
+      <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
       <role name="Editor"/>
