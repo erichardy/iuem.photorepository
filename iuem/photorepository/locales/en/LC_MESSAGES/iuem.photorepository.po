@@ -44,6 +44,22 @@ msgstr ""
 msgid "Author of the photo"
 msgstr ""
 
+#: ./interfaces.py:22
+msgid "Bottom Left"
+msgstr ""
+
+#: ./interfaces.py:23
+msgid "Bottom Right"
+msgstr ""
+
+#: ./interfaces.py:19
+msgid "Center"
+msgstr ""
+
+#: ./interfaces.py:86
+msgid "Choice here where to paste the global watermark in the image"
+msgstr ""
+
 #: ./browser/metadataConfirm.pt:20
 msgid "Confirm metadata spread"
 msgstr ""
@@ -57,16 +73,24 @@ msgstr ""
 msgid "EXIF metadatas"
 msgstr ""
 
-#: ./interfaces.py:50
+#: ./interfaces.py:97
+msgid "Folder for full images views"
+msgstr ""
+
+#: ./interfaces.py:62
 msgid "From field for album requests"
 msgstr ""
 
-#: ./interfaces.py:30
+#: ./interfaces.py:42
 msgid "From field for original image requests"
 msgstr ""
 
 #: ./browser/requestAlbum.pt:50
 msgid "Full access to this album"
+msgstr ""
+
+#: ./interfaces.py:93
+msgid "Full images"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:62
@@ -87,11 +111,11 @@ msgstr ""
 msgid "If you request a new album, please enter a name and a description for it..."
 msgstr ""
 
-#: ./browser/requestImage.py:89
+#: ./browser/requestImage.py:83
 msgid "Image URL : "
 msgstr ""
 
-#: ./browser/requestImage.py:88
+#: ./browser/requestImage.py:82
 msgid "Image usage : "
 msgstr ""
 
@@ -99,7 +123,7 @@ msgstr ""
 msgid "Image used for watermark"
 msgstr ""
 
-#: ./interfaces.py:63
+#: ./interfaces.py:80
 msgid "Image with transparency used for global watermark, must be put in portal_skins/custom by administrator"
 msgstr ""
 
@@ -133,7 +157,7 @@ msgid "Manage Metadata"
 msgstr ""
 
 #: ./browser/requestAlbum.py:86
-#: ./browser/requestImage.py:85
+#: ./browser/requestImage.py:79
 msgid "Name : "
 msgstr ""
 
@@ -192,6 +216,10 @@ msgstr ""
 msgid "Replace metadatas"
 msgstr ""
 
+#: ./interfaces.py:31
+msgid "Requests configurations"
+msgstr ""
+
 #: ./browser/manageMetadataFormView.pt:105
 #: ./browser/metadataConfirm.pt:104
 #: ./browser/repofolderalbumview.pt:95
@@ -208,6 +236,10 @@ msgstr ""
 msgid "Scientific keywords"
 msgstr ""
 
+#: ./profiles/default/actions.xml
+msgid "Select"
+msgstr ""
+
 #: ./browser/requestAlbumFormResult.pt:26
 #: ./browser/requestImageFormResult.pt:23
 msgid "Sorry, fields are missing in your form,"
@@ -218,23 +250,35 @@ msgstr ""
 msgid "Spread depth"
 msgstr ""
 
-#: ./interfaces.py:37
+#: ./interfaces.py:49
 msgid "TAL expression (@@request-image)"
 msgstr ""
 
-#: ./interfaces.py:57
+#: ./interfaces.py:69
 msgid "TAL expression (string:${absolute_url}/@@request-album)"
+msgstr ""
+
+#: ./interfaces.py:98
+msgid "The absolute pathname of the folder which will contains fullimages. This folder must exist before to use it !"
+msgstr ""
+
+#: ./interfaces.py:20
+msgid "Top Left"
+msgstr ""
+
+#: ./interfaces.py:21
+msgid "Top Right"
 msgstr ""
 
 #: ./browser/manageMetadataFormView.pt:145
 msgid "Validate this metadata spread"
 msgstr ""
 
-#: ./interfaces.py:56
+#: ./interfaces.py:68
 msgid "View name of the form for request an access or an album"
 msgstr ""
 
-#: ./interfaces.py:36
+#: ./interfaces.py:48
 msgid "View name of the form for request an image"
 msgstr ""
 
@@ -242,8 +286,16 @@ msgstr ""
 msgid "Watermark"
 msgstr ""
 
-#: ./interfaces.py:62
+#: ./interfaces.py:79
 msgid "Watermark image file"
+msgstr ""
+
+#: ./interfaces.py:85
+msgid "Watermark position in the image"
+msgstr ""
+
+#: ./interfaces.py:75
+msgid "Watermarks configurations"
 msgstr ""
 
 #: ./extender.py:110
@@ -279,7 +331,7 @@ msgstr ""
 msgid "[IUEM Photo repository] Album or access request"
 msgstr ""
 
-#: ./browser/requestImage.py:80
+#: ./browser/requestImage.py:74
 msgid "[IUEM Photo repository] Image request"
 msgstr ""
 
@@ -307,20 +359,20 @@ msgstr ""
 msgid "email"
 msgstr ""
 
-#: ./interfaces.py:43
+#: ./interfaces.py:55
 msgid "email addresses which receive album requests"
 msgstr ""
 
-#: ./interfaces.py:23
+#: ./interfaces.py:35
 msgid "email addresses which receive image requests"
 msgstr ""
 
 #: ./browser/requestAlbum.py:87
-#: ./browser/requestImage.py:86
+#: ./browser/requestImage.py:80
 msgid "email adress : "
 msgstr ""
 
-#: ./interfaces.py:31
+#: ./interfaces.py:43
 msgid "enter a valid email adress"
 msgstr ""
 
@@ -374,7 +426,7 @@ msgstr ""
 msgid "request-original-image"
 msgstr ""
 
-#: ./interfaces.py:44
+#: ./interfaces.py:56
 msgid "request_album_emails_description"
 msgstr ""
 
@@ -382,7 +434,7 @@ msgstr ""
 msgid "request_album_text"
 msgstr ""
 
-#: ./interfaces.py:24
+#: ./interfaces.py:36
 msgid "request_image_emails_description"
 msgstr ""
 
@@ -407,7 +459,7 @@ msgid "team"
 msgstr ""
 
 #: ./browser/requestAlbum.py:88
-#: ./browser/requestImage.py:87
+#: ./browser/requestImage.py:81
 msgid "team : "
 msgstr ""
 

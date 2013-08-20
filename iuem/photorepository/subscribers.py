@@ -132,7 +132,7 @@ def getPosition(image , wm):
     hi = image.size[1]
     lw = wm.size[0]
     hw = wm.size[1]
-    # if watermark larger than image, reduce it to image size
+    # if watermark is larger than image, reduce it to image size
     if ((lw > li) or (hw > hi)):
         wm.thumbnail(image.size , Image.ANTIALIAS)
         lw = wm.size[0]
@@ -152,8 +152,7 @@ def getPosition(image , wm):
         position = ((li - lw) , (hi - hw))
     else:
         position = ((hi - hw) , (li - lw))
-    logger.info('Position : ' + wmPosition + ' ' + str(position))
-    # import pdb;pdb.set_trace()
+    # logger.info('Position : ' + wmPosition + ' ' + str(position))
     return position
 
 
