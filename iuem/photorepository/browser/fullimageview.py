@@ -2,12 +2,9 @@ import logging
 from zope.publisher.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 from plone import api
-from iuem.photorepository.manageVocabulary import imMetadatas
-from AccessControl import getSecurityManager
 from iuem.photorepository.interfaces import IPhotorepositorySettings
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
-from zope.traversing.api import traverse
 from DateTime import DateTime
 from iuem.photorepository import iuemRepositoryMessageFactory as _
 
@@ -52,7 +49,8 @@ class fullImageView(BrowserView):
                 obj = target[objId]
                 logger.info(obj)
                 creationDate = obj.creation_date
-                if now > (creationDate + 0.01):
+                # 0.002 ~ 3 minutes
+                if now > (creationDate + 0.002):
                     target.manage_delObjects([objId , ])
                 # import pdb;pdb.set_trace()
                 

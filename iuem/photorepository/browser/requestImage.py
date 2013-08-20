@@ -2,13 +2,7 @@ import logging
 from Products.Five import BrowserView
 from zope.component import getUtility
 from plone.registry.interfaces import IRegistry
-
-
 from Products.CMFCore.utils import getToolByName
-
-# from Products.CMFCore.interfaces import ISiteRoot
-from Products.ATContentTypes.interface import IATImage
-
 from Products.CMFDefault.utils import checkEmailAddress
 from Products.CMFDefault.exceptions import EmailAddressInvalid
 

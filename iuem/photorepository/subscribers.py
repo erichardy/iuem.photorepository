@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import logging
-from PIL import Image , ImageDraw , ImageEnhance
+from PIL import Image , ImageEnhance
 from StringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
