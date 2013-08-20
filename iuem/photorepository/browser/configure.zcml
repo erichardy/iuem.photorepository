@@ -28,6 +28,24 @@
       template="repofolderalbumview.pt"
       permission="zope2.View"
       />
+      
+   <browser:page
+      for="*"
+      name="repo_folder_contents"
+      class=".repoFolderContents.FolderContentsView"
+      template="repoFolderContents.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+   <browser:page
+	  for="*"
+	  class=".repoFolderContents.FolderContentsKSSView"
+	  attribute="update_table"
+	  name="repoFolderContents_update_table"
+      layer=".interfaces.ILayer"
+	  permission="zope2.View"
+	  />
+	  
   <browser:page
       for="*"
       name="manage-metadata"

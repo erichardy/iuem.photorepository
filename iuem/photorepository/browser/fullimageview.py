@@ -19,19 +19,19 @@ class fullImageView(BrowserView):
         targetFolder = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.fullimages_folder']
         try:
             target = api.content.get(path = targetFolder)
-            logger.info('Folder for full images found ! (%s)' , targetFolder)
+            # logger.info('Folder for full images found ! (%s)' , targetFolder)
         except:
             logger.info('Folder for full images NOT found ! (%s)' , targetFolder)
             return
         # import pdb;pdb.set_trace()
         try:
-            logger.info('old full image to be deleted (%s)' , context.getId())
+            # logger.info('old full image to be deleted (%s)' , context.getId())
             with api.env.adopt_roles(['Manager']):
-                logger.info('.')
+                # logger.info('.')
                 newfull = api.content.get(path = targetFolder + '/' + context.getId())
-                logger.info('..' + newfull.getId())
+                # logger.info('..' + newfull.getId())
                 target.manage_delObjects([context.getId(),])
-                logger.info('...')
+                # logger.info('...')
                 logger.info('old full image deleted (%s)' , newfull.getId())
         except:
             logger.info('No previous full image deleted...')
@@ -44,10 +44,10 @@ class fullImageView(BrowserView):
         with api.env.adopt_roles(['Manager']):
             now = DateTime()
             for objId in target.keys():
-                logger.info(target[objId].creation_date)
-                logger.info(objId)
+                # logger.info(target[objId].creation_date)
+                # logger.info(objId)
                 obj = target[objId]
-                logger.info(obj)
+                # logger.info(obj)
                 creationDate = obj.creation_date
                 # 0.002 ~ 3 minutes
                 if now > (creationDate + 0.002):

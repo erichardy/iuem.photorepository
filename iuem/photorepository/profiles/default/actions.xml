@@ -33,6 +33,21 @@
  </object>
 
 <object name="object_buttons" meta_type="CMF Action Category">
+  <object name="repoFolderContents" meta_type="CMF Action" i18n:domain="iuem.photorepository">
+   <property name="title" i18n:translate="">Select</property>
+   <property name="description" i18n:translate=""></property>
+   <property
+      name="url_expr">string:${globals_view/getCurrentFolderUrl}/repo_folder_contents</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">object/displayContentsTab</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+</object>
+
+<object name="object_buttons" meta_type="CMF Action Category">
   <object name="watermarks" meta_type="CMF Action" i18n:domain="iuem.photorepository">
    <property name="title" i18n:translate="">Apply watermarks</property>
    <property name="description" i18n:translate=""></property>
