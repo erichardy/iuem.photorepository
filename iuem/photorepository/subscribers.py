@@ -127,6 +127,36 @@ def searchWatermark(obj):
         logger.info('WARNING! no watermark applied !... no global watermark found...')
         return False
 
+def getPosition(image , wm):
+    li = image.size[0]
+    hi = image.size[1]
+    lw = wm.size[0]
+    hw = wm.size[1]
+    # if watermark larger than image, reduce it to image size
+    if ((lw > li) or (hw > hi)):
+        wm.thumbnail(image.size , Image.ANTIALIAS)
+        lw = wm.size[0]
+        hw = wm.size[1]
+        logger.info('reduce wm')
+    registry = getUtility(IRegistry)
+    wmPosition = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_position']
+    if wmPosition == 'center':
+        position = ((li - lw) / 2 , (hi - hw) / 2)
+    elif wmPosition == 'topleft':
+        position = (0,0) 
+    elif wmPosition == 'topright':
+        position = ((li - lw) , 0)
+    elif wmPosition == 'bottomleft':
+        position = (0 , (hi - hw))
+    elif wmPosition == 'bottomright':
+        position = ((li - lw) , (hi - hw))
+    else:
+        position = ((hi - hw) , (li - lw))
+    logger.info('Position : ' + wmPosition + ' ' + str(position))
+    # import pdb;pdb.set_trace()
+    return position
+
+
 # thanks to http://pydoc.net/Python/unweb.watermark/0.3/unweb.watermark.subscribers/
 # docs for PIL : http://python.developpez.com/cours/pilhandbook/
 def doThumbnail(obj):
@@ -144,8 +174,9 @@ def doThumbnail(obj):
     size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
     wm = searchWatermark(obj)
+    position = getPosition(image , wm)
     if wm:
-        image.paste(wm , (0,0) , wm)
+        image.paste(wm , position , wm)
     f_data = StringIO()
     image.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())
