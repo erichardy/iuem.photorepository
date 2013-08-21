@@ -52,7 +52,7 @@
       class=".manageMetadata_form.ManageMetadataFormView"
       template="manageMetadataFormView.pt"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission=cmf.ModifyPortalContent
       />
 
   <browser:page
@@ -61,14 +61,14 @@
       template="metadataConfirm.pt"
       class=".metadataConfirm.MetadataConfirmView"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
       name="spread-metadata"
       class=".metadataConfirm.SpreadMetadata"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
@@ -125,14 +125,14 @@
       name="watermarks"
       class=".watermarks.watermarks"
       layer=".interfaces.ILayer"
-      permission="cmf.ManagePortal"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
       name="watermark"
       class=".watermarks.watermark"
       layer=".interfaces.ILayer"
-      permission="cmf.ManagePortal"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
