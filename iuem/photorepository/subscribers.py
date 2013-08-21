@@ -165,10 +165,8 @@ def doThumbnail(obj):
     # we don't want to apply a watermark on a watermarked image
     restoreFull(obj)
     field = obj.getField('image')
-    # scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
-    # f_image = StringIO(scaled.data)
-    f_image = StringIO(field.get(obj).data)
-
+    scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
+    f_image = StringIO(scaled.data)
     image = Image.open(f_image)
     if image.mode != 'RGBA':
         image = image.convert('RGBA')
