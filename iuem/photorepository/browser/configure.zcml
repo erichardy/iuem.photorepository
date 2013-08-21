@@ -52,7 +52,7 @@
       class=".manageMetadata_form.ManageMetadataFormView"
       template="manageMetadataFormView.pt"
       layer=".interfaces.ILayer"
-      permission=cmf.ModifyPortalContent
+      permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
