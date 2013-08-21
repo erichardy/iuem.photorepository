@@ -18,7 +18,9 @@
 
 <div metal:fill-slot="content-core">
 <p />
+<div class="viewImage">
 	<span tal:replace="structure view/viewImage">viewImage</span>
+</div>
 <br />
 <p />
 <span tal:condition="view/canViewFullImage">
