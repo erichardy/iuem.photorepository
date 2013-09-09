@@ -1,10 +1,10 @@
 Changelog
 =========
 
-1.0b2dev (unreleased)
----------------------
+1.0b2 (2013-09-09)
+------------------
 
-- Nothing changed yet.
+- bug fix: missed docs/* in module
 
 
 1.0b1 (2013-09-09)
