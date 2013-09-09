@@ -41,7 +41,7 @@ the Image field is modified : it is reduced and a watermark is applied.
 Only a user with permission 'iuem.photorepository: View Full Image',
 owner and manager by default, can access the original image.
 
-Because eea.facetednavigation seems to be very good tool to browse the database,
+Because eea.facetednavigation is a very good tool to browse the database,
 I didn't develop a special search form.   
 
 collective.quickupload is recommended to upload groups of photos, but the module
@@ -57,7 +57,6 @@ TODO :
 ======
 
 - latitude and longitude fields : how to set values....?
-- config view to manage some parameters : image transformation, watermarks,
-  permissions, etc...
-- full documentation for users and repository manager 
+- config view to manage some parameters : image transformation, permissions, etc...
+- full documentation for users and repository manager
 

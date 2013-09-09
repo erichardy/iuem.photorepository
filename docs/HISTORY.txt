@@ -1,6 +1,19 @@
 Changelog
 =========
 
+1.0b1 (2013-09-09)
+------------------
+
+- input for licence_type changed to radio buttons
+- widgets for inputs : areas size adapt to number of values
+- real watermarks applied
+- watermark can be specific or inherited from container or global
+- control panel with fieldsets and with more options
+- CSS changes for better visibility of folders
+- new process for full image view
+- few french translations changed
+- new view for easier objets selection (with thumbnails)
+
 0.1a4 (unreleased)
 ------------------
 
