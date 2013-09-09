@@ -3,7 +3,10 @@
   <permissions>
     <permission name="iuem.photorepository: View Full Image" acquire="True">
       <role name="Manager"/>
+      <role name="Site Administrator"/>
       <role name="Owner"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
     </permission>
     <permission name="iuem.photorepository: Manage Repository" acquire="True">
       <role name="Manager"/>
@@ -12,6 +15,10 @@
     </permission>
     <permission name="Add ATVocabularyManager content" acquire="True">
       <role name="Manager"/>
+      <role name="Site Administrator"/>
+      <role name="Owner"/>
+      <role name="Contributor"/>
+      <role name="Editor"/>
       <role name="Member"/>
     </permission>
     <permission name="eea.facetednavigation: Configure faceted" acquire="True">

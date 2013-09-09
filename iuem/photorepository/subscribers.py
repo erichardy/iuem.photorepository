@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 import logging
-from PIL import Image , ImageDraw
+from PIL import Image , ImageEnhance
 from StringIO import StringIO
 from iuem.photorepository.extender import ImageImageRepositoryExtender 
 from iuem.photorepository.extender import FolderImageRepositoryExtender
 from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
+from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from plone.i18n.normalizer.interfaces import INormalizer
 from plone.app.imaging.traverse import DefaultImageScaleHandler
 from Products.Archetypes.event import ObjectEditedEvent
+from zope.traversing.api import traverse
 
 logger = logging.getLogger('iuem.photorepository')
 
@@ -69,7 +71,99 @@ def createSmallImage(obj, event):
     setSourceimageAndExif(obj, f_uploaded.read())
     doThumbnail(obj)
 
+def restoreFull(obj):
+    if obj.portal_type != 'Image':
+            return
+    source = obj.getField("sourceImage")
+    obj.setImage(source.get(obj).data)
+
+def reduce_opacity(im, opacity):
+    """Returns an image with reduced opacity."""
+    assert opacity >= 0 and opacity <= 1
+    if im.mode != 'RGBA':
+        im = im.convert('RGBA')
+    else:
+        im = im.copy()
+    alpha = im.split()[3]
+    alpha = ImageEnhance.Brightness(alpha).enhance(opacity)
+    im.putalpha(alpha)
+    return im
+
+def hasWatermark(obj):
+    logger.info('hasWatermark ? ' + obj.title)
+    try:
+        wm = obj.getField('watermark')
+    except:
+        return False
+    return wm.getSize(obj) != (0,0)
+
+def searchWatermark(obj):
+    """
+    this function returns a watermark for the object:
+    if the object has a empty watermark field,
+    it is searched to it's parent, and if it's parent doesn't have,
+    it is searched until to reach the root plone site
+    If, there is no watermark, the registry watermark is returned if there is one
+    elsewhere, False is returned
+    NB: the watermark must be an image with tranparency 
+    """
+    if hasWatermark(obj):
+        wm = obj.getField('watermark').get(obj).data
+        mark = Image.open(StringIO(wm))
+        return mark
+    while obj.aq_parent.portal_type == 'Folder':
+        if hasWatermark(obj):
+            wm = obj.getField('watermark').get(obj).data
+            mark = Image.open(StringIO(wm))
+            return mark
+        obj = obj.aq_parent
+    registry = getUtility(IRegistry)
+    globalWatermark_name = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_image_name']
+    try:
+        globalWatermark = traverse(obj , 'portal_skins/custom/' + globalWatermark_name)
+        wm = Image.open(StringIO(globalWatermark.data))
+        return wm
+    except:
+        logger.info('WARNING! no watermark applied !... no global watermark found...')
+        return False
+
+def getPosition(image , wm):
+    li = image.size[0]
+    hi = image.size[1]
+    lw = wm.size[0]
+    hw = wm.size[1]
+    # if watermark is larger than image, reduce it to image size
+    if ((lw > li) or (hw > hi)):
+        wm.thumbnail(image.size , Image.ANTIALIAS)
+        lw = wm.size[0]
+        hw = wm.size[1]
+        logger.info('reduce wm')
+    registry = getUtility(IRegistry)
+    wmPosition = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.watermark_position']
+    if wmPosition == 'center':
+        position = ((li - lw) / 2 , (hi - hw) / 2)
+    elif wmPosition == 'topleft':
+        position = (0,0) 
+    elif wmPosition == 'topright':
+        position = ((li - lw) , 0)
+    elif wmPosition == 'bottomleft':
+        position = (0 , (hi - hw))
+    elif wmPosition == 'bottomright':
+        position = ((li - lw) , (hi - hw))
+    else:
+        position = ((hi - hw) , (li - lw))
+    # logger.info('Position : ' + wmPosition + ' ' + str(position))
+    return position
+
+
+# thanks to http://pydoc.net/Python/unweb.watermark/0.3/unweb.watermark.subscribers/
+# docs for PIL : http://python.developpez.com/cours/pilhandbook/
 def doThumbnail(obj):
+    title00 = (obj.getField('title').get(obj)[:3] == '00-')
+    if title00:
+        return False
+    # we don't want to apply a watermark on a watermarked image
+    restoreFull(obj)
     field = obj.getField('image')
     scaled = DefaultImageScaleHandler(field).getScale(obj, scale='large')
     f_image = StringIO(scaled.data)
@@ -78,9 +172,10 @@ def doThumbnail(obj):
         image = image.convert('RGBA')
     size = 600 , 600
     image.thumbnail(size, Image.ANTIALIAS)
-    draw = ImageDraw.Draw(image)
-    draw.line((0, 0) + image.size, fill=(255, 255, 255))
-    draw.line((0, image.size[1], image.size[0], 0), fill=(255, 255, 255))
+    wm = searchWatermark(obj)
+    position = getPosition(image , wm)
+    if wm:
+        image.paste(wm , position , wm)
     f_data = StringIO()
     image.save(f_data , 'jpeg')
     obj.setImage(f_data.getvalue())

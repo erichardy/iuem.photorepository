@@ -14,6 +14,13 @@
       template="repoimageview.pt"
       permission="zope2.View"
       />
+  <browser:page
+      name="fullimageview"
+      for="*"
+      class=".fullimageview.fullImageView"
+      template="fullImageView.pt"
+      permission="cmf.ModifyPortalContent"
+      />
 <browser:page
       name="repo_folder_album_view"
       for="*"
@@ -21,13 +28,31 @@
       template="repofolderalbumview.pt"
       permission="zope2.View"
       />
+      
+   <browser:page
+      for="*"
+      name="repo_folder_contents"
+      class=".repoFolderContents.FolderContentsView"
+      template="repoFolderContents.pt"
+      layer=".interfaces.ILayer"
+      permission="zope2.View"
+      />
+   <browser:page
+	  for="*"
+	  class=".repoFolderContents.FolderContentsKSSView"
+	  attribute="update_table"
+	  name="repoFolderContents_update_table"
+      layer=".interfaces.ILayer"
+	  permission="zope2.View"
+	  />
+	  
   <browser:page
       for="*"
       name="manage-metadata"
       class=".manageMetadata_form.ManageMetadataFormView"
       template="manageMetadataFormView.pt"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
 
   <browser:page
@@ -36,14 +61,14 @@
       template="metadataConfirm.pt"
       class=".metadataConfirm.MetadataConfirmView"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
       name="spread-metadata"
       class=".metadataConfirm.SpreadMetadata"
       layer=".interfaces.ILayer"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       />
   <browser:page
       for="*"
@@ -86,7 +111,6 @@
       permission="zope2.View"
       />
 
-
   <browser:page
       for="*"
       name="testSet"
@@ -95,6 +119,34 @@
       layer=".interfaces.ILayer"
       permission="zope2.View"
       />
+      
+  <browser:page
+      for="*"
+      name="watermarks"
+      class=".watermarks.watermarks"
+      layer=".interfaces.ILayer"
+      permission="cmf.ModifyPortalContent"
+      />
+  <browser:page
+      for="*"
+      name="watermark"
+      class=".watermarks.watermark"
+      layer=".interfaces.ILayer"
+      permission="cmf.ModifyPortalContent"
+      />
+  <browser:page
+      for="*"
+      name="full"
+      class=".watermarks.full"
+      layer=".interfaces.ILayer"
+      permission="cmf.ManagePortal"
+      />
+  <browser:page
+    for="*"
+    name="imDebug"
+    class=".imdebug.imDebug"
+    permission="cmf.ManagePortal"
+  />
   <!-- EXAMPLE:
   <browser:viewlet
       name="iuem.someviewlet"

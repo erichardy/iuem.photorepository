@@ -6,6 +6,7 @@
     <dependency>profile-plone.app.z3cform:default</dependency>
     <dependency>profile-plone.app.registry:default</dependency>
     <dependency>profile-Products.ATVocabularyManager:default</dependency>
+    <dependency>profile-eea.facetednavigation:default</dependency>
     <dependency>profile-Products.AddRemoveWidget:default</dependency>
     <dependency>profile-collective.quickupload:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
