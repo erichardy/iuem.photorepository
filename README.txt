@@ -15,7 +15,9 @@ Bertrand GOBERT : communication service in IUEM
 
 Jean-Michel FRANCOIS (aka toutpt) for his courses
 
-Tristan LE TOULLEC (new plone integrator and developer in IUEM) 
+Tristan LE TOULLEC (plone integrator and developer in IUEM)
+
+Valentin Cadot (student who worked on this for 3 months)
 
 Features :
 ========== 
@@ -24,37 +26,38 @@ The two main ideas of this product are :
 
 1- to add metadata for a finer grain research and selection
 
-2- to attribute folder metadata to contained
+2- to attribute/spread folder metadata to contained images and folders
 
 This product aims to dedicate your entire Plone site to a photos/images
 repository. Archetypes.schemaextender is largely used to extend metadata of
 folders and images. So _ALL_ folders and images are extended.
 
-When you add a new folder or image, you can use metadatas already included in
+When you add a new folder or image, you can use metadata already included in
 the vocabularies (like a thesaurus) or add new values which are added to the
 vocabularies when you save your new object.
 
 When an image is uploaded, the original image is copied to a new field and
-the Image field is modified : it is reduced and to diagonal lines
-are drawn. Only a user with permission 'iuem.photorepository: View Full Image',
+the Image field is modified : it is reduced and a watermark is applied.
+Only a user with permission 'iuem.photorepository: View Full Image',
 owner and manager by default, can access the original image.
 
 Because eea.facetednavigation seems to be very good tool to browse the database,
-I haven't developed a special search form.   
- 
-We use collective.quickupload to upload groups of photos
+I didn't develop a special search form.   
+
+collective.quickupload is recommended to upload groups of photos, but the module
+collective.zipfiletransport is also used.
 
 Installation :
 ==============
 
-Just add iuem.photorepository to egg section of your buildout.cfg
+Just add iuem.photorepository to egg list in your buildout.cfg
 
 
 TODO :
 ======
 
-- really manage watermarks
 - latitude and longitude fields : how to set values....?
 - config view to manage some parameters : image transformation, watermarks,
   permissions, etc...
+- full documentation for users and repository manager 
 
