@@ -21,7 +21,6 @@
 NEW VIEW for fullImage !
 
 <span tal:define="newimage python:view.duplicate()">DUPLICATA</span>
-<span tal:content="python:view.fullImage()">DUPLICATA</span>
 
 <br />
 <div class="imaage">
