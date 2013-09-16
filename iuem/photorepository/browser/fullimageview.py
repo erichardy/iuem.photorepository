@@ -33,24 +33,46 @@ class fullImageView(BrowserView):
         # import pdb;pdb.set_trace()
         # delete object with same id if exist in target folder
         try:
-            with api.env.adopt_roles(['Manager']):
+            with api.env.adopt_roles(roles=['Manager']):
                 newfull = target[context.getId()]
                 target.manage_delObjects([context.getId(),])
                 logger.info('old full image deleted (%s)' , newfull.getId())
         except:
             logger.info('No previous full image deleted...')
         
-        with api.env.adopt_roles(['Manager']):
+        with api.env.adopt_roles(roles=['Manager']):
             # target.invokeFactory(type_name='Image', id = self.context.getId())
             if context.cb_dataValid():
                 try:
+                    # Delete old objects
+                    self.deleteOldObjects(target)
+                    #
                     target.manage_pasteObjects(context.REQUEST['__cp'])
                     newimage = target[context.getId()]
+
+                    self.setNewSecurity(newimage)
                     self.fullImage(newimage)
-                    return
+                    # redirect browser to full image
+                    newimageId = newimage.getId()
+                    newimageContainer = newimage.aq_parent
+                    RESPONSE = self.context.REQUEST.RESPONSE
+                    RESPONSE.redirect(newimageContainer.absolute_url() + '/' + newimageId)
+                    return RESPONSE.redirect
                 except:
                     logger.exception('Exception during pasting in target folder')
                     logger.info('WARNING ! : Object no pasted... : ' + str(context.getId()))
+        return
+    
+    def setNewSecurity(self , newimage):
+        context = self.context
+        # Security : set owner to object and do it private
+        workflowTool = getToolByName(context, "portal_workflow")
+        workflowTool.doActionFor(newimage, "retract")
+        mt = getToolByName(context, 'portal_membership')
+        currentMember = mt.getAuthenticatedMember()
+        logger.info('Current User : ' + str(currentMember))
+        newimage.changeOwnership(currentMember)
+        newimage.manage_setLocalRoles(currentMember , ["Owner",])
         return
     
     def deleteOldObjects(self , target):
@@ -68,9 +90,8 @@ class fullImageView(BrowserView):
         
     def fullImage(self, newimage):
         context = self.context
-        registry = getUtility(IRegistry)
-        targetFolder = registry['iuem.photorepository.interfaces.IPhotorepositorySettings.fullimages_folder']
         # Security : set owner to object and do it private
+        """
         workflowTool = getToolByName(context, "portal_workflow")
         workflowTool.doActionFor(newimage, "retract")
         mt = getToolByName(context, 'portal_membership')
@@ -80,18 +101,23 @@ class fullImageView(BrowserView):
         newimage.manage_setLocalRoles(currentMember , ["Owner",])
         # context.reindexObjectSecurity()
         # newimage.reindexObject()
+        """
+        """
         # Delete old objects
         target = newimage.aq_inner.aq_parent
         self.deleteOldObjects(target)
+        """
         # set image field with full/source image 
         source = context.getField("sourceImage")
         newimage.setImage(source.get(context).data)
+        """
         # redirect browser to full image
         newimageId = newimage.getId()
         newimageContainer = newimage.aq_parent
         RESPONSE = self.context.REQUEST.RESPONSE
         RESPONSE.redirect(newimageContainer.absolute_url() + '/' + newimageId)
         return RESPONSE.redirect
+        """
         
     def header(self):
         RESPONSE = self.context.REQUEST.RESPONSE
