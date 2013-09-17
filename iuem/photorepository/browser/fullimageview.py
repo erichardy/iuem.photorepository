@@ -64,8 +64,8 @@ class fullImageView(BrowserView):
         return
     
     def setNewSecurity(self , newimage):
+        """ Security : set owner to object and do it private """
         context = self.context
-        # Security : set owner to object and do it private
         workflowTool = getToolByName(context, "portal_workflow")
         workflowTool.doActionFor(newimage, "retract")
         mt = getToolByName(context, 'portal_membership')
@@ -90,34 +90,9 @@ class fullImageView(BrowserView):
         
     def fullImage(self, newimage):
         context = self.context
-        # Security : set owner to object and do it private
-        """
-        workflowTool = getToolByName(context, "portal_workflow")
-        workflowTool.doActionFor(newimage, "retract")
-        mt = getToolByName(context, 'portal_membership')
-        currentMember = mt.getAuthenticatedMember()
-        logger.info('Current User : ' + str(currentMember))
-        newimage.changeOwnership(currentMember)
-        newimage.manage_setLocalRoles(currentMember , ["Owner",])
-        # context.reindexObjectSecurity()
-        # newimage.reindexObject()
-        """
-        """
-        # Delete old objects
-        target = newimage.aq_inner.aq_parent
-        self.deleteOldObjects(target)
-        """
         # set image field with full/source image 
         source = context.getField("sourceImage")
         newimage.setImage(source.get(context).data)
-        """
-        # redirect browser to full image
-        newimageId = newimage.getId()
-        newimageContainer = newimage.aq_parent
-        RESPONSE = self.context.REQUEST.RESPONSE
-        RESPONSE.redirect(newimageContainer.absolute_url() + '/' + newimageId)
-        return RESPONSE.redirect
-        """
         
     def header(self):
         RESPONSE = self.context.REQUEST.RESPONSE
