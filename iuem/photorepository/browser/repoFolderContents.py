@@ -181,8 +181,8 @@ class FolderContentsTable(object):
                 view_url = url + "/repo_folder_contents"
             else:
                 view_url = url
-
-            imageObject = api.content.get(path=relative_url)
+            
+            imageObject = obj.getObject()
             if imageObject.portal_type == 'Image':
                 image = imageObject.tag(scale="thumb")
             else: image = None
