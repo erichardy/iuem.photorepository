@@ -49,7 +49,7 @@ class fullImageView(BrowserView):
                     #
                     target.manage_pasteObjects(context.REQUEST['__cp'])
                     newimage = target[context.getId()]
-
+                    # operations on new image
                     self.setNewSecurity(newimage)
                     self.fullImage(newimage)
                     # redirect browser to full image
